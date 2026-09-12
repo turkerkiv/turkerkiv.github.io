@@ -1,0 +1,53 @@
+{
+  "person": {
+    "name": "Türker Kıvılcım",
+    "eyebrow": "Software Developer",
+    "intro": "Gerçek problemlere yazılım çözümleri üretmeyi seven Bilgisayar Mühendisliği öğrencisi.",
+    "hand_note": "çalışır şeyler →",
+    "location": "Kayseri, Türkiye",
+    "email": "kivturker@gmail.com",
+    "github": "https://github.com/turkerkiv",
+    "linkedin": "https://linkedin.com/in/turkerkiv",
+    "cv": "turker-kivilcim-cv.pdf"
+  },
+  "about": {
+    "title": "Kısaca ben",
+    "paragraphs": [
+      "Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisiyim.",
+      "Şu anda Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı'nda Full-stack AI Engineer olarak çalışıyorum.",
+      "Özellikle backend geliştirme, yapay zeka ve sistemlerin çalışma mantığıyla ilgileniyorum."
+    ]
+  },
+  "focus": {
+    "title": "Odak",
+    "items": [
+      "Go",
+      "Python",
+      ".NET",
+      "React"
+    ]
+  },
+  "stack": [
+    "Go",
+    "Python",
+    "C# / .NET",
+    "React",
+    "Django",
+    "FastAPI",
+    "TypeScript",
+    "Docker",
+    "Linux",
+    "YOLO",
+    "WebSocket",
+    "PostgreSQL"
+  ],
+  "labels": {
+    "projects": "Projeler",
+    "about": "Hakkında",
+    "contact": "İletişim",
+    "viewProject": "Detaylar",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "cv": "CV"
+  }
+}

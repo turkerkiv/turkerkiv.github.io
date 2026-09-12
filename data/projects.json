@@ -1,0 +1,71 @@
+[
+  {
+    "title": "Kampüs Giriş Sayım Sistemi",
+    "category": "Canlı Sistem",
+    "short": "Kamera akışlarından kampüs girişlerini tespit eden uçtan uca görüntü işleme sistemi.",
+    "description": "Sistemi sıfırdan kurdum. Veri seti hazırlama, YOLO modellerinin eğitimi ve karşılaştırılması, nesne takibi, Django tabanlı yönetim paneli ve WebSocket üzerinden canlı görüntü akışı dahil olmak üzere tüm akış üzerinde çalıştım.",
+    "stack": [
+      "Python",
+      "YOLO",
+      "Django",
+      "WebSocket"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "title": "Kurumsal SSS Chatbot",
+    "category": "Ar-Ge",
+    "short": "Kurum içi destek süreçlerini otomatikleştirmek için RAG ve LoRA teknikleri üzerine geliştirilen chatbot prototipi.",
+    "description": "Kurum içi bilgiye dayalı yanıt üretimi için RAG yaklaşımını ve model özelleştirme tarafında LoRA tekniklerini araştırdım. Ayrıca chatbot için arayüz prototipi geliştirdim.",
+    "stack": [
+      "RAG",
+      "LoRA",
+      "LLM",
+      "Django"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "title": "2D Basketbol Oyunu",
+    "category": "Game Development",
+    "short": "Mobil platform için fizik tabanlı atış, bot AI ve UI/UX içeren 2D basketbol oyunu.",
+    "description": "Oyunun tasarımını ve level yapısını oluşturdum. Fizik tabanlı atış mekanikleri, bot mantığı ve arayüzü tek başıma geliştirerek projeyi uçtan uca tamamladım.",
+    "stack": [
+      "C#",
+      "Game AI",
+      "Physics",
+      "UI/UX"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "title": "3 Şubeli Ağ Mimarisi",
+    "category": "Network",
+    "short": "Farklı şehirlerde üç şubeye genişleyen bir firma için tasarlanan ve sanal makinelerde simüle edilen ağ yapısı.",
+    "description": "Zorunlu donanım stajı kapsamında, firmanın farklı şehirlere açılması senaryosu için üç şubeli bir ağ mimarisi geliştirdim ve cihazları sanal makineler üzerinde simüle ettim.",
+    "stack": [
+      "CPT",
+      "Networking",
+      "Virtual Machines"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "title": "Fiziksel Cihaz Slot Oyunu",
+    "category": "Game Development",
+    "short": "RNG, olasılık mantığı ve dinamik makara animasyonları içeren C# tabanlı 2D slot oyunu.",
+    "description": "2D artist ile birlikte çalışarak rastgele sayı üretimi, olasılık/şans algoritmaları ve dinamik makara animasyon sistemini C# ile mimariledim ve ilk sürümü tamamladım.",
+    "stack": [
+      "C#",
+      "RNG",
+      "Probability",
+      "Animation"
+    ],
+    "github": "",
+    "demo": ""
+  }
+]
