@@ -238,15 +238,45 @@ footer{
   pointer-events:auto;z-index:25;
   touch-action:none;
 }
-body{
+
+body.drawing-enabled{
   user-select:none;
   -webkit-user-select:none;
-  cursor:none !important;
 }
-body *{
+body.drawing-enabled *{
   user-select:none;
   -webkit-user-select:none;
-  cursor:none !important;
+}
+@media (hover: hover) and (pointer: fine){
+  body.drawing-enabled,
+  body.drawing-enabled *{
+    cursor:none !important;
+  }
+}
+body.drawing-enabled #inkCanvas{
+  pointer-events:auto;
+  touch-action:none;
+}
+
+body.drawing-disabled{
+  user-select:auto;
+  -webkit-user-select:auto;
+  cursor:auto !important;
+}
+body.drawing-disabled *{
+  cursor:auto !important;
+}
+body.drawing-disabled a,
+body.drawing-disabled button,
+body.drawing-disabled .project{
+  cursor:pointer !important;
+}
+body.drawing-disabled #inkCanvas{
+  pointer-events:none;
+  touch-action:auto;
+}
+body.drawing-disabled #pencilCursor{
+  display:none !important;
 }
 
 /* Custom Animated Drafting Pencil */
@@ -264,6 +294,27 @@ body *{
 }
 .pencil-cursor.drawing{
   transform:translate(-2px,-30px) rotate(-16deg) scale(.92);
+}
+
+/* Nav Draw Toggle Button (Mobile) */
+.nav-draw-toggle{
+  display:none;
+  align-items:center;
+  gap:4px;
+  color:var(--ink) !important;
+  border:1px solid var(--ink);
+  padding:2px 7px;
+  font-size:10px;
+  letter-spacing:.06em;
+  transition:all .15s ease;
+  text-decoration:none;
+  background:rgba(248,251,253,.9);
+  cursor:pointer;
+}
+.nav-draw-toggle.active{
+  background:var(--blue);
+  color:#fff !important;
+  border-color:var(--blue);
 }
 
 /* Nav Clear Button */
@@ -332,7 +383,10 @@ body *{
 .modal-links{margin-top:20px;font:700 10px "Courier New",monospace}
 .modal-links a{color:var(--blue);text-decoration:none;margin-right:18px}
 
-@media(max-width:780px){
+@media(max-width:780px), (hover:none) and (pointer:coarse){
+  .coord{display:none}
+  .nav-draw-toggle{display:inline-flex}
+  .pencil-cursor{display:none !important}
   .hero{grid-template-columns:1fr;padding-top:60px}
   .hero-side{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}
   .projects{grid-template-columns:1fr}
@@ -342,7 +396,22 @@ body *{
 }
 @media(max-width:560px){
   .site{width:min(100% - 24px,var(--max))}
-  .nav-right a:nth-child(2){display:none}
+  .top{
+    height:auto;
+    padding:12px 0;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .nav-right{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .nav-right a{
+    margin-left:0;
+  }
+  .nav-right a[data-label="about"]{display:none}
   .hero h1{font-size:5.3rem}
   .project h2{font-size:29px}
   footer{flex-direction:column;gap:7px}
@@ -358,6 +427,7 @@ body *{
     <div class="nav-right">
       <a href="#projects" data-label="projects"></a>
       <a href="#about" data-label="about"></a>
+      <a id="mobileDrawToggle" class="nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
       <a id="clearSketch" class="nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
       <a id="exportBtn" class="nav-export-btn" href="javascript:void(0)" title="Sayfa ve Çizimlerin Görüntüsünü İndir">ÇIKTI AL ⤓</a>
       <a id="github" href="#" target="_blank">GITHUB ↗</a>
@@ -540,9 +610,13 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")hideProject()});
 const canvas = $("inkCanvas"), ctx = canvas.getContext("2d");
 const pencilCursor = $("pencilCursor");
 const clearBtn = $("clearSketch");
+const mobileDrawToggle = $("mobileDrawToggle");
+const exportBtn = $("exportBtn");
 
 const STORAGE_KEY = "blueprint_sketch_strokes";
 let isDrawing = false;
+let isDrawingEnabled = true;
+let lastToggleTime = 0;
 let isAnimatingClick = false;
 let activeColor = "#285bc4";
 let activeWidth = 2.2;
@@ -555,6 +629,42 @@ let pointerDownPos = { x: 0, y: 0 };
 let hasDragged = false;
 let targetClickable = null;
 let lastPointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+// Kalem Modu Kontrolü (Mobilde Varsayılan Kapalı, Butonla Açılıp Kapanır)
+function setDrawingEnabled(enabled) {
+  isDrawingEnabled = !!enabled;
+  document.body.classList.toggle("drawing-enabled", isDrawingEnabled);
+  document.body.classList.toggle("drawing-disabled", !isDrawingEnabled);
+
+  if (mobileDrawToggle) {
+    mobileDrawToggle.classList.toggle("active", isDrawingEnabled);
+    mobileDrawToggle.innerHTML = isDrawingEnabled
+      ? '<span>✏️</span> ÇİZİM: AÇIK'
+      : '<span>✏️</span> ÇİZ';
+    mobileDrawToggle.setAttribute("title", isDrawingEnabled ? "Kalem Modunu Kapat (Kaydırma Modu)" : "Kalem Modunu Aç (Çizim Modu)");
+    mobileDrawToggle.setAttribute("aria-pressed", isDrawingEnabled ? "true" : "false");
+  }
+
+  canvas.style.pointerEvents = isDrawingEnabled ? "auto" : "none";
+  canvas.style.touchAction = isDrawingEnabled ? "none" : "auto";
+
+  if (!isDrawingEnabled) {
+    isDrawing = false;
+    currentStroke = null;
+    pencilCursor.classList.remove("drawing");
+    pencilCursor.style.opacity = "0";
+    redraw();
+  } else {
+    pencilCursor.style.opacity = "1";
+  }
+}
+
+function toggleDrawing() {
+  const now = Date.now();
+  if (now - lastToggleTime < 250) return;
+  lastToggleTime = now;
+  setDrawingEnabled(!isDrawingEnabled);
+}
 
 // 1. LocalStorage İşlemleri: Çizimleri tarayıcı hafızasında saklar ve yükler
 function loadStrokes() {
@@ -682,7 +792,7 @@ function getClickableElement(clientX, clientY) {
   const elements = document.elementsFromPoint(clientX, clientY);
   for (const el of elements) {
     if (el === canvas || el === pencilCursor || el.closest("#pencilCursor")) continue;
-    const clickable = el.closest("a, button, .project, .close, #clearSketch, #exportBtn");
+    const clickable = el.closest("a, button, .project, .close, #clearSketch, #exportBtn, #mobileDrawToggle");
     if (clickable) return clickable;
   }
   return null;
@@ -797,15 +907,21 @@ function animateSketchAround(element, onComplete) {
 function executeClick(el) {
   if (!el) return;
 
-  if (el.id === "clearSketch") {
-    clearStrokes();
-    const orig = el.textContent;
-    el.textContent = "TEMİZLENDİ ⌫";
-    setTimeout(() => { el.textContent = orig; }, 1200);
+  if (el.id === "mobileDrawToggle" || el.closest("#mobileDrawToggle")) {
+    toggleDrawing();
     return;
   }
 
-  if (el.id === "exportBtn") {
+  if (el.id === "clearSketch" || el.closest("#clearSketch")) {
+    clearStrokes();
+    const btn = el.closest("#clearSketch") || el;
+    const orig = btn.textContent;
+    btn.textContent = "TEMİZLENDİ ⌫";
+    setTimeout(() => { btn.textContent = orig; }, 1200);
+    return;
+  }
+
+  if (el.id === "exportBtn" || el.closest("#exportBtn")) {
     captureAndDownloadBlueprint();
     return;
   }
@@ -915,13 +1031,14 @@ async function captureAndDownloadBlueprint() {
     }
   } finally {
     canvas.style.display = "block";
-    pencilCursor.style.display = "block";
+    pencilCursor.style.display = (isDrawingEnabled && !window.matchMedia("(hover: none) and (pointer: coarse)").matches) ? "block" : "none";
     redraw();
   }
 }
 
 // 11. Tuval Üzerinde Çizim & Tıklama Olayları
 canvas.addEventListener("pointerdown", e => {
+  if (!isDrawingEnabled) return;
   if (e.button !== 0 || isAnimatingClick) return; // Sadece sol tık
   e.preventDefault(); // Metin seçimini engeller
   canvas.setPointerCapture(e.pointerId);
@@ -945,7 +1062,7 @@ canvas.addEventListener("pointerdown", e => {
 });
 
 canvas.addEventListener("pointermove", e => {
-  if (!isDrawing || !currentStroke || isAnimatingClick) return;
+  if (!isDrawingEnabled || !isDrawing || !currentStroke || isAnimatingClick) return;
   e.preventDefault();
 
   const dist = Math.hypot(e.clientX - pointerDownPos.x, e.clientY - pointerDownPos.y);
@@ -971,12 +1088,18 @@ function finishDrawing(e) {
   isDrawing = false;
   pencilCursor.classList.remove("drawing");
 
-  // Eğer sürükleme yapılmadıysa ve bir tıklanabilir elemana basıldıysa: OTO-ÇİZİM ANİMASYONU!
+  // Eğer sürükleme yapılmadıysa ve bir tıklanabilir elemana basıldıysa:
   if (!hasDragged && targetClickable) {
     const clicked = targetClickable;
     currentStroke = null;
     targetClickable = null;
     redraw();
+
+    // Toggle butonu için etrafına çizgi çekmeden doğrudan modu değiştir
+    if (clicked.id === "mobileDrawToggle" || clicked.closest("#mobileDrawToggle")) {
+      toggleDrawing();
+      return;
+    }
 
     animateSketchAround(clicked, () => {
       executeClick(clicked);
@@ -995,6 +1118,31 @@ function finishDrawing(e) {
 
 canvas.addEventListener("pointerup", finishDrawing);
 canvas.addEventListener("pointercancel", finishDrawing);
+
+// Çizim modu kapalıyken de butonların sorunsuz çalışması için doğrudan dinleyiciler
+if (mobileDrawToggle) {
+  mobileDrawToggle.addEventListener("click", e => {
+    e.preventDefault();
+    toggleDrawing();
+  });
+}
+
+if (clearBtn) {
+  clearBtn.addEventListener("click", e => {
+    e.preventDefault();
+    clearStrokes();
+    const orig = clearBtn.textContent;
+    clearBtn.textContent = "TEMİZLENDİ ⌫";
+    setTimeout(() => { clearBtn.textContent = orig; }, 1200);
+  });
+}
+
+if (exportBtn) {
+  exportBtn.addEventListener("click", e => {
+    e.preventDefault();
+    captureAndDownloadBlueprint();
+  });
+}
 
 // 12. Klavye Kısayolları (ESC: Modal Kapat, Ctrl+Z: Geri Al, C: Temizle)
 document.addEventListener("keydown", e => {
@@ -1017,6 +1165,24 @@ document.addEventListener("keydown", e => {
     if (tag !== "input" && tag !== "textarea" && !$("modal").classList.contains("open")) {
       clearStrokes();
     }
+  }
+});
+
+// Mobilde varsayılan olarak kalem KAPALI (böylece sayfa rahatça kaydırılır), masaüstünde AÇIK
+const isTouchOrMobile = () => {
+  return window.matchMedia("(max-width: 780px)").matches ||
+         window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
+         ("ontouchstart" in window && window.innerWidth <= 780);
+};
+
+setDrawingEnabled(!isTouchOrMobile());
+
+// Ekran genişliği değiştiğinde durum uyarlaması
+window.matchMedia("(max-width: 780px)").addEventListener("change", e => {
+  if (e.matches) {
+    setDrawingEnabled(false);
+  } else {
+    setDrawingEnabled(true);
   }
 });
 
