@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Türker Kıvılcım — Software Developer">
 <title>Türker Kıvılcım / Blueprint</title>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <style>
 :root{
   --bg:#e8eef3;
@@ -234,7 +235,98 @@ footer{
 
 #inkCanvas{
   position:fixed;inset:0;width:100%;height:100%;
-  pointer-events:none;z-index:20
+  pointer-events:auto;z-index:25;
+  touch-action:none;
+}
+body{
+  user-select:none;
+  -webkit-user-select:none;
+  cursor:none !important;
+}
+body *{
+  user-select:none;
+  -webkit-user-select:none;
+  cursor:none !important;
+}
+
+/* Custom Animated Drafting Pencil */
+.pencil-cursor{
+  position:fixed;
+  top:-100px;left:-100px;
+  width:32px;height:32px;
+  pointer-events:none;
+  z-index:100;
+  display:block;
+  transform-origin:2px 30px;
+  transform:translate(-2px,-30px) rotate(0deg);
+  transition:transform .08s ease-out,opacity .15s ease;
+  will-change:transform,left,top;
+}
+.pencil-cursor.drawing{
+  transform:translate(-2px,-30px) rotate(-16deg) scale(.92);
+}
+
+/* Nav Clear Button */
+.nav-clear-btn{
+  color:var(--red) !important;
+  border:1px dashed rgba(200,82,82,.6);
+  padding:2px 7px;
+  font-size:10px;
+  letter-spacing:.06em;
+  transition:all .15s ease;
+  text-decoration:none;
+}
+.nav-clear-btn:hover{
+  background:rgba(200,82,82,.12);
+  border-color:var(--red);
+}
+.nav-export-btn{
+  color:var(--blue) !important;
+  border:1px solid var(--blue);
+  padding:2px 7px;
+  font-size:10px;
+  letter-spacing:.06em;
+  transition:all .15s ease;
+  text-decoration:none;
+  background:rgba(40,91,196,.06);
+}
+.nav-export-btn:hover{
+  background:var(--blue);
+  color:#fff !important;
+}
+
+.export-details-section{
+  margin:55px 0 70px;
+  border-top:2px solid var(--ink);
+}
+.export-project-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:12px;
+}
+.export-project-card{
+  border:2px solid var(--ink);
+  background:rgba(244,249,253,.94);
+  padding:20px;
+  position:relative;
+}
+.export-project-card:before,.export-project-card:after{
+  content:"";position:absolute;width:12px;height:12px;
+  border-color:var(--blue);opacity:.65
+}
+.export-project-card:before{top:-2px;left:-2px;border-top:2px solid;border-left:2px solid}
+.export-project-card:after{bottom:-2px;right:-2px;border-bottom:2px solid;border-right:2px solid}
+.export-project-card h3{
+  font:600 26px/.92 Georgia,"Times New Roman",serif;
+  letter-spacing:-.05em;
+  margin:8px 0 10px;
+}
+.export-desc{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.55;
+  margin:0 0 12px;
 }
 
 .modal{
@@ -294,6 +386,8 @@ footer{
     <div class="nav-right">
       <a href="#projects" data-label="projects"></a>
       <a href="#about" data-label="about"></a>
+      <a id="clearSketch" class="nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
+      <a id="exportBtn" class="nav-export-btn" href="javascript:void(0)" title="Sayfa ve Çizimlerin Görüntüsünü İndir">ÇIKTI AL ⤓</a>
       <a id="github" href="#" target="_blank">GITHUB ↗</a>
     </div>
   </div>
@@ -355,6 +449,14 @@ footer{
     <a id="email" href="#"></a>
   </section>
 
+  <section id="exportProjectDetails" class="section export-details-section" style="display:none;">
+    <div class="section-head">
+      <span>PROJECT SPECIFICATIONS & DETAILED BLUEPRINTS</span>
+      <span>03 / APPENDIX</span>
+    </div>
+    <div id="exportProjectList" class="export-project-grid"></div>
+  </section>
+
   <footer>
     <span>© <span id="year"></span> Türker Kıvılcım</span>
     <span id="location"></span>
@@ -370,6 +472,24 @@ footer{
     <div id="modalStack" class="stack"></div>
     <div id="modalLinks" class="modal-links"></div>
   </div>
+</div>
+
+<!-- Custom Animated Drafting Pencil Cursor -->
+<div id="pencilCursor" class="pencil-cursor" aria-hidden="true">
+  <svg viewBox="0 0 32 32" width="32" height="32" style="filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.35));" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Lead tip -->
+    <polygon id="pencilLead" points="2,30 3.5,26.5 5.5,28.5" fill="#285bc4" />
+    <!-- Sharpened wood cone -->
+    <polygon points="3.5,26.5 5.5,28.5 9,25 7,23" fill="#e8c79c" stroke="#182430" stroke-width="0.6" />
+    <!-- Shaft facet 1 (colored) -->
+    <polygon id="pencilShaft1" points="7,23 9,25 21,13 19,11" fill="#285bc4" stroke="#182430" stroke-width="0.6" />
+    <!-- Shaft facet 2 (highlight) -->
+    <polygon points="9,25 11,27 23,15 21,13" fill="#4d79c7" stroke="#182430" stroke-width="0.6" />
+    <!-- Metal Ferrule -->
+    <polygon points="19,11 23,15 25,13 21,9" fill="#a5b8ca" stroke="#182430" stroke-width="0.6" />
+    <!-- Eraser -->
+    <polygon points="21,9 25,13 27,11 23,7" fill="#c85252" stroke="#182430" stroke-width="0.6" />
+  </svg>
 </div>
 
 <script>
@@ -422,6 +542,23 @@ function render(){
     </article>
   `).join("");
 
+  const expList = $("exportProjectList");
+  if (expList) {
+    expList.innerHTML = projects.map((p, i) => `
+      <article class="export-project-card">
+        <div class="project-no">PROJECT ${String(i + 1).padStart(2, "0")} · SPECIFICATION</div>
+        <div class="project-category">${p.category}</div>
+        <h3>${p.title}</h3>
+        <p class="export-desc">${p.description || p.short}</p>
+        <div class="tags">${(p.stack || []).map(x => `<span>${x}</span>`).join("")}</div>
+        <div class="modal-links" style="margin-top:14px;">
+          ${p.github ? `<a href="${p.github}" target="_blank" rel="noreferrer">GitHub ↗</a>` : ""}
+          ${p.demo ? `<a href="${p.demo}" target="_blank" rel="noreferrer">Demo ↗</a>` : ""}
+        </div>
+      </article>
+    `).join("");
+  }
+
   document.querySelectorAll(".project").forEach(el=>{
     el.addEventListener("click",()=>openProject(projects[Number(el.dataset.i)]));
   });
@@ -450,51 +587,506 @@ $("close").addEventListener("click",hideProject);
 $("modal").addEventListener("click",e=>{if(e.target===$("modal"))hideProject()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")hideProject()});
 
-/* More visible pencil / pen trail */
-const canvas=$("inkCanvas"),ctx=canvas.getContext("2d");
-let trail=[],raf=0;
-function resize(){
-  const dpr=Math.min(devicePixelRatio||1,2);
-  canvas.width=innerWidth*dpr; canvas.height=innerHeight*dpr;
-  canvas.style.width=innerWidth+"px"; canvas.style.height=innerHeight+"px";
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-}
-resize(); addEventListener("resize",resize);
+/* ========================================================
+   TEKNİK ÇİZİM & KALEM MOTORU (HER ZAMAN AKTİF & OTO-LİNK ÇİZİMİ)
+   ======================================================== */
+const canvas = $("inkCanvas"), ctx = canvas.getContext("2d");
+const pencilCursor = $("pencilCursor");
+const clearBtn = $("clearSketch");
 
-addEventListener("pointermove",e=>{
-  if(e.pointerType==="touch")return;
-  trail.push({x:e.clientX,y:e.clientY,t:performance.now()});
-  if(trail.length>115)trail.shift();
-  if(!raf)raf=requestAnimationFrame(draw);
+const STORAGE_KEY = "blueprint_sketch_strokes";
+let isDrawing = false;
+let isAnimatingClick = false;
+let activeColor = "#285bc4";
+let activeWidth = 2.2;
+let strokes = [];
+let currentStroke = null;
+let dpr = Math.min(devicePixelRatio || 1, 2);
+
+// Tıklama vs Sürükleme (Click vs Drag) Ayrımı
+let pointerDownPos = { x: 0, y: 0 };
+let hasDragged = false;
+let targetClickable = null;
+let lastPointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+// 1. LocalStorage İşlemleri: Çizimleri tarayıcı hafızasında saklar ve yükler
+function loadStrokes() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      strokes = JSON.parse(saved);
+      redraw();
+    }
+  } catch (err) {
+    console.warn("Çizimler yüklenirken hata:", err);
+  }
+}
+
+function saveStrokes() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(strokes));
+  } catch (err) {
+    console.warn("Çizimler kaydedilirken hata:", err);
+  }
+}
+
+function clearStrokes() {
+  strokes = [];
+  currentStroke = null;
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {}
+  redraw();
+}
+
+function undoStroke() {
+  if (strokes.length > 0) {
+    strokes.pop();
+    saveStrokes();
+    redraw();
+  }
+}
+
+// 2. High DPI (Retina) Canvas Boyutlandırması
+function resize() {
+  dpr = Math.min(devicePixelRatio || 1, 2);
+  canvas.width = Math.round(innerWidth * dpr);
+  canvas.height = Math.round(innerHeight * dpr);
+  canvas.style.width = innerWidth + "px";
+  canvas.style.height = innerHeight + "px";
+  redraw();
+}
+window.addEventListener("resize", resize);
+
+// 3. Vektörel Çizgi Çizimi (Bezier Eğrisi ile Pürüzsüzleştirme)
+function renderStrokeOnCtx(targetCtx, stroke) {
+  const pts = stroke.points;
+  if (!pts || pts.length === 0) return;
+
+  targetCtx.strokeStyle = stroke.color || "#285bc4";
+  targetCtx.fillStyle = stroke.color || "#285bc4";
+  targetCtx.lineWidth = stroke.width || 2.2;
+  targetCtx.lineCap = "round";
+  targetCtx.lineJoin = "round";
+
+  if (pts.length === 1) {
+    targetCtx.beginPath();
+    targetCtx.arc(pts[0].x, pts[0].y, (stroke.width || 2.2) / 1.5, 0, Math.PI * 2);
+    targetCtx.fill();
+    return;
+  }
+
+  targetCtx.beginPath();
+  targetCtx.moveTo(pts[0].x, pts[0].y);
+  for (let i = 1; i < pts.length - 1; i++) {
+    const midX = (pts[i].x + pts[i + 1].x) / 2;
+    const midY = (pts[i].y + pts[i + 1].y) / 2;
+    targetCtx.quadraticCurveTo(pts[i].x, pts[i].y, midX, midY);
+  }
+  targetCtx.lineTo(pts[pts.length - 1].x, pts[pts.length - 1].y);
+  targetCtx.stroke();
+}
+
+function drawStroke(stroke) {
+  renderStrokeOnCtx(ctx, stroke);
+}
+
+// 4. Tuvali Yeniden Çizdirme ve Sayfa Kaydırma (Scroll) Senkronizasyonu
+function redraw() {
+  const scrollX = window.scrollX || window.pageXOffset || 0;
+  const scrollY = window.scrollY || window.pageYOffset || 0;
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  ctx.translate(-scrollX, -scrollY);
+
+  for (let i = 0; i < strokes.length; i++) {
+    drawStroke(strokes[i]);
+  }
+  if (currentStroke && currentStroke.points.length > 0) {
+    drawStroke(currentStroke);
+  }
+}
+window.addEventListener("scroll", redraw, { passive: true });
+
+// 5. Kalem İmleci Hareketi (Mouse & Touch)
+function updatePencilPosition(clientX, clientY) {
+  pencilCursor.style.left = clientX + "px";
+  pencilCursor.style.top = clientY + "px";
+}
+
+window.addEventListener("pointermove", e => {
+  lastPointer.x = e.clientX;
+  lastPointer.y = e.clientY;
+  if (!isAnimatingClick) {
+    updatePencilPosition(e.clientX, e.clientY);
+  }
 });
 
-function draw(){
-  raf=0;ctx.clearRect(0,0,innerWidth,innerHeight);
-  const now=performance.now();
-  trail=trail.filter(p=>now-p.t<1500);
-  for(let i=1;i<trail.length;i++){
-    const a=trail[i-1],b=trail[i];
-    const life=1-(now-b.t)/1500;
-    const wobble=Math.sin(i*.75)*0.9;
-    ctx.beginPath();
-    ctx.moveTo(a.x,a.y);
-    ctx.quadraticCurveTo(
-      (a.x+b.x)/2+wobble,
-      (a.y+b.y)/2-Math.cos(i*.61)*.8,
-      b.x,b.y
-    );
-    ctx.strokeStyle=`rgba(45,89,153,${Math.max(0,life*.64)})`;
-    ctx.lineWidth=.75+life*2.05;
-    ctx.lineCap="round";
-    ctx.stroke();
+document.addEventListener("pointerleave", () => {
+  pencilCursor.style.opacity = "0";
+});
+document.addEventListener("pointerenter", () => {
+  pencilCursor.style.opacity = "1";
+});
+
+// 6. İmlecin Altındaki Tıklanabilir Elemanı Bulma
+function getClickableElement(clientX, clientY) {
+  const elements = document.elementsFromPoint(clientX, clientY);
+  for (const el of elements) {
+    if (el === canvas || el === pencilCursor || el.closest("#pencilCursor")) continue;
+    const clickable = el.closest("a, button, .project, .close, #clearSketch, #exportBtn");
+    if (clickable) return clickable;
   }
-  if(trail.length){
-    const p=trail[trail.length-1];
-    ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,Math.PI*2);
-    ctx.fillStyle="rgba(200,82,82,.9)";ctx.fill();
-    raf=requestAnimationFrame(draw);
+  return null;
+}
+
+// 7. Bir Elemanın Etrafını Doğal Mimar Çizgisiyle Çizme (Parametrik Yol Üretici)
+function generateBoxPoints(rect) {
+  const pad = 6;
+  const x = rect.left + (window.scrollX || window.pageXOffset || 0) - pad;
+  const y = rect.top + (window.scrollY || window.pageYOffset || 0) - pad;
+  const w = rect.width + pad * 2;
+  const h = rect.height + pad * 2;
+
+  const pts = [];
+  const steps = 7;
+  // Sol üst köşeden başla
+  pts.push({ x: x + 6, y: y });
+
+  // Üst kenar (soldan sağa)
+  for (let i = 1; i <= steps; i++) {
+    const t = i / steps;
+    const wobble = Math.sin(t * Math.PI) * 1.5;
+    pts.push({ x: x + 6 + t * (w - 3), y: y - wobble });
+  }
+  // Sağ kenar (yukarıdan aşağıya)
+  for (let i = 1; i <= steps; i++) {
+    const t = i / steps;
+    const wobble = Math.sin(t * Math.PI) * 1.5;
+    pts.push({ x: x + w + 3 + wobble, y: y + t * (h + 3) });
+  }
+  // Alt kenar (sağdan sola)
+  for (let i = 1; i <= steps; i++) {
+    const t = i / steps;
+    const wobble = Math.sin(t * Math.PI) * 1.5;
+    pts.push({ x: x + w + 3 - t * (w + 6), y: y + h + 3 + wobble });
+  }
+  // Sol kenar (aşağıdan yukarıya)
+  for (let i = 1; i <= steps; i++) {
+    const t = i / steps;
+    const wobble = Math.sin(t * Math.PI) * 1.5;
+    pts.push({ x: x - 3 - wobble, y: y + h + 3 - t * (h + 5) });
+  }
+  // Çizgi taşırması (architectural overshoot flourish)
+  const overshootLen = Math.min(w * 0.35, 28);
+  for (let i = 1; i <= 4; i++) {
+    const t = i / 4;
+    pts.push({ x: x - 3 + t * overshootLen, y: y - 2 + t * 1.5 });
+  }
+  return pts;
+}
+
+// 8. Otomatik Kalem Çizim Animasyonu (Linke Tıklanınca Çalışır)
+function animateSketchAround(element, onComplete) {
+  // Proje kartı ise kartın başlığını veya kendisini çevrele
+  const targetToCircle = element.classList.contains("project")
+    ? (element.querySelector("h2") || element)
+    : element;
+
+  const rect = targetToCircle.getBoundingClientRect();
+  const allPts = generateBoxPoints(rect);
+
+  const animStroke = {
+    color: activeColor,
+    width: 2.2,
+    points: []
+  };
+
+  isAnimatingClick = true;
+  pencilCursor.classList.add("drawing");
+
+  const startTime = performance.now();
+  const duration = 210; // 210ms: Hem net izlenir hem de bekleme hissi vermez
+
+  function step(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const targetIdx = Math.floor(progress * (allPts.length - 1));
+
+    animStroke.points = allPts.slice(0, targetIdx + 1);
+
+    if (animStroke.points.length > 0) {
+      const latest = animStroke.points[animStroke.points.length - 1];
+      updatePencilPosition(
+        latest.x - (window.scrollX || window.pageXOffset || 0),
+        latest.y - (window.scrollY || window.pageYOffset || 0)
+      );
+    }
+
+    currentStroke = animStroke;
+    redraw();
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      currentStroke = null;
+      strokes.push(animStroke);
+      saveStrokes();
+      redraw();
+
+      pencilCursor.classList.remove("drawing");
+      isAnimatingClick = false;
+      updatePencilPosition(lastPointer.x, lastPointer.y);
+
+      if (onComplete) onComplete();
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+
+// 9. Tıklama Eylemini Gerçekleştirme
+function executeClick(el) {
+  if (!el) return;
+
+  if (el.id === "clearSketch") {
+    clearStrokes();
+    const orig = el.textContent;
+    el.textContent = "TEMİZLENDİ ⌫";
+    setTimeout(() => { el.textContent = orig; }, 1200);
+    return;
+  }
+
+  if (el.id === "exportBtn") {
+    captureAndDownloadBlueprint();
+    return;
+  }
+
+  const projectCard = el.closest(".project");
+  if (projectCard) {
+    const idx = Number(projectCard.dataset.i);
+    if (!isNaN(idx) && projects[idx]) {
+      openProject(projects[idx]);
+    }
+    return;
+  }
+
+  const closeBtn = el.closest("#close");
+  if (closeBtn) {
+    hideProject();
+    return;
+  }
+
+  const link = el.closest("a");
+  if (link) {
+    const href = link.getAttribute("href") || "";
+    if (href.startsWith("#")) {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (link.target === "_blank") {
+      window.open(link.href, "_blank");
+    } else if (href && !href.startsWith("javascript:")) {
+      window.location.href = link.href;
+    }
+    return;
+  }
+
+  if (el.tagName.toLowerCase() === "button") {
+    el.click();
   }
 }
+
+// 10. Sayfa ve Çizimlerin Tam Görüntüsünü İndirme (PNG Çıktı Alma)
+async function captureAndDownloadBlueprint() {
+  const exportBtn = $("exportBtn");
+  const origText = exportBtn ? exportBtn.textContent : "ÇIKTI AL ⤓";
+  if (exportBtn) exportBtn.textContent = "HAZIRLANIYOR... ⏳";
+
+  const detailsSection = $("exportProjectDetails");
+  if (detailsSection) detailsSection.style.display = "block";
+
+  // Sabit (fixed) tuvali ve kalemi DOM ekran görüntüsünden gizle
+  canvas.style.display = "none";
+  pencilCursor.style.display = "none";
+
+  try {
+    if (!window.html2canvas) {
+      await new Promise((res, rej) => {
+        const s = document.createElement("script");
+        s.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
+        s.onload = res;
+        s.onerror = rej;
+        document.head.appendChild(s);
+      });
+    }
+
+    const prevScrollX = window.scrollX || window.pageXOffset || 0;
+    const prevScrollY = window.scrollY || window.pageYOffset || 0;
+    window.scrollTo(0, 0);
+
+    // DOM'un render olması için kısa bir gecikme
+    await new Promise(r => setTimeout(r, 60));
+
+    const captureScale = 2; // Yüksek çözünürlük 2x
+    const fullCanvas = await window.html2canvas(document.body, {
+      backgroundColor: "#e8eef3",
+      scale: captureScale,
+      useCORS: true,
+      logging: false,
+      scrollX: 0,
+      scrollY: 0,
+      windowWidth: document.documentElement.offsetWidth,
+      windowHeight: document.documentElement.scrollHeight
+    });
+
+    window.scrollTo(prevScrollX, prevScrollY);
+
+    // Kullanıcının yaptığı tüm el çizimlerini oluşturulan resmin üzerine tam koordinatlarıyla işle
+    const exportCtx = fullCanvas.getContext("2d");
+    exportCtx.save();
+    exportCtx.scale(captureScale, captureScale);
+
+    for (const stroke of strokes) {
+      renderStrokeOnCtx(exportCtx, stroke);
+    }
+    exportCtx.restore();
+
+    fullCanvas.toBlob(blob => {
+      if (!blob) throw new Error("Görüntü oluşturulamadı.");
+      const a = document.createElement("a");
+      const dateStr = new Date().toISOString().slice(0, 10);
+      a.download = `turker-kivilcim-blueprint-portfolio-${dateStr}.png`;
+      a.href = URL.createObjectURL(blob);
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+
+      if (exportBtn) {
+        exportBtn.textContent = "İNDİRİLDİ! ✓";
+        setTimeout(() => { exportBtn.textContent = origText; }, 2000);
+      }
+    }, "image/png");
+
+  } catch (err) {
+    console.error("Çıktı alınırken hata:", err);
+    if (exportBtn) {
+      exportBtn.textContent = "HATA OLUŞTU!";
+      setTimeout(() => { exportBtn.textContent = origText; }, 2000);
+    }
+  } finally {
+    if (detailsSection) detailsSection.style.display = "none";
+    canvas.style.display = "block";
+    pencilCursor.style.display = "block";
+    redraw();
+  }
+}
+
+// 11. Tuval Üzerinde Çizim & Tıklama Olayları
+canvas.addEventListener("pointerdown", e => {
+  if (e.button !== 0 || isAnimatingClick) return; // Sadece sol tık
+  e.preventDefault(); // Metin seçimini engeller
+  canvas.setPointerCapture(e.pointerId);
+
+  isDrawing = true;
+  hasDragged = false;
+  pointerDownPos = { x: e.clientX, y: e.clientY };
+  targetClickable = getClickableElement(e.clientX, e.clientY);
+
+  pencilCursor.classList.add("drawing");
+
+  const ptX = Math.round(e.pageX ?? (e.clientX + (window.scrollX || window.pageXOffset || 0)));
+  const ptY = Math.round(e.pageY ?? (e.clientY + (window.scrollY || window.pageYOffset || 0)));
+
+  currentStroke = {
+    color: activeColor,
+    width: activeWidth,
+    points: [{ x: ptX, y: ptY }]
+  };
+  redraw();
+});
+
+canvas.addEventListener("pointermove", e => {
+  if (!isDrawing || !currentStroke || isAnimatingClick) return;
+  e.preventDefault();
+
+  const dist = Math.hypot(e.clientX - pointerDownPos.x, e.clientY - pointerDownPos.y);
+  if (dist > 7) {
+    hasDragged = true;
+    targetClickable = null; // Kullanıcı sürüklüyor; link tıklamasını iptal et, serbest çizime geç!
+  }
+
+  const ptX = Math.round(e.pageX ?? (e.clientX + (window.scrollX || window.pageXOffset || 0)));
+  const ptY = Math.round(e.pageY ?? (e.clientY + (window.scrollY || window.pageYOffset || 0)));
+  const lastPt = currentStroke.points[currentStroke.points.length - 1];
+
+  const dx = ptX - lastPt.x;
+  const dy = ptY - lastPt.y;
+  if (dx * dx + dy * dy >= 4) {
+    currentStroke.points.push({ x: ptX, y: ptY });
+    redraw();
+  }
+});
+
+function finishDrawing(e) {
+  if (!isDrawing) return;
+  isDrawing = false;
+  pencilCursor.classList.remove("drawing");
+
+  // Eğer sürükleme yapılmadıysa ve bir tıklanabilir elemana basıldıysa: OTO-ÇİZİM ANİMASYONU!
+  if (!hasDragged && targetClickable) {
+    const clicked = targetClickable;
+    currentStroke = null;
+    targetClickable = null;
+    redraw();
+
+    animateSketchAround(clicked, () => {
+      executeClick(clicked);
+    });
+    return;
+  }
+
+  // Normal serbest çizim tamamlandı
+  if (currentStroke && currentStroke.points.length > 0) {
+    strokes.push(currentStroke);
+    saveStrokes();
+  }
+  currentStroke = null;
+  redraw();
+}
+
+canvas.addEventListener("pointerup", finishDrawing);
+canvas.addEventListener("pointercancel", finishDrawing);
+
+// 12. Klavye Kısayolları (ESC: Modal Kapat, Ctrl+Z: Geri Al, C: Temizle)
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    if ($("modal").classList.contains("open")) {
+      hideProject();
+      return;
+    }
+  }
+
+  // Ctrl+Z / Cmd+Z: Geri Al
+  if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) {
+    e.preventDefault();
+    undoStroke();
+  }
+
+  // C tuşu: Çizimleri temizle (input içinde değilse)
+  if ((e.key === "c" || e.key === "C") && !e.ctrlKey && !e.metaKey) {
+    const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
+    if (tag !== "input" && tag !== "textarea" && !$("modal").classList.contains("open")) {
+      clearStrokes();
+    }
+  }
+});
+
+resize();
+loadStrokes();
 load().catch(e=>console.error(e));
 </script>
 </body>
