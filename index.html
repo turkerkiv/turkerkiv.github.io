@@ -295,38 +295,10 @@ body *{
   color:#fff !important;
 }
 
-.export-details-section{
-  margin:55px 0 70px;
-  border-top:2px solid var(--ink);
-}
-.export-project-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-  margin-top:12px;
-}
-.export-project-card{
-  border:2px solid var(--ink);
-  background:rgba(244,249,253,.94);
-  padding:20px;
-  position:relative;
-}
-.export-project-card:before,.export-project-card:after{
-  content:"";position:absolute;width:12px;height:12px;
-  border-color:var(--blue);opacity:.65
-}
-.export-project-card:before{top:-2px;left:-2px;border-top:2px solid;border-left:2px solid}
-.export-project-card:after{bottom:-2px;right:-2px;border-bottom:2px solid;border-right:2px solid}
-.export-project-card h3{
-  font:600 26px/.92 Georgia,"Times New Roman",serif;
-  letter-spacing:-.05em;
-  margin:8px 0 10px;
-}
-.export-desc{
-  font-size:12px;
-  color:var(--muted);
-  line-height:1.55;
-  margin:0 0 12px;
+@media print{
+  body{cursor:auto !important;background:#fff}
+  body *{cursor:auto !important}
+  .nav-right,#pencilCursor{display:none !important}
 }
 
 .modal{
@@ -449,14 +421,6 @@ body *{
     <a id="email" href="#"></a>
   </section>
 
-  <section id="exportProjectDetails" class="section export-details-section" style="display:none;">
-    <div class="section-head">
-      <span>PROJECT SPECIFICATIONS & DETAILED BLUEPRINTS</span>
-      <span>03 / APPENDIX</span>
-    </div>
-    <div id="exportProjectList" class="export-project-grid"></div>
-  </section>
-
   <footer>
     <span>© <span id="year"></span> Türker Kıvılcım</span>
     <span id="location"></span>
@@ -541,23 +505,6 @@ function render(){
       <div class="tags">${p.stack.map(x=>`<span>${x}</span>`).join("")}</div>
     </article>
   `).join("");
-
-  const expList = $("exportProjectList");
-  if (expList) {
-    expList.innerHTML = projects.map((p, i) => `
-      <article class="export-project-card">
-        <div class="project-no">PROJECT ${String(i + 1).padStart(2, "0")} · SPECIFICATION</div>
-        <div class="project-category">${p.category}</div>
-        <h3>${p.title}</h3>
-        <p class="export-desc">${p.description || p.short}</p>
-        <div class="tags">${(p.stack || []).map(x => `<span>${x}</span>`).join("")}</div>
-        <div class="modal-links" style="margin-top:14px;">
-          ${p.github ? `<a href="${p.github}" target="_blank" rel="noreferrer">GitHub ↗</a>` : ""}
-          ${p.demo ? `<a href="${p.demo}" target="_blank" rel="noreferrer">Demo ↗</a>` : ""}
-        </div>
-      </article>
-    `).join("");
-  }
 
   document.querySelectorAll(".project").forEach(el=>{
     el.addEventListener("click",()=>openProject(projects[Number(el.dataset.i)]));
@@ -905,10 +852,7 @@ async function captureAndDownloadBlueprint() {
   const origText = exportBtn ? exportBtn.textContent : "ÇIKTI AL ⤓";
   if (exportBtn) exportBtn.textContent = "HAZIRLANIYOR... ⏳";
 
-  const detailsSection = $("exportProjectDetails");
-  if (detailsSection) detailsSection.style.display = "block";
-
-  // Sabit (fixed) tuvali ve kalemi DOM ekran görüntüsünden gizle
+  // Sabit tuvali ve kalemi DOM ekran görüntüsünden gizle
   canvas.style.display = "none";
   pencilCursor.style.display = "none";
 
@@ -927,32 +871,24 @@ async function captureAndDownloadBlueprint() {
     const prevScrollY = window.scrollY || window.pageYOffset || 0;
     window.scrollTo(0, 0);
 
-    // DOM'un render olması için kısa bir gecikme
-    await new Promise(r => setTimeout(r, 60));
+    // Scroll pozisyonunun oturması için kısa bir bekleme
+    await new Promise(r => setTimeout(r, 80));
 
-    const captureScale = 2; // Yüksek çözünürlük 2x
-    const fullCanvas = await window.html2canvas(document.body, {
+    // scale: 1 -> Birebir 1:1 orijinal boyut (büyütme/bozulma yapmaz, sağa kaydırmaz)
+    const fullCanvas = await window.html2canvas(document.documentElement, {
       backgroundColor: "#e8eef3",
-      scale: captureScale,
+      scale: 1,
       useCORS: true,
-      logging: false,
-      scrollX: 0,
-      scrollY: 0,
-      windowWidth: document.documentElement.offsetWidth,
-      windowHeight: document.documentElement.scrollHeight
+      logging: false
     });
 
     window.scrollTo(prevScrollX, prevScrollY);
 
-    // Kullanıcının yaptığı tüm el çizimlerini oluşturulan resmin üzerine tam koordinatlarıyla işle
+    // Çizimleri 1:1 ölçekte tam koordinatlarıyla görselin üzerine ekle
     const exportCtx = fullCanvas.getContext("2d");
-    exportCtx.save();
-    exportCtx.scale(captureScale, captureScale);
-
     for (const stroke of strokes) {
       renderStrokeOnCtx(exportCtx, stroke);
     }
-    exportCtx.restore();
 
     fullCanvas.toBlob(blob => {
       if (!blob) throw new Error("Görüntü oluşturulamadı.");
@@ -978,7 +914,6 @@ async function captureAndDownloadBlueprint() {
       setTimeout(() => { exportBtn.textContent = origText; }, 2000);
     }
   } finally {
-    if (detailsSection) detailsSection.style.display = "none";
     canvas.style.display = "block";
     pencilCursor.style.display = "block";
     redraw();
