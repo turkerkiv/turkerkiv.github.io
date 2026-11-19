@@ -7,8 +7,8 @@
   --bg: #edf3f8;
   --paper: rgba(247, 251, 254, 0.86);
   --paper-solid: #f6fafd;
-  --card-bg: rgba(242, 247, 252, 0.75);
-  --card-hover: rgba(255, 255, 255, 0.95);
+  --card-bg: rgba(242, 247, 252, 0.78);
+  --card-hover: rgba(255, 255, 255, 0.96);
   --ink: #1c2834;
   --body-text: #2c3c4c;
   --muted: #5e7284;
@@ -18,8 +18,8 @@
   --line-light: #c6d5e2;
   --blue: #285bc4;
   --blue2: #4d79c7;
-  --blue-soft: rgba(40, 91, 196, 0.06);
-  --blue-tag: rgba(234, 242, 250, 0.85);
+  --blue-soft: rgba(40, 91, 196, 0.07);
+  --blue-tag: rgba(234, 242, 250, 0.88);
   --red: #c85252;
   --max: 1120px;
 }
@@ -101,6 +101,37 @@ a { color: inherit; }
 .nav-link.active {
   color: var(--blue);
   border-bottom: 1.5px solid var(--blue);
+}
+
+/* Distinct Action Buttons (Like GitHub / Blog) */
+.nav-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font: 700 11px "Courier New", monospace;
+  letter-spacing: .06em;
+  padding: 4px 10px;
+  text-decoration: none;
+  border: 1.5px solid var(--ink);
+  background: rgba(248, 251, 253, 0.95);
+  color: var(--ink);
+  transition: all .16s ease;
+  position: relative;
+}
+.nav-action-btn:hover {
+  background: #fff;
+  border-color: var(--blue);
+  color: var(--blue);
+  transform: translateY(-1px);
+}
+.nav-blog-btn {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: rgba(40, 91, 196, 0.08);
+}
+.nav-blog-btn:hover {
+  background: var(--blue);
+  color: #fff !important;
 }
 
 .nav-controls {
@@ -206,85 +237,263 @@ a { color: inherit; }
 body.modal-open .floating-nav { display: none !important; }
 
 /* ========================================================
-   MINIMAL PAGE HEADERS & SECTIONS
+   HERO SECTION (CLASSIC BLUEPRINT)
    ======================================================== */
-.page-header {
-  padding: 36px 0 22px;
-  border-bottom: 1.5px solid var(--ink);
-  margin-bottom: 30px;
+.hero {
+  position: relative;
+  min-height: calc(100vh - 64px);
+  padding: 65px 0 90px;
+  display: grid;
+  grid-template-columns: 1fr 265px;
+  gap: 45px;
+  align-items: center;
 }
-.page-title {
-  font: 700 clamp(2.2rem, 4.2vw, 3.4rem)/1.1 Georgia, "Times New Roman", serif;
-  letter-spacing: -.05em;
-  margin: 0 0 8px;
+.hero:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  border-top: 1.5px solid var(--blue);
+}
+.hero-copy { position: relative; }
+.stamp {
+  display: inline-block;
+  border: 1.5px solid var(--blue);
+  color: var(--blue);
+  padding: 6px 11px;
+  font: 700 10.5px "Courier New", monospace;
+  letter-spacing: .12em;
+  transform: rotate(-2deg);
+  background: rgba(235, 242, 248, 0.7);
+}
+.hero h1 {
+  font: 700 clamp(4.4rem, 10.5vw, 9.4rem)/.76 Georgia, "Times New Roman", serif;
+  letter-spacing: -.085em;
+  margin: 22px 0 24px;
   color: var(--ink);
 }
-.page-subtitle {
-  font: 500 14px/1.6 "Courier New", monospace;
-  color: var(--muted);
-  max-width: 780px;
+.headline {
+  max-width: 660px;
   margin: 0;
+  font: 500 clamp(1.15rem, 2.1vw, 1.55rem)/1.3 Georgia, "Times New Roman", serif;
+  letter-spacing: -.025em;
+  color: #27394b;
 }
-
-/* MINIMAL BLUEPRINT SECTION CARDS */
-.card-section {
-  border: 1px solid var(--line);
-  background: var(--paper);
-  margin-bottom: 22px;
-  padding: 24px 28px;
+.hero-intro {
+  max-width: 650px;
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.hero-side {
+  border-left: 1px solid var(--line);
+  padding-left: 24px;
+  font-size: 12px;
+}
+.side-item {
+  padding: 0 0 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed var(--line-light);
+}
+.side-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.side-label {
+  color: var(--blue);
+  font: 700 10px "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.side-value {
+  margin-top: 7px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.side-value a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--ink);
+}
+.side-value a:hover { color: var(--blue); }
+.focus-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+.focus-list span {
+  background: var(--blue-tag);
+  border: 1px solid #b0c4d8;
+  color: #28548c;
+  padding: 3px 7px;
+  font: 700 10px "Courier New", monospace;
+}
+.hand-note {
+  display: inline-block;
+  margin-top: 24px;
+  color: #285bc4;
+  font: italic 22px "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+  transform: rotate(-3deg);
   position: relative;
-  transition: background .16s ease;
+}
+.hand-note:before {
+  content: "";
+  position: absolute;
+  left: -11px;
+  right: -11px;
+  top: -7px;
+  height: 21px;
+  border-top: 1px solid rgba(40, 91, 196, 0.45);
+  border-radius: 55%;
+  transform: rotate(-2deg);
+}
+.hand-note:after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  right: -13px;
+  bottom: -8px;
+  height: 9px;
+  border-bottom: 2px solid rgba(40, 91, 196, 0.65);
+  border-radius: 50%;
+  transform: rotate(-2deg);
 }
 
-.card-section-head {
+/* ========================================================
+   SECTION CHROME
+   ======================================================== */
+.section {
+  margin: 65px 0 75px;
+  border-top: 1.5px solid var(--ink);
+  scroll-margin-top: 75px;
+}
+.section-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--line-light);
-  padding-bottom: 10px;
-  margin-bottom: 18px;
+  padding: 12px 0 16px;
+  font: 700 11px "Courier New", monospace;
+  color: var(--ink);
+  letter-spacing: .06em;
+}
+.section-head span:last-child {
+  color: var(--muted);
+  font-weight: 400;
+}
+.section-lead {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 20px;
+  font-family: "Courier New", monospace;
 }
 
-.card-section-title {
-  font: 700 12px "Courier New", monospace;
-  letter-spacing: .08em;
+/* ========================================================
+   ABOUT & SKILLS SECTION
+   ======================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 20px;
+}
+.about-card {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 24px;
+  position: relative;
+}
+.about-card h3 {
+  margin: 0 0 12px;
   color: var(--blue);
+  font: 700 11px "Courier New", monospace;
   text-transform: uppercase;
-  margin: 0;
+  letter-spacing: .1em;
+}
+.about-card p {
+  color: var(--body-text);
+  font-size: 13.5px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+.philosophy-quote {
+  border-left: 2.5px solid var(--blue);
+  background: var(--blue-soft);
+  padding: 10px 14px;
+  margin: 16px 0;
+  font: italic 13px/1.6 Georgia, serif;
+  color: #1e3852;
+}
+.edu-box {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line-light);
+}
+.edu-title {
+  font: 600 15px Georgia, serif;
+  color: var(--ink);
+  margin: 0 0 3px;
+}
+.edu-meta {
+  font: 11px "Courier New", monospace;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.skills-group {
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--line-light);
+}
+.skills-group:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.skills-group-title {
+  font: 700 10.5px "Courier New", monospace;
+  color: #24415f;
+  margin-bottom: 7px;
+  letter-spacing: .04em;
+}
+
+/* ========================================================
+   EXPERIENCE SECTION (LINKEDIN STYLE / BLUEPRINT FLAVOR)
+   ======================================================== */
+.exp-category-title {
+  font: 700 12px "Courier New", monospace;
+  color: var(--blue);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin: 26px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line-light);
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
-.card-section-action {
-  font: 700 10.5px "Courier New", monospace;
-  color: var(--ink);
-  text-decoration: none;
-  letter-spacing: .05em;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+.exp-category-title:first-child {
+  margin-top: 0;
 }
-.card-section-action:hover { color: var(--blue); }
 
-/* ENTRY LISTS */
-.entry-list {
+.exp-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
-.entry-item {
-  padding-bottom: 16px;
-  border-bottom: 1px dashed var(--line-light);
+.exp-card {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 22px;
   position: relative;
+  transition: transform .16s ease, background .16s ease;
 }
-.entry-item:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
+.exp-card:hover {
+  background: var(--card-hover);
+  transform: translateY(-1.5px);
 }
-
-.entry-header {
+.exp-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -292,64 +501,361 @@ body.modal-open .floating-nav { display: none !important; }
   gap: 8px;
   margin-bottom: 4px;
 }
-
-.entry-title {
-  font: 600 18px/1.25 Georgia, "Times New Roman", serif;
+.exp-role {
+  font: 600 19px/1.25 Georgia, "Times New Roman", serif;
   color: var(--ink);
-  letter-spacing: -.02em;
   margin: 0;
 }
-
-.entry-subtitle {
-  font: 700 11px "Courier New", monospace;
+.exp-company {
+  font: 700 11.5px "Courier New", monospace;
   color: var(--blue);
   letter-spacing: .04em;
-  margin-top: 2px;
+  margin-top: 3px;
+}
+.exp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font: 10.5px "Courier New", monospace;
+  color: var(--muted);
+  margin: 6px 0 12px;
+}
+.exp-desc {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--body-text);
+  margin: 0 0 14px;
 }
 
-.entry-badge {
+/* ========================================================
+   PROJECTS SECTION (STAGGERED BLUEPRINT GRID)
+   ======================================================== */
+.projects-staggered {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 16px;
+}
+.project {
+  min-height: 295px;
+  border: 1.5px solid var(--ink);
+  background: var(--card-bg);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+  transition: transform .16s ease, background .16s ease;
+  outline: none;
+  text-decoration: none;
+}
+.project:nth-child(2n) {
+  transform: translateY(24px);
+}
+.project:hover, .project:focus-visible {
+  background: var(--card-hover);
+  transform: translateY(-2px);
+}
+.project:nth-child(2n):hover, .project:nth-child(2n):focus-visible {
+  transform: translateY(22px);
+}
+.project:before, .project:after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--blue);
+  opacity: .7;
+}
+.project:before { top: -2px; left: -2px; border-top: 2px solid; border-left: 2px solid; }
+.project:after { bottom: -2px; right: -2px; border-bottom: 2px solid; border-right: 2px solid; }
+
+.project-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.project-no {
+  color: var(--blue);
+  font: 700 10.5px "Courier New", monospace;
+  letter-spacing: .06em;
+}
+.project-badge {
   border: 1px solid var(--blue2);
   background: var(--blue-tag);
   color: var(--blue);
   padding: 2px 7px;
   font: 700 9px "Courier New", monospace;
-  letter-spacing: .05em;
+  letter-spacing: .04em;
   text-transform: uppercase;
-  white-space: nowrap;
+}
+.project-category {
+  color: var(--muted);
+  font: 10px "Courier New", monospace;
+  margin-bottom: 10px;
+}
+.project h2 {
+  font: 600 29px/.95 Georgia, "Times New Roman", serif;
+  letter-spacing: -.05em;
+  margin: 4px 0 12px;
+  color: var(--ink);
+}
+.project p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+.project-arrow {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  color: var(--blue);
+  font: 700 16px "Courier New", monospace;
 }
 
-.entry-meta {
+/* ========================================================
+   MODAL POP-UP (DEEP CASE STUDY)
+   ======================================================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(22, 34, 48, 0.45);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.modal.open {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+  opacity: 1;
+}
+.modal-box {
+  width: min(840px, 100%);
+  max-height: 88vh;
+  overflow-y: auto;
+  background: #f7fafd;
+  border: 1.5px solid var(--ink);
+  box-shadow: 0 10px 30px rgba(24, 36, 48, 0.16);
+  padding: 32px;
+  position: relative;
+  scrollbar-width: thin;
+}
+.modal-close-btn {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  background: rgba(244, 248, 252, 0.95);
+  color: var(--ink);
+  cursor: pointer;
+  font: 700 20px/1 "Courier New", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .15s ease;
+}
+.modal-close-btn:hover {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+.modal-header {
+  border-bottom: 1.5px solid var(--line-light);
+  padding-bottom: 16px;
+  margin-bottom: 22px;
+}
+.modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.modal-cat {
+  color: var(--blue);
+  font: 700 10.5px "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.modal-title {
+  font: 600 clamp(24px, 3.8vw, 36px)/1.08 Georgia, serif;
+  letter-spacing: -.04em;
+  margin: 0;
+  color: var(--ink);
+}
+.modal-section {
+  margin-bottom: 22px;
+}
+.modal-section-title {
+  font: 700 11.5px "Courier New", monospace;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.modal-p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--body-text);
+  margin: 0;
+}
+.modal-bullets {
+  padding-left: 20px;
+  margin: 6px 0 0;
+}
+.modal-bullets li {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--body-text);
+  margin-bottom: 6px;
+}
+.modal-links {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line-light);
+  display: flex;
+  gap: 16px;
+}
+
+/* ========================================================
+   HONORS, CERTIFICATES & SCORES SECTION
+   ======================================================== */
+.honors-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.honor-card {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 20px;
+  margin-bottom: 14px;
+  position: relative;
+  transition: transform .16s ease, background .16s ease;
+}
+.honor-card:hover {
+  background: var(--card-hover);
+  transform: translateY(-1.5px);
+}
+.honor-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.honor-title {
+  font: 600 17px/1.25 Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  margin: 0;
+}
+.honor-org {
+  font: 700 11px "Courier New", monospace;
+  color: var(--blue);
+  margin: 2px 0 6px;
+}
+.honor-meta {
   font: 10px "Courier New", monospace;
   color: var(--muted);
   margin-bottom: 8px;
 }
-
-.entry-desc {
-  font-size: 13px;
+.honor-desc {
+  font-size: 12.5px;
   line-height: 1.6;
   color: var(--body-text);
-  margin: 0 0 10px;
+  margin: 0;
+}
+.verify-block {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--blue-tag);
+  border-left: 2.5px solid var(--blue);
+  font: 11px "Courier New", monospace;
+  color: #24415f;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.verify-block a {
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+.verify-block a:hover { text-decoration: underline; }
+
+/* ========================================================
+   CONTACT & FOOTER
+   ======================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+.contact-card {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 20px;
+}
+.contact-card-label {
+  font: 700 10px "Courier New", monospace;
+  color: var(--blue);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.contact-card-val {
+  font: 600 16px Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+}
+.contact-card-val:hover { color: var(--blue); }
+.contact-card-desc {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 6px 0 0;
 }
 
-/* MINIMAL TAGS CHIPS */
+footer {
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0 10px;
+  color: #6a7c8e;
+  font: 10.5px "Courier New", monospace;
+  margin-top: 40px;
+}
+
+/* ========================================================
+   TAGS & BUTTONS
+   ======================================================== */
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
+  margin-top: auto;
 }
 .tags span {
   display: inline-block;
   padding: 3px 7px;
   border: 1px solid #b2c5d6;
-  background: rgba(244, 248, 252, 0.75);
+  background: rgba(244, 248, 252, 0.8);
   color: #3b5268;
   font: 10px "Courier New", monospace;
 }
 
-/* BUTTONS */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -381,78 +887,34 @@ body.modal-open .floating-nav { display: none !important; }
   border-color: var(--blue);
 }
 
-/* PROJECTS GRID */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 16px;
+/* ========================================================
+   BLOG PAGE ELEMENTS
+   ======================================================== */
+.page-header {
+  padding: 36px 0 22px;
+  border-bottom: 1.5px solid var(--ink);
+  margin-bottom: 30px;
 }
-
-.project-card {
-  border: 1.5px solid var(--ink);
-  background: var(--card-bg);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  cursor: pointer;
-  transition: transform .16s ease, background .16s ease;
-  text-decoration: none;
-  color: inherit;
-}
-.project-card:hover {
-  background: var(--card-hover);
-  transform: translateY(-2px);
-}
-.project-card:before, .project-card:after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-color: var(--blue);
-  opacity: .7;
-}
-.project-card:before { top: -2px; left: -2px; border-top: 2px solid; border-left: 2px solid; }
-.project-card:after { bottom: -2px; right: -2px; border-bottom: 2px solid; border-right: 2px solid; }
-
-.project-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-.project-card-no {
-  font: 700 10px "Courier New", monospace;
-  color: var(--blue);
-  letter-spacing: .06em;
-}
-.project-card-cat {
-  font: 10px "Courier New", monospace;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-.project-card h3 {
-  font: 600 23px/1.1 Georgia, "Times New Roman", serif;
-  letter-spacing: -.04em;
-  margin: 0 0 10px;
+.page-title {
+  font: 700 clamp(2.2rem, 4.2vw, 3.4rem)/1.1 Georgia, "Times New Roman", serif;
+  letter-spacing: -.05em;
+  margin: 0 0 8px;
   color: var(--ink);
 }
-.project-card p {
-  font-size: 12.5px;
-  line-height: 1.55;
+.page-subtitle {
+  font: 500 14px/1.6 "Courier New", monospace;
   color: var(--muted);
-  margin: 0 0 14px;
+  max-width: 780px;
+  margin: 0;
 }
-.project-card-arrow {
-  position: absolute;
-  right: 18px;
-  top: 18px;
-  font: 700 15px "Courier New", monospace;
-  color: var(--blue);
+.card-section {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  margin-bottom: 22px;
+  padding: 24px 28px;
+  position: relative;
+  transition: background .16s ease;
 }
-
-/* CASE STUDY PAGE LAYOUT */
 .case-study-back {
   display: inline-flex;
   align-items: center;
@@ -464,68 +926,6 @@ body.modal-open .floating-nav { display: none !important; }
   margin-bottom: 16px;
 }
 .case-study-back:hover { text-decoration: underline; }
-
-.case-section {
-  margin-bottom: 24px;
-}
-.case-section-title {
-  font: 700 11.5px "Courier New", monospace;
-  letter-spacing: .08em;
-  color: var(--blue);
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--line-light);
-  padding-bottom: 6px;
-  margin: 0 0 12px;
-}
-.case-p {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #243545;
-  margin: 0 0 14px;
-}
-.case-bullets {
-  padding-left: 20px;
-  margin: 0 0 16px;
-}
-.case-bullets li {
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: #243545;
-  margin-bottom: 8px;
-}
-
-/* CERTIFICATE CARDS */
-.cert-card {
-  border: 1px solid var(--line);
-  background: var(--paper);
-  padding: 20px;
-  margin-bottom: 14px;
-  transition: transform .16s ease, background .16s ease;
-}
-.cert-card:hover {
-  background: var(--card-hover);
-  transform: translateY(-1px);
-}
-.cert-verify-box {
-  margin-top: 10px;
-  padding: 8px 12px;
-  background: var(--blue-tag);
-  border-left: 2.5px solid var(--blue);
-  font: 11px "Courier New", monospace;
-  color: #24415f;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-.cert-verify-box a {
-  color: var(--blue);
-  font-weight: 700;
-  text-decoration: none;
-}
-.cert-verify-box a:hover { text-decoration: underline; }
-
-/* EMPTY STATE */
 .empty-state {
   border: 1.5px dashed var(--line);
   padding: 48px 24px;
@@ -546,19 +946,9 @@ body.modal-open .floating-nav { display: none !important; }
   margin: auto;
 }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 0 10px;
-  color: #6a7c8e;
-  font: 10.5px "Courier New", monospace;
-  margin-top: 40px;
-}
-
-/* CANVAS & PENCIL OVERLAY */
+/* ========================================================
+   CANVAS & PENCIL OVERLAY
+   ======================================================== */
 #inkCanvas {
   position: fixed;
   inset: 0;
@@ -596,7 +986,9 @@ body.drawing-disabled {
 body.drawing-disabled * { cursor: auto !important; }
 body.drawing-disabled a,
 body.drawing-disabled button,
-body.drawing-disabled .project-card {
+body.drawing-disabled .project,
+body.drawing-disabled .exp-card,
+body.drawing-disabled .honor-card {
   cursor: pointer !important;
 }
 body.drawing-disabled #inkCanvas {
@@ -633,7 +1025,13 @@ body.drawing-disabled #pencilCursor {
   .nav-draw-toggle { display: inline-flex; }
   .floating-nav { display: flex; }
   .pencil-cursor { display: none !important; }
-  .projects-grid { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; padding-top: 45px; min-height: auto; }
+  .hero-side { border-left: 0; border-top: 1px solid var(--line); padding: 20px 0 0; }
+  .about-grid { grid-template-columns: 1fr; }
+  .projects-staggered { grid-template-columns: 1fr; }
+  .project:nth-child(2n) { transform: none; }
+  .project:nth-child(2n):hover { transform: translateY(-2px); }
+  .honors-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -641,14 +1039,17 @@ body.drawing-disabled #pencilCursor {
   .top {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
   }
   .nav-links { gap: 10px; font-size: 10px; }
   .nav-controls {
     margin-left: 0;
     width: 100%;
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
-  .card-section { padding: 18px; }
+  .hero h1 { font-size: 4.6rem; }
+  .project h2 { font-size: 25px; }
   footer { flex-direction: column; gap: 8px; text-align: center; }
+  .modal-box { padding: 22px 18px; }
 }

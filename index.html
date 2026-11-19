@@ -3,1286 +3,1009 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Türker Kıvılcım — Software Developer & Full-Stack AI Engineer">
-<title>Türker Kıvılcım / Blueprint</title>
+<title>Türker Kıvılcım — Full-Stack Developer & AI Engineer / Blueprint Portfolio</title>
+<meta name="description" content="Türker Kıvılcım — Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisi, Full-stack AI Engineer. Dağıtık backend sistemleri, bilgisayarlı görü ve akustik modelleme Ar-Ge portfolyosu.">
+<link rel="stylesheet" href="css/blueprint.css">
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<style>
-:root{
-  --bg:#edf3f8;
-  --paper:rgba(247,251,254,.86);
-  --ink:#1c2834;
-  --muted:#5c7082;
-  --grid:#c9d7e4;
-  --line:#a4b7c8;
-  --blue:#285bc4;
-  --blue2:#4d79c7;
-  --red:#c85252;
-  --max:1120px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  color:var(--ink);
-  font-family:Arial,Helvetica,sans-serif;
-  line-height:1.55;
-  background-color:var(--bg);
-  background-image:
-    radial-gradient(circle at 1.1px 1.1px,rgba(110,135,160,.22) 1.1px,transparent 1.25px);
-  background-size:20px 20px;
-}
-body.modal-open{overflow:hidden}
-a{color:inherit}
-.site{width:min(var(--max),calc(100% - 36px));margin:auto;position:relative;z-index:2}
-
-/* blueprint page chrome */
-.top{
-  height:68px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1.5px solid var(--ink);
-  font:700 11px "Courier New",monospace;
-  letter-spacing:.06em;
-}
-.top a{text-decoration:none;margin-left:18px}
-.top a:hover{color:var(--blue)}
-.coord{color:var(--muted);font-weight:400}
-.nav-right{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.hero{
-  position:relative;
-  min-height:calc(100vh - 68px);
-  padding:70px 0 100px;
-  display:grid;
-  grid-template-columns:1fr 245px;
-  gap:45px;
-  align-items:center;
-}
-.hero:before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:150px;
-  border-top:1.5px solid var(--blue);
-}
-.hero-copy{position:relative}
-.stamp{
-  display:inline-block;
-  border:1.5px solid var(--blue);
-  color:var(--blue);
-  padding:6px 10px;
-  font:700 10px "Courier New",monospace;
-  letter-spacing:.12em;
-  transform:rotate(-2deg);
-  background:rgba(235,242,248,.65);
-}
-.hero h1{
-  font:700 clamp(4.6rem,11.5vw,9.8rem)/.75 Georgia,"Times New Roman",serif;
-  letter-spacing:-.09em;
-  margin:24px 0 26px;
-  color:var(--ink);
-}
-.headline{
-  max-width:660px;
-  margin:0;
-  font:500 clamp(1.2rem,2.2vw,1.6rem)/1.25 Georgia,"Times New Roman",serif;
-  letter-spacing:-.025em;
-  color:#27394b;
-}
-.hero-side{
-  border-left:1px solid var(--line);
-  padding-left:24px;
-  font-size:12px;
-}
-.side-item{padding:0 0 22px;margin-bottom:22px;border-bottom:1px dashed #b0c2d3}
-.side-item:last-child{border-bottom:0;padding-bottom:0;margin-bottom:0}
-.side-label{
-  color:var(--blue);font:700 10px "Courier New",monospace;
-  text-transform:uppercase;letter-spacing:.08em
-}
-.side-value{margin-top:7px;color:var(--muted);line-height:1.55}
-.side-value a{text-decoration:none;font-weight:600}
-.side-value a:hover{color:var(--blue)}
-.focus-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
-.focus-list span{
-  background:rgba(234,242,250,.85);
-  border:1px solid #b0c4d8;
-  color:#2b548b;
-  padding:4px 7px;
-  font:700 10px "Courier New",monospace;
-}
-.hand-note{
-  display:inline-block;
-  margin-top:24px;
-  color:#285bc4;
-  font:italic 22px "Segoe Print","Bradley Hand","Comic Sans MS",cursive;
-  transform:rotate(-3deg);
-  position:relative;
-}
-.hand-note:before{
-  content:"";
-  position:absolute;
-  left:-11px;right:-11px;top:-7px;height:21px;
-  border-top:1px solid rgba(40,91,196,.45);
-  border-radius:55%;
-  transform:rotate(-2deg)
-}
-.hand-note:after{
-  content:"";
-  position:absolute;
-  left:9px;right:-13px;bottom:-8px;height:9px;
-  border-bottom:2px solid rgba(40,91,196,.65);
-  border-radius:50%;
-  transform:rotate(-2deg)
-}
-
-.section{
-  margin:55px 0 75px;
-  border-top:1.5px solid var(--ink);
-}
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  padding:12px 0;
-  font:700 11px "Courier New",monospace;
-  color:var(--ink);
-  letter-spacing:.06em;
-}
-.section-head span:last-child{color:var(--muted);font-weight:400}
-
-.projects{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:14px;
-}
-.project{
-  min-height:310px;
-  border:1.5px solid var(--ink);
-  background:rgba(240,246,251,.75);
-  padding:18px;
-  display:flex;
-  flex-direction:column;
-  cursor:pointer;
-  position:relative;
-  transition:transform .16s ease,background .16s ease;
-}
-.project:nth-child(2n){transform:translateY(28px)}
-.project:hover{background:rgba(255,255,255,.95);transform:translateY(-2px)}
-.project:nth-child(2n):hover{transform:translateY(26px)}
-.project:before,.project:after{
-  content:"";position:absolute;width:12px;height:12px;
-  border-color:var(--blue);opacity:.7
-}
-.project:before{top:-2px;left:-2px;border-top:2px solid;border-left:2px solid}
-.project:after{bottom:-2px;right:-2px;border-bottom:2px solid;border-right:2px solid}
-.project-no{color:var(--blue);font:700 10px "Courier New",monospace}
-.project-category{color:var(--muted);font:10px "Courier New",monospace;margin-top:3px}
-.project h2{
-  font:600 32px/.9 Georgia,"Times New Roman",serif;
-  letter-spacing:-.05em;
-  margin:14px 0 10px;
-  max-width:530px;
-  color:var(--ink);
-}
-.project p{color:var(--muted);font-size:12.5px;line-height:1.55;max-width:540px;margin:0 0 12px}
-.tags{margin-top:auto}
-.tags span{
-  display:inline-block;
-  margin:3px 3px 0 0;
-  padding:3px 7px;
-  border:1px solid #a8bdcf;
-  background:rgba(248,251,253,.7);
-  color:#42586e;
-  font:10px "Courier New",monospace;
-}
-.project-arrow{position:absolute;right:16px;top:15px;color:var(--blue);font:700 17px "Courier New",monospace}
-
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-.note{
-  border:1px solid var(--line);
-  background:rgba(246,250,253,.75);
-  padding:22px;
-  min-height:205px;
-}
-.note h3{
-  margin:0 0 10px;color:var(--blue);
-  font:700 10px "Courier New",monospace;text-transform:uppercase;
-  letter-spacing:.1em
-}
-.note p{color:#304355;font-size:13px;line-height:1.6;margin:0 0 10px}
-.stack{margin-top:12px}
-.stack span{
-  display:inline-block;border:1px solid #b0c2d3;
-  padding:4px 7px;margin:3px 3px 0 0;
-  color:#42586e;background:rgba(240,246,251,.7);
-  font:10px "Courier New",monospace;
-}
-.contact{
-  margin:65px 0 0;
-  border-top:1.5px solid var(--ink);
-  padding:20px 0 55px;
-}
-.contact .label{font:700 10px "Courier New",monospace;color:var(--blue);letter-spacing:.08em;text-transform:uppercase}
-.contact a{
-  display:inline-block;margin-top:8px;color:var(--ink);
-  font:600 16px Georgia,serif;text-decoration:none
-}
-.contact a:hover{color:var(--blue)}
-footer{
-  border-top:1px solid var(--line);
-  display:flex;justify-content:space-between;
-  padding:22px 0 35px;
-  color:#68798a;font:10px "Courier New",monospace
-}
-
-#inkCanvas{
-  position:fixed;inset:0;width:100%;height:100%;
-  pointer-events:auto;z-index:25;
-  touch-action:none;
-}
-
-body.drawing-enabled{
-  user-select:none;
-  -webkit-user-select:none;
-}
-body.drawing-enabled *{
-  user-select:none;
-  -webkit-user-select:none;
-}
-@media (hover: hover) and (pointer: fine){
-  body.drawing-enabled,
-  body.drawing-enabled *{
-    cursor:none !important;
-  }
-}
-body.drawing-enabled #inkCanvas{
-  pointer-events:auto;
-  touch-action:none;
-}
-
-body.drawing-disabled{
-  user-select:auto;
-  -webkit-user-select:auto;
-  cursor:auto !important;
-}
-body.drawing-disabled *{
-  cursor:auto !important;
-}
-body.drawing-disabled a,
-body.drawing-disabled button,
-body.drawing-disabled .project{
-  cursor:pointer !important;
-}
-body.drawing-disabled #inkCanvas{
-  pointer-events:none;
-  touch-action:auto;
-}
-body.drawing-disabled #pencilCursor{
-  display:none !important;
-}
-
-/* Custom Animated Drafting Pencil */
-.pencil-cursor{
-  position:fixed;
-  top:-100px;left:-100px;
-  width:32px;height:32px;
-  pointer-events:none;
-  z-index:100;
-  display:block;
-  transform-origin:2px 30px;
-  transform:translate(-2px,-30px) rotate(0deg);
-  transition:transform .08s ease-out,opacity .15s ease;
-  will-change:transform,left,top;
-}
-.pencil-cursor.drawing{
-  transform:translate(-2px,-30px) rotate(-16deg) scale(.92);
-}
-
-/* Nav Draw Toggle Button (Mobile) */
-.nav-draw-toggle{
-  display:none;
-  align-items:center;
-  gap:4px;
-  color:var(--ink) !important;
-  border:1px solid var(--ink);
-  padding:3px 8px;
-  font-size:10px;
-  letter-spacing:.06em;
-  transition:all .15s ease;
-  text-decoration:none;
-  background:rgba(248,251,253,.9);
-  cursor:pointer;
-}
-.nav-draw-toggle.active{
-  background:var(--blue);
-  color:#fff !important;
-  border-color:var(--blue);
-}
-
-/* Nav Clear Button */
-.nav-clear-btn{
-  color:var(--red) !important;
-  border:1px dashed rgba(200,82,82,.6);
-  padding:3px 8px;
-  font-size:10px;
-  letter-spacing:.06em;
-  transition:all .15s ease;
-  text-decoration:none;
-}
-.nav-clear-btn:hover{
-  background:rgba(200,82,82,.12);
-  border-color:var(--red);
-}
-.nav-export-btn{
-  color:var(--blue) !important;
-  border:1px solid var(--blue);
-  padding:3px 8px;
-  font-size:10px;
-  letter-spacing:.06em;
-  transition:all .15s ease;
-  text-decoration:none;
-  background:rgba(40,91,196,.06);
-}
-.nav-export-btn:hover{
-  background:var(--blue);
-  color:#fff !important;
-}
-
-/* Floating Mobile Drawing & Quick Navbar */
-.floating-nav{
-  display:none;
-  position:fixed;
-  top:12px;
-  left:50%;
-  transform:translate(-50%, -80px);
-  z-index:28;
-  background:rgba(244,249,253,.95);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  border:1.5px solid var(--ink);
-  box-shadow:0 4px 14px rgba(40,91,196,.12);
-  padding:4px 8px;
-  align-items:center;
-  gap:8px;
-  opacity:0;
-  pointer-events:none;
-  transition:transform .28s cubic-bezier(.16,1,.3,1), opacity .22s ease;
-  will-change:transform, opacity;
-}
-.floating-nav.visible{
-  transform:translate(-50%, 0);
-  opacity:1;
-  pointer-events:auto;
-}
-.floating-nav-logo{
-  font:700 10px "Courier New",monospace;
-  color:var(--ink);
-  text-decoration:none;
-  letter-spacing:.08em;
-  padding:2px 6px;
-  border-right:1px solid var(--line);
-  display:inline-flex;
-  align-items:center;
-  cursor:pointer;
-}
-.floating-nav-logo:hover{color:var(--blue)}
-.floating-nav-actions{
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-.floating-nav .nav-draw-toggle,
-.floating-nav .nav-clear-btn{
-  display:inline-flex;
-  font-size:10px;
-  padding:3px 8px;
-}
-body.modal-open .floating-nav{display:none !important}
-
-@media print{
-  body{cursor:auto !important;background:#fff}
-  body *{cursor:auto !important}
-  .nav-right,#pencilCursor,.floating-nav{display:none !important}
-}
-
-.modal{
-  position:fixed;inset:0;z-index:30;
-  background:rgba(30,45,60,.3);
-  display:none;align-items:center;justify-content:center;padding:18px
-}
-.modal.open{display:flex}
-.modal-box{
-  width:min(720px,100%);
-  max-height:88vh;overflow:auto;
-  background:#f6f9fc;
-  border:1.5px solid var(--ink);
-  box-shadow:6px 8px 0 rgba(40,91,196,.12);
-  padding:28px;
-  position:relative
-}
-.close{
-  position:absolute;right:12px;top:12px;
-  width:32px;height:32px;border:1px solid #8fa4b8;
-  background:#edf4f9;color:#536679;cursor:pointer;
-  font-size:18px;font-weight:700;
-}
-.modal-cat{color:var(--blue);font:700 10px "Courier New",monospace;text-transform:uppercase}
-.modal-box h2{
-  font:600 38px/.9 Georgia,"Times New Roman",serif;
-  letter-spacing:-.05em;
-  max-width:620px;
-  margin:12px 45px 15px 0;
-  color:var(--ink);
-}
-.modal-box p{font-size:13.5px;line-height:1.65;color:#2c3b4a;max-width:650px}
-.modal-links{margin-top:22px;font:700 11px "Courier New",monospace}
-.modal-links a{color:var(--blue);text-decoration:none;margin-right:18px}
-.modal-links a:hover{text-decoration:underline}
-
-@media(max-width:780px), (hover:none) and (pointer:coarse){
-  .coord{display:none}
-  .nav-draw-toggle{display:inline-flex}
-  .floating-nav{display:flex}
-  .pencil-cursor{display:none !important}
-  .hero{grid-template-columns:1fr;padding-top:55px;min-height:auto}
-  .hero-side{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}
-  .projects{grid-template-columns:1fr}
-  .project:nth-child(2n){transform:none}
-  .project:nth-child(2n):hover{transform:translateY(-2px)}
-  .about-grid{grid-template-columns:1fr}
-}
-@media(max-width:640px){
-  .site{width:min(100% - 24px,var(--max))}
-  .top{
-    height:auto;
-    padding:12px 0;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .nav-right{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:6px;
-  }
-  .nav-right a{
-    margin-left:0;
-    font-size:10px;
-  }
-  .hero h1{font-size:5.2rem}
-  .project h2{font-size:28px}
-  footer{flex-direction:column;gap:7px}
-}
-</style>
 </head>
-<body>
+<body class="drawing-enabled">
+
 <canvas id="inkCanvas"></canvas>
 
+<!-- Floating Mobile Quick Menu -->
 <nav id="floatingNav" class="floating-nav" aria-label="Mobil Hızlı Menü">
   <a id="floatNavLogo" href="javascript:void(0)" class="floating-nav-logo" title="Sayfa Başına Dön">TK-2026</a>
   <div class="floating-nav-actions">
-    <a id="floatDrawToggle" class="nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
-    <a id="floatClearSketch" class="nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
+    <a href="#about" class="floating-nav-link">HAKKINDA</a>
+    <a href="#experience" class="floating-nav-link">DENEYİM</a>
+    <a href="#projects" class="floating-nav-link">PROJELER</a>
+    <a href="#honors" class="floating-nav-link">BAŞARILAR</a>
+    <a id="floatDrawToggle" class="nav-btn nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
+    <a id="floatClearSketch" class="nav-btn nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
   </div>
 </nav>
 
 <div class="site">
-  <div class="top">
-    <div>
-      <a href="index.html" style="margin-left:0;text-decoration:none;font-weight:700;">TK-2026 / SOFTWARE</a>
-      <span class="coord" style="margin-left:14px;">39°00'N · 35°00'E</span>
+  <!-- Top Navigation Bar -->
+  <header class="top">
+    <div class="brand-block">
+      <a href="index.html" class="brand-link">TK-2026 / SOFTWARE</a>
+      <span class="coord">39°00'N · 35°00'E</span>
     </div>
-    <div class="nav-right">
-      <a href="#projects" data-label="projects">PROJELER</a>
-      <a href="about.html">HAKKIMDA</a>
-      <a href="projects.html">TÜM PROJELER</a>
-      <a href="certificates.html">SERTİFİKALAR</a>
-      <a href="blogs.html">BLOG</a>
-      <a id="mobileDrawToggle" class="nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
-      <a id="clearSketch" class="nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
-      <a id="exportBtn" class="nav-export-btn" href="javascript:void(0)" title="Sayfa ve Çizimlerin Görüntüsünü İndir">ÇIKTI AL ⤓</a>
-      <a id="github" href="#" target="_blank" rel="noreferrer">GITHUB ↗</a>
+    <nav class="nav-links" aria-label="Ana Gezinti">
+      <a href="#about" class="nav-link">HAKKINDA</a>
+      <a href="#experience" class="nav-link">DENEYİM</a>
+      <a href="#projects" class="nav-link">PROJELER</a>
+      <a href="#honors" class="nav-link">BAŞARILAR & BELGELER</a>
+      <a href="#contact" class="nav-link">İLETİŞİM</a>
+      <a href="blogs.html" class="nav-action-btn nav-blog-btn" title="Blog ve Teknik Notlar Sayfası">BLOG ↗</a>
+      <a href="https://github.com/turkerkiv" target="_blank" rel="noreferrer" class="nav-action-btn" title="GitHub Profilini Aç">GITHUB ↗</a>
+    </nav>
+    <div class="nav-controls">
+      <a id="mobileDrawToggle" class="nav-btn nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
+      <a id="clearSketch" class="nav-btn nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
+      <a id="exportBtn" class="nav-btn nav-export-btn" href="javascript:void(0)" title="Sayfa ve Çizimlerin Görüntüsünü İndir">ÇIKTI AL ⤓</a>
     </div>
-  </div>
+  </header>
 
+  <!-- Hero Section -->
   <header class="hero">
     <div class="hero-copy">
       <div class="stamp">SYSTEM / AI / BACKEND</div>
-      <h1 id="name"></h1>
-      <p id="headline" class="headline"></p>
-      <div id="handNote" class="hand-note"></div>
+      <h1>Türker Kıvılcım</h1>
+      <p class="headline">Full-Stack Developer &amp; AI Engineer | Computer Engineering Senior @ Erciyes University</p>
+      <p class="hero-intro">
+        Sistemlerin arka planını derinlemesine anlamaya odaklanan, ölçeklenebilir backend çözümleri, yapay zeka &amp; görüntü işleme sistemleri ve düşük seviyeli yazılımlar geliştiren Bilgisayar Mühendisliği son sınıf öğrencisi.
+      </p>
+      <div class="hand-note">çalışır sistemler &amp; Ar-Ge →</div>
     </div>
 
     <aside class="hero-side">
       <div class="side-item">
         <div class="side-label">Şu anda</div>
-        <div class="side-value" id="now"></div>
+        <div class="side-value">
+          Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı · <strong>Full-stack AI Engineer</strong>
+        </div>
       </div>
       <div class="side-item">
-        <div class="side-label" id="focusLabel"></div>
-        <div id="focusList" class="focus-list"></div>
+        <div class="side-label">Odak</div>
+        <div class="focus-list">
+          <span>Go</span>
+          <span>Python</span>
+          <span>C / Sistem</span>
+          <span>.NET</span>
+          <span>React</span>
+          <span>YOLO</span>
+          <span>Kaldi</span>
+        </div>
       </div>
       <div class="side-item">
         <div class="side-label">Bağlantılar</div>
         <div class="side-value">
-          <a id="linkedin" href="#" target="_blank" rel="noreferrer">LinkedIn ↗</a><br>
-          <a id="cv" href="#" target="_blank" rel="noreferrer">Özgeçmiş (CV) ↗</a>
+          <a href="https://linkedin.com/in/turkerkiv" target="_blank" rel="noreferrer">LinkedIn ↗</a><br>
+          <a href="turker-kivilcim-cv.pdf" target="_blank" rel="noreferrer">Özgeçmiş (CV) ↗</a><br>
+          <a href="mailto:kivturker@gmail.com">kivturker@gmail.com ↗</a>
         </div>
       </div>
     </aside>
   </header>
 
-  <section id="projects" class="section">
-    <div class="section-head">
-      <span data-label="projects"></span>
-      <span id="count"></span>
-    </div>
-    <div id="list" class="projects"></div>
-  </section>
-
+  <!-- 01 / Hakkında & Beceriler Section (Hero'dan hemen sonra) -->
   <section id="about" class="section">
     <div class="section-head">
-      <span data-label="about"></span>
-      <span>02</span>
+      <span>01 / HAKKINDA &amp; BECERİLER</span>
+      <span>01 // 05</span>
     </div>
     <div class="about-grid">
-      <div class="note">
-        <h3 id="aboutTitle"></h3>
-        <div id="aboutText"></div>
+      <!-- Sol: Biyografi & Vizyon -->
+      <div class="about-card">
+        <h3>Mühendislik Vizyonu &amp; Profil</h3>
+        <p>
+          Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisi ve backend odaklı Full-Stack geliştiriciyim. Sistemlerin ve soyut katmanların arka planını anlamayı, ölçeklenebilir dağıtık mimariler kurmayı ve bilgisayarlı görü/yapay zeka teknolojileriyle gerçek kurumsal problemleri çözmeyi hedefliyorum.
+        </p>
+        <p>
+          Şu anda <strong>Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı</strong> bünyesinde Full-stack AI Engineer olarak kampüs nizamiyelerinden gelen canlı kamera akışlarını analiz eden uçtan uca görüntü işleme ve yayın sistemini yönetiyorum.
+        </p>
+        <p>
+          Yürütücülüğünü üstlendiğim <strong>TÜBİTAK 2209-A</strong> projemde düşük güç tüketimli sistemlerde Türkçe konuşma tanıma (Kaldi / GMM-HMM) üzerine 1 yıllık Ar-Ge sürecini başarıyla sonuçlandırdım. <strong>TEKNOFEST 2025</strong>'te ise kaptanı olduğum EruAI - Ada Lovelace takımıyla Ön Değerlendirme Raporunda 96/100 puan alarak Türkiye 1.si olduk.
+        </p>
+        <div class="philosophy-quote">
+          "Ezberlemek yerine sistemin neden ve nasıl çalıştığını kavramayı, soyutlamaların altındaki donanım ve işletim sistemi dinamiklerini anlamayı ve her öğrendiğim teoriyi çalışan, test edilmiş bir yazılıma dönüştürmeyi ilke ediniyorum."
+        </div>
+        <div class="edu-box">
+          <div class="edu-title">Erciyes Üniversitesi · Lisans, Bilgisayar Mühendisliği</div>
+          <div class="edu-meta">Eylül 2023 – Haziran 2027 · Kayseri · GANO: <strong>3.18 / 4.00</strong></div>
+          <div class="tags">
+            <span>Veri Yapıları &amp; Algoritmalar</span>
+            <span>İşletim Sistemleri</span>
+            <span>Bilgisayar Ağları</span>
+            <span>Dağıtık Sistemler</span>
+          </div>
+        </div>
       </div>
-      <div class="note">
-        <h3 id="stackTitle">Teknolojiler</h3>
-        <div id="stack" class="stack"></div>
+
+      <!-- Sağ: Kategorize Edilmiş Yetkinlik Haritası -->
+      <div class="about-card">
+        <h3>Yetkinlik Haritası (Tech Stack)</h3>
+        
+        <div class="skills-group">
+          <div class="skills-group-title">Backend &amp; Dağıtık Sistemler</div>
+          <div class="tags">
+            <span>Go</span>
+            <span>Python</span>
+            <span>C# / .NET Web API</span>
+            <span>Django</span>
+            <span>FastAPI</span>
+            <span>WebSocket</span>
+            <span>RESTful APIs</span>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <div class="skills-group-title">Yapay Zeka &amp; Görüntü / Ses İşleme</div>
+          <div class="tags">
+            <span>YOLO (v8 / v11)</span>
+            <span>Kaldi Speech Recognition</span>
+            <span>GMM-HMM</span>
+            <span>OpenCV</span>
+            <span>RAG (Retrieval-Augmented Gen)</span>
+            <span>LoRA Fine-Tuning</span>
+            <span>hmmlearn</span>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <div class="skills-group-title">Sistem Programlama &amp; Altyapı</div>
+          <div class="tags">
+            <span>C</span>
+            <span>Linux / POSIX</span>
+            <span>Docker</span>
+            <span>Nginx</span>
+            <span>Cisco Packet Tracer</span>
+            <span>Git &amp; GitHub</span>
+            <span>Sanal Makineler</span>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <div class="skills-group-title">Frontend &amp; Arayüz</div>
+          <div class="tags">
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>JavaScript</span>
+            <span>HTML5 / CSS3</span>
+            <span>Metronic UI</span>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <div class="skills-group-title">Veritabanları &amp; Önbellekleme</div>
+          <div class="tags">
+            <span>PostgreSQL</span>
+            <span>MSSQL</span>
+            <span>SQLite</span>
+            <span>Redis</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="contact">
-    <div class="label" data-label="contact"></div>
-    <a id="email" href="#"></a>
+  <!-- 02 / Deneyimler Section (Profesyonel İş & Gönüllü Deneyim Ayrılmış) -->
+  <section id="experience" class="section">
+    <div class="section-head">
+      <span>02 / DENEYİMLER</span>
+      <span>02 // 05</span>
+    </div>
+    
+    <!-- Profesyonel İş Deneyimi -->
+    <div class="exp-category-title">
+      <span>🏢</span> Profesyonel İş Deneyimi &amp; Mühendislik Rolleri
+    </div>
+    <div class="exp-list">
+      <!-- BİDB -->
+      <article class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-role">Full-stack AI Engineer</h3>
+            <div class="exp-company">Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı</div>
+          </div>
+          <span class="entry-badge">Canlı Kurumsal Sistem &amp; Ar-Ge</span>
+        </div>
+        <div class="exp-meta">
+          <span>📅 Ocak 2025 – Temmuz 2026 (1 yıl 7 ay)</span>
+          <span>📍 Kayseri, Türkiye</span>
+          <span>⏱️ Kısmi Zamanlı (Part-Time)</span>
+        </div>
+        <p class="exp-desc">
+          Kampüs nizamiyelerindeki güvenlik kameralarından araç ve kişi girişlerini sayan, web panelinde analitik istatistiklerini sunan ve seçilen kameranın yapay zeka tarafından işlenmiş görüntüsünü WebSocket üzerinden anlık yayınlayan sistemin tüm mimarisini sıfırdan kurdum. Veri seti hazırlama, YOLOv8/v11 eğitimi ve kıyaslaması, ByteTrack nesne takibi, Django ile backend/frontend kodlanması, sanal sunucu ve Nginx yapılandırmalarını yürüttüm. Sistem şu anda canlıda aktiftir. Ayrıca kurum içi SSS chatbotu için RAG ve LoRA teknikleriyle LLM özelleştirme araştırması gerçekleştirdim.
+        </p>
+        <div class="tags">
+          <span>Python</span>
+          <span>YOLO (v8/v11)</span>
+          <span>Django</span>
+          <span>WebSocket</span>
+          <span>OpenCV</span>
+          <span>ByteTrack</span>
+          <span>Nginx</span>
+          <span>Linux VM</span>
+          <span>RAG</span>
+          <span>LoRA</span>
+        </div>
+      </article>
+
+      <!-- MEA Staj -->
+      <article class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-role">Ağ Stajyeri</h3>
+            <div class="exp-company">MEA Yazılım</div>
+          </div>
+          <span class="entry-badge">Ağ Mühendisliği</span>
+        </div>
+        <div class="exp-meta">
+          <span>📅 Temmuz 2025 – Ağustos 2025 (2 ay)</span>
+          <span>📍 Kayseri, Türkiye</span>
+          <span>🎓 Zorunlu Donanım Stajı</span>
+        </div>
+        <p class="exp-desc">
+          Zorunlu donanım stajı kapsamında kurumsal bir firmanın 3 farklı şehre büyümesi senaryosunu ele aldım. Cisco Packet Tracer üzerinde 3 şubeli kurumsal ağ mimarisi (VLAN, inter-VLAN routing, OSPF, DHCP/DNS, subnetting) tasarladım. Ağ servislerini VMware ve VirtualBox sanal makineleri üzerinde canlı simüle ederek stajımı başarıyla tamamladım.
+        </p>
+        <div class="tags">
+          <span>Cisco Packet Tracer</span>
+          <span>Ağ Mühendisliği</span>
+          <span>VLAN</span>
+          <span>OSPF</span>
+          <span>Sanal Makineler</span>
+          <span>Subnetting</span>
+        </div>
+      </article>
+
+      <!-- Tosyalı IT -->
+      <article class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-role">Information Technology Technician</h3>
+            <div class="exp-company">İskenderun Net Enerji @ Tosyalı Holding</div>
+          </div>
+          <span class="entry-badge">Altyapı &amp; Saha</span>
+        </div>
+        <div class="exp-meta">
+          <span>📅 Mayıs 2023 – Temmuz 2023 (3 ay)</span>
+          <span>📍 Hatay / İskenderun, Türkiye</span>
+          <span>🛠️ Saha Operasyonu</span>
+        </div>
+        <p class="exp-desc">
+          Hatay/İskenderun bölgesinde yeni inşa edilen Tosyalı Holding fabrikasının endüstriyel ağ altyapısının kurulmasında teknisyen olarak görev aldım. Cat6, Cat7 ve Fiber Optik kablolama, kanal döşeme ve yapısal kablolama sonlandırma işlemlerini sahada başarıyla yürüttüm.
+        </p>
+        <div class="tags">
+          <span>Endüstriyel Ağ Altyapısı</span>
+          <span>Cat6 / Cat7</span>
+          <span>Fiber Optik</span>
+          <span>Yapısal Kablolama</span>
+          <span>Saha Operasyonu</span>
+        </div>
+      </article>
+    </div>
+
+    <!-- Gönüllü Deneyim & Liderlik -->
+    <div class="exp-category-title">
+      <span>🤝</span> Gönüllü Deneyim, Topluluk Kuruculuğu &amp; Takım Kaptanlığı
+    </div>
+    <div class="exp-list">
+      <!-- YAZTEK -->
+      <article class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-role">Yönetim Kurulu Üyesi &amp; Proje Yönetim Sorumlusu (Kurucu)</h3>
+            <div class="exp-company">Yazılım Teknolojileri Kulübü (YAZTEK)</div>
+          </div>
+          <span class="entry-badge">Topluluk Kurucusu &amp; Liderlik</span>
+        </div>
+        <div class="exp-meta">
+          <span>📅 Haziran 2025 – Mart 2026 (10 ay)</span>
+          <span>📍 Erciyes Üniversitesi</span>
+        </div>
+        <p class="exp-desc">
+          YAZTEK'in kurucularından biri olarak proje birimi liderliğini üstlendim. 21 öğrenciyi takımlar halinde organize ederek 7 adet TÜBİTAK 2209-A projesi oluşturduk; öğrencilerin danışman hoca bulma, hipotez kurma ve teknik rapor yazım süreçlerine mentorluk ettim. Bu projelerden 4 tanesi TÜBİTAK tarafından kabul edilerek desteklenmeye hak kazandı. Ayrıca 3 farklı kategoride TEKNOFEST takımı kurup süreçlerini koordine ettim.
+        </p>
+        <div class="tags">
+          <span>TÜBİTAK 2209-A</span>
+          <span>Proje Yönetimi</span>
+          <span>Mentorluk</span>
+          <span>Ekip Koordinasyonu</span>
+          <span>TEKNOFEST</span>
+        </div>
+      </article>
+
+      <!-- AI Club -->
+      <article class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-role">Başkan Yardımcısı &amp; Takım Kaptanı</h3>
+            <div class="exp-company">Yapay Zeka Kulübü (AI Club) / EruAI Ada Lovelace</div>
+          </div>
+          <span class="entry-badge">Yarışma &amp; Topluluk</span>
+        </div>
+        <div class="exp-meta">
+          <span>📅 Ekim 2024 – Haziran 2025 (9 ay)</span>
+          <span>📍 Erciyes Üniversitesi</span>
+        </div>
+        <p class="exp-desc">
+          Kulüp bünyesinde yapay zeka eğitimleri ve bootcampler organize ettim. Kaptanlığını yaptığım 7 kişilik EruAI - Ada Lovelace takımıyla TEKNOFEST 2025 Engelsiz Yaşam kategorisinde 'Engelsiz Gözlük' projemizle Ön Değerlendirme Raporunda 100 üzerinden 96 puan alarak Türkiye 1.si olduk. Kulüp bünyesinde ayrıca HMM ile ses işleme projesiyle TÜBİTAK 2209-A kabulü aldık.
+        </p>
+        <div class="tags">
+          <span>Deep Learning</span>
+          <span>Edge AI</span>
+          <span>Computer Vision</span>
+          <span>NLP</span>
+          <span>Liderlik</span>
+          <span>TEKNOFEST</span>
+        </div>
+      </article>
+
+      <!-- MEA Frontend -->
+      <article class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-role">Frontend Developer (Gönüllü)</h3>
+            <div class="exp-company">MEA Yazılım</div>
+          </div>
+          <span class="entry-badge">Gönüllü Mühendislik</span>
+        </div>
+        <div class="exp-meta">
+          <span>📅 Ekim 2024 – Şubat 2025 (5 ay)</span>
+          <span>📍 Kayseri, Türkiye</span>
+        </div>
+        <p class="exp-desc">
+          Üniversite akademisyenlerinin yürüttüğü bilim ve teknoloji projesinde frontend geliştirici olarak görev aldım. Metronic UI kütüphanesi üzerine kurulu canlı sistemde kod refactoring, performans optimizasyonu ve yeni arayüz geliştirmeleri yaptım. Backend ekibiyle koordinasyon içinde kalarak yeni REST API tasarımlarına entegrasyonu tamamladım; daha hafif, hızlı ve yüksek UX sunan bir arayüz ortaya koydum.
+        </p>
+        <div class="tags">
+          <span>Frontend</span>
+          <span>JavaScript</span>
+          <span>HTML5 / CSS3</span>
+          <span>Metronic UI</span>
+          <span>REST API Entegrasyonu</span>
+          <span>UX Optimization</span>
+        </div>
+      </article>
+    </div>
   </section>
 
+  <!-- 03 / Projeler & Ar-Ge Section (Staggered Blueprint Grid & Pop-up Modal) -->
+  <section id="projects" class="section">
+    <div class="section-head">
+      <span>03 / PROJELER &amp; AR-GE</span>
+      <span>6 MÜHENDİSLİK PROJESİ</span>
+    </div>
+    <p class="section-lead">
+      // Kartlara tıklayarak sistem mimarisi, problem tanımı ve teknik detayları derinlemesine inceleyebilirsiniz.
+    </p>
+
+    <div class="projects-staggered">
+      <!-- Proje 1 -->
+      <article class="project" data-project-id="kampus-giris-sayim" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="project-top">
+          <span class="project-no">PRJ-01</span>
+          <span class="project-badge">Canlıda Aktif · Erciyes Üniv.</span>
+        </div>
+        <div class="project-category">Canlı Sistem / Görüntü İşleme</div>
+        <h2>Kampüs Giriş Sayım &amp; Canlı İzleme</h2>
+        <p>
+          Kampüs nizamiyelerindeki kamera akışlarından araç ve kişi girişlerini sayan, web panelinde istatistiklerini sunan ve WebSocket ile anlık yayınlayan uçtan uca görüntü işleme sistemi.
+        </p>
+        <div class="tags">
+          <span>Python</span>
+          <span>YOLO (v8/v11)</span>
+          <span>Django</span>
+          <span>WebSocket</span>
+          <span>ByteTrack</span>
+          <span>Nginx</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </article>
+
+      <!-- Proje 2 -->
+      <article class="project" data-project-id="turkce-konusma-tanima-tubitak" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="project-top">
+          <span class="project-no">PRJ-02</span>
+          <span class="project-badge">TÜBİTAK Onaylı · Proje Yürütücüsü</span>
+        </div>
+        <div class="project-category">TÜBİTAK Ar-Ge / Akustik Modelleme</div>
+        <h2>Düşük Güç Tüketimli Türkçe Konuşma Tanıma</h2>
+        <p>
+          Gömülü ve kısıtlı kaynaklı sınır sistemlerde çalışabilen, Kaldi ASR Toolkit ve hibrit akustik modellerle Türkçe ses tanıma mimarisi (TÜBİTAK 2209-A).
+        </p>
+        <div class="tags">
+          <span>Kaldi ASR</span>
+          <span>Python</span>
+          <span>C++</span>
+          <span>GMM-HMM</span>
+          <span>MFCC</span>
+          <span>Linux</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </article>
+
+      <!-- Proje 3 -->
+      <article class="project" data-project-id="engelsiz-gozluk-teknofest" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="project-top">
+          <span class="project-no">PRJ-03</span>
+          <span class="project-badge">Türkiye 1.si (96/100 Puan)</span>
+        </div>
+        <div class="project-category">TEKNOFEST 2025 / Giyilebilir Yapay Zeka</div>
+        <h2>Engelsiz Gözlük — EruAI Ada Lovelace</h2>
+        <p>
+          İşaret dilini yazıya, yazıyı sese ve sesi yazıya çevirerek işitme ve konuşma engelli bireyler için dil bariyerini kaldıran akıllı giyilebilir gözlük sistemi.
+        </p>
+        <div class="tags">
+          <span>Python</span>
+          <span>MediaPipe</span>
+          <span>Edge AI</span>
+          <span>STT / TTS</span>
+          <span>Deep Learning</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </article>
+
+      <!-- Proje 4 -->
+      <article class="project" data-project-id="kurumsal-sss-chatbot" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="project-top">
+          <span class="project-no">PRJ-04</span>
+          <span class="project-badge">Kurumsal Ar-Ge Prototipi</span>
+        </div>
+        <div class="project-category">Kurumsal Ar-Ge / NLP &amp; LLM</div>
+        <h2>Kurumsal SSS Akıllı Asistanı (RAG &amp; LoRA)</h2>
+        <p>
+          Kurum içi bilgi tabanından semantik doğrulukla yanıt üreten, RAG mimarisi ve LoRA ince ayar teknikleriyle özelleştirilmiş kurumsal chatbot prototipi.
+        </p>
+        <div class="tags">
+          <span>RAG</span>
+          <span>LoRA</span>
+          <span>Open Source LLMs</span>
+          <span>Vector DB</span>
+          <span>Django</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </article>
+
+      <!-- Proje 5 -->
+      <article class="project" data-project-id="3-subeli-ag-mimarisi" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="project-top">
+          <span class="project-no">PRJ-05</span>
+          <span class="project-badge">Zorunlu Donanım Stajı</span>
+        </div>
+        <div class="project-category">Ağ Mühendisliği &amp; Sanallaştırma</div>
+        <h2>3 Şubeli Kurumsal Ağ Mimarisi Simülasyonu</h2>
+        <p>
+          Farklı şehirlerde 3 şubeye genişleyen kurumsal firmanın Cisco Packet Tracer ve sanal makinelerle simüle edilen güvenli ve yedekli ağ topolojisi.
+        </p>
+        <div class="tags">
+          <span>Cisco Packet Tracer</span>
+          <span>VLAN</span>
+          <span>OSPF Routing</span>
+          <span>ACL Security</span>
+          <span>VMware</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </article>
+
+      <!-- Proje 6 -->
+      <article class="project" data-project-id="c-sistem-programlama" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="project-top">
+          <span class="project-no">PRJ-06</span>
+          <span class="project-badge">Düşük Seviye Ar-Ge</span>
+        </div>
+        <div class="project-category">Sistem Programlama &amp; Ar-Ge</div>
+        <h2>C ile Düşük Seviye Sistem Programlama</h2>
+        <p>
+          İşletim sistemi katmanlarını, bellek yöneticilerini (Arena/Pool Allocator) ve POSIX çekirdek çağrılarını anlamak için C ile yürütülen sistem yazılımı pratikleri.
+        </p>
+        <div class="tags">
+          <span>C (C99/C11)</span>
+          <span>Linux / POSIX</span>
+          <span>Memory Allocation</span>
+          <span>Valgrind</span>
+          <span>IPC</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- 04 / Başarılar, Sertifikalar & Sınavlar Section -->
+  <section id="honors" class="section">
+    <div class="section-head">
+      <span>04 / BAŞARILAR, SERTİFİKALAR &amp; SINAVLAR</span>
+      <span>04 // 05</span>
+    </div>
+    <div class="honors-grid">
+      <!-- Sol: Yarışmalar & Resmi Başarılar -->
+      <div>
+        <div class="exp-category-title" style="margin-top:0;">
+          <span>🏆</span> Resmi Başarılar &amp; Ödüller
+        </div>
+
+        <article class="honor-card">
+          <div class="honor-card-header">
+            <h3 class="honor-title">TEKNOFEST 2025 Türkiye 1.liği (Ön Rapor)</h3>
+            <span class="entry-badge">96 / 100 Puan · 1.lik</span>
+          </div>
+          <div class="honor-org">TEKNOFEST · Engelsiz Yaşam Teknolojileri</div>
+          <div class="honor-meta">📅 Mayıs 2025 · EruAI - Ada Lovelace Takım Kaptanı</div>
+          <p class="honor-desc">
+            Kaptanı olduğum 7 kişilik EruAI - Ada Lovelace takımıyla geliştirdiğimiz 'Engelsiz Gözlük' (işaret dilini yazıya, yazıyı sese ve sesi yazıya çeviren giyilebilir yapay zeka sistemi) projemizle Ön Değerlendirme Raporunda 100 üzerinden 96 puan alarak Türkiye 1.si seçildik.
+          </p>
+        </article>
+
+        <article class="honor-card">
+          <div class="honor-card-header">
+            <h3 class="honor-title">TeknoJam24 Şampiyonluğu (1.lik Ödülü)</h3>
+            <span class="entry-badge">GameJam 1.lik Ödülü</span>
+          </div>
+          <div class="honor-org">Erciyes Teknopark</div>
+          <div class="honor-meta">📅 Mayıs 2024 · 48 Saatlik Geliştirme Maratonu</div>
+          <p class="honor-desc">
+            Erciyes Teknopark tarafından düzenlenen 48 saatlik oyun geliştirme maratonunda 26 yarışmacı grup arasından geliştirilen oyunumuzla 1.lik ödülüne layık görüldük.
+          </p>
+        </article>
+
+        <article class="honor-card">
+          <div class="honor-card-header">
+            <h3 class="honor-title">TÜBİTAK 2209-A Araştırma Desteği &amp; Başarı Onayı</h3>
+            <span class="entry-badge">Proje Yürütücüsü</span>
+          </div>
+          <div class="honor-org">TÜBİTAK BİDEB</div>
+          <div class="honor-meta">📅 2024 – 2025 · 1 Yıllık Akademik Ar-Ge</div>
+          <p class="honor-desc">
+            2024/1 döneminde 'Düşük Güç Tüketimli Sistemlerde Türkçe Konuşma Tanıma' konulu araştırmamın yürütücülüğünü üstlendim. Kaldi ve GMM-HMM hibrit modelleriyle 1 yıllık Ar-Ge sürecinin ardından sonuç raporum TÜBİTAK tarafından başarıyla onaylandı.
+          </p>
+        </article>
+      </div>
+
+      <!-- Sağ: Resmi Dil Sınavları & Doğrulanabilir Belgeler -->
+      <div>
+        <div class="exp-category-title" style="margin-top:0;">
+          <span>📜</span> Resmi Dil Sınavları &amp; Doğrulanabilir Belgeler
+        </div>
+
+        <article class="honor-card">
+          <div class="honor-card-header">
+            <h3 class="honor-title">Erasmus Yabancı Dil Yeterlilik Sınavı</h3>
+            <span class="entry-badge" style="background:#eaf7ee;color:#1d6f42;border-color:#65b382;">92 / 100 (C1 İleri Düzey)</span>
+          </div>
+          <div class="honor-org">Erciyes Üniversitesi Yabancı Diller Yüksekokulu</div>
+          <div class="honor-meta">📅 Eylül 2026</div>
+          <p class="honor-desc">
+            Erciyes Üniversitesi resmi yabancı dil seviye tespit sınavı. Aşağıdaki resmi doğrulama sistemi üzerinden sorgulanabilir:
+          </p>
+          <div class="verify-block">
+            <div>🔗 <strong>Doğrulama Sistemi:</strong> <a href="https://bd.erciyes.edu.tr/?e=1" target="_blank" rel="noreferrer">bd.erciyes.edu.tr/?e=1 ↗</a></div>
+            <div>🔑 <strong>Belge Doğrulama Kodu:</strong> <code>SLJ3HD8NQG</code></div>
+            <div>📌 <strong>PIN Kodu:</strong> <code>1570068322</code></div>
+          </div>
+        </article>
+
+        <article class="honor-card">
+          <div class="honor-card-header">
+            <h3 class="honor-title">Erasmus Yabancı Dil Yeterlilik Sınavı</h3>
+            <span class="entry-badge">83.75 / 100 (B2+ Düzey)</span>
+          </div>
+          <div class="honor-org">Erciyes Üniversitesi Yabancı Diller Yüksekokulu</div>
+          <div class="honor-meta">📅 Aralık 2024</div>
+          <p class="honor-desc">
+            Erciyes Üniversitesi resmi yabancı dil seviye tespit sınavı.
+          </p>
+          <div class="verify-block">
+            <div>🔗 <strong>Doğrulama Sistemi:</strong> <a href="https://bd.erciyes.edu.tr/?e=1" target="_blank" rel="noreferrer">bd.erciyes.edu.tr/?e=1 ↗</a></div>
+            <div>🔑 <strong>Belge Doğrulama Kodu:</strong> <code>6SFSNKUI5B</code></div>
+            <div>📌 <strong>PIN Kodu:</strong> <code>878913900</code></div>
+          </div>
+        </article>
+
+        <article class="honor-card">
+          <div class="honor-card-header">
+            <h3 class="honor-title">YDS İngilizce (Yabancı Dil Bilgisi Seviye Tespit)</h3>
+            <span class="entry-badge">76.25 / 100</span>
+          </div>
+          <div class="honor-org">ÖSYM (Ölçme, Seçme ve Yerleştirme Merkezi)</div>
+          <div class="honor-meta">📅 2023 · Türkiye Geneli Resmi Sınav</div>
+          <p class="honor-desc">
+            ÖSYM tarafından ülke genelinde uygulanan merkezi Yabancı Dil Bilgisi Seviye Tespit Sınavı.
+          </p>
+          <div class="verify-block">
+            <div>🔗 <strong>Sonuç Sistemi:</strong> <a href="https://sonuc.osym.gov.tr" target="_blank" rel="noreferrer">sonuc.osym.gov.tr ↗</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 / İletişim & Açık Pozisyonlar Section -->
+  <section id="contact" class="section">
+    <div class="section-head">
+      <span>05 / İLETİŞİM &amp; ÇALIŞMA DURUMU</span>
+      <span>05 // 05</span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-card-label">E-Posta</div>
+        <a href="mailto:kivturker@gmail.com" class="contact-card-val">kivturker@gmail.com</a>
+        <div class="contact-card-desc">Doğrudan teknik iletişim ve iş teklifleri için.</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">Telefon</div>
+        <a href="tel:+905317965425" class="contact-card-val">+90 531 796 54 25</a>
+        <div class="contact-card-desc">Mesai saatlerinde ulaşılabilir.</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">Konum</div>
+        <div class="contact-card-val" style="font-size:16px;">Kayseri, Türkiye</div>
+        <div class="contact-card-desc">Hibrit ve Remote çalışma modellerine uygun.</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">Çalışma Durumu</div>
+        <div class="contact-card-val" style="font-size:14px;color:var(--blue);">Pozisyonlara Açık</div>
+        <div class="contact-card-desc">Part-time, staj ve mezuniyet sonrası tam zamanlı backend / AI pozisyonlarına açıktır.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <span>© <span id="year"></span> Türker Kıvılcım</span>
-    <span id="location"></span>
+    <span>© 2026 Türker Kıvılcım — Blueprint Portfolio</span>
+    <span>39°00'N · 35°00'E · Kayseri</span>
+    <span><a href="#" style="color:var(--blue);text-decoration:none;">↑ Başa Dön</a></span>
   </footer>
 </div>
 
-<div id="modal" class="modal" aria-hidden="true">
-  <div class="modal-box">
-    <button class="close" id="close">×</button>
-    <div id="modalCat" class="modal-cat"></div>
-    <h2 id="modalTitle"></h2>
-    <p id="modalDesc"></p>
-    <div id="modalStack" class="stack"></div>
+<!-- Project Detail Pop-up Modal -->
+<div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close-btn" id="modalCloseBtn" aria-label="Kapat">×</button>
+    <div class="modal-header">
+      <div class="modal-meta">
+        <span id="modalCat" class="modal-cat"></span>
+        <span id="modalBadge" class="entry-badge"></span>
+      </div>
+      <h2 id="modalTitle" class="modal-title"></h2>
+    </div>
+    
+    <div class="modal-section">
+      <div class="modal-section-title">📌 Problem Tanımı &amp; İhtiyaç</div>
+      <p id="modalProblem" class="modal-p"></p>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">🏗️ Sistem Mimarisi &amp; Katmanlar</div>
+      <p id="modalArchitecture" class="modal-p"></p>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">⚙️ Temel Mühendislik Katkıları</div>
+      <ul id="modalContributions" class="modal-bullets"></ul>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">⚡ Teknik Zorluklar &amp; Çözümler</div>
+      <p id="modalChallenges" class="modal-p"></p>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">📊 Sonuçlar &amp; Canlı Durum</div>
+      <p id="modalResults" class="modal-p"></p>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">🛠️ Teknoloji Yığını</div>
+      <div id="modalStack" class="tags"></div>
+    </div>
+
     <div id="modalLinks" class="modal-links"></div>
   </div>
 </div>
 
-<!-- Custom Animated Drafting Pencil Cursor -->
-<div id="pencilCursor" class="pencil-cursor" aria-hidden="true">
-  <svg viewBox="0 0 32 32" width="32" height="32" style="filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.35));" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Lead tip -->
-    <polygon id="pencilLead" points="2,30 3.5,26.5 5.5,28.5" fill="#285bc4" />
-    <!-- Sharpened wood cone -->
-    <polygon points="3.5,26.5 5.5,28.5 9,25 7,23" fill="#e8c79c" stroke="#182430" stroke-width="0.6" />
-    <!-- Shaft facet 1 (colored) -->
-    <polygon id="pencilShaft1" points="7,23 9,25 21,13 19,11" fill="#285bc4" stroke="#182430" stroke-width="0.6" />
-    <!-- Shaft facet 2 (highlight) -->
-    <polygon points="9,25 11,27 23,15 21,13" fill="#4d79c7" stroke="#182430" stroke-width="0.6" />
-    <!-- Metal Ferrule -->
-    <polygon points="19,11 23,15 25,13 21,9" fill="#a5b8ca" stroke="#182430" stroke-width="0.6" />
-    <!-- Eraser -->
-    <polygon points="21,9 25,13 27,11 23,7" fill="#c85252" stroke="#182430" stroke-width="0.6" />
-  </svg>
-</div>
+<!-- Embedded Projects Database for Instant Popup -->
+<script id="projectsData" type="application/json">
+[
+  {
+    "id": "kampus-giris-sayim",
+    "title": "Kampüs Giriş Sayım & Canlı İzleme Sistemi",
+    "category": "Canlı Sistem / Görüntü İşleme",
+    "badge": "Canlıda Aktif · Erciyes Üniversitesi",
+    "problem_statement": "Erciyes Üniversitesi'nin birden fazla ana nizamiyesinden gün içinde binlerce araç ve yaya geçişi gerçekleşmektedir. Manuel sayım veya harici sensör altyapıları yüksek maliyet ve bakım gerektiriyordu. Güvenlik ve idari birimlerin nizamiyelerdeki yoğunluğu gerçek zamanlı takip edebileceği, geriye dönük istatistiki raporlar alabileceği ve seçilen kameranın işlenmiş yapay zeka akışını düşük gecikmeyle web üzerinden izleyebileceği merkezi bir sisteme ihtiyaç duyuldu.",
+    "architecture_overview": "Sistem mimarisi 4 temel katmandan oluşmaktadır: 1) Kamera Veri Toplama Katmanı (Nizamiyelerdeki IP güvenlik kameralarından RTSP üzerinden yüksek çözünürlüklü video akışları alınır), 2) Yapay Zeka & Nesne Takip Motoru (Python, OpenCV, YOLO modelleri ve ByteTrack takip algoritması ile araç ve kişi ayrımı yapılarak sanal giriş çizgilerini geçen nesneler tekil ID ile sayılır), 3) Web & İstatistik Sunucusu (Django REST Framework tabanlı backend, sayım verilerini zaman damgalı olarak PostgreSQL veritabanına yazar; Redis/Channels üzerinden WebSocket yayınını yönetir), 4) Dağıtım & Altyapı (Linux sanal sunucu üzerinde Nginx ters vekili, Gunicorn ve Daphne asenkron sunucuları ile canlıya alındı).",
+    "key_contributions": [
+      "Sistemin veri toplama, yapay zeka motoru, web paneli ve sunucu altyapısını sıfırdan kurdum.",
+      "Kayseri iklimi ve farklı ışık koşulları (gece, yağmur, kar, yoğun sis) için özel kampus video veri seti topladım, temizledim ve etiketleme düzeltmelerini tamamladım.",
+      "YOLO modellerini (v8 ve v11 varyantları) aynı veri seti üzerinde hassasiyet (mAP), çıkarım hızı (FPS) ve donanım tüketimi kriterleriyle defalarca eğitip kıyasladım.",
+      "Tekrarlayan sayımları engellemek ve araçların birbirini perdelediği anlarda takibi kaybetmemek için ByteTrack nesne takip algoritmasını optimize ettim.",
+      "Django ile modern bir yönetim ve istatistik paneli kodladım. İdari birimler için saatlik, günlük ve haftalık geçiş grafiklerini hazırladım.",
+      "Seçilen kameranın yapay zeka tarafından çizilmiş bounding-box ve sayım çizgisi içeren çıktısını WebSocket üzerinden düşük gecikmeyle tarayıcıya aktaran yayın hattını kurdum.",
+      "Üniversite bilgi işlem ağ ekibi ve güvenlik birimleriyle koordine olarak kamera IP routing, domain tanımlama, Nginx SSL yapılandırması ve Linux sanal sunucu kurulumunu tamamlayarak projeyi canlıya aldım."
+    ],
+    "challenges_and_solutions": "Ana teknik zorluk, yüksek çözünürlüklü çoklu RTSP akışlarının sunucu GPU/CPU kaynaklarını aşırı tüketmesi ve WebSocket video yayınında yaşanan gecikmeydi. Bu durum, video karelerinin çözünürlüklerini çıkarım motoruna girmeden önce dinamik ölçeklendirerek, çıkarım işlemlerini ana web sunucusundan izole çalışan asenkron bir worker mimarisine alarak ve WebSocket üzerinde JPEG/WebP sıkıştırma uygulayarak aşıldı. Bu sayede gecikme 250ms altına indirildi.",
+    "results_impact": "Sistem Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı bünyesinde canlıya alınarak resmi kullanıma girdi. Nizamiyelerdeki geçişler 7/24 otomatik olarak sayılmakta, yoğunluk saatleri raporlanmakta ve sistem canlıda aktif olarak geliştirilmeye devam etmektedir.",
+    "stack": [
+      "Python",
+      "YOLO (v8 / v11)",
+      "OpenCV",
+      "ByteTrack",
+      "Django",
+      "Django Channels / WebSocket",
+      "Redis",
+      "PostgreSQL",
+      "Nginx",
+      "Linux VM",
+      "RTSP Streaming"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "id": "turkce-konusma-tanima-tubitak",
+    "title": "Düşük Güç Tüketimli Türkçe Konuşma Tanıma (TÜBİTAK 2209-A)",
+    "category": "TÜBİTAK Ar-Ge / Akustik Modelleme",
+    "badge": "TÜBİTAK Onaylı Sonuç Raporu · Proje Yürütücüsü",
+    "problem_statement": "Güncel derin öğrenme tabanlı konuşma tanıma (ASR) modelleri (Whisper, Conformer vb.) devasa parametre sayıları ve yüksek bellek/işlemci gereksinimleri sebebiyle Raspberry Pi, gömülü SoC kartları veya düşük güç tüketimli sınır cihazlarda gerçek zamanlı çalışamamaktadır. İnternet bağlantısına ihtiyaç duymayan, yerel olarak çalışan ve düşük enerji harcayan gömülü sistemler için optimize edilmiş bir Türkçe ASR mimarisine ihtiyaç vardı.",
+    "architecture_overview": "Proje, endüstri standardı Kaldi Speech Recognition Toolkit üzerinde inşa edildi: 1) Ses Önişleme & Akustik Öznitelik Çıkarma: Ham ses dalga formları 16kHz örnekleme hızına standardize edildi ve MFCC (Mel-Frequency Cepstral Coefficients) öznitelik vektörleri çıkarıldı. 2) Akustik Modelleme: Monophone, Triphone (tri1, tri2, tri3) ve LDA-MLLT ile SAT tabanlı GMM-HMM hibrit modelleri eğitildi. 3) Dil Modelleme & Sözlük: Türkçe fonetik sözlük (lexicon) oluşturuldu ve N-gram (SRILM) tabanlı dil modeli HCLG çözme grafiğine (decoding graph) entegre edildi.",
+    "key_contributions": [
+      "2024/1 dönemi TÜBİTAK 2209-A programı kapsamında araştırma projesinin yürütücülüğünü üstlendim.",
+      "İlk aşamalarda hmmlearn gibi saf Python kütüphaneleriyle deneyler yaptım; ölçeklenebilirlik, bellek yönetimi ve kararlılık sınırlarını gözlemleyerek projeyi C++ tabanlı Kaldi altyapısına taşıdım.",
+      "Türkçe ses veri kümeleri üzerinde veri temizleme, segmentasyon, gürültü filtreleme ve transkripsiyon hizalama (alignment) aşamalarını yönettim.",
+      "GMM-HMM akustik modelleri için farklı durum (HMM states) ve karışım (Gaussian mixtures) sayılarını test ederek düşük güç tüketimli donanımlar için en uygun hiperparametre setini tespit ettim.",
+      "Akademik danışmanım ve proje ortaklarımla birlikte 1 yıllık Ar-Ge sürecini tamamladım, teknik sonuç raporunu hazırladım ve TÜBİTAK'tan başarı onayını aldım."
+    ],
+    "challenges_and_solutions": "Türkçe'nin eklemeli (sondan eklemeli) dil yapısı sebebiyle kelime haznesi çok hızlı genişlemekte ve OOV oranı artmaktaydı. Ayrıca saf Python kütüphaneleri bellek sızıntısına yol açıyordu. Kaldi'nin FST (Finite State Transducer) tabanlı arama grafiği optimizasyonu ve morfolojik tabanlı sözlük tasarımı ile WER (Word Error Rate) belirgin şekilde düşürüldü ve gömülü ortamlarda kararlı çıkarım sağlandı.",
+    "results_impact": "Projenin tüm çıktıları ve sonuç raporu TÜBİTAK tarafından incelenerek başarıyla kabul edildi. Düşük kaynaklı donanımlarda yerel olarak çalışan optimize edilmiş bir Türkçe akustik model hattı elde edildi.",
+    "stack": [
+      "Kaldi ASR Toolkit",
+      "Python",
+      "C++",
+      "GMM-HMM",
+      "N-gram / SRILM",
+      "MFCC Öznitelik Çıkarımı",
+      "hmmlearn",
+      "Linux / Bash Scripting",
+      "Akustik Modelleme"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "id": "engelsiz-gozluk-teknofest",
+    "title": "Engelsiz Gözlük — EruAI Ada Lovelace (TEKNOFEST 2025)",
+    "category": "TEKNOFEST 2025 / Giyilebilir Yapay Zeka",
+    "badge": "Türkiye 1.si (96/100 Puan) · Takım Kaptanı",
+    "problem_statement": "İşitme ve konuşma engelli bireyler, işaret dili bilmeyen toplum kesimleriyle iletişim kurarken ciddi bir bariyerle karşılaşmaktadır. Akıllı telefon uygulamaları iki elin serbest kalmasını gerektiren işaret dili kullanımını zorlaştırmakta ve doğal yüz yüze iletişimi engellemektedir. Kullanıcının görüş alanında çalışan, elleri serbest bırakan ve iki yönlü çeviri sunan giyilebilir bir asistana ihtiyaç vardı.",
+    "architecture_overview": "Sistem giyilebilir bir akıllı gözlük çerçevesi üzerinde çalışan donanım ve yazılım bütünleşik mimarisine sahiptir: 1) Görsel Giriş & El Takibi: Geniş açılı kamera ile el-parmak eklem noktaları MediaPipe/YOLO-Pose ile çıkarılır. 2) İşaret Dili Tanıma: Zaman serisi hareketleri ve statik el şekilleri derin öğrenme sınıflandırıcıları ile analiz edilerek anlık Türkçe metne çevrilir. 3) İki Yönlü İletişim Hattı: Karşıdaki kişinin konuşması mikrofon üzerinden alınıp Speech-to-Text (STT) ile gözlük üzerindeki küçük ekrana yansıtılır; engelli bireyin işaret dili girdileri ise hoparlör üzerinden Text-to-Speech (TTS) ile seslendirilir.",
+    "key_contributions": [
+      "Yapay Zeka Kulübü bünyesinde kurulan 7 kişilik EruAI - Ada Lovelace takımının kaptanlığını yürüttüm.",
+      "Projenin fikir aşamasından mimari tasarımına, donanım bileşenlerinin seçilmesinden yapay zeka modellerinin kurgulanmasına kadar tüm süreçleri koordine ettim.",
+      "İşaret dili el ve parmak hareketlerinin gerçek zamanlı tespiti için veri seti oluşturulması ve model çıkarım optimizasyonunda çalıştım.",
+      "Teknik ön değerlendirme raporunu hazırlayarak jüri değerlendirmesinde 100 üzerinden 96 puan alıp Türkiye 1.si olmamızı sağladım."
+    ],
+    "challenges_and_solutions": "Giyilebilir donanım üzerindeki batarya ve işlem gücü kısıtları sebebiyle ağır modeller çalıştırılamıyordu. Model mimarisi iki aşamaya bölündü: Ağır tensör hesaplamaları yerine önce hafif el iskeleti (21 landmark) çıkarıldı, ardından sadece iskelet koordinatları hafif bir sinir ağına verildi. Bu sayede cihaz üstünde yüksek FPS elde edildi.",
+    "results_impact": "TEKNOFEST 2025 Engelsiz Yaşam Teknolojileri kategorisinde Türkiye genelindeki tüm projeler arasında Ön Değerlendirme Raporunda 96/100 puan alarak Türkiye 1.liği derecesi kazanıldı.",
+    "stack": [
+      "Python",
+      "Computer Vision",
+      "MediaPipe / YOLO-Pose",
+      "Deep Learning",
+      "Edge AI",
+      "Speech-to-Text (STT)",
+      "Text-to-Speech (TTS)",
+      "Giyilebilir Mimari"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "id": "kurumsal-sss-chatbot",
+    "title": "Kurumsal SSS Akıllı Asistanı (RAG & LoRA)",
+    "category": "Kurumsal Ar-Ge / NLP & LLM",
+    "badge": "Kurumsal Ar-Ge Prototipi",
+    "problem_statement": "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı'na her kayıt ve dönem başında binlerce benzer soru (şifre sıfırlama, e-posta aktivasyonu, Eduroam Wi-Fi ayarları, OBS girişleri vb.) iletilmektedir. Mevcut statik SSS sayfası kullanıcılar tarafından zor taranmakta ve destek personeline ciddi bir iş yükü oluşturmaktaydı.",
+    "architecture_overview": "Sistem RAG (Retrieval-Augmented Generation) tabanlı modern bir doğal dil işleme hattıdır: 1) Doküman İndeksleme: Üniversitenin bilgi bankası, yönergeleri ve SSS metinleri küçük anlamsal parçalara (chunks) bölündü ve embedding modelleriyle vektörleştirilerek vektör veritabanında indekslendi. 2) Semantik Getirme: Kullanıcı sorusu geldiğinde semantik benzerlik araması yapılarak en ilgili yönerge maddeleri çekilir. 3) Üretim & LoRA: Açık kaynaklı Türkçe destekli LLM modeli, kurumun resmi üslubu ve terminolojisine LoRA yöntemiyle ince ayar yapılarak cevabı üretir. 4) Kullanıcı Arayüzü: Django tabanlı hafif ve modern bir web sohbet arayüzü kurgulandı.",
+    "key_contributions": [
+      "RAG mimarisinin veri hazırlama, chunking ve retrieval hattını kurguladım.",
+      "Açık kaynaklı dil modellerinin kuruma özel üsluba adapte edilmesi için LoRA parametre optimizasyonu üzerinde araştırmalar yürüttüm.",
+      "Kullanıcıların rahatça etkileşime girebileceği modern web sohbet arayüzü prototipini geliştirdim."
+    ],
+    "challenges_and_solutions": "Klasik LLM'lerin hallucination problemi kurumsal süreçlerde kritik bir risk oluşturuyordu. Bu risk, prompt şablonuna sıkı kurallar ('Yalnızca verilen kaynak bağlamındaki doğrulanmış bilgiye dayanarak yanıt ver') eklenerek ve retrieval benzerlik eşikleri yüksek tutularak çözüldü.",
+    "results_impact": "Kurumun destek yükünü hafifletmeye yönelik çalışan bir prototip ortaya kondu; teknik incelemelerin ardından sistemin sonraki fazları için temel oluşturuldu.",
+    "stack": [
+      "RAG (Retrieval-Augmented Gen)",
+      "LoRA (Low-Rank Adaptation)",
+      "Open Source LLMs",
+      "Vector DB / Embeddings",
+      "Python",
+      "Django",
+      "Prompt Engineering"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "id": "3-subeli-ag-mimarisi",
+    "title": "3 Şubeli Kurumsal Ağ Mimarisi Simülasyonu",
+    "category": "Ağ Mühendisliği & Sanallaştırma",
+    "badge": "Zorunlu Donanım Stajı Projesi",
+    "problem_statement": "MEA Yazılım zorunlu donanım stajı kapsamında ele alınan senaryoda, hızla büyüyen ve üç farklı şehirde (Merkez, Şube 1, Şube 2) ofis açan bir firmanın kesintisiz, güvenli ve departmanlar arası izole haberleşebileceği bir kurumsal ağ topolojisi tasarlaması gerekiyordu.",
+    "architecture_overview": "Topoloji; Merkez ofis ve iki uzak şubenin WAN hatları üzerinden birbirine bağlandığı kurumsal bir ağ modelidir: 1) LAN Segmentasyonu: Her ofiste Yönetim, Yazılım Geliştirme, Muhasebe ve Misafir ağları için ayrı VLAN'lar oluşturuldu (802.1Q trunking). 2) Dinamik Yönlendirme: Şubeler arası ve omurga katmanında OSPF protokolü konfigüre edildi. 3) Ağ Servisleri: Her şube için DHCP havuzları, DNS yönlendirmeleri, NAT/PAT kuralları ve ACL güvenlik filtreleri yazıldı. 4) Sanallaştırma: Router ve switch'lere bağlı uç birimler sanal makineler ile ayağa kaldırılarak test edildi.",
+    "key_contributions": [
+      "3 şubenin IP adresleme planını (VLSM / Subnetting) tasarladım.",
+      "Cisco Packet Tracer üzerinde router, switch, access point ve firewall cihazlarının CLI konfigürasyonlarını yazdım.",
+      "Inter-VLAN routing (Router-on-a-stick) ve OSPF dinamik yönlendirme mimarisini kurdum.",
+      "Sanal makineler üzerinde gerçek ağ trafiği oluşturarak bağlantı testlerini (ping, traceroute, throughput) başarıyla tamamladım."
+    ],
+    "challenges_and_solutions": "Şubeler arası genişlemede IP adres israfını önlemek ve gelecekteki büyümelere hazır olmak için VLSM hesaplamaları yapıldı. Departmanlar arası yetkisiz erişimleri engellemek için ACL kuralları yazılarak sadece gerekli portlara (HTTP/HTTPS, SSH, DB) izin verildi.",
+    "results_impact": "Firmanın büyüme senaryosuna uygun, hata toleranslı ve test edilmiş bir kurumsal ağ mimarisi tasarlandı ve staj başarıyla tamamlandı.",
+    "stack": [
+      "Cisco Packet Tracer",
+      "Networking Protocols",
+      "VLAN (802.1Q)",
+      "OSPF Dynamic Routing",
+      "Inter-VLAN Routing",
+      "NAT / PAT",
+      "ACL Security Filtering",
+      "VLSM / Subnetting",
+      "VMware / VirtualBox"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "id": "c-sistem-programlama",
+    "title": "C ile Düşük Seviye Sistem Programlama & Bellek Yönetimi",
+    "category": "Sistem Programlama & Ar-Ge",
+    "badge": "Sürekli Gelişim & Düşük Seviye Ar-Ge",
+    "problem_statement": "Yüksek seviyeli diller geliştiriciye hız kazandırsa da bellek yönetimini, işaretçileri (pointers), önbellek yerelliğini ve POSIX sistem çağrılarını gizler. Ölçeklenebilir ve yüksek performanslı backend sistemleri tasarlayabilmek için bu soyutlamaların altında yatan temel mimarileri kavramak gereklidir.",
+    "architecture_overview": "Linux çekirdeği ve POSIX standartları üzerinde C dili ile yürütülen deneysel projeler bütünüdür: 1) Özel Bellek Yöneticileri: malloc/free arkasındaki mantığı anlamak için arena allocator ve pool allocator yapıları kodlandı. 2) Düşük Seviyeli Veri Yapıları: Bellek verimliliği yüksek hash table, linked list ve dinamik dizi implementasyonları geliştirildi. 3) Sistem Çağrıları: fork, exec, pipe, signal ve dosya tanımlayıcıları ile süreçler arası haberleşme (IPC) incelendi. 4) Bellek Analizi: Valgrind ve AddressSanitizer araçları ile memory leak ve buffer overflow analizleri yapıldı.",
+    "key_contributions": [
+      "Full-time Linux kullanıcısı olarak hobi ve araştırma projelerimi C ile kodluyorum.",
+      "Dinamik bellek tahsis algoritmaları ve pointer aritmetiği üzerine bağımsız modüller yazdım.",
+      "Valgrind ile bellek sızıntılarını ve erişim hatalarını sıfıra indirme pratikleri geliştirdim.",
+      "Boot.dev backend müfredatı ve LeetCode algoritmik problemleri ile teorik sistem bilgisini pekiştiriyorum."
+    ],
+    "challenges_and_solutions": "Manuel bellek yönetiminde yaşanan segmentation fault ve use-after-free hataları, AddressSanitizer ve gdb hata ayıklayıcısı yardımıyla analiz edilerek disiplinli kaynak sahipliği ile çözüldü.",
+    "results_impact": "Backend mimarilerini tasarlarken bellek maliyetlerini, asenkron çalışma modellerini ve sistem çağrısı ek yüklerini derinlemesine öngörebilen güçlü bir mühendislik temeli oluşturuldu.",
+    "stack": [
+      "C (C99 / C11)",
+      "Linux / POSIX",
+      "Memory Allocation (Arena / Pool)",
+      "Valgrind & AddressSanitizer",
+      "GDB Debugging",
+      "Pointer Arithmetic",
+      "IPC (Inter-Process)",
+      "Bash Scripting"
+    ],
+    "github": "https://github.com/turkerkiv",
+    "demo": ""
+  }
+]
+</script>
+
+<script src="js/blueprint.js"></script>
 
 <script>
-let site=null, projects=[];
-const $=id=>document.getElementById(id);
+// Project Modal Interaction Engine
+(function() {
+  const modal = document.getElementById("projectModal");
+  const closeBtn = document.getElementById("modalCloseBtn");
+  const modalCat = document.getElementById("modalCat");
+  const modalBadge = document.getElementById("modalBadge");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalProblem = document.getElementById("modalProblem");
+  const modalArchitecture = document.getElementById("modalArchitecture");
+  const modalContributions = document.getElementById("modalContributions");
+  const modalChallenges = document.getElementById("modalChallenges");
+  const modalResults = document.getElementById("modalResults");
+  const modalStack = document.getElementById("modalStack");
+  const modalLinks = document.getElementById("modalLinks");
 
-async function load(){
-  const [a,b]=await Promise.all([
-    fetch("./data/site.json"),
-    fetch("./data/projects.json")
-  ]);
-  if(!a.ok || !b.ok) throw new Error("JSON yüklenemedi.");
-  site=await a.json();
-  projects=await b.json();
-  render();
-}
-
-function render(){
-  const p=site.person;
-  $("name").textContent=p.name;
-  $("headline").textContent=p.intro || p.intro_short;
-  $("handNote").textContent=p.hand_note || "çalışır sistemler & Ar-Ge →";
-  $("github").href=p.github;
-  $("linkedin").href=p.linkedin;
-  $("cv").href=p.cv;
-  $("email").href="mailto:"+p.email;
-  $("email").textContent=p.email;
-  $("location").textContent=p.location;
-  $("now").textContent=p.now || "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı · Full-stack AI Engineer";
-
-  document.querySelectorAll("[data-label]").forEach(el=>{
-    if(site.labels && site.labels[el.dataset.label]){
-      el.textContent=site.labels[el.dataset.label];
-    }
-  });
-
-  $("focusLabel").textContent=site.focus.title;
-  $("focusList").innerHTML=site.focus.items.map(x=>`<span>${x}</span>`).join("");
-  $("aboutTitle").textContent=site.about.title;
-  $("aboutText").innerHTML=site.about.paragraphs.map(x=>`<p>${x}</p>`).join("");
-  $("stack").innerHTML=site.stack.map(x=>`<span>${x}</span>`).join("");
-
-  $("count").textContent=String(projects.length).padStart(2,"0");
-  $("list").innerHTML=projects.map((p,i)=>`
-    <article class="project" data-i="${i}">
-      <div class="project-no">PROJECT ${String(i+1).padStart(2,"0")}</div>
-      <div class="project-category">${p.category}</div>
-      <div class="project-arrow">↗</div>
-      <h2>${p.title}</h2>
-      <p>${p.short}</p>
-      <div class="tags">${p.stack.map(x=>`<span>${x}</span>`).join("")}</div>
-    </article>
-  `).join("");
-
-  document.querySelectorAll(".project").forEach(el=>{
-    el.addEventListener("click",()=>openProject(projects[Number(el.dataset.i)]));
-  });
-  $("year").textContent=new Date().getFullYear();
-}
-
-function openProject(p){
-  $("modalCat").textContent=p.category + (p.badge ? " · [" + p.badge + "]" : "");
-  $("modalTitle").textContent=p.title;
-  $("modalDesc").textContent=p.problem_statement ? (p.short + "<br><br>" + p.problem_statement) : (p.description || p.short);
-  $("modalStack").innerHTML=(p.stack||[]).map(x=>`<span>${x}</span>`).join("");
-  const links=[];
-  if(p.id) links.push(`<a href="project.html?id=${encodeURIComponent(p.id)}">Detaylı Vaka Analizi (Case Study) ↗</a>`);
-  if(p.github) links.push(`<a href="${p.github}" target="_blank" rel="noreferrer">GitHub ↗</a>`);
-  if(p.demo) links.push(`<a href="${p.demo}" target="_blank" rel="noreferrer">Demo ↗</a>`);
-  $("modalLinks").innerHTML=links.join("");
-  $("modal").classList.add("open");
-  $("modal").setAttribute("aria-hidden","false");
-  document.body.classList.add("modal-open");
-}
-function hideProject(){
-  $("modal").classList.remove("open");
-  $("modal").setAttribute("aria-hidden","true");
-  document.body.classList.remove("modal-open");
-}
-$("close").addEventListener("click",hideProject);
-$("modal").addEventListener("click",e=>{if(e.target===$("modal"))hideProject()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")hideProject()});
-
-/* ========================================================
-   TEKNİK ÇİZİM & KALEM MOTORU (HER ZAMAN AKTİF & OTO-LİNK ÇİZİMİ)
-   ======================================================== */
-const canvas = $("inkCanvas"), ctx = canvas.getContext("2d");
-const pencilCursor = $("pencilCursor");
-const clearBtn = $("clearSketch");
-const mobileDrawToggle = $("mobileDrawToggle");
-const exportBtn = $("exportBtn");
-
-const STORAGE_KEY = "blueprint_sketch_strokes";
-let isDrawing = false;
-let isDrawingEnabled = true;
-let lastToggleTime = 0;
-let isAnimatingClick = false;
-let activeColor = "#285bc4";
-let activeWidth = 2.2;
-let strokes = [];
-let currentStroke = null;
-let dpr = Math.min(devicePixelRatio || 1, 2);
-
-let pointerDownPos = { x: 0, y: 0 };
-let hasDragged = false;
-let targetClickable = null;
-let lastPointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-function isTouchOrMobile() {
-  return window.matchMedia("(max-width: 780px)").matches ||
-         window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
-         ("ontouchstart" in window && window.innerWidth <= 780);
-}
-
-function setDrawingEnabled(enabled) {
-  isDrawingEnabled = !!enabled;
-  document.body.classList.toggle("drawing-enabled", isDrawingEnabled);
-  document.body.classList.toggle("drawing-disabled", !isDrawingEnabled);
-
-  const toggleButtons = document.querySelectorAll(".nav-draw-toggle");
-  toggleButtons.forEach(btn => {
-    btn.classList.toggle("active", isDrawingEnabled);
-    btn.innerHTML = isDrawingEnabled
-      ? '<span>✏️</span> ÇİZİM: AÇIK'
-      : '<span>✏️</span> ÇİZ';
-    btn.setAttribute("title", isDrawingEnabled ? "Kalem Modunu Kapat (Kaydırma Modu)" : "Kalem Modunu Aç (Çizim Modu)");
-    btn.setAttribute("aria-pressed", isDrawingEnabled ? "true" : "false");
-  });
-
-  canvas.style.pointerEvents = isDrawingEnabled ? "auto" : "none";
-  canvas.style.touchAction = isDrawingEnabled ? "none" : "auto";
-
-  const floatingNav = $("floatingNav");
-  if (floatingNav && isTouchOrMobile()) {
-    const currentScrollY = Math.max(0, window.scrollY || window.pageYOffset || 0);
-    if (currentScrollY > 70) {
-      floatingNav.classList.add("visible");
-    } else {
-      floatingNav.classList.remove("visible");
-    }
-  }
-
-  if (!isDrawingEnabled) {
-    isDrawing = false;
-    currentStroke = null;
-    pencilCursor.classList.remove("drawing");
-    pencilCursor.style.opacity = "0";
-    redraw();
-  } else {
-    pencilCursor.style.opacity = "1";
-  }
-}
-
-function toggleDrawing() {
-  const now = Date.now();
-  if (now - lastToggleTime < 250) return;
-  lastToggleTime = now;
-  setDrawingEnabled(!isDrawingEnabled);
-}
-
-function updateFloatingNav() {
-  const floatingNav = $("floatingNav");
-  if (!floatingNav) return;
-
-  if (!isTouchOrMobile()) {
-    floatingNav.classList.remove("visible");
-    return;
-  }
-
-  const currentScrollY = Math.max(0, window.scrollY || window.pageYOffset || 0);
-  if (currentScrollY <= 70) {
-    floatingNav.classList.remove("visible");
-  } else {
-    floatingNav.classList.add("visible");
-  }
-}
-
-window.addEventListener("scroll", updateFloatingNav, { passive: true });
-
-function loadStrokes() {
+  let projectsData = [];
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      strokes = JSON.parse(saved);
-      redraw();
-    }
-  } catch (err) {
-    console.warn("Çizimler yüklenirken hata:", err);
-  }
-}
-
-function saveStrokes() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(strokes));
-  } catch (err) {
-    console.warn("Çizimler kaydedilirken hata:", err);
-  }
-}
-
-function clearStrokes() {
-  strokes = [];
-  currentStroke = null;
-  try {
-    localStorage.removeItem(STORAGE_KEY);
-  } catch (err) {}
-  redraw();
-}
-
-function undoStroke() {
-  if (strokes.length > 0) {
-    strokes.pop();
-    saveStrokes();
-    redraw();
-  }
-}
-
-function resize() {
-  dpr = Math.min(devicePixelRatio || 1, 2);
-  canvas.width = Math.round(innerWidth * dpr);
-  canvas.height = Math.round(innerHeight * dpr);
-  canvas.style.width = innerWidth + "px";
-  canvas.style.height = innerHeight + "px";
-  redraw();
-}
-window.addEventListener("resize", resize);
-
-function renderStrokeOnCtx(targetCtx, stroke) {
-  const pts = stroke.points;
-  if (!pts || pts.length === 0) return;
-
-  targetCtx.strokeStyle = stroke.color || "#285bc4";
-  targetCtx.fillStyle = stroke.color || "#285bc4";
-  targetCtx.lineWidth = stroke.width || 2.2;
-  targetCtx.lineCap = "round";
-  targetCtx.lineJoin = "round";
-
-  if (pts.length === 1) {
-    targetCtx.beginPath();
-    targetCtx.arc(pts[0].x, pts[0].y, (stroke.width || 2.2) / 1.5, 0, Math.PI * 2);
-    targetCtx.fill();
-    return;
+    const rawData = document.getElementById("projectsData").textContent;
+    projectsData = JSON.parse(rawData);
+  } catch(e) {
+    console.error("Projeler yüklenemedi:", e);
   }
 
-  targetCtx.beginPath();
-  targetCtx.moveTo(pts[0].x, pts[0].y);
-  for (let i = 1; i < pts.length - 1; i++) {
-    const midX = (pts[i].x + pts[i + 1].x) / 2;
-    const midY = (pts[i].y + pts[i + 1].y) / 2;
-    targetCtx.quadraticCurveTo(pts[i].x, pts[i].y, midX, midY);
-  }
-  targetCtx.lineTo(pts[pts.length - 1].x, pts[pts.length - 1].y);
-  targetCtx.stroke();
-}
+  function openProjectModal(projectId) {
+    const project = projectsData.find(p => p.id === projectId);
+    if (!project) return;
 
-function drawStroke(stroke) {
-  renderStrokeOnCtx(ctx, stroke);
-}
+    modalCat.textContent = project.category || "MÜHENDİSLİK PROJESİ";
+    modalBadge.textContent = project.badge || "Ar-Ge";
+    modalTitle.textContent = project.title || "";
+    modalProblem.textContent = project.problem_statement || "";
+    modalArchitecture.textContent = project.architecture_overview || "";
 
-function redraw() {
-  const scrollX = window.scrollX || window.pageXOffset || 0;
-  const scrollY = window.scrollY || window.pageYOffset || 0;
-
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  ctx.clearRect(0, 0, innerWidth, innerHeight);
-  ctx.translate(-scrollX, -scrollY);
-
-  for (let i = 0; i < strokes.length; i++) {
-    drawStroke(strokes[i]);
-  }
-  if (currentStroke && currentStroke.points.length > 0) {
-    drawStroke(currentStroke);
-  }
-}
-window.addEventListener("scroll", redraw, { passive: true });
-
-function updatePencilPosition(clientX, clientY) {
-  pencilCursor.style.left = clientX + "px";
-  pencilCursor.style.top = clientY + "px";
-}
-
-window.addEventListener("pointermove", e => {
-  lastPointer.x = e.clientX;
-  lastPointer.y = e.clientY;
-  if (!isAnimatingClick) {
-    updatePencilPosition(e.clientX, e.clientY);
-  }
-});
-
-document.addEventListener("pointerleave", () => {
-  pencilCursor.style.opacity = "0";
-});
-document.addEventListener("pointerenter", () => {
-  pencilCursor.style.opacity = "1";
-});
-
-function getClickableElement(clientX, clientY) {
-  const elements = document.elementsFromPoint(clientX, clientY);
-  for (const el of elements) {
-    if (el === canvas || el === pencilCursor || el.closest("#pencilCursor")) continue;
-    const clickable = el.closest("a, button, .project, .close, #clearSketch, #exportBtn, #mobileDrawToggle");
-    if (clickable) return clickable;
-  }
-  return null;
-}
-
-function generateBoxPoints(rect) {
-  const pad = 6;
-  const x = rect.left + (window.scrollX || window.pageXOffset || 0) - pad;
-  const y = rect.top + (window.scrollY || window.pageYOffset || 0) - pad;
-  const w = rect.width + pad * 2;
-  const h = rect.height + pad * 2;
-
-  const pts = [];
-  const steps = 7;
-  pts.push({ x: x + 6, y: y });
-
-  for (let i = 1; i <= steps; i++) {
-    const t = i / steps;
-    const wobble = Math.sin(t * Math.PI) * 1.5;
-    pts.push({ x: x + 6 + t * (w - 3), y: y - wobble });
-  }
-  for (let i = 1; i <= steps; i++) {
-    const t = i / steps;
-    const wobble = Math.sin(t * Math.PI) * 1.5;
-    pts.push({ x: x + w + 3 + wobble, y: y + t * (h + 3) });
-  }
-  for (let i = 1; i <= steps; i++) {
-    const t = i / steps;
-    const wobble = Math.sin(t * Math.PI) * 1.5;
-    pts.push({ x: x + w + 3 - t * (w + 6), y: y + h + 3 + wobble });
-  }
-  for (let i = 1; i <= steps; i++) {
-    const t = i / steps;
-    const wobble = Math.sin(t * Math.PI) * 1.5;
-    pts.push({ x: x - 3 - wobble, y: y + h + 3 - t * (h + 5) });
-  }
-  const overshootLen = Math.min(w * 0.35, 28);
-  for (let i = 1; i <= 4; i++) {
-    const t = i / 4;
-    pts.push({ x: x - 3 + t * overshootLen, y: y - 2 + t * 1.5 });
-  }
-  return pts;
-}
-
-function animateSketchAround(element, onComplete) {
-  const targetToCircle = element.classList.contains("project")
-    ? (element.querySelector("h2") || element)
-    : element;
-
-  const rect = targetToCircle.getBoundingClientRect();
-  const allPts = generateBoxPoints(rect);
-
-  const animStroke = {
-    color: activeColor,
-    width: 2.2,
-    points: []
-  };
-
-  isAnimatingClick = true;
-  pencilCursor.classList.add("drawing");
-
-  const startTime = performance.now();
-  const duration = 210;
-
-  function step(now) {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const targetIdx = Math.floor(progress * (allPts.length - 1));
-
-    animStroke.points = allPts.slice(0, targetIdx + 1);
-
-    if (animStroke.points.length > 0) {
-      const latest = animStroke.points[animStroke.points.length - 1];
-      updatePencilPosition(
-        latest.x - (window.scrollX || window.pageXOffset || 0),
-        latest.y - (window.scrollY || window.pageYOffset || 0)
-      );
-    }
-
-    currentStroke = animStroke;
-    redraw();
-
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    } else {
-      currentStroke = null;
-      strokes.push(animStroke);
-      saveStrokes();
-      redraw();
-
-      pencilCursor.classList.remove("drawing");
-      isAnimatingClick = false;
-      updatePencilPosition(lastPointer.x, lastPointer.y);
-
-      if (onComplete) onComplete();
-    }
-  }
-
-  requestAnimationFrame(step);
-}
-
-function executeClick(el) {
-  if (!el) return;
-
-  if (el.id === "mobileDrawToggle" || el.closest("#mobileDrawToggle")) {
-    toggleDrawing();
-    return;
-  }
-
-  if (el.id === "clearSketch" || el.closest("#clearSketch")) {
-    clearStrokes();
-    const btn = el.closest("#clearSketch") || el;
-    const orig = btn.textContent;
-    btn.textContent = "TEMİZLENDİ ⌫";
-    setTimeout(() => { btn.textContent = orig; }, 1200);
-    return;
-  }
-
-  if (el.id === "exportBtn" || el.closest("#exportBtn")) {
-    captureAndDownloadBlueprint();
-    return;
-  }
-
-  const projectCard = el.closest(".project");
-  if (projectCard) {
-    const idx = Number(projectCard.dataset.i);
-    if (!isNaN(idx) && projects[idx]) {
-      openProject(projects[idx]);
-    }
-    return;
-  }
-
-  const closeBtn = el.closest("#close");
-  if (closeBtn) {
-    hideProject();
-    return;
-  }
-
-  const link = el.closest("a");
-  if (link) {
-    const href = link.getAttribute("href") || "";
-    if (href.startsWith("#")) {
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    } else if (link.target === "_blank") {
-      window.open(link.href, "_blank");
-    } else if (href && !href.startsWith("javascript:")) {
-      window.location.href = link.href;
-    }
-    return;
-  }
-
-  if (el.tagName.toLowerCase() === "button") {
-    el.click();
-  }
-}
-
-async function captureAndDownloadBlueprint() {
-  const exportBtn = $("exportBtn");
-  const origText = exportBtn ? exportBtn.textContent : "ÇIKTI AL ⤓";
-  if (exportBtn) exportBtn.textContent = "HAZIRLANIYOR... ⏳";
-
-  canvas.style.display = "none";
-  pencilCursor.style.display = "none";
-  const floatingNav = $("floatingNav");
-  if (floatingNav) floatingNav.style.display = "none";
-
-  try {
-    if (!window.html2canvas) {
-      await new Promise((res, rej) => {
-        const s = document.createElement("script");
-        s.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
-        s.onload = res;
-        s.onerror = rej;
-        document.head.appendChild(s);
+    // Bullets
+    modalContributions.innerHTML = "";
+    if (Array.isArray(project.key_contributions)) {
+      project.key_contributions.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        modalContributions.appendChild(li);
       });
     }
 
-    const prevScrollX = window.scrollX || window.pageXOffset || 0;
-    const prevScrollY = window.scrollY || window.pageYOffset || 0;
-    window.scrollTo(0, 0);
+    modalChallenges.textContent = project.challenges_and_solutions || "";
+    modalResults.textContent = project.results_impact || "";
 
-    await new Promise(r => setTimeout(r, 80));
-
-    const fullCanvas = await window.html2canvas(document.documentElement, {
-      backgroundColor: "#edf3f8",
-      scale: 1,
-      useCORS: true,
-      logging: false
-    });
-
-    window.scrollTo(prevScrollX, prevScrollY);
-
-    const exportCtx = fullCanvas.getContext("2d");
-    for (const stroke of strokes) {
-      renderStrokeOnCtx(exportCtx, stroke);
+    // Stack tags
+    modalStack.innerHTML = "";
+    if (Array.isArray(project.stack)) {
+      project.stack.forEach(tech => {
+        const span = document.createElement("span");
+        span.textContent = tech;
+        modalStack.appendChild(span);
+      });
     }
 
-    fullCanvas.toBlob(blob => {
-      if (!blob) throw new Error("Görüntü oluşturulamadı.");
+    // Links
+    modalLinks.innerHTML = "";
+    if (project.github) {
       const a = document.createElement("a");
-      const dateStr = new Date().toISOString().slice(0, 10);
-      a.download = `turker-kivilcim-blueprint-portfolio-${dateStr}.png`;
-      a.href = URL.createObjectURL(blob);
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(a.href);
-
-      if (exportBtn) {
-        exportBtn.textContent = "İNDİRİLDİ! ✓";
-        setTimeout(() => { exportBtn.textContent = origText; }, 2000);
-      }
-    }, "image/png");
-
-  } catch (err) {
-    console.error("Çıktı alınırken hata:", err);
-    if (exportBtn) {
-      exportBtn.textContent = "HATA OLUŞTU!";
-      setTimeout(() => { exportBtn.textContent = origText; }, 2000);
+      a.href = project.github;
+      a.target = "_blank";
+      a.rel = "noreferrer";
+      a.className = "btn btn-outline";
+      a.innerHTML = "GITHUB KODLARI ↗";
+      modalLinks.appendChild(a);
     }
-  } finally {
-    canvas.style.display = "block";
-    pencilCursor.style.display = (isDrawingEnabled && !window.matchMedia("(hover: none) and (pointer: coarse)").matches) ? "block" : "none";
-    if (floatingNav) floatingNav.style.display = "";
-    redraw();
-  }
-}
-
-canvas.addEventListener("pointerdown", e => {
-  if (!isDrawingEnabled) return;
-  if (e.button !== 0 || isAnimatingClick) return;
-  e.preventDefault();
-  canvas.setPointerCapture(e.pointerId);
-
-  isDrawing = true;
-  hasDragged = false;
-  pointerDownPos = { x: e.clientX, y: e.clientY };
-  targetClickable = getClickableElement(e.clientX, e.clientY);
-
-  pencilCursor.classList.add("drawing");
-
-  const ptX = Math.round(e.pageX ?? (e.clientX + (window.scrollX || window.pageXOffset || 0)));
-  const ptY = Math.round(e.pageY ?? (e.clientY + (window.scrollY || window.pageYOffset || 0)));
-
-  currentStroke = {
-    color: activeColor,
-    width: activeWidth,
-    points: [{ x: ptX, y: ptY }]
-  };
-  redraw();
-});
-
-canvas.addEventListener("pointermove", e => {
-  if (!isDrawingEnabled || !isDrawing || !currentStroke || isAnimatingClick) return;
-  e.preventDefault();
-
-  const dist = Math.hypot(e.clientX - pointerDownPos.x, e.clientY - pointerDownPos.y);
-  if (dist > 7) {
-    hasDragged = true;
-    targetClickable = null;
-  }
-
-  const ptX = Math.round(e.pageX ?? (e.clientX + (window.scrollX || window.pageXOffset || 0)));
-  const ptY = Math.round(e.pageY ?? (e.clientY + (window.scrollY || window.pageYOffset || 0)));
-  const lastPt = currentStroke.points[currentStroke.points.length - 1];
-
-  const dx = ptX - lastPt.x;
-  const dy = ptY - lastPt.y;
-  if (dx * dx + dy * dy >= 4) {
-    currentStroke.points.push({ x: ptX, y: ptY });
-    redraw();
-  }
-});
-
-function finishDrawing(e) {
-  if (!isDrawing) return;
-  isDrawing = false;
-  pencilCursor.classList.remove("drawing");
-
-  if (!hasDragged && targetClickable) {
-    const clicked = targetClickable;
-    currentStroke = null;
-    targetClickable = null;
-    redraw();
-
-    if (clicked.id === "mobileDrawToggle" || clicked.closest("#mobileDrawToggle")) {
-      toggleDrawing();
-      return;
+    if (project.demo) {
+      const a = document.createElement("a");
+      a.href = project.demo;
+      a.target = "_blank";
+      a.rel = "noreferrer";
+      a.className = "btn btn-primary";
+      a.innerHTML = "CANLI DEMO ↗";
+      modalLinks.appendChild(a);
     }
 
-    animateSketchAround(clicked, () => {
-      executeClick(clicked);
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  }
+
+  function closeModal() {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  }
+
+  // Bind Cards
+  document.querySelectorAll(".project").forEach(card => {
+    card.addEventListener("click", () => {
+      const pId = card.getAttribute("data-project-id");
+      if (pId) openProjectModal(pId);
     });
-    return;
-  }
 
-  if (currentStroke && currentStroke.points.length > 0) {
-    strokes.push(currentStroke);
-    saveStrokes();
-  }
-  currentStroke = null;
-  redraw();
-}
-
-canvas.addEventListener("pointerup", finishDrawing);
-canvas.addEventListener("pointercancel", finishDrawing);
-
-document.querySelectorAll(".nav-draw-toggle").forEach(btn => {
-  btn.addEventListener("click", e => {
-    e.preventDefault();
-    toggleDrawing();
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        const pId = card.getAttribute("data-project-id");
+        if (pId) openProjectModal(pId);
+      }
+    });
   });
-});
 
-document.querySelectorAll(".nav-clear-btn").forEach(btn => {
-  btn.addEventListener("click", e => {
-    e.preventDefault();
-    clearStrokes();
-    const orig = btn.textContent;
-    btn.textContent = "TEMİZLENDİ ⌫";
-    setTimeout(() => { btn.textContent = orig; }, 1200);
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
   });
-});
 
-const floatLogo = $("floatNavLogo");
-if (floatLogo) {
-  floatLogo.addEventListener("click", e => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
-if (exportBtn) {
-  exportBtn.addEventListener("click", e => {
-    e.preventDefault();
-    captureAndDownloadBlueprint();
-  });
-}
-
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
-    if ($("modal").classList.contains("open")) {
-      hideProject();
-      return;
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("open")) {
+      closeModal();
     }
-  }
-
-  if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) {
-    e.preventDefault();
-    undoStroke();
-  }
-
-  if ((e.key === "c" || e.key === "C") && !e.ctrlKey && !e.metaKey) {
-    const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
-    if (tag !== "input" && tag !== "textarea" && !$("modal").classList.contains("open")) {
-      clearStrokes();
-    }
-  }
-});
-
-setDrawingEnabled(!isTouchOrMobile());
-updateFloatingNav();
-
-window.matchMedia("(max-width: 780px)").addEventListener("change", e => {
-  if (e.matches) {
-    setDrawingEnabled(false);
-  } else {
-    setDrawingEnabled(true);
-  }
-  updateFloatingNav();
-});
-
-resize();
-loadStrokes();
-load().catch(e=>console.error(e));
+  });
+})();
 </script>
+
 </body>
 </html>
