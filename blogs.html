@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog & Teknik Notlar — Türker Kıvılcım / Blueprint Portfolio</title>
+<meta name="description" content="Türker Kıvılcım mühendislik blogu: Dağıtık sistemler, görüntü işleme, konuşma tanıma ve C ile düşük seviyeli sistemler üzerine yazılar.">
+<link rel="stylesheet" href="css/blueprint.css">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<nav id="floatingNav" class="floating-nav" aria-label="Mobil Hızlı Menü">
+  <a id="floatNavLogo" href="index.html" class="floating-nav-logo" title="Ana Sayfaya Dön">TK-2026</a>
+  <div class="floating-nav-actions">
+    <a href="index.html" class="floating-nav-link">ANA SAYFA</a>
+    <a href="about.html" class="floating-nav-link">HAKKIMDA</a>
+    <a href="projects.html" class="floating-nav-link">PROJELER</a>
+    <a href="certificates.html" class="floating-nav-link">BELGELER</a>
+    <a class="nav-btn nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
+    <a class="nav-btn nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
+  </div>
+</nav>
+
+<div class="site">
+  <header class="top">
+    <div class="brand-block">
+      <a href="index.html" class="brand-link">TK-2026 / SOFTWARE</a>
+      <span class="coord">39°00'N · 35°00'E</span>
+    </div>
+    <nav class="nav-links" aria-label="Ana Gezinti">
+      <a href="index.html" class="nav-link">ANA SAYFA</a>
+      <a href="about.html" class="nav-link">HAKKIMDA</a>
+      <a href="projects.html" class="nav-link">PROJELER</a>
+      <a href="certificates.html" class="nav-link">SERTİFİKALAR & SINAVLAR</a>
+      <a href="blogs.html" class="nav-link active">BLOG</a>
+    </nav>
+    <div class="nav-controls">
+      <a class="nav-btn nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
+      <a class="nav-btn nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
+      <a class="nav-btn nav-export-btn" href="javascript:void(0)" title="Sayfa ve Çizimlerin Görüntüsünü İndir">ÇIKTI AL ⤓</a>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <h1 class="page-title">Blog & Teknik Notlar</h1>
+    <p class="page-subtitle">
+      Backend mimarileri, akustik modelleme (Kaldi), bilgisayarlı görü ve C ile düşük seviyeli sistem programlama deneyimleri.
+    </p>
+  </div>
+
+  <!-- Blog Content Area -->
+  <div id="blogContentArea"></div>
+
+  <footer>
+    <span>© <span id="year"></span> Türker Kıvılcım · Blueprint Portfolio</span>
+    <span><a href="index.html" style="color:var(--blue);text-decoration:none;">← Ana Sayfaya Dön</a></span>
+  </footer>
+</div>
+
+<script src="js/blueprint.js"></script>
+<script>
+// Simple Lightweight Markdown Parser
+function parseMarkdown(md) {
+  let html = md
+    .replace(/^### (.*$)/gim, '<h3 style="font:600 20px Georgia,serif;margin:20px 0 10px;color:var(--ink);">$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2 style="font:600 24px Georgia,serif;margin:24px 0 12px;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:6px;">$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1 style="font:700 28px Georgia,serif;margin:28px 0 14px;color:var(--ink);">$1</h1>')
+    .replace(/^\> (.*$)/gim, '<blockquote style="border-left:3px solid var(--blue);padding:6px 14px;background:rgba(234,241,249,.6);margin:14px 0;font-style:italic;">$1</blockquote>')
+    .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+    .replace(/\*(.*)\*/gim, '<em>$1</em>')
+    .replace(/```([a-z]*)\n([\s\S]*?)```/gim, '<pre style="background:#1b2836;color:#e6edf3;padding:14px;border-radius:4px;overflow-x:auto;font:12px monospace;line-height:1.5;"><code>$2</code></pre>')
+    .replace(/`([^`]+)`/gim, '<code style="background:rgba(234,241,249,.9);padding:2px 5px;font:11.5px monospace;color:var(--blue);border:1px solid #bfd0e0;">$1</code>')
+    .replace(/^\- (.*$)/gim, '<li style="margin-bottom:6px;">$1</li>')
+    .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" style="color:var(--blue);font-weight:600;">$1</a>')
+    .replace(/\n\n/gim, '</p><p style="font-size:14px;line-height:1.7;color:#243545;margin:0 0 14px;">');
+
+  return '<p style="font-size:14px;line-height:1.7;color:#243545;margin:0 0 14px;">' + html + '</p>';
+}
+
+async function initBlog() {
+  const container = document.getElementById("blogContentArea");
+  const params = new URLSearchParams(window.location.search);
+  const postSlug = params.get("post");
+
+  try {
+    const res = await fetch("./data/blogs/posts.json");
+    const posts = await res.json();
+
+    if (postSlug) {
+      // Load specific markdown post
+      const targetPost = posts.find(p => p.slug === postSlug);
+      try {
+        const mdRes = await fetch(`./data/blogs/${postSlug}.md`);
+        if (!mdRes.ok) throw new Error("Yazı bulunamadı.");
+        const mdContent = await mdRes.text();
+
+        container.innerHTML = `
+          <div style="margin-bottom: 20px;">
+            <a href="blogs.html" class="case-study-back">← TÜM YAZILARA DÖN</a>
+          </div>
+          <article class="card-section">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <span style="font:700 11px 'Courier New',monospace;color:var(--blue);">${targetPost ? targetPost.date : 'TEKNİK NOT'}</span>
+              <span class="entry-badge">${targetPost ? targetPost.reading_time : 'Yazı'}</span>
+            </div>
+            <h1 class="page-title" style="margin-bottom:18px;">${targetPost ? targetPost.title : postSlug}</h1>
+            <div class="tags" style="margin-bottom:20px;">
+              ${(targetPost && targetPost.tags ? targetPost.tags : []).map(t => `<span>${t}</span>`).join("")}
+            </div>
+            <div style="border-top:1px solid var(--line);padding-top:20px;">
+              ${parseMarkdown(mdContent)}
+            </div>
+          </article>
+        `;
+        return;
+      } catch (err) {
+        console.warn("Markdown yükleme hatası:", err);
+      }
+    }
+
+    // List view
+    if (posts && posts.length > 0) {
+      container.innerHTML = `
+        <div class="entry-list">
+          ${posts.map(p => `
+            <div class="card-section" style="margin-bottom:16px;">
+              <div class="entry-header">
+                <div>
+                  <h3 class="entry-title">
+                    <a href="blogs.html?post=${encodeURIComponent(p.slug)}" style="text-decoration:none;color:var(--ink);">
+                      ${p.title}
+                    </a>
+                  </h3>
+                  <div class="entry-subtitle">${p.date} · ${p.reading_time || '5 dk okuma'}</div>
+                </div>
+                <span class="entry-badge">Teknik Yazı</span>
+              </div>
+              <p class="entry-desc" style="margin:10px 0 14px;">${p.summary}</p>
+              <div class="tags" style="margin-bottom:12px;">
+                ${(p.tags || []).map(t => `<span>${t}</span>`).join("")}
+              </div>
+              <a href="blogs.html?post=${encodeURIComponent(p.slug)}" style="font:700 11px 'Courier New',monospace;color:var(--blue);text-decoration:none;">
+                YAZIYI OKU →
+              </a>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    } else {
+      // Empty State (Ready for MD files)
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">📝</div>
+          <h2 class="empty-state-title">Teknik Yazılar Çok Yakında</h2>
+          <p class="empty-state-desc">
+            Bu sayfa <code>data/blogs/</code> dizininde yer alan Markdown (.md) dosyalarını dinamik olarak yüklemek üzere hazırlandı.<br><br>
+            Yakında: <strong>Kaldi ile Düşük Güç Tüketimli Türkçe Ses Tanıma</strong>, <strong>YOLOv11 ve ByteTrack ile Gerçek Zamanlı Araç Sayımı</strong> ve <strong>C Dilinde Özel Bellek Tahsis Ediciler (Arena Allocators)</strong> üzerine derinlemesine teknik yazılar burada yayımlanacaktır.
+          </p>
+          <div style="margin-top: 24px;">
+            <a href="projects.html" class="btn btn-primary">⚙️ Projeleri İncele</a>
+            <a href="index.html" class="btn btn-outline" style="margin-left: 8px;">🏠 Ana Sayfaya Dön</a>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  } catch (err) {
+    console.error("Blog yüklenirken hata:", err);
+  }
+}
+
+initBlog();
+</script>
+</body>
+</html>

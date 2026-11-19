@@ -1,157 +1,189 @@
 [
   {
+    "id": "kampus-giris-sayim",
     "title": "Kampüs Giriş Sayım & Canlı İzleme Sistemi",
     "category": "Canlı Sistem / Görüntü İşleme",
     "badge": "Canlıda Aktif · Erciyes Üniversitesi",
-    "short": "Nizamiyelerdeki kamera akışlarından araç ve yaya geçişlerini sayan ve WebSocket üzerinden anlık yayınlayan uçtan uca görüntü işleme sistemi.",
-    "description": "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı bünyesinde sıfırdan mimarilendirildi ve canlıya alındı. Kamera nizamiyelerinden gelen RTSP akışları için veri seti toplama ve etiketleme yapıldı. YOLO modelleri (v8/v11) farklı yöntemlerle defalarca eğitilerek performans ve doğrulukları kıyaslandı. Nesne takip (ByteTrack / BoT-SORT) algoritmaları entegre edildi. Django tabanlı full-stack mimari ile hem idari yönetim paneli hem de WebSocket üzerinden düşük gecikmeli canlı kamera akışı yayını kodlandı. Sanal sunucu (Linux VM), Nginx ters vekil ve güvenlik kamerası IP yönlendirmeleri tamamlanarak üniversitede aktif kullanıma alındı; sistem canlıda geliştirilmeye devam edilmektedir.",
+    "featured": true,
+    "short": "Kampüs nizamiyelerindeki kamera akışlarından araç ve kişi girişlerini sayan, web panelinde istatistiklerini sunan ve WebSocket ile anlık yayınlayan uçtan uca görüntü işleme sistemi.",
+    "problem_statement": "Erciyes Üniversitesi'nin birden fazla ana nizamiyesinden gün içinde binlerce araç ve yaya geçişi gerçekleşmektedir. Manuel sayım veya harici sensör altyapıları yüksek maliyet ve bakım gerektiriyordu. Güvenlik ve idari birimlerin nizamiyelerdeki yoğunluğu gerçek zamanlı takip edebileceği, geriye dönük istatistiki raporlar alabileceği ve seçilen kameranın işlenmiş yapay zeka akışını düşük gecikmeyle web üzerinden izleyebileceği merkezi bir sisteme ihtiyaç duyuldu.",
+    "architecture_overview": "Sistem mimarisi 4 temel katmandan oluşmaktadır: 1) Kamera Veri Toplama Katmanı (Nizamiyelerdeki IP güvenlik kameralarından RTSP üzerinden yüksek çözünürlüklü video akışları alınır), 2) Yapay Zeka & Nesne Takip Motoru (Python, OpenCV, YOLO modelleri ve ByteTrack takip algoritması ile araç ve kişi ayrımı yapılarak sanal giriş çizgilerini geçen nesneler tekil ID ile sayılır), 3) Web & İstatistik Sunucusu (Django REST Framework tabanlı backend, sayım verilerini zaman damgalı olarak PostgreSQL veritabanına yazar; Redis/Channels üzerinden WebSocket yayınını yönetir), 4) Dağıtım & Altyapı (Linux sanal sunucu üzerinde Nginx ters vekili, Gunicorn ve Daphne asenkron sunucuları ile canlıya alındı).",
+    "key_contributions": [
+      "Sistemin veri toplama, yapay zeka motoru, web paneli ve sunucu altyapısını sıfırdan kurdum.",
+      "Kayseri iklimi ve farklı ışık koşulları (gece, yağmur, kar, yoğun sis) için özel kampus video veri seti topladım, temizledim ve etiketleme düzeltmelerini tamamladım.",
+      "YOLO modellerini (v8 ve v11 varyantları) aynı veri seti üzerinde hassasiyet (mAP), çıkarım hızı (FPS) ve donanım tüketimi kriterleriyle defalarca eğitip kıyasladım.",
+      "Tekrarlayan sayımları engellemek ve araçların birbirini perdelediği anlarda takibi kaybetmemek için ByteTrack nesne takip algoritmasını optimize ettim.",
+      "Django ile modern bir yönetim ve istatistik paneli kodladım. İdari birimler için saatlik, günlük ve haftalık geçiş grafiklerini hazırladım.",
+      "Seçilen kameranın yapay zeka tarafından çizilmiş bounding-box ve sayım çizgisi içeren çıktısını WebSocket üzerinden düşük gecikmeyle tarayıcıya aktaran yayın hattını kurdum.",
+      "Üniversite bilgi işlem ağ ekibi ve güvenlik birimleriyle koordine olarak kamera IP routing, domain tanımlama, Nginx SSL yapılandırması ve Linux sanal sunucu kurulumunu tamamlayarak projeyi canlıya aldım."
+    ],
+    "challenges_and_solutions": "Ana teknik zorluk, yüksek çözünürlüklü çoklu RTSP akışlarının sunucu GPU/CPU kaynaklarını aşırı tüketmesi ve WebSocket video yayınında yaşanan gecikmeydi. Bu durum, video karelerinin çözünürlüklerini çıkarım motoruna girmeden önce dinamik ölçeklendirerek, çıkarım işlemlerini ana web sunucusundan izole çalışan asenkron bir worker mimarisine alarak ve WebSocket üzerinde JPEG/WebP sıkıştırma uygulayarak aşıldı. Bu sayede gecikme 250ms altına indirildi.",
+    "results_impact": "Sistem Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı bünyesinde canlıya alınarak resmi kullanıma girdi. Nizamiyelerdeki geçişler 7/24 otomatik olarak sayılmakta, yoğunluk saatleri raporlanmakta ve sistem canlıda aktif olarak geliştirilmeye devam etmektedir.",
     "stack": [
       "Python",
-      "YOLO",
-      "Django",
-      "WebSocket",
+      "YOLO (v8 / v11)",
       "OpenCV",
       "ByteTrack",
+      "Django",
+      "Django Channels / WebSocket",
+      "Redis",
+      "PostgreSQL",
       "Nginx",
-      "Linux VM"
+      "Linux VM",
+      "RTSP Streaming"
     ],
     "github": "",
     "demo": ""
   },
   {
+    "id": "turkce-konusma-tanima-tubitak",
     "title": "Düşük Güç Tüketimli Türkçe Konuşma Tanıma (TÜBİTAK 2209-A)",
     "category": "TÜBİTAK Ar-Ge / Akustik Modelleme",
     "badge": "TÜBİTAK Onaylı Sonuç Raporu · Proje Yürütücüsü",
-    "short": "Gömülü ve sınır sistemler için Kaldi Toolkit ve hibrit akustik modellerle Türkçe ses tanıma sistemi.",
-    "description": "2024/1 TÜBİTAK 2209-A programı kapsamında yürütücülüğünü üstlendiğim ve sonuç raporu onaylanarak başarıyla sonuçlandırılan araştırma projesidir. Düşük güç tüketimli ve kısıtlı kaynaklara sahip sistemlerde Türkçe konuşma tanıma (Speech Recognition) problemine odaklanıldı. İlk etapta hmmlearn gibi Python kütüphaneleriyle yapılan prototiplemelerin ardından, endüstriyel ölçeklenebilirlik ve kararlılık için Kaldi ASR Toolkit altyapısına geçildi. GMM-HMM (Gaussian Mixture Model - Hidden Markov Model) ve N-gram dil modelleri üzerinde ses verisi hazırlama, akustik öznitelik çıkarma (MFCC), model eğitimi ve WER (Word Error Rate) testleri başarıyla tamamlandı.",
+    "featured": true,
+    "short": "Gömülü ve kısıtlı kaynaklı sınır sistemlerde çalışabilen, Kaldi ASR Toolkit ve hibrit akustik modellerle Türkçe ses tanıma mimarisi.",
+    "problem_statement": "Güncel derin öğrenme tabanlı konuşma tanıma (ASR) modelleri (Whisper, Conformer vb.) devasa parametre sayıları ve yüksek bellek/işlemci gereksinimleri sebebiyle Raspberry Pi, gömülü SoC kartları veya düşük güç tüketimli sınır cihazlarda gerçek zamanlı çalışamamaktadır. İnternet bağlantısına ihtiyaç duymayan, yerel olarak çalışan ve düşük enerji harcayan gömülü sistemler için optimize edilmiş bir Türkçe ASR mimarisine ihtiyaç vardı.",
+    "architecture_overview": "Proje, endüstri standardı Kaldi Speech Recognition Toolkit üzerinde inşa edildi. 1) Ses Önişleme & Akustik Öznitelik Çıkarma: Ham ses dalga formları 16kHz örnekleme hızına standardize edildi ve MFCC (Mel-Frequency Cepstral Coefficients) öznitelik vektörleri çıkarıldı. 2) Akustik Modelleme: Monophone, Triphone (tri1, tri2, tri3) ve LDA-MLLT (Linear Discriminant Analysis - Maximum Likelihood Linear Transformation) ile SAT (Speaker Adaptive Training) tabanlı GMM-HMM hibrit modelleri eğitildi. 3) Dil Modelleme & Sözlük: Türkçe fonetik sözlük (lexicon) oluşturuldu ve N-gram (SRILM) tabanlı dil modeli HCLG çözme grafiğine (decoding graph) entegre edildi.",
+    "key_contributions": [
+      "2024/1 dönemi TÜBİTAK 2209-A programı kapsamında araştırma projesinin yürütücülüğünü üstlendim.",
+      "İlk aşamalarda hmmlearn gibi saf Python kütüphaneleriyle deneyler yaptım; ölçeklenebilirlik, bellek yönetimi ve kararlılık sınırlarını gözlemleyerek projeyi C++ tabanlı Kaldi altyapısına taşıdım.",
+      "Türkçe ses veri kümeleri üzerinde veri temizleme, segmentasyon, gürültü filtreleme ve transkripsiyon hizalama (alignment) aşamalarını yönettim.",
+      "GMM-HMM akustik modelleri için farklı durum (HMM states) ve karışım (Gaussian mixtures) sayılarını test ederek düşük güç tüketimli donanımlar için en uygun hiperparametre setini tespit ettim.",
+      "Akademik danışmanım Ar. Gör. Mehmet Elmacı ve proje ortaklarımla birlikte 1 yıllık Ar-Ge sürecini tamamladım, teknik sonuç raporunu hazırladım ve TÜBİTAK'tan başarı onayını aldım."
+    ],
+    "challenges_and_solutions": "Türkçe'nin eklemeli (sondan eklemeli) dil yapısı sebebiyle kelime haznesi (vocabulary) çok hızlı genişlemekte ve 'Out-of-Vocabulary' (OOV) oranı artmaktaydı. Ayrıca saf Python kütüphaneleri bellek sızıntısına ve yetersiz çıkarım hızına yol açıyordu. Kaldi'nin FST (Finite State Transducer) tabanlı arama grafiği optimizasyonu ve morfolojik tabanlı sözlük tasarımı ile WER (Word Error Rate) belirgin şekilde düşürüldü ve gömülü ortamlarda kararlı çıkarım sağlandı.",
+    "results_impact": "Projenin tüm çıktıları ve sonuç raporu TÜBİTAK tarafından incelenerek başarıyla kabul edildi. Düşük kaynaklı donanımlarda yerel olarak çalışan optimize edilmiş bir Türkçe akustik model hattı elde edildi.",
     "stack": [
-      "Kaldi ASR",
+      "Kaldi ASR Toolkit",
       "Python",
+      "C++",
       "GMM-HMM",
-      "N-gram",
+      "N-gram / SRILM",
+      "MFCC Öznitelik Çıkarımı",
       "hmmlearn",
-      "Linux / Bash",
-      "Ses İşleme"
+      "Linux / Bash Scripting",
+      "Akustik Modelleme"
     ],
     "github": "",
     "demo": ""
   },
   {
+    "id": "engelsiz-gozluk-teknofest",
     "title": "Engelsiz Gözlük — EruAI Ada Lovelace (TEKNOFEST 2025)",
     "category": "TEKNOFEST 2025 / Giyilebilir Yapay Zeka",
     "badge": "Türkiye 1.si (96/100 Puan) · Takım Kaptanı",
-    "short": "İşaret dilini yazıya, yazıyı sese ve sesi yazıya çevirerek dil bariyerini aşan yapay zeka destekli akıllı giyilebilir gözlük.",
-    "description": "TEKNOFEST 2025 Engelsiz Yaşam kategorisinde kaptanlığını yaptığım 7 kişilik EruAI - Ada Lovelace takımıyla geliştirildi. İşitme ve konuşma engelli bireylerin toplumla kesintisiz iletişim kurabilmesini amaçlayan donanım ve yazılım bütünleşik bir çözümdür. Gözlük üzerindeki kamera ve sensörlerle gerçek zamanlı el-parmak izleme ve işaret dili hareket sınıflandırması yapıldı. İşaret dili anlık yazıya dökülürken, karşı tarafın konuşmaları ses tanıma (STT) ile ekrana yansıtılmakta ve kullanıcının girdileri metinden sese (TTS) dönüştürülmektedir. Proje, Ön Değerlendirme Raporunda 100 üzerinden 96 puan alarak Türkiye 1.si seçildi.",
+    "featured": true,
+    "short": "İşaret dilini yazıya, yazıyı sese ve sesi yazıya çevirerek işitme ve konuşma engelli bireyler için dil bariyerini kaldıran akıllı gözlük sistemi.",
+    "problem_statement": "İşitme ve konuşma engelli bireyler, işaret dili bilmeyen toplum kesimleriyle iletişim kurarken ciddi bir bariyerle karşılaşmaktadır. Akıllı telefon uygulamaları iki elin serbest kalmasını gerektiren işaret dili kullanımını zorlaştırmakta ve doğal yüz yüze iletişimi engellemektedir. Kullanıcının görüş alanında çalışan, elleri serbest bırakan ve iki yönlü çeviri sunan giyilebilir bir asistana ihtiyaç vardı.",
+    "architecture_overview": "Sistem giyilebilir bir akıllı gözlük çerçevesi üzerinde çalışan donanım ve yazılım bütünleşik mimarisine sahiptir: 1) Görsel Giriş & El Takibi: Geniş açılı kamera ile el-parmak eklem noktaları MediaPipe/YOLO-Pose ile çıkarılır. 2) İşaret Dili Tanıma: Zaman serisi hareketleri ve statik el şekilleri derin öğrenme sınıflandırıcıları ile analiz edilerek anlık Türkçe metne çevrilir. 3) İki Yönlü İletişim Hattı: Karşıdaki kişinin konuşması mikrofon üzerinden alınıp Speech-to-Text (STT) ile gözlük üzerindeki küçük OLED/HUD ekrana yansıtılır; engelli bireyin işaret dili girdileri ise hoparlör üzerinden Text-to-Speech (TTS) ile seslendirilir.",
+    "key_contributions": [
+      "Yapay Zeka Kulübü bünyesinde kurulan 7 kişilik EruAI - Ada Lovelace takımının kaptanlığını yürüttüm.",
+      "Projenin fikir aşamasından mimari tasarımına, donanım bileşenlerinin seçilmesinden yapay zeka modellerinin kurgulanmasına kadar tüm süreçleri koordine ettim.",
+      "İşaret dili el ve parmak hareketlerinin gerçek zamanlı tespiti için veri seti oluşturulması ve model çıkarım optimizasyonunda çalıştım.",
+      "Teknik ön değerlendirme raporunu hazırlayarak jüri değerlendirmesinde 100 üzerinden 96 puan alıp Türkiye 1.si olmamızı sağladım."
+    ],
+    "challenges_and_solutions": "Giyilebilir donanım üzerindeki batarya ve işlem gücü kısıtları sebebiyle ağır modeller çalıştırılamıyordu. Model mimarisi iki aşamaya bölündü: Ağır tensör hesaplamaları yerine önce hafif el iskeleti (21 landmark) çıkarıldı, ardından sadece iskelet koordinatları hafif bir sinir ağına verildi. Bu sayede model gecikmesi en aza indirgenerek cihaz üstünde yüksek FPS elde edildi.",
+    "results_impact": "TEKNOFEST 2025 Engelsiz Yaşam Teknolojileri kategorisinde Türkiye genelindeki tüm projeler arasında Ön Değerlendirme Raporunda 96/100 puan alarak Türkiye 1.liği derecesi kazanıldı.",
     "stack": [
       "Python",
       "Computer Vision",
+      "MediaPipe / YOLO-Pose",
       "Deep Learning",
-      "MediaPipe / YOLO",
       "Edge AI",
-      "NLP / STT-TTS"
+      "Speech-to-Text (STT)",
+      "Text-to-Speech (TTS)",
+      "Giyilebilir Sistem Mimarisi"
     ],
     "github": "",
     "demo": ""
   },
   {
-    "title": "TeknoJam24 Şampiyonu: 48 Saatlik 2D Oyun",
-    "category": "Game Development / GameJam 1.si",
-    "badge": "TeknoJam24 1.lik Ödülü",
-    "short": "Erciyes Teknopark TeknoJam24 maratonunda 48 saatte sıfırdan geliştirilen ve 26 takım arasından 1.lik kazanan oyun.",
-    "description": "Erü Teknopark tarafından düzenlenen 48 saatlik oyun geliştirme maratonunda 26 yarışmacı grup arasında 1.lik ödülüne layık görüldü. Çok sıkı zaman baskısı altında sıfırdan tema uyumlu oyun mekanikleri, seviye tasarımı (level design), karakter hareket fiziği, ses efektleri ve dinamik kullanıcı arayüzü tek bir hafta sonunda eksiksiz hayata geçirildi ve jüri sunumunda en yüksek puanı aldı.",
-    "stack": [
-      "C#",
-      "Unity",
-      "Game AI",
-      "Level Design",
-      "2D Physics",
-      "Hızlı Prototipleme"
-    ],
-    "github": "",
-    "demo": ""
-  },
-  {
-    "title": "Kurumsal SSS Akıllı Chatbot",
-    "category": "Ar-Ge / LLM & NLP",
+    "id": "kurumsal-sss-chatbot",
+    "title": "Kurumsal SSS Akıllı Asistanı (RAG & LoRA)",
+    "category": "Kurumsal Ar-Ge / NLP & LLM",
     "badge": "Kurumsal Ar-Ge Prototipi",
-    "short": "Kurum içi bilgi tabanından semantik yanıt üretimi için RAG mimarisi ve LoRA fine-tuning araştırması.",
-    "description": "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı'nın sık sorulan sorular sayfasını interaktif ve akıllı hale getirmek için geliştirilen prototip. Kurumsal dokümanların vektörel veritabanında saklanması ve semantik benzerlikle getirilmesi (RAG) yaklaşımı uygulandı. Açık kaynaklı dil modellerinin kuruma özel terim ve işleyişe adapte edilmesi için LoRA (Low-Rank Adaptation) yöntemleri araştırıldı ve modern web sohbet arayüzü tasarlandı.",
+    "featured": false,
+    "short": "Kurum içi bilgi tabanından semantik doğrulukla yanıt üreten, RAG mimarisi ve LoRA ince ayar teknikleriyle özelleştirilmiş kurumsal chatbot prototipi.",
+    "problem_statement": "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı'na her kayıt ve dönem başında binlerce benzer soru (şifre sıfırlama, e-posta aktivasyonu, Eduroam Wi-Fi ayarları, OBS girişleri vb.) iletilmektedir. Mevcut statik SSS sayfası kullanıcılar tarafından zor taranmakta ve destek personeline ciddi bir iş yükü oluşturmaktaydı.",
+    "architecture_overview": "Sistem RAG (Retrieval-Augmented Generation) tabanlı modern bir doğal dil işleme hattıdır: 1) Doküman İndeksleme: Üniversitenin bilgi bankası, yönergeleri ve SSS metinleri küçük anlamsal parçalara (chunks) bölündü ve embedding modelleriyle vektörleştirilerek vektör veritabanında indekslendi. 2) Semantik Getirme: Kullanıcı sorusu geldiğinde semantik benzerlik araması yapılarak en ilgili yönerge maddeleri çekilir. 3) Üretim & LoRA: Açık kaynaklı Türkçe destekli LLM modeli, kurumun resmi üslubu ve terminolojisine LoRA (Low-Rank Adaptation) yöntemiyle ince ayar (fine-tune) yapılarak cevabı üretir. 4) Kullanıcı Arayüzü: Django tabanlı hafif ve modern bir web sohbet arayüzü kurgulandı.",
+    "key_contributions": [
+      "RAG mimarisinin veri hazırlama, chunking ve retrieval hattını kurguladım.",
+      "Açık kaynaklı dil modellerinin kuruma özel üsluba adapte edilmesi için LoRA parametre optimizasyonu üzerinde araştırmalar yürüttüm.",
+      "Kullanıcıların rahatça etkileşime girebileceği modern web sohbet arayüzü prototipini geliştirdim."
+    ],
+    "challenges_and_solutions": "Klasik LLM'lerin hallucination (hayal ürünü bilgi üretme) problemi kurumsal süreçlerde kritik bir risk oluşturuyordu. Bu risk, prompt şablonuna sıkı kurallar ('Yalnızca verilen kaynak bağlamındaki doğrulanmış bilgiye dayanarak yanıt ver, kaynakta yoksa personelle iletişime geçilmesini öner') eklenerek ve retrieval benzerlik eşikleri yüksek tutularak çözüldü.",
+    "results_impact": "Kurumun destek yükünü hafifletmeye yönelik çalışan bir prototip ortaya kondu; teknik incelemelerin ardından sistemin sonraki fazları için temel oluşturuldu.",
     "stack": [
-      "RAG",
-      "LoRA",
-      "LLM",
+      "RAG (Retrieval-Augmented Generation)",
+      "LoRA (Low-Rank Adaptation)",
+      "Open Source LLMs",
+      "Vector DB / Embeddings",
       "Python",
       "Django",
-      "Vector DB",
       "Prompt Engineering"
     ],
     "github": "",
     "demo": ""
   },
   {
+    "id": "3-subeli-ag-mimarisi",
     "title": "3 Şubeli Kurumsal Ağ Mimarisi Simülasyonu",
     "category": "Ağ Mühendisliği & Sanallaştırma",
-    "badge": "Donanım Stajı Projesi",
-    "short": "3 farklı şehre yayılan kurumsal bir firmanın sanal makinelerle simüle edilen güvenli ağ altyapısı.",
-    "description": "MEA Yazılım zorunlu donanım stajı kapsamında, firmanın farklı şehirlere genişlemesi senaryosu için geliştirildi. Cisco Packet Tracer üzerinde merkez ve iki uzak şube arasında VLAN segmentasyonu, inter-VLAN yönlendirme, OSPF dinamik yönlendirme protokolü, DHCP havuzları, DNS ve NAT yapılandırmaları kurgulandı. Ağ servisleri sanal makineler (VMware / VirtualBox) üzerinde ayağa kaldırılarak güvenli haberleşme test edildi.",
+    "badge": "Zorunlu Donanım Stajı Projesi",
+    "featured": false,
+    "short": "Farklı şehirlerde 3 şubeye genişleyen kurumsal bir firmanın Cisco Packet Tracer ve sanal makinelerle simüle edilen güvenli ağ altyapısı.",
+    "problem_statement": "MEA Yazılım zorunlu donanım stajı kapsamında ele alınan senaryoda, hızla büyüyen ve üç farklı şehirde (Merkez, Şube 1, Şube 2) ofis açan bir firmanın kesintisiz, güvenli ve departmanlar arası izole haberleşebileceği bir kurumsal ağ topolojisi tasarlaması gerekiyordu.",
+    "architecture_overview": "Topoloji; Merkez ofis ve iki uzak şubenin WAN hatları üzerinden birbirine bağlandığı kurumsal bir ağ modelidir. 1) LAN Segmentasyonu: Her ofiste Yönetim, Yazılım Geliştirme, Muhasebe ve Misafir ağları için ayrı VLAN'lar oluşturuldu (802.1Q trunking). 2) Dinamik Yönlendirme: Şubeler arası ve omurga katmanında OSPF (Open Shortest Path First) protokolü konfigüre edildi. 3) Ağ Servisleri: Her şube için DHCP havuzları, DNS yönlendirmeleri, NAT/PAT kuralları ve Access Control List (ACL) güvenlik filtreleri yazıldı. 4) Sanallaştırma: Router ve switch'lere bağlı uç birimler VMware/VirtualBox sanal makineleri ile ayağa kaldırılarak paket geçişleri canlı test edildi.",
+    "key_contributions": [
+      "3 şubenin IP adresleme planını (VLSM / Subnetting) tasarladım.",
+      "Cisco Packet Tracer üzerinde router, switch, access point ve firewall cihazlarının CLI konfigürasyonlarını yazdım.",
+      "Inter-VLAN routing (Router-on-a-stick) ve OSPF dinamik yönlendirme mimarisini kurdum.",
+      "Sanal makineler üzerinde gerçek ağ trafiği oluşturarak bağlantı testlerini (ping, traceroute, throughput) başarıyla tamamladım."
+    ],
+    "challenges_and_solutions": "Şubeler arası genişlemede IP adres israfını önlemek ve gelecekteki büyümelere hazır olmak için VLSM (Variable Length Subnet Masking) hesaplamaları yapıldı. Departmanlar arası yetkisiz erişimleri engellemek için ACL (Erişim Kontrol Listesi) kuralları yazılarak sadece gerekli portlara (HTTP/HTTPS, SSH, DB) izin verildi.",
+    "results_impact": "Firmanın büyüme senaryosuna uygun, hata toleranslı ve test edilmiş bir kurumsal ağ mimarisi tasarlandı ve staj başarıyla tamamlandı.",
     "stack": [
       "Cisco Packet Tracer",
-      "Networking",
-      "VLAN",
-      "OSPF",
-      "Virtual Machines",
-      "Subnetting"
+      "Networking Protocols",
+      "VLAN (802.1Q)",
+      "OSPF Dynamic Routing",
+      "Inter-VLAN Routing",
+      "NAT / PAT",
+      "ACL Security Filtering",
+      "VLSM / Subnetting",
+      "VMware / VirtualBox"
     ],
     "github": "",
     "demo": ""
   },
   {
-    "title": "Mobil 2D Fizik Tabanlı Basketbol Oyunu (Upwork)",
-    "category": "Game Development / Ticari Proje",
-    "badge": "Upwork Müşteri Teslimi · Bağımsız Geliştirici",
-    "short": "Fizik tabanlı atış mekanikleri, yapay zeka botu ve özel seviye yapısı içeren mobil 2D basketbol oyunu.",
-    "description": "Upwork üzerinde küresel müşteriye kendi fikir ve mekanik tasarımımla teklif vererek kabul ettirdiğim ve başarıyla teslim ettiğim bağımsız ticari oyun. Gerçekçi fizik motoru entegrasyonu, parabolik atış hesaplamaları, farklı zorluk seviyelerine adapte olabilen yapay zeka (bot) mantığı, seviye mimarisi ve kullanıcı dostu arayüzü tek başıma uçtan uca tamamladım.",
-    "stack": [
-      "C#",
-      "Unity",
-      "Game AI",
-      "Parabolic Physics",
-      "UI/UX",
-      "Mobile Optimization"
-    ],
-    "github": "",
-    "demo": ""
-  },
-  {
-    "title": "Fiziksel Cihaz Uyumlu Slot Oyunu (Upwork)",
-    "category": "Game Development / Algoritma",
-    "badge": "Ticari Proje · Algoritma Mimarisi",
-    "short": "Gerçek fiziksel slot makinelerinde çalışacak RNG algoritmaları, olasılık matematiği ve dinamik makara animasyonları.",
-    "description": "Fiziksel makinelerde çalışmak üzere tasarlanan ticari slot oyunu projesi. Bir 2D sanatçı ile iş birliği içinde; kriptografik olarak güvenilir rastgele sayı üretimi (RNG), matematiksel kazanç ve olasılık matrisleri ile dinamik makara dönüş animasyon sistemini C# ile mimariledim ve ilk çalışan sürümünü başarıyla teslim ettim.",
-    "stack": [
-      "C#",
-      "RNG & Olasılık Matematiği",
-      "Makaralı Animasyon",
-      "Game Logic"
-    ],
-    "github": "",
-    "demo": ""
-  },
-  {
-    "title": "C ile Düşük Seviye Sistem Programlama & Veri Yapıları",
+    "id": "c-sistem-programlama",
+    "title": "C ile Düşük Seviye Sistem Programlama & Bellek Yönetimi",
     "category": "Sistem Programlama & Ar-Ge",
     "badge": "Sürekli Gelişim & Düşük Seviye Ar-Ge",
-    "short": "İşletim sistemi katmanlarını ve soyut yapıları anlamak için C ile bellek yönetimi, POSIX sistem çağrıları ve veri yapıları.",
-    "description": "Full-time Linux kullanıcısı olarak donanım ve yazılım arasındaki soyutlamaları kavramak amacıyla C dili ile geliştirilen bellek yöneticileri, veri yapıları ve POSIX sistem çağrıları deneyleri. Eş zamanlı olarak boot.dev backend path müfredatı ile ölçeklenebilir sistem mimarileri ve LeetCode algoritmik problem çözme pratiği yürütülmektedir.",
-    "stack": [
-      "C",
-      "Linux / POSIX",
-      "Memory Allocation",
-      "Data Structures",
-      "Algorithms",
-      "Valgrind"
+    "featured": false,
+    "short": "İşletim sistemi katmanlarını, donanım soyutlamalarını ve çekirdek seviyesindeki çalışma mantığını anlamak için C dili ile yürütülen sistem programlama çalışmaları.",
+    "problem_statement": "Yüksek seviyeli diller (Python, C#, Go) geliştiriciye hız kazandırsa da bellek yönetimini, işaretçileri (pointers), önbellek yerelliğini (cache locality) ve POSIX sistem çağrılarını gizler. Ölçeklenebilir ve yüksek performanslı backend sistemleri tasarlayabilmek için bu soyutlamaların altında yatan temel mimarileri kavramak gereklidir.",
+    "architecture_overview": "Linux çekirdeği ve POSIX standartları üzerinde C dili ile yürütülen deneysel projeler bütünüdür: 1) Özel Bellek Yöneticileri: malloc/free arkasındaki mantığı anlamak için arena allocator ve pool allocator yapıları kodlandı. 2) Düşük Seviyeli Veri Yapıları: Bellek verimliliği yüksek hash table, linked list ve dinamik dizi implementasyonları geliştirildi. 3) Sistem Çağrıları: fork, exec, pipe, signal ve dosya tanımlayıcıları (file descriptors) ile süreçler arası haberleşme (IPC) incelendi. 4) Bellek Analizi: Valgrind ve AddressSanitizer araçları ile memory leak ve buffer overflow analizleri yapıldı.",
+    "key_contributions": [
+      "Full-time Linux kullanıcısı olarak hobi ve araştırma projelerimi C ile kodluyorum.",
+      "Dinamik bellek tahsis algoritmaları ve pointer aritmetiği üzerine bağımsız modüller yazdım.",
+      "Valgrind ile bellek sızıntılarını ve erişim hatalarını sıfıra indirme pratikleri geliştirdim.",
+      "Boot.dev backend müfredatı ve LeetCode algoritmik problemleri ile teorik sistem bilgisini pekiştiriyorum."
     ],
-    "github": "",
+    "challenges_and_solutions": "Manuel bellek yönetiminde yaşanan 'segmentation fault' ve 'use-after-free' hataları, AddressSanitizer ve gdb hata ayıklayıcısı yardımıyla analiz edilerek disiplinli kaynak sahipliği (RAII mantığına yakın temizleme paternleri) ile çözüldü.",
+    "results_impact": "Backend mimarilerini tasarlarken bellek maliyetlerini, asenkron çalışma modellerini ve sistem çağrısı ek yüklerini derinlemesine öngörebilen güçlü bir mühendislik temeli oluşturuldu.",
+    "stack": [
+      "C (C99 / C11)",
+      "Linux / POSIX",
+      "Memory Allocation (Arena / Pool)",
+      "Valgrind & AddressSanitizer",
+      "GDB Debugging",
+      "Pointer Arithmetic",
+      "IPC (Inter-Process Communication)",
+      "Bash Scripting"
+    ],
+    "github": "https://github.com/turkerkiv",
     "demo": ""
   }
 ]

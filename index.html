@@ -3,1677 +3,333 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Türker Kıvılcım — Full-Stack Developer & AI Engineer / Blueprint Portfolio</title>
-<meta name="description" content="Türker Kıvılcım — Bilgisayar Mühendisliği Öğrencisi, Full-Stack AI Engineer. Backend, YOLO Görüntü İşleme, Kaldi Konuşma Tanıma, C, Python, Go, .NET.">
+<title>Türker Kıvılcım — Full-Stack Developer & AI Engineer / Blueprint Hub</title>
+<meta name="description" content="Türker Kıvılcım — Bilgisayar Mühendisliği Son Sınıf Öğrencisi, Full-Stack AI Engineer. Backend, YOLO Görüntü İşleme, Kaldi Konuşma Tanıma, C, Python, Go, .NET.">
 <meta name="keywords" content="Türker Kıvılcım, Software Developer, Full-stack AI Engineer, YOLO, Kaldi, TÜBİTAK 2209-A, Teknofest, Python, Go, C, .NET, Kayseri, Erciyes Üniversitesi">
 <meta name="theme-color" content="#e8eef3">
 <meta property="og:title" content="Türker Kıvılcım / Blueprint Portfolio">
 <meta property="og:description" content="Erciyes Üniversitesi Bilgisayar Mühendisliği · Full-stack AI Engineer · Sistemler & Yapay Zeka">
 <meta property="og:type" content="website">
+<link rel="stylesheet" href="css/blueprint.css">
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<style>
-:root{
-  --bg:#e8eef3;
-  --paper:rgba(248,251,253,.82);
-  --ink:#182430;
-  --muted:#647482;
-  --grid:#c4d2df;
-  --line:#9db0c1;
-  --blue:#285bc4;
-  --blue2:#4d79c7;
-  --red:#c85252;
-  --max:1140px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  color:var(--ink);
-  font-family:Arial,Helvetica,sans-serif;
-  line-height:1.5;
-  background-color:var(--bg);
-  background-image:
-    radial-gradient(circle at 1.1px 1.1px,rgba(102,127,151,.52) 1.1px,transparent 1.25px);
-  background-size:20px 20px;
-}
-body.modal-open{overflow:hidden}
-a{color:inherit}
-.site{width:min(var(--max),calc(100% - 36px));margin:auto;position:relative;z-index:2}
-
-/* blueprint page chrome */
-.top{
-  min-height:68px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:2px solid var(--ink);
-  font:700 11px "Courier New",monospace;
-  letter-spacing:.06em;
-  padding:10px 0;
-}
-.top a{text-decoration:none;margin-left:16px}
-.top a:hover{color:var(--blue)}
-.coord{color:var(--muted);font-weight:400}
-.nav-right{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.hero{
-  position:relative;
-  min-height:calc(100vh - 68px);
-  padding:64px 0 85px;
-  display:grid;
-  grid-template-columns:1fr 270px;
-  gap:40px;
-  align-items:center;
-}
-.hero:before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:150px;
-  border-top:1px solid var(--blue);
-}
-.hero-copy{position:relative}
-.stamp{
-  display:inline-block;
-  border:2px solid var(--blue);
-  color:var(--blue);
-  padding:7px 11px;
-  font:700 10.5px "Courier New",monospace;
-  letter-spacing:.12em;
-  transform:rotate(-2deg);
-  background:rgba(232,238,243,.56);
-}
-.hero h1{
-  font:700 clamp(4.4rem,10.5vw,9.8rem)/.75 Georgia,"Times New Roman",serif;
-  letter-spacing:-.09em;
-  margin:24px 0 24px;
-}
-.headline{
-  max-width:680px;
-  margin:0;
-  font:500 clamp(1.2rem,2.2vw,1.6rem)/1.25 Georgia,"Times New Roman",serif;
-  letter-spacing:-.025em;
-  color:#243240;
-}
-.hero-badges{
-  margin-top:24px;
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-  max-width:680px;
-}
-.hero-badge-item{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font:600 11.5px "Courier New",monospace;
-  color:#27435f;
-  background:rgba(235,243,250,.72);
-  border-left:3px solid var(--blue);
-  padding:6px 10px;
-  letter-spacing:.02em;
-}
-.hero-side{
-  border-left:1px solid var(--line);
-  padding-left:25px;
-  font-size:12px;
-}
-.side-item{padding:0 0 20px;margin-bottom:20px;border-bottom:1px dashed #a9bac9}
-.side-item:last-child{border-bottom:0;padding-bottom:0;margin-bottom:0}
-.side-label{
-  color:var(--blue);font:700 10px "Courier New",monospace;
-  text-transform:uppercase;letter-spacing:.08em
-}
-.side-value{margin-top:7px;color:var(--muted);line-height:1.55}
-.side-value a{color:var(--ink);text-decoration:none;font-weight:600}
-.side-value a:hover{color:var(--blue)}
-.focus-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
-.focus-list span{
-  background:rgba(234,241,249,.85);
-  border:1px solid #abc0d5;
-  color:#2a4f83;
-  padding:4px 7px;
-  font:700 9.5px "Courier New",monospace;
-}
-.hand-note{
-  display:inline-block;
-  margin-top:22px;
-  color:#285bc4;
-  font:italic 22px "Segoe Print","Bradley Hand","Comic Sans MS",cursive;
-  transform:rotate(-3deg);
-  position:relative;
-}
-.hand-note:before{
-  content:"";
-  position:absolute;
-  left:-11px;right:-11px;top:-7px;height:21px;
-  border-top:1px solid rgba(40,91,196,.48);
-  border-radius:55%;
-  transform:rotate(-2deg)
-}
-.hand-note:after{
-  content:"";
-  position:absolute;
-  left:9px;right:-13px;bottom:-8px;height:9px;
-  border-bottom:2px solid rgba(40,91,196,.68);
-  border-radius:50%;
-  transform:rotate(-2deg)
-}
-
-/* Sections */
-.section{
-  margin:55px 0 75px;
-  border-top:2px solid var(--ink);
-}
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px 0;
-  font:700 11px "Courier New",monospace;
-  color:var(--ink);
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-.section-head span:last-child{color:var(--muted);font-weight:400}
-
-/* Project Cards */
-.projects{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:14px;
-}
-.project{
-  min-height:300px;
-  border:2px solid var(--ink);
-  background:rgba(235,241,246,.78);
-  padding:18px;
-  display:flex;
-  flex-direction:column;
-  cursor:pointer;
-  position:relative;
-  transition:transform .16s ease,background .16s ease;
-}
-.project:nth-child(2n){transform:translateY(24px)}
-.project:hover{background:rgba(252,254,255,.95);transform:translateY(-2px)}
-.project:nth-child(2n):hover{transform:translateY(22px)}
-.project:before,.project:after{
-  content:"";position:absolute;width:14px;height:14px;
-  border-color:var(--blue);opacity:.65
-}
-.project:before{top:-2px;left:-2px;border-top:2px solid;border-left:2px solid}
-.project:after{bottom:-2px;right:-2px;border-bottom:2px solid;border-right:2px solid}
-.project-header-line{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-  margin-bottom:4px;
-  padding-right:28px;
-}
-.project-no{color:var(--blue);font:700 10px "Courier New",monospace;letter-spacing:.05em}
-.project-badge{
-  font:700 9px "Courier New",monospace;
-  color:var(--blue);
-  border:1px solid var(--blue2);
-  background:rgba(234,241,249,.85);
-  padding:2px 6px;
-  letter-spacing:.04em;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  max-width:70%;
-}
-.project-category{color:var(--muted);font:10px "Courier New",monospace;margin-top:2px}
-.project h2{
-  font:600 32px/.92 Georgia,"Times New Roman",serif;
-  letter-spacing:-.05em;
-  margin:14px 0 10px;
-  max-width:540px;
-  color:var(--ink);
-}
-.project p{color:var(--muted);font-size:12.5px;line-height:1.55;max-width:550px;margin:0 0 14px}
-.tags{margin-top:auto}
-.tags span{
-  display:inline-block;
-  margin:3px 3px 0 0;
-  padding:3px 7px;
-  border:1px solid #9fb2c4;
-  background:rgba(248,251,253,.6);
-  color:#435c75;
-  font:10px "Courier New",monospace;
-}
-.project-arrow{position:absolute;right:16px;top:15px;color:var(--blue);font:700 17px "Courier New",monospace}
-
-/* Experience Cards */
-.experience-list{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-.exp-card{
-  border:2px solid var(--ink);
-  background:rgba(235,241,246,.76);
-  padding:18px 22px;
-  position:relative;
-  transition:transform .16s ease,background .16s ease;
-}
-.exp-card:hover{
-  background:rgba(252,254,255,.95);
-  transform:translateY(-2px);
-}
-.exp-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:6px;
-}
-.exp-role-title{
-  display:flex;
-  align-items:baseline;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.exp-role{
-  font:600 21px Georgia,"Times New Roman",serif;
-  color:var(--ink);
-  letter-spacing:-.03em;
-}
-.exp-sep{
-  color:var(--muted);
-  font:700 12px "Courier New",monospace;
-}
-.exp-company{
-  font:700 12px "Courier New",monospace;
-  color:var(--blue);
-  letter-spacing:.04em;
-}
-.exp-badge{
-  border:1px solid var(--blue);
-  background:rgba(234,241,249,.85);
-  color:var(--blue);
-  padding:2px 7px;
-  font:700 9px "Courier New",monospace;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-}
-.exp-meta{
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-  font:10px "Courier New",monospace;
-  color:var(--muted);
-  margin-bottom:12px;
-  letter-spacing:.04em;
-}
-.exp-desc{
-  font-size:12.8px;
-  color:#2b3a47;
-  line-height:1.6;
-  margin:0 0 12px;
-}
-
-/* Honors Grid */
-.honors-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(290px, 1fr));
-  gap:14px;
-}
-.honor-card{
-  border:2px solid var(--ink);
-  background:rgba(235,241,246,.76);
-  padding:18px 20px;
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  transition:transform .16s ease,background .16s ease;
-}
-.honor-card:hover{
-  background:rgba(252,254,255,.95);
-  transform:translateY(-2px);
-}
-.honor-tag{
-  display:inline-block;
-  align-self:flex-start;
-  background:var(--blue);
-  color:#fff;
-  font:700 9px "Courier New",monospace;
-  padding:3px 7px;
-  letter-spacing:.06em;
-  margin-bottom:10px;
-}
-.honor-card h3{
-  font:600 18px/.95 Georgia,"Times New Roman",serif;
-  letter-spacing:-.03em;
-  margin:0 0 6px;
-  color:var(--ink);
-}
-.honor-org{
-  font:700 10px "Courier New",monospace;
-  color:var(--muted);
-  letter-spacing:.04em;
-  margin-bottom:10px;
-}
-.honor-desc{
-  font-size:12.3px;
-  color:#2f4050;
-  line-height:1.55;
-  margin:0;
-}
-
-/* About Grid */
-.about-grid{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:18px;
-}
-.note{
-  border:1.5px solid var(--line);
-  background:rgba(248,251,253,.65);
-  padding:22px;
-  min-height:220px;
-}
-.note h3{
-  margin:0 0 12px;color:var(--blue);
-  font:700 10.5px "Courier New",monospace;text-transform:uppercase;
-  letter-spacing:.1em;
-}
-.note p{color:#304355;font-size:13px;line-height:1.6;margin:0 0 11px}
-.learning-box{
-  margin-top:16px;
-  padding:10px 12px;
-  background:rgba(234,241,249,.7);
-  border-left:3px solid var(--blue);
-  font:11.5px "Courier New",monospace;
-  color:#27435f;
-  line-height:1.5;
-}
-
-/* Categorized Stack */
-.stack-group{
-  margin-bottom:14px;
-}
-.stack-group:last-child{
-  margin-bottom:0;
-}
-.stack-group-title{
-  font:700 10px "Courier New",monospace;
-  color:var(--blue);
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin-bottom:5px;
-}
-.stack-group-items{
-  display:flex;
-  flex-wrap:wrap;
-  gap:4px;
-}
-.stack-group-items span{
-  display:inline-block;
-  border:1px solid #a9bac9;
-  padding:4px 7px;
-  color:#405466;
-  background:rgba(244,249,253,.7);
-  font:10px "Courier New",monospace;
-}
-
-/* Contact */
-.contact{
-  margin:65px 0 0;
-  border-top:2px solid var(--ink);
-  padding:20px 0 55px;
-}
-.contact-head-label{
-  font:700 11px "Courier New",monospace;
-  color:var(--ink);
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin-bottom:16px;
-}
-.contact-items{
-  display:flex;
-  flex-wrap:wrap;
-  gap:32px;
-}
-.contact-col .label{
-  font:700 10px "Courier New",monospace;
-  color:var(--blue);
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-.contact-col a{
-  display:inline-block;
-  margin-top:6px;
-  color:var(--ink);
-  font:600 16px Georgia,serif;
-  text-decoration:none;
-}
-.contact-col a:hover{
-  color:var(--blue);
-}
-
-footer{
-  border-top:1px solid var(--line);
-  display:flex;justify-content:space-between;
-  padding:20px 0 35px;
-  color:#68798a;font:10px "Courier New",monospace
-}
-
-/* Canvas & Drawing Overlay */
-#inkCanvas{
-  position:fixed;inset:0;width:100%;height:100%;
-  pointer-events:auto;z-index:25;
-  touch-action:none;
-}
-
-body.drawing-enabled{
-  user-select:none;
-  -webkit-user-select:none;
-}
-body.drawing-enabled *{
-  user-select:none;
-  -webkit-user-select:none;
-}
-@media (hover: hover) and (pointer: fine){
-  body.drawing-enabled,
-  body.drawing-enabled *{
-    cursor:none !important;
-  }
-}
-body.drawing-enabled #inkCanvas{
-  pointer-events:auto;
-  touch-action:none;
-}
-
-body.drawing-disabled{
-  user-select:auto;
-  -webkit-user-select:auto;
-  cursor:auto !important;
-}
-body.drawing-disabled *{
-  cursor:auto !important;
-}
-body.drawing-disabled a,
-body.drawing-disabled button,
-body.drawing-disabled .project{
-  cursor:pointer !important;
-}
-body.drawing-disabled #inkCanvas{
-  pointer-events:none;
-  touch-action:auto;
-}
-body.drawing-disabled #pencilCursor{
-  display:none !important;
-}
-
-/* Custom Animated Drafting Pencil */
-.pencil-cursor{
-  position:fixed;
-  top:-100px;left:-100px;
-  width:32px;height:32px;
-  pointer-events:none;
-  z-index:100;
-  display:block;
-  transform-origin:2px 30px;
-  transform:translate(-2px,-30px) rotate(0deg);
-  transition:transform .08s ease-out,opacity .15s ease;
-  will-change:transform,left,top;
-}
-.pencil-cursor.drawing{
-  transform:translate(-2px,-30px) rotate(-16deg) scale(.92);
-}
-
-/* Nav Draw Controls */
-.nav-draw-toggle{
-  display:none;
-  align-items:center;
-  gap:4px;
-  color:var(--ink) !important;
-  border:1px solid var(--ink);
-  padding:3px 8px;
-  font-size:10px;
-  letter-spacing:.06em;
-  transition:all .15s ease;
-  text-decoration:none;
-  background:rgba(248,251,253,.9);
-  cursor:pointer;
-}
-.nav-draw-toggle.active{
-  background:var(--blue);
-  color:#fff !important;
-  border-color:var(--blue);
-}
-.nav-clear-btn{
-  color:var(--red) !important;
-  border:1px dashed rgba(200,82,82,.6);
-  padding:3px 8px;
-  font-size:10px;
-  letter-spacing:.06em;
-  transition:all .15s ease;
-  text-decoration:none;
-}
-.nav-clear-btn:hover{
-  background:rgba(200,82,82,.12);
-  border-color:var(--red);
-}
-.nav-export-btn{
-  color:var(--blue) !important;
-  border:1px solid var(--blue);
-  padding:3px 8px;
-  font-size:10px;
-  letter-spacing:.06em;
-  transition:all .15s ease;
-  text-decoration:none;
-  background:rgba(40,91,196,.06);
-}
-.nav-export-btn:hover{
-  background:var(--blue);
-  color:#fff !important;
-}
-
-/* Floating Mobile Drawing & Quick Navbar */
-.floating-nav{
-  display:none;
-  position:fixed;
-  top:12px;
-  left:50%;
-  transform:translate(-50%, -80px);
-  z-index:28;
-  background:rgba(244,249,253,.94);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  border:1.5px solid var(--ink);
-  box-shadow:0 4px 14px rgba(40,91,196,.14), 2px 2px 0 rgba(40,91,196,.1);
-  padding:4px 8px;
-  align-items:center;
-  gap:8px;
-  opacity:0;
-  pointer-events:none;
-  transition:transform .28s cubic-bezier(.16,1,.3,1), opacity .22s ease;
-  will-change:transform, opacity;
-}
-.floating-nav.visible{
-  transform:translate(-50%, 0);
-  opacity:1;
-  pointer-events:auto;
-}
-.floating-nav-logo{
-  font:700 10px "Courier New",monospace;
-  color:var(--ink);
-  text-decoration:none;
-  letter-spacing:.08em;
-  padding:2px 6px;
-  border-right:1px solid var(--line);
-  display:inline-flex;
-  align-items:center;
-  cursor:pointer;
-}
-.floating-nav-logo:hover{
-  color:var(--blue);
-}
-.floating-nav-actions{
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-.floating-nav .nav-draw-toggle,
-.floating-nav .nav-clear-btn{
-  display:inline-flex;
-  font-size:10px;
-  padding:3px 8px;
-}
-.floating-nav-link{
-  font:700 9.5px "Courier New",monospace;
-  color:var(--ink);
-  text-decoration:none;
-  padding:2px 4px;
-}
-.floating-nav-link:hover{
-  color:var(--blue);
-}
-body.modal-open .floating-nav{
-  display:none !important;
-}
-
-@media print{
-  body{cursor:auto !important;background:#fff}
-  body *{cursor:auto !important}
-  .nav-right,#pencilCursor,.floating-nav{display:none !important}
-}
-
-/* Modal */
-.modal{
-  position:fixed;inset:0;z-index:30;
-  background:rgba(41,61,83,.25);
-  display:none;align-items:center;justify-content:center;padding:18px
-}
-.modal.open{display:flex}
-.modal-box{
-  width:min(740px,100%);
-  max-height:88vh;overflow:auto;
-  background:#f4f9fd;
-  border:2px solid var(--ink);
-  box-shadow:11px 13px 0 rgba(40,91,196,.13);
-  padding:28px;
-  position:relative
-}
-.close{
-  position:absolute;right:12px;top:12px;
-  width:32px;height:32px;border:1px solid #8fa4b8;
-  background:#edf4f9;color:#536679;cursor:pointer;
-  font-size:18px;font-weight:700;
-}
-.modal-cat{color:var(--blue);font:700 10px "Courier New",monospace;text-transform:uppercase}
-.modal-box h2{
-  font:600 40px/.9 Georgia,"Times New Roman",serif;
-  letter-spacing:-.06em;
-  max-width:630px;
-  margin:12px 45px 15px 0
-}
-.modal-box p{font-size:13.5px;line-height:1.65;color:#2c3b49;max-width:660px}
-.modal-links{margin-top:22px;font:700 10.5px "Courier New",monospace}
-.modal-links a{color:var(--blue);text-decoration:none;margin-right:18px}
-.modal-status-tag{
-  color:var(--muted);
-  font:700 10px "Courier New",monospace;
-  letter-spacing:.04em;
-}
-
-/* Responsive Media Queries */
-@media(max-width:860px), (hover:none) and (pointer:coarse){
-  .coord{display:none}
-  .nav-draw-toggle{display:inline-flex}
-  .floating-nav{display:flex}
-  .pencil-cursor{display:none !important}
-  .hero{grid-template-columns:1fr;padding-top:45px;min-height:auto}
-  .hero-side{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}
-  .projects{grid-template-columns:1fr}
-  .project:nth-child(2n){transform:none}
-  .project:nth-child(2n):hover{transform:translateY(-2px)}
-  .about-grid{grid-template-columns:1fr}
-}
-@media(max-width:640px){
-  .site{width:min(100% - 24px,var(--max))}
-  .top{
-    height:auto;
-    padding:12px 0;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:10px;
-  }
-  .nav-right{
-    width:100%;
-    justify-content:flex-start;
-    gap:8px;
-  }
-  .top a{
-    margin-left:0;
-    font-size:10px;
-  }
-  .nav-right a[data-label="experience"],
-  .nav-right a[data-label="honors"]{
-    display:none;
-  }
-  .floating-nav-link{
-    display:none;
-  }
-  .hero h1{font-size:4.8rem}
-  .project h2{font-size:27px}
-  .exp-role{font-size:19px}
-  footer{flex-direction:column;gap:7px}
-}
-</style>
 </head>
 <body>
-<canvas id="inkCanvas"></canvas>
 
 <nav id="floatingNav" class="floating-nav" aria-label="Mobil Hızlı Menü">
   <a id="floatNavLogo" href="javascript:void(0)" class="floating-nav-logo" title="Sayfa Başına Dön">TK-2026</a>
   <div class="floating-nav-actions">
-    <a href="#projects" class="floating-nav-link">PROJELER</a>
-    <a href="#experience" class="floating-nav-link">DENEYİM</a>
-    <a href="#honors" class="floating-nav-link">BAŞARILAR</a>
-    <a id="floatDrawToggle" class="nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
-    <a id="floatClearSketch" class="nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
+    <a href="about.html" class="floating-nav-link">HAKKIMDA</a>
+    <a href="projects.html" class="floating-nav-link">PROJELER</a>
+    <a href="certificates.html" class="floating-nav-link">BELGELER</a>
+    <a href="blogs.html" class="floating-nav-link">BLOG</a>
+    <a class="nav-btn nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
+    <a class="nav-btn nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
   </div>
 </nav>
 
 <div class="site">
+  <!-- Top Navigation Bar -->
   <header class="top">
-    <div>
-      <span>TK-2026 / SOFTWARE</span>
-      <span class="coord" style="margin-left:14px;">39°00'N · 35°00'E</span>
+    <div class="brand-block">
+      <a href="index.html" class="brand-link">TK-2026 / SOFTWARE</a>
+      <span class="coord">39°00'N · 35°00'E</span>
     </div>
-    <nav class="nav-right" aria-label="Ana Gezinti">
-      <a href="#projects" data-label="projects">PROJELER</a>
-      <a href="#experience" data-label="experience">DENEYİM</a>
-      <a href="#honors" data-label="honors">BAŞARILAR</a>
-      <a href="#about" data-label="about">HAKKIMDA</a>
-      <a href="#contact" data-label="contact">İLETİŞİM</a>
-      <a id="mobileDrawToggle" class="nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
-      <a id="clearSketch" class="nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
-      <a id="exportBtn" class="nav-export-btn" href="javascript:void(0)" title="Sayfa ve Çizimlerin Görüntüsünü İndir">ÇIKTI AL ⤓</a>
-      <a id="github" href="https://github.com/turkerkiv" target="_blank" rel="noreferrer">GITHUB ↗</a>
+    <nav class="nav-links" aria-label="Ana Gezinti">
+      <a href="index.html" class="nav-link active">ANA SAYFA</a>
+      <a href="about.html" class="nav-link">HAKKIMDA</a>
+      <a href="projects.html" class="nav-link">PROJELER</a>
+      <a href="certificates.html" class="nav-link">SERTİFİKALAR & SINAVLAR</a>
+      <a href="blogs.html" class="nav-link">BLOG</a>
     </nav>
+    <div class="nav-controls">
+      <a class="nav-btn nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
+      <a class="nav-btn nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
+      <a class="nav-btn nav-export-btn" href="javascript:void(0)" title="Sayfa ve Çizimlerin Görüntüsünü İndir">ÇIKTI AL ⤓</a>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-copy">
-      <div class="stamp">SYSTEM / AI / BACKEND</div>
-      <h1 id="name">Türker Kıvılcım</h1>
-      <p id="headline" class="headline"></p>
-      
-      <div class="hero-badges">
-        <div id="heroEdu" class="hero-badge-item">
-          <span>🎓</span> <span>Erciyes Üniversitesi · Bilgisayar Mühendisliği (2023 – 2027 | GANO: 3.18)</span>
-        </div>
-        <div id="heroAvail" class="hero-badge-item">
-          <span>💼</span> <span>Part-time, staj ve mezuniyet sonrası tam zamanlı backend/full-stack fırsatlarına açık.</span>
-        </div>
-      </div>
-
-      <div id="handNote" class="hand-note">çalışır sistemler & Ar-Ge →</div>
+  <!-- LinkedIn-Style Main Profile Card -->
+  <section class="profile-card">
+    <div class="profile-banner">
+      <div class="profile-banner-stamp">BLUEPRINT · SYSTEM / AI / BACKEND</div>
     </div>
-
-    <aside class="hero-side">
-      <div class="side-item">
-        <div class="side-label">Şu anda</div>
-        <div class="side-value" id="now"></div>
-      </div>
-      <div class="side-item">
-        <div class="side-label" id="focusLabel">Uzmanlık Alanları</div>
-        <div id="focusList" class="focus-list"></div>
-      </div>
-      <div class="side-item">
-        <div class="side-label">Bağlantılar</div>
-        <div class="side-value">
-          <a id="linkedin" href="#" target="_blank" rel="noreferrer">LinkedIn ↗</a><br>
-          <a id="cv" href="turker-kivilcim-cv.pdf" target="_blank" rel="noreferrer">Özgeçmiş (CV) ↗</a><br>
-          <a id="emailSide" href="mailto:kivturker@gmail.com">kivturker@gmail.com ↗</a>
+    <div class="profile-body">
+      <div class="profile-avatar-row">
+        <div class="profile-avatar" title="Türker Kıvılcım">TK</div>
+        <div class="profile-actions">
+          <a id="btnContactEmail" href="mailto:kivturker@gmail.com" class="btn btn-primary">✉️ İLETİŞİME GEÇ</a>
+          <a id="btnCv" href="turker-kivilcim-cv.pdf" target="_blank" rel="noreferrer" class="btn btn-outline">📄 CV (PDF) ↗</a>
+          <a id="btnGithub" href="https://github.com/turkerkiv" target="_blank" rel="noreferrer" class="btn btn-outline">GITHUB ↗</a>
+          <a id="btnLinkedin" href="https://linkedin.com/in/turkerkiv" target="_blank" rel="noreferrer" class="btn btn-outline">LINKEDIN ↗</a>
         </div>
       </div>
-    </aside>
-  </section>
 
-  <!-- 01: PROJELER -->
-  <section id="projects" class="section">
-    <div class="section-head">
-      <span data-label="projects">01 · PROJELER & AR-GE</span>
-      <span id="count">00</span>
-    </div>
-    <div id="list" class="projects"></div>
-  </section>
+      <div class="profile-info">
+        <h1 id="profileName">Türker Kıvılcım</h1>
+        <p id="profileHeadline" class="profile-headline">
+          Full-Stack Developer & AI Engineer | Computer Engineering Senior @ Erciyes University
+        </p>
 
-  <!-- 02: DENEYİM & LİDERLİK -->
-  <section id="experience" class="section">
-    <div class="section-head">
-      <span data-label="experience">02 · DENEYİM & LİDERLİK</span>
-      <span id="expCount">00</span>
-    </div>
-    <div id="expList" class="experience-list"></div>
-  </section>
+        <div class="profile-meta-row">
+          <span class="profile-meta-item">💼 <span id="profileCurrentRole">Full-stack AI Engineer @ Erciyes Üniversitesi Bilgi İşlem</span></span>
+          <span class="profile-meta-item">🎓 <span id="profileEduSummary">Erciyes Üniversitesi (GANO: 3.18)</span></span>
+          <span class="profile-meta-item">📍 <span id="profileLocation">Kayseri, Türkiye</span></span>
+        </div>
 
-  <!-- 03: BAŞARILAR & BELGELER -->
-  <section id="honors" class="section">
-    <div class="section-head">
-      <span data-label="honors">03 · BAŞARILAR, DERECELER & SERTİFİKALAR</span>
-      <span id="honorsCount">00</span>
-    </div>
-    <div id="honorsList" class="honors-grid"></div>
-  </section>
-
-  <!-- 04: HAKKIMDA & TEKNOLOJİLER -->
-  <section id="about" class="section">
-    <div class="section-head">
-      <span data-label="about">04 · HAKKIMDA & TEKNİK YETKİNLİKLER</span>
-      <span>04</span>
-    </div>
-    <div class="about-grid">
-      <div class="note">
-        <h3 id="aboutTitle">Mühendislik Yaklaşımım & Hikayem</h3>
-        <div id="aboutText"></div>
-        <div class="learning-box">
-          <strong>SÜREKLİ GELİŞİM & AR-GE:</strong> Boot.dev backend path müfredatı ile ölçeklenebilir backend mimarileri, LeetCode algoritmik problem çözme pratikleri ve C dili ile düşük seviyeli POSIX / bellek yönetimi çalışmaları devam etmektedir.
+        <div class="profile-badges">
+          <div class="badge-row">
+            <span>🚀</span> <span id="profileAvailability">Part-time, staj ve mezuniyet sonrası tam zamanlı backend/full-stack pozisyonlarına açık.</span>
+          </div>
         </div>
       </div>
-      <div class="note">
-        <h3 id="stackTitle">Teknoloji Yığını & Araçlar</h3>
-        <div id="stack" class="stack"></div>
-      </div>
     </div>
   </section>
 
-  <!-- 05: İLETİŞİM -->
-  <section id="contact" class="contact">
-    <div class="contact-head-label" data-label="contact">05 · İLETİŞİM & İŞ BİRLİĞİ</div>
-    <div class="contact-items">
-      <div class="contact-col">
-        <div class="label">E-Posta</div>
-        <a id="email" href="mailto:kivturker@gmail.com">kivturker@gmail.com</a>
-      </div>
-      <div class="contact-col">
-        <div class="label">Telefon</div>
-        <a id="phone" href="tel:+905317965425">+90 531 796 54 25</a>
-      </div>
-      <div class="contact-col">
-        <div class="label">LinkedIn</div>
-        <a id="contactLinkedin" href="https://linkedin.com/in/turkerkiv" target="_blank" rel="noreferrer">in/turkerkiv ↗</a>
-      </div>
-      <div class="contact-col">
-        <div class="label">GitHub</div>
-        <a id="contactGithub" href="https://github.com/turkerkiv" target="_blank" rel="noreferrer">github.com/turkerkiv ↗</a>
-      </div>
-      <div class="contact-col">
-        <div class="label">CV (PDF)</div>
-        <a id="contactCv" href="turker-kivilcim-cv.pdf" target="_blank" rel="noreferrer">Özgeçmişi İncele ↗</a>
-      </div>
+  <!-- 1. HAKKINDA (ABOUT PREVIEW) -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>📌</span> HAKKINDA</h2>
+      <a href="about.html" class="card-section-action">Detaylı Hikayem & Vizyonum →</a>
+    </div>
+    <p id="aboutSummary" style="font-size: 14px; line-height: 1.65; color: #273847; margin: 0 0 14px;"></p>
+    <div style="font: 700 11px 'Courier New', monospace; color: var(--blue);">
+      TEMEL ODAK: Dağıtık Backend Mimarileri · Görüntü İşleme (YOLO) · Akustik Modelleme (Kaldi ASR) · C & Düşük Seviye Sistemler
     </div>
   </section>
 
+  <!-- 2. ÖNE ÇIKAN MÜHENDİSLİK PROJELERİ (FEATURED PROJECTS) -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>⚙️</span> ÖNE ÇIKAN PROJELER</h2>
+      <a href="projects.html" class="card-section-action">Tüm Projeleri Gör (<span id="featuredCount">0</span>) →</a>
+    </div>
+    <div id="featuredProjectsList" class="projects-grid"></div>
+  </section>
+
+  <!-- 3. İŞ DENEYİMİ (WORK EXPERIENCE - STRICTLY PROFESSIONAL) -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>💼</span> İŞ DENEYİMİ</h2>
+      <span style="font: 700 11px 'Courier New', monospace; color: var(--muted);"><span id="workExpCount">0</span> POZİSYON</span>
+    </div>
+    <div id="workExperienceList" class="entry-list"></div>
+  </section>
+
+  <!-- 4. GÖNÜLLÜ DENEYİM & TOPLULUK LİDERLİĞİ (VOLUNTEER & LEADERSHIP) -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>🤝</span> GÖNÜLLÜ DENEYİM & TOPLULUK LİDERLİĞİ</h2>
+      <span style="font: 700 11px 'Courier New', monospace; color: var(--muted);"><span id="volExpCount">0</span> FAALİYET</span>
+    </div>
+    <div id="volunteerExperienceList" class="entry-list"></div>
+  </section>
+
+  <!-- 5. EĞİTİM (EDUCATION) -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>🎓</span> EĞİTİM</h2>
+      <span style="font: 700 11px 'Courier New', monospace; color: var(--muted);">LİSANS DÜZEYİ</span>
+    </div>
+    <div class="entry-item">
+      <div class="entry-header">
+        <div>
+          <h3 class="entry-title" id="eduSchool">Erciyes Üniversitesi</h3>
+          <div class="entry-subtitle" id="eduDegree">Lisans, Bilgisayar Mühendisliği</div>
+        </div>
+        <span class="entry-badge" id="eduGano">GANO: 3.18 / 4.00</span>
+      </div>
+      <div class="entry-meta">
+        <span id="eduPeriod">📅 Eylül 2023 – Haziran 2027</span>
+        <span id="eduLocation">📍 Kayseri, Türkiye</span>
+      </div>
+      <p class="entry-desc" id="eduDetails">
+        Veri Yapıları & Algoritmalar, İşletim Sistemleri, Bilgisayar Ağları, Dağıtık Sistemler ve Sistem Programlama. Öğrenci kulübü kuruculuğu, TÜBİTAK araştırma projesi yürütücülüğü ve TEKNOFEST kaptanlığı.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. ÖDÜLLER & DERECELER (HONORS & AWARDS) -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>🏆</span> ÖDÜLLER & DERECELER</h2>
+      <span style="font: 700 11px 'Courier New', monospace; color: var(--muted);"><span id="honorsCount">0</span> BAŞARI</span>
+    </div>
+    <div id="honorsList" class="entry-list"></div>
+  </section>
+
+  <!-- 7. SINAVLAR, BELGELER & DİLLER (LICENSES & SCORES) -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>📜</span> SINAVLAR & DİL BELGELERİ</h2>
+      <a href="certificates.html" class="card-section-action">Tüm Belgeleri & Doğrulamaları İncele →</a>
+    </div>
+    <div id="scoresList" class="entry-list"></div>
+  </section>
+
+  <!-- 8. YETENEKLER & TEKNOLOJİ YIĞINI (SKILLS) -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>⚡</span> YETENEKLER & TEKNOLOJİK YETKİNLİKLER</h2>
+      <span style="font: 700 11px 'Courier New', monospace; color: var(--muted);">TEKNİK MATRİS</span>
+    </div>
+    <div id="skillsContainer" style="display: flex; flex-direction: column; gap: 14px;"></div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <span>© <span id="year"></span> Türker Kıvılcım · Blueprint Portfolio</span>
-    <span id="location">Kayseri, Türkiye</span>
+    <span>© <span id="year"></span> Türker Kıvılcım · Blueprint Portfolio (LinkedIn Edition)</span>
+    <span>Kayseri, Türkiye · <a href="mailto:kivturker@gmail.com" style="color:var(--blue);text-decoration:none;">kivturker@gmail.com</a></span>
   </footer>
 </div>
 
-<!-- Modal Dialog -->
-<div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="modal-box">
-    <button class="close" id="close" aria-label="Kapat">×</button>
-    <div id="modalCat" class="modal-cat"></div>
-    <h2 id="modalTitle"></h2>
-    <p id="modalDesc"></p>
-    <div id="modalStack" class="tags" style="margin: 16px 0;"></div>
-    <div id="modalLinks" class="modal-links"></div>
-  </div>
-</div>
-
-<!-- Custom Animated Drafting Pencil Cursor -->
-<div id="pencilCursor" class="pencil-cursor" aria-hidden="true">
-  <svg viewBox="0 0 32 32" width="32" height="32" style="filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.35));" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Lead tip -->
-    <polygon id="pencilLead" points="2,30 3.5,26.5 5.5,28.5" fill="#285bc4" />
-    <!-- Sharpened wood cone -->
-    <polygon points="3.5,26.5 5.5,28.5 9,25 7,23" fill="#e8c79c" stroke="#182430" stroke-width="0.6" />
-    <!-- Shaft facet 1 (colored) -->
-    <polygon id="pencilShaft1" points="7,23 9,25 21,13 19,11" fill="#285bc4" stroke="#182430" stroke-width="0.6" />
-    <!-- Shaft facet 2 (highlight) -->
-    <polygon points="9,25 11,27 23,15 21,13" fill="#4d79c7" stroke="#182430" stroke-width="0.6" />
-    <!-- Metal Ferrule -->
-    <polygon points="19,11 23,15 25,13 21,9" fill="#a5b8ca" stroke="#182430" stroke-width="0.6" />
-    <!-- Eraser -->
-    <polygon points="21,9 25,13 27,11 23,7" fill="#c85252" stroke="#182430" stroke-width="0.6" />
-  </svg>
-</div>
-
+<script src="js/blueprint.js"></script>
 <script>
 let site = null, projects = [];
 const $ = id => document.getElementById(id);
 
-async function load(){
-  const [a, b] = await Promise.all([
-    fetch("./data/site.json"),
-    fetch("./data/projects.json")
-  ]);
-  if (!a.ok || !b.ok) throw new Error("JSON verileri yüklenemedi.");
-  site = await a.json();
-  projects = await b.json();
-  render();
+async function init() {
+  try {
+    const [resSite, resProjects] = await Promise.all([
+      fetch("./data/site.json"),
+      fetch("./data/projects.json")
+    ]);
+    site = await resSite.json();
+    projects = await resProjects.json();
+    renderHomePage();
+  } catch (err) {
+    console.error("Veriler yüklenirken hata:", err);
+  }
 }
 
-function render(){
+function renderHomePage() {
   const p = site.person;
-  if ($("name")) $("name").textContent = p.name;
-  if ($("headline")) $("headline").textContent = p.intro;
-  if ($("handNote")) $("handNote").textContent = p.hand_note;
-  if ($("heroEdu")) $("heroEdu").innerHTML = `<span>🎓</span> <span>${p.education}</span>`;
-  if ($("heroAvail")) $("heroAvail").innerHTML = `<span>💼</span> <span>${p.availability}</span>`;
-  if ($("github")) $("github").href = p.github;
-  if ($("linkedin")) $("linkedin").href = p.linkedin;
-  if ($("cv")) $("cv").href = p.cv;
-  if ($("emailSide")) $("emailSide").href = "mailto:" + p.email;
-  if ($("email")) {
-    $("email").href = "mailto:" + p.email;
-    $("email").textContent = p.email;
-  }
-  if ($("phone") && p.phone) {
-    $("phone").href = "tel:" + p.phone.replace(/[\s+]/g, "");
-    $("phone").textContent = p.phone;
-  }
-  if ($("contactLinkedin")) $("contactLinkedin").href = p.linkedin;
-  if ($("contactGithub")) $("contactGithub").href = p.github;
-  if ($("contactCv")) $("contactCv").href = p.cv;
-  if ($("location")) $("location").textContent = p.location;
-  if ($("now")) $("now").textContent = p.now;
+  $("profileName").textContent = p.name;
+  $("profileHeadline").textContent = p.headline;
+  $("profileCurrentRole").textContent = p.current_position;
+  $("profileEduSummary").textContent = `${site.education.school} (GANO: ${site.education.gano})`;
+  $("profileLocation").textContent = p.location;
+  $("profileAvailability").textContent = p.availability;
+  $("btnContactEmail").href = "mailto:" + p.email;
+  $("btnCv").href = p.cv;
+  $("btnGithub").href = p.github;
+  $("btnLinkedin").href = p.linkedin;
 
-  document.querySelectorAll("[data-label]").forEach(el => {
-    if (site.labels && site.labels[el.dataset.label]) {
-      el.textContent = site.labels[el.dataset.label];
-    }
-  });
+  // About Preview
+  $("aboutSummary").textContent = site.about.summary;
 
-  if ($("focusLabel")) $("focusLabel").textContent = site.focus.title;
-  if ($("focusList")) $("focusList").innerHTML = site.focus.items.map(x => `<span>${x}</span>`).join("");
-  if ($("aboutTitle")) $("aboutTitle").textContent = site.about.title;
-  if ($("aboutText")) $("aboutText").innerHTML = site.about.paragraphs.map(x => `<p>${x}</p>`).join("");
+  // Featured Projects
+  const featured = projects.filter(x => x.featured);
+  $("featuredCount").textContent = String(projects.length);
+  $("featuredProjectsList").innerHTML = featured.map((item, i) => `
+    <a href="project.html?id=${encodeURIComponent(item.id)}" class="project-card">
+      <div class="project-card-header">
+        <span class="project-card-no">CASE STUDY 0${i+1}</span>
+        ${item.badge ? `<span class="entry-badge">${item.badge}</span>` : ""}
+      </div>
+      <div class="project-card-cat">${item.category}</div>
+      <div class="project-card-arrow">↗</div>
+      <h3>${item.title}</h3>
+      <p>${item.short}</p>
+      <div class="tags">${(item.stack || []).slice(0, 5).map(s => `<span>${s}</span>`).join("")}</div>
+    </a>
+  `).join("");
 
-  // Categorized Stacks
-  if (site.stack_categorized) {
-    let stackHtml = "";
-    for (const [group, items] of Object.entries(site.stack_categorized)) {
-      stackHtml += `
-        <div class="stack-group">
-          <div class="stack-group-title">${group}</div>
-          <div class="stack-group-items">${items.map(x => `<span>${x}</span>`).join("")}</div>
+  // Work Experience (Strictly Employment / Professional)
+  $("workExpCount").textContent = String(site.work_experience.length);
+  $("workExperienceList").innerHTML = site.work_experience.map(exp => `
+    <div class="entry-item">
+      <div class="entry-header">
+        <div>
+          <h3 class="entry-title">${exp.role}</h3>
+          <div class="entry-subtitle">${exp.company} · ${exp.employment_type}</div>
         </div>
-      `;
-    }
-    if ($("stack")) $("stack").innerHTML = stackHtml;
-  } else if ($("stack") && site.stack) {
-    $("stack").innerHTML = site.stack.map(x => `<span>${x}</span>`).join("");
-  }
+        ${exp.badge ? `<span class="entry-badge">${exp.badge}</span>` : ""}
+      </div>
+      <div class="entry-meta">
+        <span>📅 ${exp.period}</span>
+        <span>📍 ${exp.location}</span>
+      </div>
+      <p class="entry-desc">${exp.summary}</p>
+      <div class="tags">${(exp.skills || []).map(s => `<span>${s}</span>`).join("")}</div>
+    </div>
+  `).join("");
 
-  // Projects Rendering
-  if ($("count")) $("count").textContent = String(projects.length).padStart(2, "0");
-  if ($("list")) {
-    $("list").innerHTML = projects.map((p, i) => `
-      <article class="project" data-i="${i}" tabindex="0" role="button" aria-label="${p.title} projesini incele">
-        <div class="project-header-line">
-          <span class="project-no">PROJECT ${String(i+1).padStart(2,"0")}</span>
-          ${p.badge ? `<span class="project-badge">${p.badge}</span>` : ""}
+  // Volunteer Experience & Leadership
+  $("volExpCount").textContent = String(site.volunteer_experience.length);
+  $("volunteerExperienceList").innerHTML = site.volunteer_experience.map(vol => `
+    <div class="entry-item">
+      <div class="entry-header">
+        <div>
+          <h3 class="entry-title">${vol.role}</h3>
+          <div class="entry-subtitle">${vol.organization}</div>
         </div>
-        <div class="project-category">${p.category}</div>
-        <div class="project-arrow">↗</div>
-        <h2>${p.title}</h2>
-        <p>${p.short}</p>
-        <div class="tags">${p.stack.map(x => `<span>${x}</span>`).join("")}</div>
-      </article>
-    `).join("");
+        ${vol.badge ? `<span class="entry-badge">${vol.badge}</span>` : ""}
+      </div>
+      <div class="entry-meta">
+        <span>📅 ${vol.period}</span>
+        <span>📍 ${vol.location}</span>
+      </div>
+      <p class="entry-desc">${vol.summary}</p>
+      <div class="tags">${(vol.skills || []).map(s => `<span>${s}</span>`).join("")}</div>
+    </div>
+  `).join("");
 
-    document.querySelectorAll(".project").forEach(el => {
-      const idx = Number(el.dataset.i);
-      el.addEventListener("click", () => openProject(projects[idx]));
-      el.addEventListener("keydown", e => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openProject(projects[idx]);
-        }
-      });
-    });
-  }
-
-  // Experiences Rendering
-  if ($("expList") && site.experiences) {
-    if ($("expCount")) $("expCount").textContent = String(site.experiences.length).padStart(2, "0");
-    $("expList").innerHTML = site.experiences.map((exp, i) => `
-      <article class="exp-card">
-        <div class="exp-head">
-          <div class="exp-role-title">
-            <span class="exp-role">${exp.role}</span>
-            <span class="exp-sep">/</span>
-            <span class="exp-company">${exp.company}</span>
-          </div>
-          ${exp.badge ? `<span class="exp-badge">${exp.badge}</span>` : ""}
+  // Honors & Awards
+  $("honorsCount").textContent = String(site.honors_awards.length);
+  $("honorsList").innerHTML = site.honors_awards.map(h => `
+    <div class="entry-item">
+      <div class="entry-header">
+        <div>
+          <h3 class="entry-title">${h.title}</h3>
+          <div class="entry-subtitle">${h.organization} · ${h.date}</div>
         </div>
-        <div class="exp-meta">
-          <span>📅 ${exp.period}</span>
-          <span>📍 ${exp.location}</span>
+        <span class="entry-badge">${h.badge}</span>
+      </div>
+      <p class="entry-desc">${h.summary}</p>
+    </div>
+  `).join("");
+
+  // Certificates & Scores Preview
+  $("scoresList").innerHTML = site.certificates_scores.map(c => `
+    <div class="entry-item">
+      <div class="entry-header">
+        <div>
+          <h3 class="entry-title">${c.title} — ${c.score}</h3>
+          <div class="entry-subtitle">${c.issuer} · ${c.date}</div>
         </div>
-        <p class="exp-desc">${exp.summary}</p>
-        <div class="tags">${(exp.skills || []).map(s => `<span>${s}</span>`).join("")}</div>
-      </article>
-    `).join("");
-  }
+        <span class="entry-badge">${c.badge}</span>
+      </div>
+      <p class="entry-desc">${c.summary}</p>
+      ${c.verify_code ? `
+        <div class="cert-verify-box">
+          <span>Doğrulama: <strong>${c.verify_code}</strong></span>
+          ${c.pin_code ? `<span>Pin: <strong>${c.pin_code}</strong></span>` : ""}
+          <a href="${c.verify_url}" target="_blank" rel="noreferrer">Resmi Doğrulama Sayfası ↗</a>
+        </div>
+      ` : ""}
+    </div>
+  `).join("");
 
-  // Honors Rendering
-  if ($("honorsList") && site.honors) {
-    if ($("honorsCount")) $("honorsCount").textContent = String(site.honors.length).padStart(2, "0");
-    $("honorsList").innerHTML = site.honors.map(h => `
-      <article class="honor-card">
-        <div class="honor-tag">${h.badge}</div>
-        <h3>${h.title}</h3>
-        <div class="honor-org">${h.org} · ${h.year}</div>
-        <p class="honor-desc">${h.description}</p>
-      </article>
-    `).join("");
+  // Categorized Skills
+  let skillsHtml = "";
+  for (const [group, items] of Object.entries(site.skills_categorized)) {
+    skillsHtml += `
+      <div>
+        <div style="font: 700 10.5px 'Courier New', monospace; color: var(--blue); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px;">
+          ${group}
+        </div>
+        <div class="tags">
+          ${items.map(s => `<span>${s}</span>`).join("")}
+        </div>
+      </div>
+    `;
   }
+  $("skillsContainer").innerHTML = skillsHtml;
 
-  if ($("year")) $("year").textContent = new Date().getFullYear();
+  $("year").textContent = new Date().getFullYear();
 }
 
-function openProject(p){
-  $("modalCat").textContent = p.category + (p.badge ? "  [" + p.badge + "]" : "");
-  $("modalTitle").textContent = p.title;
-  $("modalDesc").textContent = p.description;
-  $("modalStack").innerHTML = (p.stack || []).map(x => `<span>${x}</span>`).join("");
-  const links = [];
-  if (p.github) links.push(`<a href="${p.github}" target="_blank" rel="noreferrer">GitHub ↗</a>`);
-  if (p.demo) links.push(`<a href="${p.demo}" target="_blank" rel="noreferrer">Demo ↗</a>`);
-  if (links.length === 0) {
-    links.push(`<span class="modal-status-tag">Canlı Kurumsal Sistem / Akademik Ar-Ge İncelemesi</span>`);
-  }
-  $("modalLinks").innerHTML = links.join("");
-  $("modal").classList.add("open");
-  $("modal").setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
-  $("close").focus();
-}
-
-function hideProject(){
-  $("modal").classList.remove("open");
-  $("modal").setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
-}
-
-$("close").addEventListener("click", hideProject);
-$("modal").addEventListener("click", e => { if (e.target === $("modal")) hideProject(); });
-document.addEventListener("keydown", e => { if (e.key === "Escape") hideProject(); });
-
-/* ========================================================
-   TEKNİK ÇİZİM & KALEM MOTORU (HER ZAMAN AKTİF & OTO-LİNK ÇİZİMİ)
-   ======================================================== */
-const canvas = $("inkCanvas"), ctx = canvas.getContext("2d");
-const pencilCursor = $("pencilCursor");
-const clearBtn = $("clearSketch");
-const mobileDrawToggle = $("mobileDrawToggle");
-const exportBtn = $("exportBtn");
-
-const STORAGE_KEY = "blueprint_sketch_strokes";
-let isDrawing = false;
-let isDrawingEnabled = true;
-let lastToggleTime = 0;
-let isAnimatingClick = false;
-let activeColor = "#285bc4";
-let activeWidth = 2.2;
-let strokes = [];
-let currentStroke = null;
-let dpr = Math.min(devicePixelRatio || 1, 2);
-
-let pointerDownPos = { x: 0, y: 0 };
-let hasDragged = false;
-let targetClickable = null;
-let lastPointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-function isTouchOrMobile() {
-  return window.matchMedia("(max-width: 860px)").matches ||
-         window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
-         ("ontouchstart" in window && window.innerWidth <= 860);
-}
-
-function setDrawingEnabled(enabled) {
-  isDrawingEnabled = !!enabled;
-  document.body.classList.toggle("drawing-enabled", isDrawingEnabled);
-  document.body.classList.toggle("drawing-disabled", !isDrawingEnabled);
-
-  const toggleButtons = document.querySelectorAll(".nav-draw-toggle");
-  toggleButtons.forEach(btn => {
-    btn.classList.toggle("active", isDrawingEnabled);
-    btn.innerHTML = isDrawingEnabled
-      ? '<span>✏️</span> ÇİZİM: AÇIK'
-      : '<span>✏️</span> ÇİZ';
-    btn.setAttribute("title", isDrawingEnabled ? "Kalem Modunu Kapat (Kaydırma Modu)" : "Kalem Modunu Aç (Çizim Modu)");
-    btn.setAttribute("aria-pressed", isDrawingEnabled ? "true" : "false");
-  });
-
-  canvas.style.pointerEvents = isDrawingEnabled ? "auto" : "none";
-  canvas.style.touchAction = isDrawingEnabled ? "none" : "auto";
-
-  const floatingNav = $("floatingNav");
-  if (floatingNav && isTouchOrMobile()) {
-    const currentScrollY = Math.max(0, window.scrollY || window.pageYOffset || 0);
-    if (currentScrollY > 70) {
-      floatingNav.classList.add("visible");
-    } else {
-      floatingNav.classList.remove("visible");
-    }
-  }
-
-  if (!isDrawingEnabled) {
-    isDrawing = false;
-    currentStroke = null;
-    pencilCursor.classList.remove("drawing");
-    pencilCursor.style.opacity = "0";
-    redraw();
-  } else {
-    pencilCursor.style.opacity = "1";
-  }
-}
-
-function toggleDrawing() {
-  const now = Date.now();
-  if (now - lastToggleTime < 250) return;
-  lastToggleTime = now;
-  setDrawingEnabled(!isDrawingEnabled);
-}
-
-function updateFloatingNav() {
-  const floatingNav = $("floatingNav");
-  if (!floatingNav) return;
-
-  if (!isTouchOrMobile()) {
-    floatingNav.classList.remove("visible");
-    return;
-  }
-
-  const currentScrollY = Math.max(0, window.scrollY || window.pageYOffset || 0);
-  if (currentScrollY <= 70) {
-    floatingNav.classList.remove("visible");
-  } else {
-    floatingNav.classList.add("visible");
-  }
-}
-
-window.addEventListener("scroll", updateFloatingNav, { passive: true });
-
-function loadStrokes() {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      strokes = JSON.parse(saved);
-      redraw();
-    }
-  } catch (err) {
-    console.warn("Çizimler yüklenirken hata:", err);
-  }
-}
-
-function saveStrokes() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(strokes));
-  } catch (err) {
-    console.warn("Çizimler kaydedilirken hata:", err);
-  }
-}
-
-function clearStrokes() {
-  strokes = [];
-  currentStroke = null;
-  try {
-    localStorage.removeItem(STORAGE_KEY);
-  } catch (err) {}
-  redraw();
-}
-
-function undoStroke() {
-  if (strokes.length > 0) {
-    strokes.pop();
-    saveStrokes();
-    redraw();
-  }
-}
-
-function resize() {
-  dpr = Math.min(devicePixelRatio || 1, 2);
-  canvas.width = Math.round(innerWidth * dpr);
-  canvas.height = Math.round(innerHeight * dpr);
-  canvas.style.width = innerWidth + "px";
-  canvas.style.height = innerHeight + "px";
-  redraw();
-}
-window.addEventListener("resize", resize);
-
-function renderStrokeOnCtx(targetCtx, stroke) {
-  const pts = stroke.points;
-  if (!pts || pts.length === 0) return;
-
-  targetCtx.strokeStyle = stroke.color || "#285bc4";
-  targetCtx.fillStyle = stroke.color || "#285bc4";
-  targetCtx.lineWidth = stroke.width || 2.2;
-  targetCtx.lineCap = "round";
-  targetCtx.lineJoin = "round";
-
-  if (pts.length === 1) {
-    targetCtx.beginPath();
-    targetCtx.arc(pts[0].x, pts[0].y, (stroke.width || 2.2) / 1.5, 0, Math.PI * 2);
-    targetCtx.fill();
-    return;
-  }
-
-  targetCtx.beginPath();
-  targetCtx.moveTo(pts[0].x, pts[0].y);
-  for (let i = 1; i < pts.length - 1; i++) {
-    const midX = (pts[i].x + pts[i + 1].x) / 2;
-    const midY = (pts[i].y + pts[i + 1].y) / 2;
-    targetCtx.quadraticCurveTo(pts[i].x, pts[i].y, midX, midY);
-  }
-  targetCtx.lineTo(pts[pts.length - 1].x, pts[pts.length - 1].y);
-  targetCtx.stroke();
-}
-
-function drawStroke(stroke) {
-  renderStrokeOnCtx(ctx, stroke);
-}
-
-function redraw() {
-  const scrollX = window.scrollX || window.pageXOffset || 0;
-  const scrollY = window.scrollY || window.pageYOffset || 0;
-
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  ctx.clearRect(0, 0, innerWidth, innerHeight);
-  ctx.translate(-scrollX, -scrollY);
-
-  for (let i = 0; i < strokes.length; i++) {
-    drawStroke(strokes[i]);
-  }
-  if (currentStroke && currentStroke.points.length > 0) {
-    drawStroke(currentStroke);
-  }
-}
-window.addEventListener("scroll", redraw, { passive: true });
-
-function updatePencilPosition(clientX, clientY) {
-  pencilCursor.style.left = clientX + "px";
-  pencilCursor.style.top = clientY + "px";
-}
-
-window.addEventListener("pointermove", e => {
-  lastPointer.x = e.clientX;
-  lastPointer.y = e.clientY;
-  if (!isAnimatingClick) {
-    updatePencilPosition(e.clientX, e.clientY);
-  }
-});
-
-document.addEventListener("pointerleave", () => {
-  pencilCursor.style.opacity = "0";
-});
-document.addEventListener("pointerenter", () => {
-  if (isDrawingEnabled && !isTouchOrMobile()) {
-    pencilCursor.style.opacity = "1";
-  }
-});
-
-function getClickableElement(clientX, clientY) {
-  const elements = document.elementsFromPoint(clientX, clientY);
-  for (const el of elements) {
-    if (el === canvas || el === pencilCursor || el.closest("#pencilCursor")) continue;
-    const clickable = el.closest("a, button, .project, .close, #clearSketch, #exportBtn, #mobileDrawToggle, .nav-draw-toggle, .nav-clear-btn, .nav-export-btn");
-    if (clickable) return clickable;
-  }
-  return null;
-}
-
-function generateBoxPoints(rect) {
-  const pad = 6;
-  const x = rect.left + (window.scrollX || window.pageXOffset || 0) - pad;
-  const y = rect.top + (window.scrollY || window.pageYOffset || 0) - pad;
-  const w = rect.width + pad * 2;
-  const h = rect.height + pad * 2;
-
-  const pts = [];
-  const steps = 7;
-  pts.push({ x: x + 6, y: y });
-
-  for (let i = 1; i <= steps; i++) {
-    const t = i / steps;
-    const wobble = Math.sin(t * Math.PI) * 1.5;
-    pts.push({ x: x + 6 + t * (w - 3), y: y - wobble });
-  }
-  for (let i = 1; i <= steps; i++) {
-    const t = i / steps;
-    const wobble = Math.sin(t * Math.PI) * 1.5;
-    pts.push({ x: x + w + 3 + wobble, y: y + t * (h + 3) });
-  }
-  for (let i = 1; i <= steps; i++) {
-    const t = i / steps;
-    const wobble = Math.sin(t * Math.PI) * 1.5;
-    pts.push({ x: x + w + 3 - t * (w + 6), y: y + h + 3 + wobble });
-  }
-  for (let i = 1; i <= steps; i++) {
-    const t = i / steps;
-    const wobble = Math.sin(t * Math.PI) * 1.5;
-    pts.push({ x: x - 3 - wobble, y: y + h + 3 - t * (h + 5) });
-  }
-  const overshootLen = Math.min(w * 0.35, 28);
-  for (let i = 1; i <= 4; i++) {
-    const t = i / 4;
-    pts.push({ x: x - 3 + t * overshootLen, y: y - 2 + t * 1.5 });
-  }
-  return pts;
-}
-
-function animateSketchAround(element, onComplete) {
-  const targetToCircle = element.classList.contains("project")
-    ? (element.querySelector("h2") || element)
-    : element;
-
-  const rect = targetToCircle.getBoundingClientRect();
-  const allPts = generateBoxPoints(rect);
-
-  const animStroke = {
-    color: activeColor,
-    width: 2.2,
-    points: []
-  };
-
-  isAnimatingClick = true;
-  pencilCursor.classList.add("drawing");
-
-  const startTime = performance.now();
-  const duration = 210;
-
-  function step(now) {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const targetIdx = Math.floor(progress * (allPts.length - 1));
-
-    animStroke.points = allPts.slice(0, targetIdx + 1);
-
-    if (animStroke.points.length > 0) {
-      const latest = animStroke.points[animStroke.points.length - 1];
-      updatePencilPosition(
-        latest.x - (window.scrollX || window.pageXOffset || 0),
-        latest.y - (window.scrollY || window.pageYOffset || 0)
-      );
-    }
-
-    currentStroke = animStroke;
-    redraw();
-
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    } else {
-      currentStroke = null;
-      strokes.push(animStroke);
-      saveStrokes();
-      redraw();
-
-      pencilCursor.classList.remove("drawing");
-      isAnimatingClick = false;
-      updatePencilPosition(lastPointer.x, lastPointer.y);
-
-      if (onComplete) onComplete();
-    }
-  }
-
-  requestAnimationFrame(step);
-}
-
-function executeClick(el) {
-  if (!el) return;
-
-  if (el.id === "mobileDrawToggle" || el.closest("#mobileDrawToggle") || el.id === "floatDrawToggle") {
-    toggleDrawing();
-    return;
-  }
-
-  if (el.id === "clearSketch" || el.closest("#clearSketch") || el.id === "floatClearSketch") {
-    clearStrokes();
-    const btn = el.closest("#clearSketch, #floatClearSketch") || el;
-    const orig = btn.textContent;
-    btn.textContent = "TEMİZLENDİ ⌫";
-    setTimeout(() => { btn.textContent = orig; }, 1200);
-    return;
-  }
-
-  if (el.id === "exportBtn" || el.closest("#exportBtn")) {
-    captureAndDownloadBlueprint();
-    return;
-  }
-
-  const projectCard = el.closest(".project");
-  if (projectCard) {
-    const idx = Number(projectCard.dataset.i);
-    if (!isNaN(idx) && projects[idx]) {
-      openProject(projects[idx]);
-    }
-    return;
-  }
-
-  const closeBtn = el.closest("#close");
-  if (closeBtn) {
-    hideProject();
-    return;
-  }
-
-  const link = el.closest("a");
-  if (link) {
-    const href = link.getAttribute("href") || "";
-    if (href.startsWith("#")) {
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    } else if (link.target === "_blank") {
-      window.open(link.href, "_blank");
-    } else if (href && !href.startsWith("javascript:")) {
-      window.location.href = link.href;
-    }
-    return;
-  }
-
-  if (el.tagName.toLowerCase() === "button") {
-    el.click();
-  }
-}
-
-async function captureAndDownloadBlueprint() {
-  const exportBtn = $("exportBtn");
-  const origText = exportBtn ? exportBtn.textContent : "ÇIKTI AL ⤓";
-  if (exportBtn) exportBtn.textContent = "HAZIRLANIYOR... ⏳";
-
-  canvas.style.display = "none";
-  pencilCursor.style.display = "none";
-  const floatingNav = $("floatingNav");
-  if (floatingNav) floatingNav.style.display = "none";
-
-  try {
-    if (!window.html2canvas) {
-      await new Promise((res, rej) => {
-        const s = document.createElement("script");
-        s.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
-        s.onload = res;
-        s.onerror = rej;
-        document.head.appendChild(s);
-      });
-    }
-
-    const prevScrollX = window.scrollX || window.pageXOffset || 0;
-    const prevScrollY = window.scrollY || window.pageYOffset || 0;
-    window.scrollTo(0, 0);
-
-    await new Promise(r => setTimeout(r, 80));
-
-    const fullCanvas = await window.html2canvas(document.documentElement, {
-      backgroundColor: "#e8eef3",
-      scale: 1,
-      useCORS: true,
-      logging: false
-    });
-
-    window.scrollTo(prevScrollX, prevScrollY);
-
-    const exportCtx = fullCanvas.getContext("2d");
-    for (const stroke of strokes) {
-      renderStrokeOnCtx(exportCtx, stroke);
-    }
-
-    fullCanvas.toBlob(blob => {
-      if (!blob) throw new Error("Görüntü oluşturulamadı.");
-      const a = document.createElement("a");
-      const dateStr = new Date().toISOString().slice(0, 10);
-      a.download = `turker-kivilcim-blueprint-portfolio-${dateStr}.png`;
-      a.href = URL.createObjectURL(blob);
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(a.href);
-
-      if (exportBtn) {
-        exportBtn.textContent = "İNDİRİLDİ! ✓";
-        setTimeout(() => { exportBtn.textContent = origText; }, 2000);
-      }
-    }, "image/png");
-
-  } catch (err) {
-    console.error("Çıktı alınırken hata:", err);
-    if (exportBtn) {
-      exportBtn.textContent = "HATA OLUŞTU!";
-      setTimeout(() => { exportBtn.textContent = origText; }, 2000);
-    }
-  } finally {
-    canvas.style.display = "block";
-    pencilCursor.style.display = (isDrawingEnabled && !isTouchOrMobile()) ? "block" : "none";
-    if (floatingNav) floatingNav.style.display = "";
-    redraw();
-  }
-}
-
-canvas.addEventListener("pointerdown", e => {
-  if (!isDrawingEnabled) return;
-  if (e.button !== 0 || isAnimatingClick) return;
-  e.preventDefault();
-  canvas.setPointerCapture(e.pointerId);
-
-  isDrawing = true;
-  hasDragged = false;
-  pointerDownPos = { x: e.clientX, y: e.clientY };
-  targetClickable = getClickableElement(e.clientX, e.clientY);
-
-  pencilCursor.classList.add("drawing");
-
-  const ptX = Math.round(e.pageX ?? (e.clientX + (window.scrollX || window.pageXOffset || 0)));
-  const ptY = Math.round(e.pageY ?? (e.clientY + (window.scrollY || window.pageYOffset || 0)));
-
-  currentStroke = {
-    color: activeColor,
-    width: activeWidth,
-    points: [{ x: ptX, y: ptY }]
-  };
-  redraw();
-});
-
-canvas.addEventListener("pointermove", e => {
-  if (!isDrawingEnabled || !isDrawing || !currentStroke || isAnimatingClick) return;
-  e.preventDefault();
-
-  const dist = Math.hypot(e.clientX - pointerDownPos.x, e.clientY - pointerDownPos.y);
-  if (dist > 7) {
-    hasDragged = true;
-    targetClickable = null;
-  }
-
-  const ptX = Math.round(e.pageX ?? (e.clientX + (window.scrollX || window.pageXOffset || 0)));
-  const ptY = Math.round(e.pageY ?? (e.clientY + (window.scrollY || window.pageYOffset || 0)));
-  const lastPt = currentStroke.points[currentStroke.points.length - 1];
-
-  const dx = ptX - lastPt.x;
-  const dy = ptY - lastPt.y;
-  if (dx * dx + dy * dy >= 4) {
-    currentStroke.points.push({ x: ptX, y: ptY });
-    redraw();
-  }
-});
-
-function finishDrawing(e) {
-  if (!isDrawing) return;
-  isDrawing = false;
-  pencilCursor.classList.remove("drawing");
-
-  if (!hasDragged && targetClickable) {
-    const clicked = targetClickable;
-    currentStroke = null;
-    targetClickable = null;
-    redraw();
-
-    if (clicked.id === "mobileDrawToggle" || clicked.closest("#mobileDrawToggle") || clicked.id === "floatDrawToggle") {
-      toggleDrawing();
-      return;
-    }
-
-    animateSketchAround(clicked, () => {
-      executeClick(clicked);
-    });
-    return;
-  }
-
-  if (currentStroke && currentStroke.points.length > 0) {
-    strokes.push(currentStroke);
-    saveStrokes();
-  }
-  currentStroke = null;
-  redraw();
-}
-
-canvas.addEventListener("pointerup", finishDrawing);
-canvas.addEventListener("pointercancel", finishDrawing);
-
-document.querySelectorAll(".nav-draw-toggle").forEach(btn => {
-  btn.addEventListener("click", e => {
-    e.preventDefault();
-    toggleDrawing();
-  });
-});
-
-document.querySelectorAll(".nav-clear-btn").forEach(btn => {
-  btn.addEventListener("click", e => {
-    e.preventDefault();
-    clearStrokes();
-    const orig = btn.textContent;
-    btn.textContent = "TEMİZLENDİ ⌫";
-    setTimeout(() => { btn.textContent = orig; }, 1200);
-  });
-});
-
-const floatLogo = $("floatNavLogo");
-if (floatLogo) {
-  floatLogo.addEventListener("click", e => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
-if (exportBtn) {
-  exportBtn.addEventListener("click", e => {
-    e.preventDefault();
-    captureAndDownloadBlueprint();
-  });
-}
-
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
-    if ($("modal").classList.contains("open")) {
-      hideProject();
-      return;
-    }
-  }
-
-  if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) {
-    e.preventDefault();
-    undoStroke();
-  }
-
-  if ((e.key === "c" || e.key === "C") && !e.ctrlKey && !e.metaKey) {
-    const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
-    if (tag !== "input" && tag !== "textarea" && !$("modal").classList.contains("open")) {
-      clearStrokes();
-    }
-  }
-});
-
-setDrawingEnabled(!isTouchOrMobile());
-updateFloatingNav();
-
-window.matchMedia("(max-width: 860px)").addEventListener("change", e => {
-  if (e.matches) {
-    setDrawingEnabled(false);
-  } else {
-    setDrawingEnabled(true);
-  }
-  updateFloatingNav();
-});
-
-resize();
-loadStrokes();
-load().catch(e => console.error(e));
+init();
 </script>
 </body>
 </html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hakkımda — Türker Kıvılcım / Blueprint Portfolio</title>
+<meta name="description" content="Türker Kıvılcım hakkında detaylı mühendislik hikayesi, sistem yaklaşımı, çalışma prensipleri ve hedefleri.">
+<link rel="stylesheet" href="css/blueprint.css">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<nav id="floatingNav" class="floating-nav" aria-label="Mobil Hızlı Menü">
+  <a id="floatNavLogo" href="index.html" class="floating-nav-logo" title="Ana Sayfaya Dön">TK-2026</a>
+  <div class="floating-nav-actions">
+    <a href="index.html" class="floating-nav-link">ANA SAYFA</a>
+    <a href="projects.html" class="floating-nav-link">PROJELER</a>
+    <a href="certificates.html" class="floating-nav-link">BELGELER</a>
+    <a href="blogs.html" class="floating-nav-link">BLOG</a>
+    <a class="nav-btn nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
+    <a class="nav-btn nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
+  </div>
+</nav>
+
+<div class="site">
+  <header class="top">
+    <div class="brand-block">
+      <a href="index.html" class="brand-link">TK-2026 / SOFTWARE</a>
+      <span class="coord">39°00'N · 35°00'E</span>
+    </div>
+    <nav class="nav-links" aria-label="Ana Gezinti">
+      <a href="index.html" class="nav-link">ANA SAYFA</a>
+      <a href="about.html" class="nav-link active">HAKKIMDA</a>
+      <a href="projects.html" class="nav-link">PROJELER</a>
+      <a href="certificates.html" class="nav-link">SERTİFİKALAR & SINAVLAR</a>
+      <a href="blogs.html" class="nav-link">BLOG</a>
+    </nav>
+    <div class="nav-controls">
+      <a class="nav-btn nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
+      <a class="nav-btn nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
+      <a class="nav-btn nav-export-btn" href="javascript:void(0)" title="Sayfa ve Çizimlerin Görüntüsünü İndir">ÇIKTI AL ⤓</a>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <h1 class="page-title">Mühendislik Hikayem & Vizyonum</h1>
+    <p class="page-subtitle">
+      Arka plandaki sistem dinamiklerini anlamak, teoriyi çalışan mimarilere dönüştürmek ve gerçek problemlere sürdürülebilir yazılım çözümleri üretmek.
+    </p>
+  </div>
+
+  <!-- Main Narrative Card -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>🧭</span> YOLCULUK & DENEYİM</h2>
+      <span style="font: 700 11px 'Courier New', monospace; color: var(--muted);">BİYOGRAFİ</span>
+    </div>
+    <div id="aboutStoryContainer" style="font-size: 14.5px; line-height: 1.7; color: #233444;"></div>
+  </section>
+
+  <!-- Engineering Philosophy Card -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>⚙️</span> MÜHENDİSLİK FELSEFESİ</h2>
+      <span style="font: 700 11px 'Courier New', monospace; color: var(--blue);">ÇALIŞMA PRENSİBİ</span>
+    </div>
+    <div style="padding: 14px 18px; background: rgba(234, 241, 249, 0.7); border-left: 3px solid var(--blue); font: 500 15px/1.65 Georgia, serif; color: #1c3349; margin-bottom: 16px;">
+      "Ezberlemek yerine sistemin neden ve nasıl çalıştığını kavramayı, soyutlamaların altındaki donanım ve işletim sistemi dinamiklerini anlamayı ve her öğrendiğim teoriyi çalışan, test edilmiş bir yazılıma dönüştürmeyi ilke ediniyorum."
+    </div>
+    <p style="font-size: 13.5px; line-height: 1.65; color: #2d3e4e; margin: 0 0 12px;">
+      Geliştirdiğim her projede yalnızca arayüz veya API yazmakla yetinmeyip; veri tabanı sorgularının maliyetini, ağ paketlerinin geçiş sürelerini, bellek tahsislerini (memory allocation) ve sunucu katmanındaki asenkron işleyişi dikkate alarak mimari kararlar veriyorum.
+    </p>
+  </section>
+
+  <!-- Systems & Linux Curiosity -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>🐧</span> LINUX & DÜŞÜK SEVİYELİ SİSTEMLER</h2>
+      <span style="font: 700 11px 'Courier New', monospace; color: var(--muted);">DERİNLEMESİNE BAKIŞ</span>
+    </div>
+    <p style="font-size: 13.5px; line-height: 1.65; color: #2d3e4e; margin: 0 0 14px;">
+      Full-time Linux kullanıcısı olarak işletim sisteminin sunduğu POSIX sistem çağrılarını, süreçler arası iletişimi (IPC), dosya tanımlayıcılarını ve çekirdek seviyesindeki olay döngülerini yakından inceliyorum. Boş zamanlarımda C dili ile özel bellek tahsis ediciler (arena/pool allocators) ve veri yapıları geliştirerek sistemlerin altında çalışan soyut yapıların nasıl çalıştığını pratik ediyorum.
+    </p>
+    <div class="tags">
+      <span>Linux / POSIX</span>
+      <span>C (C99 / C11)</span>
+      <span>Valgrind</span>
+      <span>GDB</span>
+      <span>Pointer Aritmetiği</span>
+      <span>Arena Allocator</span>
+      <span>Bash Scripting</span>
+    </div>
+  </section>
+
+  <!-- Continuous Learning Roadmap -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>📚</span> SÜREKLİ GELİŞİM & GÜNCEL ÇALIŞMALAR</h2>
+      <span style="font: 700 11px 'Courier New', monospace; color: var(--muted);">YOL HARİTASI</span>
+    </div>
+    <ul id="roadmapList" style="padding-left: 20px; margin: 0; font-size: 13.5px; line-height: 1.65; color: #293a4a;"></ul>
+  </section>
+
+  <!-- Education & Status -->
+  <section class="card-section">
+    <div class="card-section-head">
+      <h2 class="card-section-title"><span>🎓</span> AKADEMİK GEÇMİŞ & KARİYER AÇIKLIĞI</h2>
+      <span style="font: 700 11px 'Courier New', monospace; color: var(--muted);">DURUM</span>
+    </div>
+    <p style="font-size: 13.5px; line-height: 1.65; color: #293a4a; margin: 0 0 14px;">
+      <strong>Erciyes Üniversitesi Bilgisayar Mühendisliği</strong> son sınıf öğrencisiyim (Eylül 2023 – Haziran 2027, Güncel GANO: <strong>3.18 / 4.00</strong>). Şu anda özellikle backend ağırlıklı ve yapay zeka entegrasyonlu yazılım geliştirme alanında part-time, staj ve mezuniyet sonrası tam zamanlı kariyer fırsatlarına açığım.
+    </p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <a href="mailto:kivturker@gmail.com" class="btn btn-primary">✉️ E-Posta Gönder</a>
+      <a href="turker-kivilcim-cv.pdf" target="_blank" rel="noreferrer" class="btn btn-outline">📄 CV Görüntüle ↗</a>
+      <a href="projects.html" class="btn btn-outline">⚙️ Projelerimi İncele →</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© <span id="year"></span> Türker Kıvılcım · Blueprint Portfolio</span>
+    <span><a href="index.html" style="color:var(--blue);text-decoration:none;">← Ana Sayfaya Dön</a></span>
+  </footer>
+</div>
+
+<script src="js/blueprint.js"></script>
+<script>
+async function initAbout() {
+  try {
+    const res = await fetch("./data/site.json");
+    const site = await res.json();
+
+    const storyContainer = document.getElementById("aboutStoryContainer");
+    storyContainer.innerHTML = site.about.paragraphs.map(p => `
+      <p style="margin: 0 0 16px;">${p}</p>
+    `).join("");
+
+    const roadmapList = document.getElementById("roadmapList");
+    roadmapList.innerHTML = site.learning_roadmap.items.map(item => `
+      <li style="margin-bottom: 10px;">${item}</li>
+    `).join("");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  } catch (err) {
+    console.error("Hakkımda verisi yüklenirken hata:", err);
+  }
+}
+initAbout();
+</script>
+</body>
+</html>
