@@ -1,69 +1,155 @@
 [
   {
-    "title": "Kampüs Giriş Sayım Sistemi",
-    "category": "Canlı Sistem",
-    "short": "Kamera akışlarından kampüs girişlerini tespit eden uçtan uca görüntü işleme sistemi.",
-    "description": "Sistemi sıfırdan kurdum. Veri seti hazırlama, YOLO modellerinin eğitimi ve karşılaştırılması, nesne takibi, Django tabanlı yönetim paneli ve WebSocket üzerinden canlı görüntü akışı dahil olmak üzere tüm akış üzerinde çalıştım.",
+    "title": "Kampüs Giriş Sayım & Canlı İzleme Sistemi",
+    "category": "Canlı Sistem / Görüntü İşleme",
+    "badge": "Canlıda Aktif · Erciyes Üniversitesi",
+    "short": "Nizamiyelerdeki kamera akışlarından araç ve yaya geçişlerini sayan ve WebSocket üzerinden anlık yayınlayan uçtan uca görüntü işleme sistemi.",
+    "description": "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı bünyesinde sıfırdan mimarilendirildi ve canlıya alındı. Kamera nizamiyelerinden gelen RTSP akışları için veri seti toplama ve etiketleme yapıldı. YOLO modelleri (v8/v11) farklı yöntemlerle defalarca eğitilerek performans ve doğrulukları kıyaslandı. Nesne takip (ByteTrack / BoT-SORT) algoritmaları entegre edildi. Django tabanlı full-stack mimari ile hem idari yönetim paneli hem de WebSocket üzerinden düşük gecikmeli canlı kamera akışı yayını kodlandı. Sanal sunucu (Linux VM), Nginx ters vekil ve güvenlik kamerası IP yönlendirmeleri tamamlanarak üniversitede aktif kullanıma alındı; sistem canlıda geliştirilmeye devam edilmektedir.",
     "stack": [
       "Python",
       "YOLO",
       "Django",
-      "WebSocket"
+      "WebSocket",
+      "OpenCV",
+      "ByteTrack",
+      "Nginx",
+      "Linux VM"
     ],
     "github": "",
     "demo": ""
   },
   {
-    "title": "Kurumsal SSS Chatbot",
-    "category": "Ar-Ge",
-    "short": "Kurum içi destek süreçlerini otomatikleştirmek için RAG ve LoRA teknikleri üzerine geliştirilen chatbot prototipi.",
-    "description": "Kurum içi bilgiye dayalı yanıt üretimi için RAG yaklaşımını ve model özelleştirme tarafında LoRA tekniklerini araştırdım. Ayrıca chatbot için arayüz prototipi geliştirdim.",
+    "title": "Düşük Güç Tüketimli Türkçe Konuşma Tanıma (TÜBİTAK 2209-A)",
+    "category": "TÜBİTAK Ar-Ge / Akustik Modelleme",
+    "badge": "TÜBİTAK Onaylı Sonuç Raporu · Proje Yürütücüsü",
+    "short": "Gömülü ve sınır sistemler için Kaldi Toolkit ve hibrit akustik modellerle Türkçe ses tanıma sistemi.",
+    "description": "2024/1 TÜBİTAK 2209-A programı kapsamında yürütücülüğünü üstlendiğim ve sonuç raporu onaylanarak başarıyla sonuçlandırılan araştırma projesidir. Düşük güç tüketimli ve kısıtlı kaynaklara sahip sistemlerde Türkçe konuşma tanıma (Speech Recognition) problemine odaklanıldı. İlk etapta hmmlearn gibi Python kütüphaneleriyle yapılan prototiplemelerin ardından, endüstriyel ölçeklenebilirlik ve kararlılık için Kaldi ASR Toolkit altyapısına geçildi. GMM-HMM (Gaussian Mixture Model - Hidden Markov Model) ve N-gram dil modelleri üzerinde ses verisi hazırlama, akustik öznitelik çıkarma (MFCC), model eğitimi ve WER (Word Error Rate) testleri başarıyla tamamlandı.",
+    "stack": [
+      "Kaldi ASR",
+      "Python",
+      "GMM-HMM",
+      "N-gram",
+      "hmmlearn",
+      "Linux / Bash",
+      "Ses İşleme"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "title": "Engelsiz Gözlük — EruAI Ada Lovelace (TEKNOFEST 2025)",
+    "category": "TEKNOFEST 2025 / Giyilebilir Yapay Zeka",
+    "badge": "Türkiye 1.si (96/100 Puan) · Takım Kaptanı",
+    "short": "İşaret dilini yazıya, yazıyı sese ve sesi yazıya çevirerek dil bariyerini aşan yapay zeka destekli akıllı giyilebilir gözlük.",
+    "description": "TEKNOFEST 2025 Engelsiz Yaşam kategorisinde kaptanlığını yaptığım 7 kişilik EruAI - Ada Lovelace takımıyla geliştirildi. İşitme ve konuşma engelli bireylerin toplumla kesintisiz iletişim kurabilmesini amaçlayan donanım ve yazılım bütünleşik bir çözümdür. Gözlük üzerindeki kamera ve sensörlerle gerçek zamanlı el-parmak izleme ve işaret dili hareket sınıflandırması yapıldı. İşaret dili anlık yazıya dökülürken, karşı tarafın konuşmaları ses tanıma (STT) ile ekrana yansıtılmakta ve kullanıcının girdileri metinden sese (TTS) dönüştürülmektedir. Proje, Ön Değerlendirme Raporunda 100 üzerinden 96 puan alarak Türkiye 1.si seçildi.",
+    "stack": [
+      "Python",
+      "Computer Vision",
+      "Deep Learning",
+      "MediaPipe / YOLO",
+      "Edge AI",
+      "NLP / STT-TTS"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "title": "TeknoJam24 Şampiyonu: 48 Saatlik 2D Oyun",
+    "category": "Game Development / GameJam 1.si",
+    "badge": "TeknoJam24 1.lik Ödülü",
+    "short": "Erciyes Teknopark TeknoJam24 maratonunda 48 saatte sıfırdan geliştirilen ve 26 takım arasından 1.lik kazanan oyun.",
+    "description": "Erü Teknopark tarafından düzenlenen 48 saatlik oyun geliştirme maratonunda 26 yarışmacı grup arasında 1.lik ödülüne layık görüldü. Çok sıkı zaman baskısı altında sıfırdan tema uyumlu oyun mekanikleri, seviye tasarımı (level design), karakter hareket fiziği, ses efektleri ve dinamik kullanıcı arayüzü tek bir hafta sonunda eksiksiz hayata geçirildi ve jüri sunumunda en yüksek puanı aldı.",
+    "stack": [
+      "C#",
+      "Unity",
+      "Game AI",
+      "Level Design",
+      "2D Physics",
+      "Hızlı Prototipleme"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "title": "Kurumsal SSS Akıllı Chatbot",
+    "category": "Ar-Ge / LLM & NLP",
+    "badge": "Kurumsal Ar-Ge Prototipi",
+    "short": "Kurum içi bilgi tabanından semantik yanıt üretimi için RAG mimarisi ve LoRA fine-tuning araştırması.",
+    "description": "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı'nın sık sorulan sorular sayfasını interaktif ve akıllı hale getirmek için geliştirilen prototip. Kurumsal dokümanların vektörel veritabanında saklanması ve semantik benzerlikle getirilmesi (RAG) yaklaşımı uygulandı. Açık kaynaklı dil modellerinin kuruma özel terim ve işleyişe adapte edilmesi için LoRA (Low-Rank Adaptation) yöntemleri araştırıldı ve modern web sohbet arayüzü tasarlandı.",
     "stack": [
       "RAG",
       "LoRA",
       "LLM",
-      "Django"
+      "Python",
+      "Django",
+      "Vector DB",
+      "Prompt Engineering"
     ],
     "github": "",
     "demo": ""
   },
   {
-    "title": "2D Basketbol Oyunu",
-    "category": "Game Development",
-    "short": "Mobil platform için fizik tabanlı atış, bot AI ve UI/UX içeren 2D basketbol oyunu.",
-    "description": "Oyunun tasarımını ve level yapısını oluşturdum. Fizik tabanlı atış mekanikleri, bot mantığı ve arayüzü tek başıma geliştirerek projeyi uçtan uca tamamladım.",
+    "title": "3 Şubeli Kurumsal Ağ Mimarisi Simülasyonu",
+    "category": "Ağ Mühendisliği & Sanallaştırma",
+    "badge": "Donanım Stajı Projesi",
+    "short": "3 farklı şehre yayılan kurumsal bir firmanın sanal makinelerle simüle edilen güvenli ağ altyapısı.",
+    "description": "MEA Yazılım zorunlu donanım stajı kapsamında, firmanın farklı şehirlere genişlemesi senaryosu için geliştirildi. Cisco Packet Tracer üzerinde merkez ve iki uzak şube arasında VLAN segmentasyonu, inter-VLAN yönlendirme, OSPF dinamik yönlendirme protokolü, DHCP havuzları, DNS ve NAT yapılandırmaları kurgulandı. Ağ servisleri sanal makineler (VMware / VirtualBox) üzerinde ayağa kaldırılarak güvenli haberleşme test edildi.",
     "stack": [
-      "C#",
-      "Game AI",
-      "Physics",
-      "UI/UX"
-    ],
-    "github": "",
-    "demo": ""
-  },
-  {
-    "title": "3 Şubeli Ağ Mimarisi",
-    "category": "Network",
-    "short": "Farklı şehirlerde üç şubeye genişleyen bir firma için tasarlanan ve sanal makinelerde simüle edilen ağ yapısı.",
-    "description": "Zorunlu donanım stajı kapsamında, firmanın farklı şehirlere açılması senaryosu için üç şubeli bir ağ mimarisi geliştirdim ve cihazları sanal makineler üzerinde simüle ettim.",
-    "stack": [
-      "CPT",
+      "Cisco Packet Tracer",
       "Networking",
-      "Virtual Machines"
+      "VLAN",
+      "OSPF",
+      "Virtual Machines",
+      "Subnetting"
     ],
     "github": "",
     "demo": ""
   },
   {
-    "title": "Fiziksel Cihaz Slot Oyunu",
-    "category": "Game Development",
-    "short": "RNG, olasılık mantığı ve dinamik makara animasyonları içeren C# tabanlı 2D slot oyunu.",
-    "description": "2D artist ile birlikte çalışarak rastgele sayı üretimi, olasılık/şans algoritmaları ve dinamik makara animasyon sistemini C# ile mimariledim ve ilk sürümü tamamladım.",
+    "title": "Mobil 2D Fizik Tabanlı Basketbol Oyunu (Upwork)",
+    "category": "Game Development / Ticari Proje",
+    "badge": "Upwork Müşteri Teslimi · Bağımsız Geliştirici",
+    "short": "Fizik tabanlı atış mekanikleri, yapay zeka botu ve özel seviye yapısı içeren mobil 2D basketbol oyunu.",
+    "description": "Upwork üzerinde küresel müşteriye kendi fikir ve mekanik tasarımımla teklif vererek kabul ettirdiğim ve başarıyla teslim ettiğim bağımsız ticari oyun. Gerçekçi fizik motoru entegrasyonu, parabolik atış hesaplamaları, farklı zorluk seviyelerine adapte olabilen yapay zeka (bot) mantığı, seviye mimarisi ve kullanıcı dostu arayüzü tek başıma uçtan uca tamamladım.",
     "stack": [
       "C#",
-      "RNG",
-      "Probability",
-      "Animation"
+      "Unity",
+      "Game AI",
+      "Parabolic Physics",
+      "UI/UX",
+      "Mobile Optimization"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "title": "Fiziksel Cihaz Uyumlu Slot Oyunu (Upwork)",
+    "category": "Game Development / Algoritma",
+    "badge": "Ticari Proje · Algoritma Mimarisi",
+    "short": "Gerçek fiziksel slot makinelerinde çalışacak RNG algoritmaları, olasılık matematiği ve dinamik makara animasyonları.",
+    "description": "Fiziksel makinelerde çalışmak üzere tasarlanan ticari slot oyunu projesi. Bir 2D sanatçı ile iş birliği içinde; kriptografik olarak güvenilir rastgele sayı üretimi (RNG), matematiksel kazanç ve olasılık matrisleri ile dinamik makara dönüş animasyon sistemini C# ile mimariledim ve ilk çalışan sürümünü başarıyla teslim ettim.",
+    "stack": [
+      "C#",
+      "RNG & Olasılık Matematiği",
+      "Makaralı Animasyon",
+      "Game Logic"
+    ],
+    "github": "",
+    "demo": ""
+  },
+  {
+    "title": "C ile Düşük Seviye Sistem Programlama & Veri Yapıları",
+    "category": "Sistem Programlama & Ar-Ge",
+    "badge": "Sürekli Gelişim & Düşük Seviye Ar-Ge",
+    "short": "İşletim sistemi katmanlarını ve soyut yapıları anlamak için C ile bellek yönetimi, POSIX sistem çağrıları ve veri yapıları.",
+    "description": "Full-time Linux kullanıcısı olarak donanım ve yazılım arasındaki soyutlamaları kavramak amacıyla C dili ile geliştirilen bellek yöneticileri, veri yapıları ve POSIX sistem çağrıları deneyleri. Eş zamanlı olarak boot.dev backend path müfredatı ile ölçeklenebilir sistem mimarileri ve LeetCode algoritmik problem çözme pratiği yürütülmektedir.",
+    "stack": [
+      "C",
+      "Linux / POSIX",
+      "Memory Allocation",
+      "Data Structures",
+      "Algorithms",
+      "Valgrind"
     ],
     "github": "",
     "demo": ""

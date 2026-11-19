@@ -1,53 +1,204 @@
 {
   "person": {
     "name": "Türker Kıvılcım",
-    "eyebrow": "Software Developer",
-    "intro": "Gerçek problemlere yazılım çözümleri üretmeyi seven Bilgisayar Mühendisliği öğrencisi.",
-    "hand_note": "çalışır şeyler →",
+    "title": "Full-Stack Developer & AI Engineer",
+    "eyebrow": "Computer Engineering @ Erciyes University",
+    "intro": "Sistemlerin arka planını anlamaya odaklanan, ölçeklenebilir backend mimarileri, yapay zeka & görüntü işleme sistemleri ve düşük seviyeli yazılımlar geliştiren Bilgisayar Mühendisliği son sınıf öğrencisi.",
+    "hand_note": "çalışır sistemler & Ar-Ge →",
     "location": "Kayseri, Türkiye",
     "email": "kivturker@gmail.com",
+    "phone": "+90 531 796 54 25",
     "github": "https://github.com/turkerkiv",
     "linkedin": "https://linkedin.com/in/turkerkiv",
-    "cv": "turker-kivilcim-cv.pdf"
+    "cv": "turker-kivilcim-cv.pdf",
+    "now": "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı · Full-stack AI Engineer",
+    "availability": "Part-time, staj ve mezuniyet sonrası tam zamanlı backend/full-stack fırsatlarına açık.",
+    "education": "Erciyes Üniversitesi · Bilgisayar Mühendisliği (2023 – 2027 | GANO: 3.18)"
   },
   "about": {
-    "title": "Kısaca ben",
+    "title": "Mühendislik Yaklaşımım & Hikayem",
     "paragraphs": [
-      "Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisiyim.",
-      "Şu anda Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı'nda Full-stack AI Engineer olarak çalışıyorum.",
-      "Özellikle backend geliştirme, yapay zeka ve sistemlerin çalışma mantığıyla ilgileniyorum."
+      "Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisi ve backend odaklı Full-Stack geliştiriciyim. Mühendislik sürecini yalnızca derslerle sınırlı tutmayarak; canlı sistemlerde, akademik Ar-Ge çalışmalarında, öğrenci kulübü liderliklerinde ve endüstriyel ortamlarda üretime dönüştürdüm.",
+      "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı'nda, nizamiyelerdeki kamera akışlarından kampus girişlerini tespit eden ve WebSocket üzerinden canlı yayınlayan uçtan uca görüntü işleme sistemini sıfırdan mimarileyip canlıya aldım. Eş zamanlı olarak kurum içi destek süreçleri için RAG ve LoRA teknikleriyle LLM özelleştirme prototipleri geliştirdim.",
+      "Yürütücülüğünü üstlendiğim TÜBİTAK 2209-A projemde düşük güç tüketimli sistemlerde Türkçe konuşma tanıma (Speech Recognition) üzerine Kaldi ve GMM-HMM hibrit akustik modelleriyle 1 yıllık Ar-Ge sürecini başarıyla sonuçlandırdım. TEKNOFEST 2025 Engelsiz Yaşam kategorisinde 7 kişilik ekibime kaptanlık ederek hazırladığımız Engelsiz Gözlük projemizle Ön Değerlendirme Raporunda 100 üzerinden 96 puanla Türkiye 1.si olduk.",
+      "Full-time Linux kullanıcısıyım. Donanım-yazılım soyutlamalarını derinlemesine kavramak amacıyla C ile bellek yönetimi ve sistem programlama projeleri geliştiriyor; boot.dev backend yolu ve LeetCode algoritmaları üzerinde çalışmaya devam ediyorum."
     ]
   },
   "focus": {
-    "title": "Odak",
+    "title": "Temel Odak",
     "items": [
+      "Backend & Dağıtık Sistemler",
+      "Görüntü İşleme & YOLO",
+      "Akustik Modelleme (Kaldi / HMM)",
+      "C & Sistem Programlama",
+      "Full-Stack Web (Django / React)"
+    ]
+  },
+  "stack_categorized": {
+    "Backend": [
       "Go",
       "Python",
-      ".NET",
-      "React"
+      "C# / .NET Web API",
+      "Django",
+      "FastAPI",
+      "WebSocket",
+      "REST APIs"
+    ],
+    "AI & Sistem": [
+      "C",
+      "Linux / POSIX",
+      "YOLO (v8 / v11)",
+      "Kaldi Speech Recognition",
+      "GMM-HMM",
+      "RAG & LoRA",
+      "Docker"
+    ],
+    "Frontend": [
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Metronic UI"
+    ],
+    "Veritabanı & Altyapı": [
+      "PostgreSQL",
+      "MSSQL",
+      "SQLite",
+      "Nginx",
+      "Git / GitHub",
+      "Cisco Packet Tracer"
     ]
   },
   "stack": [
     "Go",
     "Python",
     "C# / .NET",
-    "React",
+    "C",
     "Django",
     "FastAPI",
+    "React",
     "TypeScript",
+    "Linux / POSIX",
     "Docker",
-    "Linux",
     "YOLO",
+    "Kaldi ASR",
     "WebSocket",
-    "PostgreSQL"
+    "PostgreSQL",
+    "RAG & LoRA",
+    "Nginx"
+  ],
+  "experiences": [
+    {
+      "role": "Full-stack AI Engineer",
+      "company": "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı",
+      "period": "Ocak 2025 – Temmuz 2026 (1 yıl 7 ay)",
+      "location": "Kayseri, Türkiye",
+      "badge": "Canlı Sistem & Ar-Ge",
+      "summary": "Kampüs nizamiyelerindeki kameralardan araç ve kişi girişlerini sayan, web panelinde istatistiklerini sunan ve seçilen kameranın işlenmiş görüntüsünü WebSocket üzerinden anlık yayınlayan sistemin tüm mimarisini sıfırdan kurdum. Veri seti hazırlama, YOLO modellerinin eğitimi ve karşılaştırılması, nesne takibi (tracking), Django ile backend/frontend kodlanması, sanal sunucu, Nginx ve güvenlik kamerası IP yapılandırmalarını yürüttüm. Sistem şu anda canlıda aktiftir. Ayrıca kurum içi SSS chatbotu için RAG ve LoRA teknikleriyle LLM özelleştirme araştırması yürüttüm.",
+      "skills": ["Python", "YOLO", "Django", "WebSocket", "Nginx", "Linux VM", "RAG", "LoRA"]
+    },
+    {
+      "role": "Proje Yönetim Sorumlusu & Kurucu Kurul",
+      "company": "Yazılım Teknolojileri Kulübü (YAZTEK)",
+      "period": "Haziran 2025 – Mart 2026",
+      "location": "Erciyes Üniversitesi",
+      "badge": "Topluluk & Liderlik",
+      "summary": "YAZTEK'in kurucularından biri olarak proje birimi liderliğini üstlendim. 21 öğrenciyi takımlar halinde organize ederek 7 adet TÜBİTAK 2209-A projesi oluşturduk; öğrencilerin danışman hoca bulma, hipotez kurma ve teknik rapor yazım süreçlerine mentorluk ettim. Bu projelerden 4 tanesi TÜBİTAK tarafından kabul edilerek desteklenmeye hak kazandı. Ayrıca 3 farklı kategoride TEKNOFEST takımı kurup süreçlerini koordine ettim.",
+      "skills": ["TÜBİTAK 2209-A", "Proje Yönetimi", "Mentorluk", "Ekip Koordinasyonu", "TEKNOFEST"]
+    },
+    {
+      "role": "Başkan Yardımcısı & Takım Kaptanı",
+      "company": "Yapay Zeka Kulübü (AI Club) / EruAI Ada Lovelace",
+      "period": "Ekim 2024 – Haziran 2025",
+      "location": "Erciyes Üniversitesi",
+      "badge": "Yarışma & Topluluk",
+      "summary": "Kulüp bünyesinde yapay zeka eğitimleri ve bootcampler organize ettim. Kaptanlığını yaptığım 7 kişilik EruAI - Ada Lovelace takımıyla TEKNOFEST 2025 Engelsiz Yaşam kategorisinde 'Engelsiz Gözlük' projemizle Ön Değerlendirme Raporunda 100 üzerinden 96 puan alarak Türkiye 1.si olduk. Kulüp bünyesinde ayrıca HMM ile ses işleme projesiyle TÜBİTAK 2209-A kabulü aldık.",
+      "skills": ["Deep Learning", "Edge AI", "Computer Vision", "NLP", "Liderlik", "TEKNOFEST"]
+    },
+    {
+      "role": "Frontend Developer (Gönüllü)",
+      "company": "MEA Yazılım",
+      "period": "Ekim 2024 – Şubat 2025 (5 ay)",
+      "location": "Kayseri, Türkiye",
+      "badge": "Gönüllü Mühendislik",
+      "summary": "Üniversite akademisyenlerinin yürüttüğü bilim ve teknoloji projesinde frontend geliştirici olarak görev aldım. Metronic UI kütüphanesi üzerine kurulu canlı sistemde kod refactoring, performans optimizasyonu ve yeni arayüz geliştirmeleri yaptım. Backend ekibiyle koordinasyon içinde kalarak yeni REST API tasarımlarına entegrasyonu tamamladım; daha hafif, hızlı ve yüksek UX sunan bir arayüz ortaya koydum.",
+      "skills": ["Frontend", "JavaScript", "HTML5 / CSS3", "Metronic UI", "REST API", "UX Optimization"]
+    },
+    {
+      "role": "Ağ Stajyeri (Zorunlu Donanım Stajı)",
+      "company": "MEA Yazılım",
+      "period": "Temmuz 2025 – Ağustos 2025 (2 ay)",
+      "location": "Kayseri, Türkiye",
+      "badge": "Donanım Stajı",
+      "summary": "Zorunlu donanım stajı kapsamında kurumsal bir firmanın 3 farklı şehre büyümesi senaryosunu ele aldım. Cisco Packet Tracer üzerinde 3 şubeli kurumsal ağ mimarisi (VLAN, inter-VLAN routing, OSPF, DHCP/DNS, subnetting) tasarladım. Ağ servislerini sanal makineler üzerinde canlı simüle ederek stajımı tamamladım.",
+      "skills": ["Cisco Packet Tracer", "Ağ Mühendisliği", "VLAN / OSPF", "Sanal Makineler", "Subnetting"]
+    },
+    {
+      "role": "Freelance Game Developer",
+      "company": "Upwork",
+      "period": "Eylül 2022 – Aralık 2022 (4 ay)",
+      "location": "Remote",
+      "badge": "Global Freelance",
+      "summary": "Upwork platformunda küresel müşterilere iki ticari oyun projesi geliştirdim: 1) Mobil 2D Basketbol Oyunu: Kendi özgün fikrimle tasarladığım fizik tabanlı atış mekanikleri, yapay zeka bot mantığı, dinamik zorluk ve UI/UX tasarımını tek başıma uçtan uca tamamlayarak teslim ettim. 2) Fiziksel Cihaz Slot Oyunu: 2D sanatçı ile çalışarak fiziksel makineler için rastgele sayı üretimi (RNG), matematiksel şans/ödül algoritmaları ve dinamik animasyonlu makara sistemini C# ile mimariledim.",
+      "skills": ["C#", "Unity", "Fizik Motoru", "Game AI", "RNG & Olasılık", "UI/UX"]
+    },
+    {
+      "role": "IT Technician",
+      "company": "İskenderun Net Enerji @ Tosyalı Holding",
+      "period": "Mayıs 2023 – Temmuz 2023 (3 ay)",
+      "location": "Hatay, Türkiye",
+      "badge": "Saha & Altyapı",
+      "summary": "Hatay/İskenderun bölgesinde inşa edilen yeni Tosyalı Holding fabrikasının endüstriyel ağ altyapısının kurulmasında teknisyen olarak görev aldım. Cat6, Cat7 ve Fiber Optik kablolama, kanal döşeme ve yapısal kablolama sonlandırma işlemlerini sahada yürüttüm.",
+      "skills": ["Ağ Altyapısı", "Cat6 / Cat7", "Fiber Optik", "Yapısal Kablolama", "Saha Operasyonu"]
+    }
+  ],
+  "honors": [
+    {
+      "title": "TEKNOFEST 2025 Türkiye 1.liği (Ön Rapor)",
+      "org": "TEKNOFEST · Engelsiz Yaşam Teknolojileri",
+      "year": "2025",
+      "badge": "96 / 100 Puan",
+      "description": "EruAI - Ada Lovelace takımı kaptanı olarak geliştirdiğimiz 'Engelsiz Gözlük' (işaret dilini yazıya, yazıyı sese ve sesi yazıya çeviren akıllı sistem) projemizle Ön Değerlendirme Raporunda 100 üzerinden 96 puan alarak Türkiye 1.si olduk."
+    },
+    {
+      "title": "TeknoJam24 Şampiyonluğu (1.lik Ödülü)",
+      "org": "Erciyes Teknopark",
+      "year": "2024",
+      "badge": "GameJam 1.si",
+      "description": "Erciyes Teknopark tarafından düzenlenen 48 saatlik oyun geliştirme maratonunda 26 yarışmacı grup arasından geliştirilen oyunumuzla 1.lik ödülüne layık görüldük."
+    },
+    {
+      "title": "TÜBİTAK 2209-A Araştırma Desteği & Başarılı Sonuç",
+      "org": "TÜBİTAK",
+      "year": "2024 – 2025",
+      "badge": "Proje Yürütücüsü",
+      "description": "2024/1 döneminde 'Düşük Güç Tüketimli Sistemlerde Türkçe Konuşma Tanıma' konulu araştırmamın yürütücülüğünü üstlendim. Kaldi ve GMM-HMM hibrit modelleriyle 1 yıllık Ar-Ge sürecinin ardından sonuç raporum başarıyla onaylandı."
+    },
+    {
+      "title": "Erasmus Yabancı Dil Yeterlilik — 92 / 100",
+      "org": "Erciyes Üniversitesi Yabancı Diller Yüksekokulu",
+      "year": "Eylül 2026",
+      "badge": "92 Puan (C1)",
+      "description": "Erciyes Üniversitesi Erasmus Dil Sınavında 92 puan. (Belge Doğrulama: bd.erciyes.edu.tr | Kod: SLJ3HD8NQG | Pin: 1570068322). Önceki sınav: 83.75 (Aralık 2024 | Kod: 6SFSNKUI5B)."
+    },
+    {
+      "title": "YDS İngilizce — 76.25",
+      "org": "ÖSYM",
+      "year": "2023",
+      "badge": "76.25 Puan",
+      "description": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) İngilizce puanı."
+    }
   ],
   "labels": {
-    "projects": "Projeler",
-    "about": "Hakkında",
-    "contact": "İletişim",
-    "viewProject": "Detaylar",
-    "github": "GitHub",
-    "linkedin": "LinkedIn",
-    "cv": "CV"
+    "projects": "Projeler & Ar-Ge",
+    "experience": "Deneyim & Liderlik",
+    "honors": "Başarılar & Belgeler",
+    "about": "Hakkımda & Yetkinlikler",
+    "contact": "İletişim & İş Birliği",
+    "viewProject": "Detayları İncele",
+    "github": "GitHub ↗",
+    "linkedin": "LinkedIn ↗",
+    "cv": "Özgeçmiş (CV) ↗"
   }
 }
