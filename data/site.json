@@ -2,16 +2,56 @@
   "person": {
     "name": "Türker Kıvılcım",
     "headline": "Full-Stack Developer & AI Engineer | Computer Engineering Senior @ Erciyes University",
-    "eyebrow": "SİSTEMLER · YAPAY ZEKA · BACKEND",
+    "eyebrow": "Software Developer",
+    "intro": "Gerçek problemlere yapay zeka, görüntü işleme ve backend mimarileriyle çözümler üreten Bilgisayar Mühendisliği son sınıf öğrencisi.",
+    "intro_short": "Sistemlerin arka planını derinlemesine anlamaya odaklanan, ölçeklenebilir backend çözümleri, yapay zeka & görüntü işleme sistemleri ve düşük seviyeli yazılımlar geliştiren Bilgisayar Mühendisliği son sınıf öğrencisi.",
+    "hand_note": "çalışır sistemler & Ar-Ge →",
     "current_position": "Full-stack AI Engineer @ Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı",
+    "now": "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı · Full-stack AI Engineer",
     "location": "Kayseri, Türkiye",
     "email": "kivturker@gmail.com",
     "phone": "+90 531 796 54 25",
     "github": "https://github.com/turkerkiv",
     "linkedin": "https://linkedin.com/in/turkerkiv",
     "cv": "turker-kivilcim-cv.pdf",
-    "availability": "Part-time, staj ve mezuniyet sonrası tam zamanlı backend/full-stack pozisyonlarına açık.",
-    "intro_short": "Sistemlerin arka planını derinlemesine anlamaya odaklanan, ölçeklenebilir backend çözümleri, yapay zeka & görüntü işleme sistemleri ve düşük seviyeli yazılımlar geliştiren Bilgisayar Mühendisliği son sınıf öğrencisi."
+    "availability": "Part-time, staj ve mezuniyet sonrası tam zamanlı backend/full-stack pozisyonlarına açık."
+  },
+  "focus": {
+    "title": "Odak",
+    "items": [
+      "Go",
+      "Python",
+      "C / Sistem",
+      ".NET",
+      "React",
+      "YOLO",
+      "Kaldi"
+    ]
+  },
+  "stack": [
+    "Go",
+    "Python",
+    "C# / .NET",
+    "C",
+    "Django",
+    "FastAPI",
+    "React",
+    "TypeScript",
+    "Docker",
+    "Linux / POSIX",
+    "YOLO (v8/v11)",
+    "Kaldi ASR",
+    "WebSocket",
+    "PostgreSQL"
+  ],
+  "labels": {
+    "projects": "Projeler & Ar-Ge",
+    "about": "Hakkında",
+    "contact": "İletişim",
+    "viewProject": "Detaylar",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "cv": "CV"
   },
   "education": {
     "school": "Erciyes Üniversitesi",
@@ -25,12 +65,13 @@
     ]
   },
   "about": {
+    "title": "Kısaca ben",
     "summary": "Bilgisayar Mühendisliği son sınıf öğrencisi ve backend odaklı Full-Stack geliştiriciyim. Sistemlerin ve soyut katmanların arka planını anlamayı, ölçeklenebilir sistemler geliştirmeyi ve görüntü işleme/yapay zeka teknolojileriyle gerçek hayat problemlerini çözmeyi seviyorum. Üniversite hayatım boyunca yazılım geliştirmeyi yalnızca derslerle sınırlı tutmayıp canlı kurumsal sistemlerde, akademik Ar-Ge çalışmalarında ve kurucusu olduğum öğrenci topluluklarında üretime dönüştürdüm.",
     "paragraphs": [
-      "Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisiyim. Teorik eğitimi yalnızca derslerle sınırlı tutmayarak profesyonel iş ortamlarında, akademik Ar-Ge çalışmalarında, öğrenci topluluklarında ve hackathon'larda üretime dönüştürdüm.",
-      "Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı'nda, nizamiyelerdeki kamera akışlarından kampus girişlerini tespit eden ve WebSocket üzerinden canlı yayınlayan uçtan uca görüntü işleme sistemini sıfırdan mimarileyip canlıya aldım. Eş zamanlı olarak kurum içi destek süreçleri için RAG ve LoRA teknikleriyle LLM özelleştirme prototipleri geliştirdim.",
-      "Yürütücülüğünü üstlendiğim TÜBİTAK 2209-A projemde düşük güç tüketimli sistemlerde Türkçe konuşma tanıma (Speech Recognition) üzerine Kaldi ve GMM-HMM hibrit akustik modelleriyle 1 yıllık Ar-Ge sürecini başarıyla sonuçlandırdım. TEKNOFEST 2025 Engelsiz Yaşam kategorisinde 7 kişilik ekibime kaptanlık ederek hazırladığımız Engelsiz Gözlük projemizle Ön Değerlendirme Raporunda 100 üzerinden 96 puanla Türkiye 1.si olduk.",
-      "Full-time Linux kullanıcısıyım. Donanım-yazılım soyutlamalarını derinlemesine kavramak amacıyla C ile bellek yönetimi ve sistem programlama projeleri geliştiriyor; boot.dev backend yolu ve LeetCode algoritmaları üzerinde çalışmaya devam ediyorum."
+      "Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisiyim.",
+      "Şu anda Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı'nda Full-stack AI Engineer olarak çalışıyor; kampüs nizamiyelerinden gelen canlı kamera akışlarını analiz eden uçtan uca görüntü işleme ve yayın sistemini yönetiyorum.",
+      "Yürütücülüğünü üstlendiğim TÜBİTAK 2209-A projemde düşük güç tüketimli sistemlerde Türkçe konuşma tanıma (Kaldi / GMM-HMM) üzerine 1 yıllık Ar-Ge sürecini başarıyla sonuçlandırdım. TEKNOFEST 2025'te ise kaptanı olduğum EruAI - Ada Lovelace takımıyla Ön Değerlendirme Raporunda 96 puan alarak Türkiye 1.si olduk.",
+      "Özellikle backend mimarileri, Linux çekirdeği, C ile düşük seviyeli sistem programlama ve yapay zeka sistemlerinin çalışma mantığıyla ilgileniyorum."
     ],
     "philosophy": "Ezberlemek yerine sistemin neden ve nasıl çalıştığını kavramayı, soyutlamaların altındaki donanım ve işletim sistemi dinamiklerini anlamayı ve her öğrendiğim teoriyi çalışan, test edilmiş bir yazılıma dönüştürmeyi ilke ediniyorum."
   },

@@ -1,24 +1,25 @@
 /* ========================================================
-   BLUEPRINT PORTFOLIO DESIGN SYSTEM (LINKEDIN STYLE)
-   Türker Kıvılcım — Blueprint Edition
+   MINIMAL BLUEPRINT DESIGN SYSTEM (EYE-COMFORT EDITION)
+   Türker Kıvılcım — Blueprint Portfolio
    ======================================================== */
 
 :root {
-  --bg: #e8eef3;
-  --paper: rgba(248, 251, 253, 0.88);
-  --paper-solid: #f4f9fd;
-  --card-bg: rgba(245, 250, 254, 0.82);
-  --card-hover: rgba(255, 255, 255, 0.96);
-  --ink: #182430;
+  --bg: #edf3f8;
+  --paper: rgba(247, 251, 254, 0.86);
+  --paper-solid: #f6fafd;
+  --card-bg: rgba(242, 247, 252, 0.75);
+  --card-hover: rgba(255, 255, 255, 0.95);
+  --ink: #1c2834;
+  --body-text: #2c3c4c;
   --muted: #5e7284;
-  --muted-light: #7c92a5;
-  --grid: #c4d2df;
-  --line: #9db0c1;
-  --line-light: #bfd0e0;
+  --muted-light: #7a90a2;
+  --grid: #cad8e5;
+  --line: #a6b9ca;
+  --line-light: #c6d5e2;
   --blue: #285bc4;
   --blue2: #4d79c7;
-  --blue-soft: rgba(40, 91, 196, 0.08);
-  --blue-tag: rgba(234, 241, 249, 0.88);
+  --blue-soft: rgba(40, 91, 196, 0.06);
+  --blue-tag: rgba(234, 242, 250, 0.85);
   --red: #c85252;
   --max: 1120px;
 }
@@ -30,10 +31,10 @@ body {
   margin: 0;
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.55;
+  line-height: 1.6;
   background-color: var(--bg);
   background-image:
-    radial-gradient(circle at 1.1px 1.1px, rgba(102, 127, 151, 0.52) 1.1px, transparent 1.25px);
+    radial-gradient(circle at 1.1px 1.1px, rgba(110, 135, 160, 0.20) 1.1px, transparent 1.25px);
   background-size: 20px 20px;
   min-height: 100vh;
 }
@@ -57,7 +58,7 @@ a { color: inherit; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
   font: 700 11px "Courier New", monospace;
   letter-spacing: .06em;
   padding: 10px 0;
@@ -99,7 +100,7 @@ a { color: inherit; }
 .nav-link:hover { color: var(--blue); }
 .nav-link.active {
   color: var(--blue);
-  border-bottom: 2px solid var(--blue);
+  border-bottom: 1.5px solid var(--blue);
 }
 
 .nav-controls {
@@ -109,7 +110,6 @@ a { color: inherit; }
   margin-left: 10px;
 }
 
-/* Nav Draw Controls */
 .nav-btn {
   display: inline-flex;
   align-items: center;
@@ -125,9 +125,7 @@ a { color: inherit; }
   cursor: pointer;
 }
 
-.nav-draw-toggle {
-  display: none;
-}
+.nav-draw-toggle { display: none; }
 .nav-draw-toggle.active {
   background: var(--blue);
   color: #fff !important;
@@ -139,7 +137,7 @@ a { color: inherit; }
   border: 1px dashed rgba(200, 82, 82, 0.6);
 }
 .nav-clear-btn:hover {
-  background: rgba(200, 82, 82, 0.12);
+  background: rgba(200, 82, 82, 0.1);
   border-color: var(--red);
 }
 
@@ -163,11 +161,11 @@ a { color: inherit; }
   left: 50%;
   transform: translate(-50%, -80px);
   z-index: 28;
-  background: rgba(244, 249, 253, 0.94);
+  background: rgba(246, 250, 253, 0.96);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1.5px solid var(--ink);
-  box-shadow: 0 4px 14px rgba(40, 91, 196, 0.14), 2px 2px 0 rgba(40, 91, 196, 0.1);
+  box-shadow: 0 4px 14px rgba(40, 91, 196, 0.1);
   padding: 4px 8px;
   align-items: center;
   gap: 8px;
@@ -208,191 +206,47 @@ a { color: inherit; }
 body.modal-open .floating-nav { display: none !important; }
 
 /* ========================================================
-   PAGE CHROME & LINKEDIN-STYLE BLUEPRINT CARDS
+   MINIMAL PAGE HEADERS & SECTIONS
    ======================================================== */
 .page-header {
-  padding: 35px 0 20px;
-  border-bottom: 2px solid var(--ink);
+  padding: 36px 0 22px;
+  border-bottom: 1.5px solid var(--ink);
   margin-bottom: 30px;
 }
 .page-title {
-  font: 700 clamp(2.4rem, 4.5vw, 3.8rem)/1.05 Georgia, "Times New Roman", serif;
+  font: 700 clamp(2.2rem, 4.2vw, 3.4rem)/1.1 Georgia, "Times New Roman", serif;
   letter-spacing: -.05em;
   margin: 0 0 8px;
   color: var(--ink);
 }
 .page-subtitle {
-  font: 500 15px/1.5 "Courier New", monospace;
+  font: 500 14px/1.6 "Courier New", monospace;
   color: var(--muted);
   max-width: 780px;
   margin: 0;
 }
 
-/* LINKEDIN MAIN PROFILE CARD */
-.profile-card {
-  border: 2px solid var(--ink);
-  background: var(--paper-solid);
-  margin: 28px 0 24px;
-  position: relative;
-  box-shadow: 6px 6px 0 rgba(40, 91, 196, 0.1);
-}
-
-.profile-banner {
-  height: 110px;
-  background: linear-gradient(135deg, rgba(40, 91, 196, 0.15) 0%, rgba(157, 176, 193, 0.35) 100%);
-  border-bottom: 2px solid var(--ink);
-  position: relative;
-  background-image: 
-    radial-gradient(circle at 1.5px 1.5px, rgba(40, 91, 196, 0.25) 1.5px, transparent 0);
-  background-size: 16px 16px;
-}
-
-.profile-banner-stamp {
-  position: absolute;
-  right: 18px;
-  top: 14px;
-  border: 1.5px solid var(--blue);
-  color: var(--blue);
-  font: 700 9.5px "Courier New", monospace;
-  letter-spacing: .1em;
-  padding: 4px 8px;
-  background: rgba(248, 251, 253, 0.9);
-  transform: rotate(-1.5deg);
-}
-
-.profile-body {
-  padding: 0 28px 28px;
-  position: relative;
-}
-
-.profile-avatar-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-top: -46px;
-  margin-bottom: 16px;
-}
-
-.profile-avatar {
-  width: 92px;
-  height: 92px;
-  border: 2.5px solid var(--ink);
-  background: #fdfefe;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font: 700 32px Georgia, serif;
-  color: var(--blue);
-  box-shadow: 3px 3px 0 var(--blue);
-  user-select: none;
-}
-
-.profile-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  font: 700 11px "Courier New", monospace;
-  letter-spacing: .06em;
-  text-decoration: none;
-  border: 1.5px solid var(--ink);
-  cursor: pointer;
-  transition: all .16s ease;
-}
-
-.btn-primary {
-  background: var(--blue);
-  color: #fff;
-  border-color: var(--blue);
-}
-.btn-primary:hover {
-  background: #1c4596;
-  border-color: #1c4596;
-}
-
-.btn-outline {
-  background: rgba(248, 251, 253, 0.9);
-  color: var(--ink);
-}
-.btn-outline:hover {
-  background: var(--card-hover);
-  color: var(--blue);
-  border-color: var(--blue);
-}
-
-.profile-info h1 {
-  font: 700 clamp(2rem, 3.6vw, 2.7rem)/1.1 Georgia, "Times New Roman", serif;
-  letter-spacing: -.04em;
-  margin: 0 0 6px;
-}
-
-.profile-headline {
-  font: 500 16px/1.4 Georgia, serif;
-  color: #2b3b4a;
-  max-width: 820px;
-  margin: 0 0 14px;
-}
-
-.profile-meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  font: 11px "Courier New", monospace;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-
-.profile-meta-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.profile-badges {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 14px;
-}
-
-.badge-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font: 600 11.5px "Courier New", monospace;
-  color: #24415f;
-  background: rgba(234, 241, 249, 0.7);
-  border-left: 3px solid var(--blue);
-  padding: 5px 10px;
-}
-
-/* SECTION CARDS */
+/* MINIMAL BLUEPRINT SECTION CARDS */
 .card-section {
-  border: 2px solid var(--ink);
-  background: var(--paper-solid);
-  margin-bottom: 24px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  margin-bottom: 22px;
   padding: 24px 28px;
   position: relative;
-  box-shadow: 4px 4px 0 rgba(40, 91, 196, 0.08);
+  transition: background .16s ease;
 }
 
 .card-section-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1.5px solid var(--line);
+  border-bottom: 1px solid var(--line-light);
   padding-bottom: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .card-section-title {
-  font: 700 13px "Courier New", monospace;
+  font: 700 12px "Courier New", monospace;
   letter-spacing: .08em;
   color: var(--blue);
   text-transform: uppercase;
@@ -413,16 +267,16 @@ body.modal-open .floating-nav { display: none !important; }
 }
 .card-section-action:hover { color: var(--blue); }
 
-/* LINKEDIN ENTRY LISTS (EXPERIENCE, VOLUNTEER, HONORS) */
+/* ENTRY LISTS */
 .entry-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .entry-item {
-  padding-bottom: 18px;
-  border-bottom: 1px dashed var(--line);
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--line-light);
   position: relative;
 }
 .entry-item:last-child {
@@ -440,26 +294,26 @@ body.modal-open .floating-nav { display: none !important; }
 }
 
 .entry-title {
-  font: 600 19px/1.25 Georgia, "Times New Roman", serif;
+  font: 600 18px/1.25 Georgia, "Times New Roman", serif;
   color: var(--ink);
   letter-spacing: -.02em;
   margin: 0;
 }
 
 .entry-subtitle {
-  font: 700 11.5px "Courier New", monospace;
+  font: 700 11px "Courier New", monospace;
   color: var(--blue);
   letter-spacing: .04em;
   margin-top: 2px;
 }
 
 .entry-badge {
-  border: 1px solid var(--blue);
+  border: 1px solid var(--blue2);
   background: var(--blue-tag);
   color: var(--blue);
   padding: 2px 7px;
-  font: 700 9.5px "Courier New", monospace;
-  letter-spacing: .06em;
+  font: 700 9px "Courier New", monospace;
+  letter-spacing: .05em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -467,20 +321,20 @@ body.modal-open .floating-nav { display: none !important; }
 .entry-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  font: 10.5px "Courier New", monospace;
+  gap: 14px;
+  font: 10px "Courier New", monospace;
   color: var(--muted);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .entry-desc {
   font-size: 13px;
   line-height: 1.6;
-  color: #2b3945;
+  color: var(--body-text);
   margin: 0 0 10px;
 }
 
-/* SKILLS CHIPS */
+/* MINIMAL TAGS CHIPS */
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -489,13 +343,45 @@ body.modal-open .floating-nav { display: none !important; }
 .tags span {
   display: inline-block;
   padding: 3px 7px;
-  border: 1px solid #a6bacd;
-  background: rgba(248, 251, 253, 0.7);
-  color: #42586e;
+  border: 1px solid #b2c5d6;
+  background: rgba(244, 248, 252, 0.75);
+  color: #3b5268;
   font: 10px "Courier New", monospace;
 }
 
-/* PROJECTS GRID & CARDS */
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font: 700 11px "Courier New", monospace;
+  letter-spacing: .06em;
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: all .16s ease;
+}
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+.btn-primary:hover {
+  background: #1c4596;
+  border-color: #1c4596;
+}
+.btn-outline {
+  background: rgba(248, 251, 253, 0.9);
+  color: var(--ink);
+}
+.btn-outline:hover {
+  background: var(--card-hover);
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+/* PROJECTS GRID */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -503,7 +389,7 @@ body.modal-open .floating-nav { display: none !important; }
 }
 
 .project-card {
-  border: 2px solid var(--ink);
+  border: 1.5px solid var(--ink);
   background: var(--card-bg);
   padding: 20px;
   display: flex;
@@ -524,7 +410,7 @@ body.modal-open .floating-nav { display: none !important; }
   width: 12px;
   height: 12px;
   border-color: var(--blue);
-  opacity: .65;
+  opacity: .7;
 }
 .project-card:before { top: -2px; left: -2px; border-top: 2px solid; border-left: 2px solid; }
 .project-card:after { bottom: -2px; right: -2px; border-bottom: 2px solid; border-right: 2px solid; }
@@ -547,7 +433,7 @@ body.modal-open .floating-nav { display: none !important; }
   margin-bottom: 10px;
 }
 .project-card h3 {
-  font: 600 24px/1.05 Georgia, "Times New Roman", serif;
+  font: 600 23px/1.1 Georgia, "Times New Roman", serif;
   letter-spacing: -.04em;
   margin: 0 0 10px;
   color: var(--ink);
@@ -580,14 +466,14 @@ body.modal-open .floating-nav { display: none !important; }
 .case-study-back:hover { text-decoration: underline; }
 
 .case-section {
-  margin-bottom: 26px;
+  margin-bottom: 24px;
 }
 .case-section-title {
-  font: 700 12px "Courier New", monospace;
+  font: 700 11.5px "Courier New", monospace;
   letter-spacing: .08em;
   color: var(--blue);
   text-transform: uppercase;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-light);
   padding-bottom: 6px;
   margin: 0 0 12px;
 }
@@ -608,11 +494,11 @@ body.modal-open .floating-nav { display: none !important; }
   margin-bottom: 8px;
 }
 
-/* HONORS & CERTIFICATES CARDS */
+/* CERTIFICATE CARDS */
 .cert-card {
-  border: 1.5px solid var(--ink);
-  background: var(--card-bg);
-  padding: 18px 20px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 20px;
   margin-bottom: 14px;
   transition: transform .16s ease, background .16s ease;
 }
@@ -624,7 +510,7 @@ body.modal-open .floating-nav { display: none !important; }
   margin-top: 10px;
   padding: 8px 12px;
   background: var(--blue-tag);
-  border-left: 3px solid var(--blue);
+  border-left: 2.5px solid var(--blue);
   font: 11px "Courier New", monospace;
   color: #24415f;
   display: flex;
@@ -639,25 +525,22 @@ body.modal-open .floating-nav { display: none !important; }
 }
 .cert-verify-box a:hover { text-decoration: underline; }
 
-/* BLOG EMPTY STATE */
+/* EMPTY STATE */
 .empty-state {
-  border: 2px dashed var(--line);
+  border: 1.5px dashed var(--line);
   padding: 48px 24px;
   text-align: center;
-  background: var(--card-bg);
+  background: var(--paper);
   margin: 20px 0;
 }
-.empty-state-icon {
-  font-size: 42px;
-  margin-bottom: 12px;
-}
+.empty-state-icon { font-size: 38px; margin-bottom: 12px; }
 .empty-state-title {
-  font: 600 24px Georgia, serif;
+  font: 600 22px Georgia, serif;
   margin: 0 0 8px;
   color: var(--ink);
 }
 .empty-state-desc {
-  font: 13px/1.6 "Courier New", monospace;
+  font: 12.5px/1.65 "Courier New", monospace;
   color: var(--muted);
   max-width: 580px;
   margin: auto;
@@ -665,12 +548,12 @@ body.modal-open .floating-nav { display: none !important; }
 
 /* FOOTER */
 footer {
-  border-top: 1.5px solid var(--ink);
+  border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 0 10px;
-  color: #647585;
+  padding: 22px 0 10px;
+  color: #6a7c8e;
   font: 10.5px "Courier New", monospace;
   margin-top: 40px;
 }
@@ -724,7 +607,6 @@ body.drawing-disabled #pencilCursor {
   display: none !important;
 }
 
-/* Custom Animated Drafting Pencil */
 .pencil-cursor {
   position: fixed;
   top: -100px;
@@ -751,7 +633,6 @@ body.drawing-disabled #pencilCursor {
   .nav-draw-toggle { display: inline-flex; }
   .floating-nav { display: flex; }
   .pencil-cursor { display: none !important; }
-  .profile-banner-stamp { display: none; }
   .projects-grid { grid-template-columns: 1fr; }
 }
 
@@ -760,22 +641,14 @@ body.drawing-disabled #pencilCursor {
   .top {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-  }
-  .nav-links {
     gap: 10px;
-    font-size: 10px;
   }
+  .nav-links { gap: 10px; font-size: 10px; }
   .nav-controls {
     margin-left: 0;
     width: 100%;
     justify-content: flex-start;
   }
-  .profile-body { padding: 0 18px 20px; }
-  .profile-avatar-row { margin-top: -36px; }
-  .profile-avatar { width: 72px; height: 72px; font-size: 26px; }
-  .profile-actions { width: 100%; }
-  .profile-actions .btn { flex: 1; justify-content: center; font-size: 10px; }
   .card-section { padding: 18px; }
   footer { flex-direction: column; gap: 8px; text-align: center; }
 }
