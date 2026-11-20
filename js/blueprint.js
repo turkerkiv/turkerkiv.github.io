@@ -38,10 +38,12 @@
   const canvas = document.getElementById("inkCanvas");
   const ctx = canvas ? canvas.getContext("2d") : null;
   const pencilCursor = document.getElementById("pencilCursor");
+  const toolModeToggle = document.getElementById("toolModeToggle");
 
   const STORAGE_KEY = "blueprint_sketch_strokes";
   let isDrawing = false;
   let isDrawingEnabled = true;
+  let drawingToolMode = "pencil";
   let lastToggleTime = 0;
   let isAnimatingClick = false;
   const activeColor = "#285bc4";
@@ -53,6 +55,8 @@
   let pointerDownPos = { x: 0, y: 0 };
   let hasDragged = false;
   let targetClickable = null;
+  let hoveredTextElement = null;
+  let hoveredControlElement = null;
   let lastPointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
   function isTouchOrMobile() {
@@ -99,7 +103,7 @@
         pencilCursor.style.opacity = "0";
         redraw();
       } else {
-        pencilCursor.style.opacity = isTouchOrMobile() ? "0" : "1";
+        pencilCursor.style.opacity = "1";
       }
     }
   }
@@ -111,9 +115,44 @@
     setDrawingEnabled(!isDrawingEnabled);
   }
 
+  function setDrawingToolMode(mode) {
+    drawingToolMode = ["pencil", "eraser", "cursor"].includes(mode) ? mode : "pencil";
+    const isEraser = drawingToolMode === "eraser";
+    const isCursor = drawingToolMode === "cursor";
+
+    if (pencilCursor) pencilCursor.classList.toggle("eraser-mode", isEraser);
+    if (toolModeToggle) {
+      toolModeToggle.classList.toggle("eraser-mode", isEraser);
+      toolModeToggle.classList.toggle("cursor-mode", isCursor);
+      toolModeToggle.textContent = isEraser ? "⌫" : isCursor ? "↖" : "✏";
+      toolModeToggle.title = isEraser
+        ? "Silgi modu: çizimleri basılı tutarak sil"
+        : isCursor ? "Normal imleç modu" : "Kalem modu: metinleri işaretle";
+      toolModeToggle.setAttribute("aria-pressed", isEraser ? "true" : "false");
+    }
+
+    if (isCursor) setDrawingEnabled(false);
+    else if (!isDrawingEnabled) setDrawingEnabled(true);
+  }
+
+  function toggleDrawingToolMode() {
+    const nextMode = drawingToolMode === "pencil"
+      ? "eraser"
+      : drawingToolMode === "eraser" ? "cursor" : "pencil";
+    setDrawingToolMode(nextMode);
+  }
+
+  function clearHoverState() {
+    if (hoveredTextElement) hoveredTextElement.classList.remove("blueprint-hover");
+    if (hoveredControlElement) hoveredControlElement.classList.remove("blueprint-control-hover");
+    hoveredTextElement = null;
+    hoveredControlElement = null;
+  }
+
   window.blueprintDrawing = {
     isEnabled: () => isDrawingEnabled,
-    setEnabled: setDrawingEnabled
+    setEnabled: setDrawingEnabled,
+    clearHoverState
   };
 
   function updateFloatingNav() {
@@ -237,28 +276,177 @@
   window.addEventListener("pointermove", e => {
     lastPointer.x = e.clientX;
     lastPointer.y = e.clientY;
+    updateTextHover(e.clientX, e.clientY);
     if (!isAnimatingClick) {
       updatePencilPosition(e.clientX, e.clientY);
     }
   });
 
   document.addEventListener("pointerleave", () => {
-    if (pencilCursor) pencilCursor.style.opacity = "0";
+    if (hoveredTextElement) hoveredTextElement.classList.remove("blueprint-hover");
+    if (hoveredControlElement) hoveredControlElement.classList.remove("blueprint-control-hover");
+    hoveredTextElement = null;
+    hoveredControlElement = null;
+    if (pencilCursor && !isTouchOrMobile()) pencilCursor.style.opacity = "0";
   });
   document.addEventListener("pointerenter", () => {
-    if (pencilCursor && isDrawingEnabled && !isTouchOrMobile()) {
+    if (pencilCursor && isDrawingEnabled) {
       pencilCursor.style.opacity = "1";
     }
   });
+
+  const markableTextSelector = [
+    "p",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "li",
+    "span",
+    ".section-lead",
+    ".section-head span",
+    ".hero-label",
+    ".hero-stat-label",
+    ".hero-stat-value",
+    ".contact-card-label",
+    ".contact-card-val",
+    ".contact-card-desc",
+    ".exp-company",
+    ".exp-meta",
+    ".exp-category-title",
+    ".entry-badge",
+    ".honor-org"
+  ].join(", ");
+  const controlSelector = "a, button, .project, .project-card, .btn, .nav-btn, .close, .tool-mode-toggle";
+
+  function getTextTarget(element) {
+    const knownTextTarget = element.closest(markableTextSelector);
+    if (knownTextTarget) return knownTextTarget;
+
+    let current = element;
+    while (current && current !== document.body) {
+      const hasDirectText = Array.from(current.childNodes).some(node =>
+        node.nodeType === Node.TEXT_NODE && node.textContent.trim()
+      );
+      if (hasDirectText && current.getClientRects().length > 0) return current;
+      current = current.parentElement;
+    }
+
+    return null;
+  }
+
+  function getTextKey(element) {
+    const parts = [];
+    let current = element;
+
+    while (current && current !== document.body) {
+      let siblingIndex = 0;
+      let sibling = current;
+      while ((sibling = sibling.previousElementSibling)) siblingIndex++;
+      parts.unshift(`${current.tagName.toLowerCase()}:${siblingIndex}`);
+      current = current.parentElement;
+    }
+
+    return parts.join("/");
+  }
+
+  function hasTextAnnotation(element) {
+    const key = getTextKey(element);
+    return strokes.some(stroke => stroke.textAnnotationKey === key);
+  }
+
+  function eraseTextAnnotation(element) {
+    const key = getTextKey(element);
+    const remainingStrokes = strokes.filter(stroke => stroke.textAnnotationKey !== key);
+    if (remainingStrokes.length === strokes.length) return false;
+    strokes = remainingStrokes;
+    saveStrokes();
+    redraw();
+    return true;
+  }
+
+  function eraseTextAtPoint(clientX, clientY) {
+    const elements = document.elementsFromPoint(clientX, clientY);
+    for (const el of elements) {
+      if (el === canvas || el === pencilCursor || el.closest("#pencilCursor")) continue;
+      if (el.closest(controlSelector)) return false;
+      const textTarget = getTextTarget(el);
+      if (textTarget && eraseTextAnnotation(textTarget)) return true;
+    }
+    return false;
+  }
+
+  function eraseFreehandStrokeAtPoint(clientX, clientY) {
+    const scrollX = window.scrollX || window.pageXOffset || 0;
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const pointX = clientX + scrollX;
+    const pointY = clientY + scrollY;
+    const eraseRadius = 12;
+    let erased = false;
+
+    strokes = strokes.filter(stroke => {
+      if (stroke.textAnnotationKey || !Array.isArray(stroke.points)) return true;
+      const touchesStroke = stroke.points.some(point =>
+        Math.hypot(point.x - pointX, point.y - pointY) <= eraseRadius
+      );
+      if (touchesStroke) erased = true;
+      return !touchesStroke;
+    });
+
+    if (erased) {
+      saveStrokes();
+      redraw();
+    }
+    return erased;
+  }
+
+  function eraseAtPoint(clientX, clientY) {
+    if (eraseTextAtPoint(clientX, clientY)) return true;
+    return eraseFreehandStrokeAtPoint(clientX, clientY);
+  }
 
   function getClickableElement(clientX, clientY) {
     const elements = document.elementsFromPoint(clientX, clientY);
     for (const el of elements) {
       if (el === canvas || el === pencilCursor || el.closest("#pencilCursor")) continue;
-      const clickable = el.closest("a, button, .project, .project-card, .btn, .nav-btn, .close");
+      const clickable = el.closest(controlSelector);
       if (clickable) return clickable;
+      const textTarget = getTextTarget(el);
+      if (textTarget) return textTarget;
     }
     return null;
+  }
+
+  function updateTextHover(clientX, clientY) {
+    if (drawingToolMode === "cursor" || !isDrawingEnabled || drawingToolMode === "eraser" || isAnimatingClick || document.body.classList.contains("modal-open")) {
+      clearHoverState();
+      return;
+    }
+
+    const elements = document.elementsFromPoint(clientX, clientY);
+    let nextTextElement = null;
+    let nextControlElement = null;
+
+    for (const el of elements) {
+      if (el === canvas || el === pencilCursor || el.closest("#pencilCursor")) continue;
+      const control = el.closest(controlSelector);
+      if (control) {
+        nextControlElement = control;
+        break;
+      }
+      nextTextElement = getTextTarget(el);
+      if (nextTextElement) break;
+    }
+
+    if (hoveredControlElement !== nextControlElement) {
+      if (hoveredControlElement) hoveredControlElement.classList.remove("blueprint-control-hover");
+      hoveredControlElement = nextControlElement;
+      if (hoveredControlElement) hoveredControlElement.classList.add("blueprint-control-hover");
+    }
+    if (hoveredTextElement === nextTextElement) return;
+    if (hoveredTextElement) hoveredTextElement.classList.remove("blueprint-hover");
+    hoveredTextElement = nextTextElement;
+    if (hoveredTextElement) hoveredTextElement.classList.add("blueprint-hover");
   }
 
   function generateBoxPoints(rect) {
@@ -300,61 +488,106 @@
     return pts;
   }
 
+  function generateUnderlineSegments(element) {
+    const range = document.createRange();
+    range.selectNodeContents(element);
+    const textRects = Array.from(range.getClientRects()).filter(rect => rect.width > 4);
+    const scrollX = window.scrollX || window.pageXOffset || 0;
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const rects = textRects.length > 0 ? textRects : [element.getBoundingClientRect()];
+
+    return rects.map(rect => {
+      const x = rect.left + scrollX;
+      const y = rect.bottom + scrollY + 4;
+      const width = Math.max(rect.width, 12);
+      const steps = Math.max(8, Math.ceil(width / 18));
+      const points = [{ x, y }];
+
+      for (let i = 1; i <= steps; i++) {
+        const progress = i / steps;
+        const wobble = Math.sin(progress * Math.PI * 2.4) * 1.2;
+        points.push({
+          x: x + width * progress,
+          y: y + wobble
+        });
+      }
+
+      return points;
+    });
+  }
+
   function animateSketchAround(element, onComplete) {
     const targetToCircle = element.classList.contains("project") || element.classList.contains("project-card")
       ? (element.querySelector("h3") || element)
       : element;
 
     const rect = targetToCircle.getBoundingClientRect();
-    const allPts = generateBoxPoints(rect);
-
-    const animStroke = {
-      color: activeColor,
-      width: 2.2,
-      points: []
-    };
+    const isTextTarget = !element.matches(controlSelector);
+    const textAnnotationKey = isTextTarget ? getTextKey(element) : null;
+    const segments = isTextTarget
+      ? generateUnderlineSegments(element)
+      : [generateBoxPoints(rect)];
 
     isAnimatingClick = true;
-    if (pencilCursor) pencilCursor.classList.add("drawing");
+    if (pencilCursor) {
+      pencilCursor.classList.remove("eraser-mode");
+      pencilCursor.classList.add("drawing");
+    }
 
-    const startTime = performance.now();
-    const duration = 210;
+    let segmentIndex = 0;
 
-    function step(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const targetIdx = Math.floor(progress * (allPts.length - 1));
-
-      animStroke.points = allPts.slice(0, targetIdx + 1);
-
-      if (animStroke.points.length > 0) {
-        const latest = animStroke.points[animStroke.points.length - 1];
-        updatePencilPosition(
-          latest.x - (window.scrollX || window.pageXOffset || 0),
-          latest.y - (window.scrollY || window.pageYOffset || 0)
-        );
-      }
-
-      currentStroke = animStroke;
-      redraw();
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        currentStroke = null;
-        strokes.push(animStroke);
-        saveStrokes();
-        redraw();
-
+    function animateNextSegment() {
+      if (segmentIndex >= segments.length) {
         if (pencilCursor) pencilCursor.classList.remove("drawing");
         isAnimatingClick = false;
         updatePencilPosition(lastPointer.x, lastPointer.y);
-
         if (onComplete) onComplete();
+        return;
       }
+
+      const points = segments[segmentIndex++];
+      const animStroke = {
+        color: activeColor,
+        width: 2.2,
+        points: [],
+        textAnnotationKey
+      };
+      const startTime = performance.now();
+      const duration = Math.max(110, Math.min(210, points.length * 18));
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const targetIdx = Math.floor(progress * (points.length - 1));
+
+        animStroke.points = points.slice(0, targetIdx + 1);
+
+        if (animStroke.points.length > 0) {
+          const latest = animStroke.points[animStroke.points.length - 1];
+          updatePencilPosition(
+            latest.x - (window.scrollX || window.pageXOffset || 0),
+            latest.y - (window.scrollY || window.pageYOffset || 0)
+          );
+        }
+
+        currentStroke = animStroke;
+        redraw();
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          currentStroke = null;
+          strokes.push(animStroke);
+          saveStrokes();
+          redraw();
+          animateNextSegment();
+        }
+      }
+
+      requestAnimationFrame(step);
     }
 
-    requestAnimationFrame(step);
+    animateNextSegment();
   }
 
   function executeClick(el) {
@@ -376,6 +609,11 @@
 
     if (el.classList.contains("nav-export-btn") || el.closest(".nav-export-btn")) {
       captureAndDownloadBlueprint();
+      return;
+    }
+
+    if (el.classList.contains("tool-mode-toggle") || el.closest(".tool-mode-toggle")) {
+      toggleDrawingToolMode();
       return;
     }
 
@@ -496,6 +734,15 @@
       hasDragged = false;
       pointerDownPos = { x: e.clientX, y: e.clientY };
       targetClickable = getClickableElement(e.clientX, e.clientY);
+      lastPointer.x = e.clientX;
+      lastPointer.y = e.clientY;
+      updatePencilPosition(e.clientX, e.clientY);
+
+      if (drawingToolMode === "eraser") {
+        currentStroke = null;
+        eraseAtPoint(e.clientX, e.clientY);
+        return;
+      }
 
       if (pencilCursor) pencilCursor.classList.add("drawing");
 
@@ -511,8 +758,15 @@
     });
 
     canvas.addEventListener("pointermove", e => {
-      if (!isDrawingEnabled || !isDrawing || !currentStroke || isAnimatingClick) return;
+      if (!isDrawingEnabled || !isDrawing || isAnimatingClick) return;
       e.preventDefault();
+
+      if (drawingToolMode === "eraser") {
+        eraseAtPoint(e.clientX, e.clientY);
+        return;
+      }
+
+      if (!currentStroke) return;
 
       const dist = Math.hypot(e.clientX - pointerDownPos.x, e.clientY - pointerDownPos.y);
       if (dist > 7) {
@@ -536,6 +790,13 @@
       if (!isDrawing) return;
       isDrawing = false;
       if (pencilCursor) pencilCursor.classList.remove("drawing");
+
+      if (drawingToolMode === "eraser") {
+        currentStroke = null;
+        targetClickable = null;
+        redraw();
+        return;
+      }
 
       if (!hasDragged && targetClickable) {
         const clicked = targetClickable;
@@ -581,6 +842,13 @@
   });
 
   // Direct Button Listeners
+  if (toolModeToggle) {
+    toolModeToggle.addEventListener("click", e => {
+      e.preventDefault();
+      toggleDrawingToolMode();
+    });
+  }
+
   document.querySelectorAll(".nav-draw-toggle").forEach(btn => {
     btn.addEventListener("click", e => {
       e.preventDefault();
@@ -624,11 +892,11 @@
   });
 
   // Init
-  setDrawingEnabled(!isTouchOrMobile());
+  setDrawingToolMode(isTouchOrMobile() ? "cursor" : "pencil");
   updateFloatingNav();
 
   window.matchMedia("(max-width: 860px)").addEventListener("change", e => {
-    setDrawingEnabled(!e.matches);
+    setDrawingToolMode(e.matches ? "cursor" : "pencil");
     updateFloatingNav();
   });
 

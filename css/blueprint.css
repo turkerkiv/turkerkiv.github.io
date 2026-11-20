@@ -106,7 +106,7 @@ a {
 .nav-link {
   color: var(--ink);
   text-decoration: none;
-  transition: color .15s ease;
+  transition: transform .2s ease, color .2s ease;
   position: relative;
   padding: 4px 0;
 }
@@ -369,6 +369,7 @@ body.modal-open .floating-nav {
   text-decoration: none;
   font-weight: 600;
   color: var(--ink);
+  transition: transform .2s ease, color .2s ease;
 }
 
 .side-value a:hover {
@@ -932,6 +933,7 @@ body.modal-open .floating-nav {
   font: 600 16px Georgia, serif;
   color: var(--ink);
   text-decoration: none;
+  transition: transform .2s ease, color .2s ease;
 }
 
 .contact-card-val:hover {
@@ -976,6 +978,69 @@ footer {
 }
 
 .project .tags span:nth-child(n + 4) {
+  display: none;
+}
+
+.blueprint-hover {
+  color: #3969b2 !important;
+  text-decoration: none;
+  text-shadow: 0 0 5px rgba(40, 91, 196, 0.1);
+  transition: color .2s ease, text-shadow .2s ease;
+}
+
+.blueprint-control-hover {
+  text-decoration: none !important;
+  transform: translateY(-2px);
+  filter: brightness(1.02);
+  transition: transform .2s ease, filter .2s ease, background .2s ease, border-color .2s ease;
+}
+
+a.blueprint-control-hover {
+  display: inline-block;
+}
+
+.blueprint-control-hover * {
+  text-decoration: none !important;
+}
+
+.project.blueprint-control-hover {
+  transform: translateY(-2px);
+}
+
+.tool-mode-toggle {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 80;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  background: rgba(247, 251, 254, .94);
+  color: var(--blue);
+  box-shadow: 0 2px 8px rgba(28, 40, 52, .12);
+  cursor: pointer;
+  font: 16px/1 "Courier New", monospace;
+  transition: transform .2s ease, color .2s ease, background .2s ease, border-color .2s ease;
+}
+
+.tool-mode-toggle:hover {
+  transform: translateY(-2px) rotate(-5deg);
+  background: #fff;
+  border-color: var(--blue);
+}
+
+.tool-mode-toggle.eraser-mode {
+  color: var(--ink);
+  background: var(--blue-soft);
+}
+
+.tool-mode-toggle.cursor-mode {
+  color: var(--muted);
+  background: rgba(247, 251, 254, .94);
+}
+
+body.modal-open .tool-mode-toggle {
   display: none;
 }
 
@@ -1169,6 +1234,38 @@ body.drawing-disabled #pencilCursor {
   transform: translate(-2px, -30px) rotate(-16deg) scale(.92);
 }
 
+.pencil-cursor.eraser-mode {
+  transform: translate(-2px, -30px) rotate(-35deg) scale(.96);
+}
+
+.pencil-cursor.eraser-mode svg {
+  display: none;
+}
+
+.pencil-cursor.eraser-mode::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 1px;
+  width: 24px;
+  height: 12px;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  background: linear-gradient(135deg, #f7fbfe 0 42%, #c6d5e2 43% 58%, #f7fbfe 59%);
+  transform-origin: 0 100%;
+}
+
+.pencil-cursor.eraser-mode::after {
+  content: "";
+  position: absolute;
+  top: 23px;
+  left: 6px;
+  width: 14px;
+  height: 1px;
+  background: rgba(40, 91, 196, .55);
+  box-shadow: 0 3px 0 rgba(40, 91, 196, .35);
+}
+
 /* ========================================================
    RESPONSIVE DESIGN
    ======================================================== */
@@ -1179,7 +1276,7 @@ body.drawing-disabled #pencilCursor {
   }
 
   .nav-draw-toggle {
-    display: inline-flex;
+    display: none !important;
   }
 
   .floating-nav {
@@ -1188,6 +1285,10 @@ body.drawing-disabled #pencilCursor {
 
   .pencil-cursor {
     display: none !important;
+  }
+
+  body.drawing-enabled .pencil-cursor {
+    display: block !important;
   }
 
   .hero {
