@@ -1,712 +1,773 @@
 <!doctype html>
 <html lang="tr">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Türker Kıvılcım — Full-Stack Developer & AI Engineer / Blueprint Portfolio</title>
-<meta name="description" content="Türker Kıvılcım — Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisi, Full-stack AI Engineer. Dağıtık backend sistemleri, bilgisayarlı görü ve akustik modelleme Ar-Ge portfolyosu.">
-<link rel="stylesheet" href="css/blueprint.css">
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Türker Kıvılcım — Full-Stack Developer & AI Engineer / Blueprint Portfolio</title>
+  <meta name="description"
+    content="Türker Kıvılcım — Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisi, Full-stack AI Engineer. Dağıtık backend sistemleri, bilgisayarlı görü ve akustik modelleme Ar-Ge portfolyosu.">
+  <link rel="stylesheet" href="css/blueprint.css">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
+
 <body class="drawing-enabled">
 
-<canvas id="inkCanvas"></canvas>
+  <canvas id="inkCanvas"></canvas>
 
-<!-- Floating Mobile Quick Menu -->
-<nav id="floatingNav" class="floating-nav" aria-label="Mobil Hızlı Menü">
-  <a id="floatNavLogo" href="javascript:void(0)" class="floating-nav-logo" title="Sayfa Başına Dön">TK-2026</a>
-  <div class="floating-nav-actions">
-    <a href="#about" class="floating-nav-link">HAKKINDA</a>
-    <a href="#experience" class="floating-nav-link">DENEYİM</a>
-    <a href="#projects" class="floating-nav-link">PROJELER</a>
-    <a href="#honors" class="floating-nav-link">BAŞARILAR</a>
-    <a id="floatDrawToggle" class="nav-btn nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
-    <a id="floatClearSketch" class="nav-btn nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
-  </div>
-</nav>
-
-<div class="site">
-  <!-- Top Navigation Bar -->
-  <header class="top">
-    <div class="brand-block">
-      <a href="index.html" class="brand-link">TK-2026 / SOFTWARE</a>
-      <span class="coord">39°00'N · 35°00'E</span>
+  <!-- Floating Mobile Quick Menu -->
+  <nav id="floatingNav" class="floating-nav" aria-label="Mobil Hızlı Menü">
+    <a id="floatNavLogo" href="javascript:void(0)" class="floating-nav-logo" title="Sayfa Başına Dön">TK-2026</a>
+    <div class="floating-nav-actions">
+      <a href="#about" class="floating-nav-link">HAKKINDA</a>
+      <a href="#experience" class="floating-nav-link">DENEYİM</a>
+      <a href="#projects" class="floating-nav-link">PROJELER</a>
+      <a href="#honors" class="floating-nav-link">BAŞARILAR</a>
+      <a id="floatDrawToggle" class="nav-btn nav-draw-toggle" href="javascript:void(0)"
+        title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
+      <a id="floatClearSketch" class="nav-btn nav-clear-btn" href="javascript:void(0)"
+        title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
     </div>
-    <nav class="nav-links" aria-label="Ana Gezinti">
-      <a href="#about" class="nav-link">HAKKINDA</a>
-      <a href="#experience" class="nav-link">DENEYİM</a>
-      <a href="#projects" class="nav-link">PROJELER</a>
-      <a href="#honors" class="nav-link">BAŞARILAR & BELGELER</a>
-      <a href="#contact" class="nav-link">İLETİŞİM</a>
-      <a href="blogs.html" class="nav-action-btn nav-blog-btn" title="Blog ve Teknik Notlar Sayfası">BLOG ↗</a>
-      <a href="https://github.com/turkerkiv" target="_blank" rel="noreferrer" class="nav-action-btn" title="GitHub Profilini Aç">GITHUB ↗</a>
-    </nav>
-    <div class="nav-controls">
-      <a id="mobileDrawToggle" class="nav-btn nav-draw-toggle" href="javascript:void(0)" title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
-      <a id="clearSketch" class="nav-btn nav-clear-btn" href="javascript:void(0)" title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
-      <a id="exportBtn" class="nav-btn nav-export-btn" href="javascript:void(0)" title="Sayfa ve Çizimlerin Görüntüsünü İndir">ÇIKTI AL ⤓</a>
-    </div>
-  </header>
+  </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-copy">
-      <div class="stamp">SYSTEM / AI / BACKEND</div>
-      <h1>Türker Kıvılcım</h1>
-      <p class="headline">Full-Stack Developer &amp; AI Engineer | Computer Engineering Senior @ Erciyes University</p>
-      <p class="hero-intro">
-        Sistemlerin arka planını derinlemesine anlamaya odaklanan, ölçeklenebilir backend çözümleri, yapay zeka &amp; görüntü işleme sistemleri ve düşük seviyeli yazılımlar geliştiren Bilgisayar Mühendisliği son sınıf öğrencisi.
-      </p>
-      <div class="hand-note">çalışır sistemler &amp; Ar-Ge →</div>
-    </div>
-
-    <aside class="hero-side">
-      <div class="side-item">
-        <div class="side-label">Şu anda</div>
-        <div class="side-value">
-          Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı · <strong>Full-stack AI Engineer</strong>
-        </div>
+  <div class="site">
+    <!-- Top Navigation Bar -->
+    <header class="top">
+      <div class="brand-block">
+        <a href="index.html" class="brand-link">TK-2026 / SOFTWARE</a>
+        <span class="coord">39°00'N · 35°00'E</span>
       </div>
-      <div class="side-item">
-        <div class="side-label">Odak</div>
-        <div class="focus-list">
-          <span>Go</span>
-          <span>Python</span>
-          <span>C / Sistem</span>
-          <span>.NET</span>
-          <span>React</span>
-          <span>YOLO</span>
-          <span>Kaldi</span>
-        </div>
+      <nav class="nav-links" aria-label="Ana Gezinti">
+        <a href="#about" class="nav-link">HAKKINDA</a>
+        <a href="#experience" class="nav-link">DENEYİM</a>
+        <a href="#projects" class="nav-link">PROJELER</a>
+        <a href="#honors" class="nav-link">BAŞARILAR & BELGELER</a>
+        <a href="#contact" class="nav-link">İLETİŞİM</a>
+        <a href="blogs.html" class="nav-action-btn nav-blog-btn" title="Blog ve Teknik Notlar Sayfası">BLOG ↗</a>
+        <a href="https://github.com/turkerkiv" target="_blank" rel="noreferrer" class="nav-action-btn"
+          title="GitHub Profilini Aç">GITHUB ↗</a>
+      </nav>
+      <div class="nav-controls">
+        <a id="mobileDrawToggle" class="nav-btn nav-draw-toggle" href="javascript:void(0)"
+          title="Kalem Modunu Aç/Kapat"><span>✏️</span> ÇİZ</a>
+        <a id="clearSketch" class="nav-btn nav-clear-btn" href="javascript:void(0)"
+          title="Tüm çizimleri temizle">TEMİZLE ⌫</a>
+        <a id="exportBtn" class="nav-btn nav-export-btn" href="javascript:void(0)"
+          title="Sayfa ve Çizimlerin Görüntüsünü İndir">ÇIKTI AL ⤓</a>
       </div>
-      <div class="side-item">
-        <div class="side-label">Bağlantılar</div>
-        <div class="side-value">
-          <a href="https://linkedin.com/in/turkerkiv" target="_blank" rel="noreferrer">LinkedIn ↗</a><br>
-          <a href="turker-kivilcim-cv.pdf" target="_blank" rel="noreferrer">Özgeçmiş (CV) ↗</a><br>
-          <a href="mailto:kivturker@gmail.com">kivturker@gmail.com ↗</a>
-        </div>
-      </div>
-    </aside>
-  </header>
+    </header>
 
-  <!-- 01 / Hakkında & Beceriler Section (Hero'dan hemen sonra) -->
-  <section id="about" class="section">
-    <div class="section-head">
-      <span>01 / HAKKINDA &amp; BECERİLER</span>
-      <span>01 // 05</span>
-    </div>
-    <div class="about-grid">
-      <!-- Sol: Biyografi & Vizyon -->
-      <div class="about-card">
-        <h3>Mühendislik Vizyonu &amp; Profil</h3>
-        <p>
-          Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisi ve backend odaklı Full-Stack geliştiriciyim. Sistemlerin ve soyut katmanların arka planını anlamayı, ölçeklenebilir dağıtık mimariler kurmayı ve bilgisayarlı görü/yapay zeka teknolojileriyle gerçek kurumsal problemleri çözmeyi hedefliyorum.
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-copy">
+        <div class="stamp">SYSTEM / AI / BACKEND</div>
+        <h1>Türker Kıvılcım</h1>
+        <p class="headline">Full-Stack Developer &amp; AI Engineer | Computer Engineering Senior @ Erciyes University
         </p>
-        <p>
-          Şu anda <strong>Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı</strong> bünyesinde Full-stack AI Engineer olarak kampüs nizamiyelerinden gelen canlı kamera akışlarını analiz eden uçtan uca görüntü işleme ve yayın sistemini yönetiyorum.
+        <p class="hero-intro">
+          Sistemlerin arka planını derinlemesine anlamaya odaklanan, ölçeklenebilir backend çözümleri, yapay zeka &amp;
+          görüntü işleme sistemleri ve düşük seviyeli yazılımlar geliştiren Bilgisayar Mühendisliği son sınıf öğrencisi.
         </p>
-        <p>
-          Yürütücülüğünü üstlendiğim <strong>TÜBİTAK 2209-A</strong> projemde düşük güç tüketimli sistemlerde Türkçe konuşma tanıma (Kaldi / GMM-HMM) üzerine 1 yıllık Ar-Ge sürecini başarıyla sonuçlandırdım. <strong>TEKNOFEST 2025</strong>'te ise kaptanı olduğum EruAI - Ada Lovelace takımıyla Ön Değerlendirme Raporunda 96/100 puan alarak Türkiye 1.si olduk.
-        </p>
-        <div class="philosophy-quote">
-          "Ezberlemek yerine sistemin neden ve nasıl çalıştığını kavramayı, soyutlamaların altındaki donanım ve işletim sistemi dinamiklerini anlamayı ve her öğrendiğim teoriyi çalışan, test edilmiş bir yazılıma dönüştürmeyi ilke ediniyorum."
-        </div>
-        <div class="edu-box">
-          <div class="edu-title">Erciyes Üniversitesi · Lisans, Bilgisayar Mühendisliği</div>
-          <div class="edu-meta">Eylül 2023 – Haziran 2027 · Kayseri · GANO: <strong>3.18 / 4.00</strong></div>
-          <div class="tags">
-            <span>Veri Yapıları &amp; Algoritmalar</span>
-            <span>İşletim Sistemleri</span>
-            <span>Bilgisayar Ağları</span>
-            <span>Dağıtık Sistemler</span>
+        <div class="hand-note">çalışır sistemler &amp; Ar-Ge →</div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="side-item">
+          <div class="side-label">Şu anda</div>
+          <div class="side-value">
+            Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı · <strong>Full-stack AI Engineer</strong>
           </div>
         </div>
-      </div>
-
-      <!-- Sağ: Kategorize Edilmiş Yetkinlik Haritası -->
-      <div class="about-card">
-        <h3>Yetkinlik Haritası (Tech Stack)</h3>
-        
-        <div class="skills-group">
-          <div class="skills-group-title">Backend &amp; Dağıtık Sistemler</div>
-          <div class="tags">
+        <div class="side-item">
+          <div class="side-label">Odak</div>
+          <div class="focus-list">
             <span>Go</span>
             <span>Python</span>
-            <span>C# / .NET Web API</span>
-            <span>Django</span>
-            <span>FastAPI</span>
-            <span>WebSocket</span>
-            <span>RESTful APIs</span>
-          </div>
-        </div>
-
-        <div class="skills-group">
-          <div class="skills-group-title">Yapay Zeka &amp; Görüntü / Ses İşleme</div>
-          <div class="tags">
-            <span>YOLO (v8 / v11)</span>
-            <span>Kaldi Speech Recognition</span>
-            <span>GMM-HMM</span>
-            <span>OpenCV</span>
-            <span>RAG (Retrieval-Augmented Gen)</span>
-            <span>LoRA Fine-Tuning</span>
-            <span>hmmlearn</span>
-          </div>
-        </div>
-
-        <div class="skills-group">
-          <div class="skills-group-title">Sistem Programlama &amp; Altyapı</div>
-          <div class="tags">
-            <span>C</span>
-            <span>Linux / POSIX</span>
-            <span>Docker</span>
-            <span>Nginx</span>
-            <span>Cisco Packet Tracer</span>
-            <span>Git &amp; GitHub</span>
-            <span>Sanal Makineler</span>
-          </div>
-        </div>
-
-        <div class="skills-group">
-          <div class="skills-group-title">Frontend &amp; Arayüz</div>
-          <div class="tags">
+            <span>C / Sistem</span>
+            <span>.NET</span>
             <span>React</span>
-            <span>TypeScript</span>
+            <span>YOLO</span>
+            <span>Kaldi</span>
+          </div>
+        </div>
+        <div class="side-item">
+          <div class="side-label">Bağlantılar</div>
+          <div class="side-value">
+            <a href="https://linkedin.com/in/turkerkiv" target="_blank" rel="noreferrer">LinkedIn ↗</a><br>
+            <a href="turker-kivilcim-cv.pdf" target="_blank" rel="noreferrer">Özgeçmiş (CV) ↗</a><br>
+            <a href="mailto:kivturker@gmail.com">kivturker@gmail.com ↗</a>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <!-- 01 / Hakkında & Beceriler Section (Hero'dan hemen sonra) -->
+    <section id="about" class="section">
+      <div class="section-head">
+        <span>01 / HAKKINDA &amp; BECERİLER</span>
+        <span>01 // 05</span>
+      </div>
+      <div class="about-grid">
+        <!-- Sol: Biyografi & Vizyon -->
+        <div class="about-card">
+          <h3>Mühendislik Vizyonu &amp; Profil</h3>
+          <p>
+            Erciyes Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisi ve backend odaklı Full-Stack
+            geliştiriciyim. Sistemlerin ve soyut katmanların arka planını anlamayı, ölçeklenebilir dağıtık mimariler
+            kurmayı ve bilgisayarlı görü/yapay zeka teknolojileriyle gerçek kurumsal problemleri çözmeyi hedefliyorum.
+          </p>
+          <p>
+            Şu anda <strong>Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı</strong> bünyesinde Full-stack AI Engineer
+            olarak kampüs nizamiyelerinden gelen canlı kamera akışlarını analiz eden uçtan uca görüntü işleme ve yayın
+            sistemini yönetiyorum.
+          </p>
+          <p>
+            Yürütücülüğünü üstlendiğim <strong>TÜBİTAK 2209-A</strong> projemde düşük güç tüketimli sistemlerde Türkçe
+            konuşma tanıma (Kaldi / GMM-HMM) üzerine 1 yıllık Ar-Ge sürecini başarıyla sonuçlandırdım. <strong>TEKNOFEST
+              2025</strong>'te ise kaptanı olduğum EruAI - Ada Lovelace takımıyla Ön Değerlendirme Raporunda 96/100 puan
+            alarak Türkiye 1.si olduk.
+          </p>
+          <div class="philosophy-quote">
+            "Ezberlemek yerine sistemin neden ve nasıl çalıştığını kavramayı, soyutlamaların altındaki donanım ve
+            işletim sistemi dinamiklerini anlamayı ve her öğrendiğim teoriyi çalışan, test edilmiş bir yazılıma
+            dönüştürmeyi ilke ediniyorum."
+          </div>
+          <div class="edu-box">
+            <div class="edu-title">Erciyes Üniversitesi · Lisans, Bilgisayar Mühendisliği</div>
+            <div class="edu-meta">Eylül 2023 – Haziran 2027 · Kayseri · GANO: <strong>3.18 / 4.00</strong></div>
+            <div class="tags">
+              <span>Veri Yapıları &amp; Algoritmalar</span>
+              <span>İşletim Sistemleri</span>
+              <span>Bilgisayar Ağları</span>
+              <span>Dağıtık Sistemler</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sağ: Kategorize Edilmiş Yetkinlik Haritası -->
+        <div class="about-card">
+          <h3>Yetkinlik Haritası (Tech Stack)</h3>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Backend &amp; Dağıtık Sistemler</div>
+            <div class="tags">
+              <span>Go</span>
+              <span>Python</span>
+              <span>C# / .NET Web API</span>
+              <span>Django</span>
+              <span>FastAPI</span>
+              <span>WebSocket</span>
+              <span>RESTful APIs</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Yapay Zeka &amp; Görüntü / Ses İşleme</div>
+            <div class="tags">
+              <span>YOLO (v8 / v11)</span>
+              <span>Kaldi Speech Recognition</span>
+              <span>GMM-HMM</span>
+              <span>OpenCV</span>
+              <span>RAG (Retrieval-Augmented Gen)</span>
+              <span>LoRA Fine-Tuning</span>
+              <span>hmmlearn</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Sistem Programlama &amp; Altyapı</div>
+            <div class="tags">
+              <span>C</span>
+              <span>Linux / POSIX</span>
+              <span>Docker</span>
+              <span>Nginx</span>
+              <span>Cisco Packet Tracer</span>
+              <span>Git &amp; GitHub</span>
+              <span>Sanal Makineler</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Frontend &amp; Arayüz</div>
+            <div class="tags">
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>JavaScript</span>
+              <span>HTML5 / CSS3</span>
+              <span>Metronic UI</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Veritabanları &amp; Önbellekleme</div>
+            <div class="tags">
+              <span>PostgreSQL</span>
+              <span>MSSQL</span>
+              <span>SQLite</span>
+              <span>Redis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 / Deneyimler Section (Profesyonel İş & Gönüllü Deneyim Ayrılmış) -->
+    <section id="experience" class="section">
+      <div class="section-head">
+        <span>02 / DENEYİMLER</span>
+        <span>02 // 05</span>
+      </div>
+
+      <!-- Profesyonel İş Deneyimi -->
+      <div class="exp-category-title">
+        <span>🏢</span> Profesyonel İş Deneyimi &amp; Mühendislik Rolleri
+      </div>
+      <div class="exp-list">
+        <!-- BİDB -->
+        <article class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-role">Full-stack AI Engineer</h3>
+              <div class="exp-company">Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı</div>
+            </div>
+            <span class="entry-badge">Canlı Kurumsal Sistem &amp; Ar-Ge</span>
+          </div>
+          <div class="exp-meta">
+            <span>📅 Ocak 2025 – Temmuz 2026 (1 yıl 7 ay)</span>
+            <span>📍 Kayseri, Türkiye</span>
+            <span>⏱️ Kısmi Zamanlı (Part-Time)</span>
+          </div>
+          <p class="exp-desc">
+            Kampüs nizamiyelerindeki güvenlik kameralarından araç ve kişi girişlerini sayan, web panelinde analitik
+            istatistiklerini sunan ve seçilen kameranın yapay zeka tarafından işlenmiş görüntüsünü WebSocket üzerinden
+            anlık yayınlayan sistemin tüm mimarisini sıfırdan kurdum. Veri seti hazırlama, YOLOv8/v11 eğitimi ve
+            kıyaslaması, ByteTrack nesne takibi, Django ile backend/frontend kodlanması, sanal sunucu ve Nginx
+            yapılandırmalarını yürüttüm. Sistem şu anda canlıda aktiftir. Ayrıca kurum içi SSS chatbotu için RAG ve LoRA
+            teknikleriyle LLM özelleştirme araştırması gerçekleştirdim.
+          </p>
+          <div class="tags">
+            <span>Python</span>
+            <span>YOLO (v8/v11)</span>
+            <span>Django</span>
+            <span>WebSocket</span>
+            <span>OpenCV</span>
+            <span>ByteTrack</span>
+            <span>Nginx</span>
+            <span>Linux VM</span>
+            <span>RAG</span>
+            <span>LoRA</span>
+          </div>
+        </article>
+
+        <!-- MEA Staj -->
+        <article class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-role">Ağ Stajyeri</h3>
+              <div class="exp-company">MEA Yazılım</div>
+            </div>
+            <span class="entry-badge">Ağ Mühendisliği</span>
+          </div>
+          <div class="exp-meta">
+            <span>📅 Temmuz 2025 – Ağustos 2025 (2 ay)</span>
+            <span>📍 Kayseri, Türkiye</span>
+            <span>🎓 Zorunlu Donanım Stajı</span>
+          </div>
+          <p class="exp-desc">
+            Zorunlu donanım stajı kapsamında kurumsal bir firmanın 3 farklı şehre büyümesi senaryosunu ele aldım. Cisco
+            Packet Tracer üzerinde 3 şubeli kurumsal ağ mimarisi (VLAN, inter-VLAN routing, OSPF, DHCP/DNS, subnetting)
+            tasarladım. Ağ servislerini VMware ve VirtualBox sanal makineleri üzerinde canlı simüle ederek stajımı
+            başarıyla tamamladım.
+          </p>
+          <div class="tags">
+            <span>Cisco Packet Tracer</span>
+            <span>Ağ Mühendisliği</span>
+            <span>VLAN</span>
+            <span>OSPF</span>
+            <span>Sanal Makineler</span>
+            <span>Subnetting</span>
+          </div>
+        </article>
+
+        <!-- Tosyalı IT -->
+        <article class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-role">Information Technology Technician</h3>
+              <div class="exp-company">İskenderun Net Enerji @ Tosyalı Holding</div>
+            </div>
+            <span class="entry-badge">Altyapı &amp; Saha</span>
+          </div>
+          <div class="exp-meta">
+            <span>📅 Mayıs 2023 – Temmuz 2023 (3 ay)</span>
+            <span>📍 Hatay / İskenderun, Türkiye</span>
+            <span>🛠️ Saha Operasyonu</span>
+          </div>
+          <p class="exp-desc">
+            Hatay/İskenderun bölgesinde yeni inşa edilen Tosyalı Holding fabrikasının endüstriyel ağ altyapısının
+            kurulmasında teknisyen olarak görev aldım. Cat6, Cat7 ve Fiber Optik kablolama, kanal döşeme ve yapısal
+            kablolama sonlandırma işlemlerini sahada başarıyla yürüttüm.
+          </p>
+          <div class="tags">
+            <span>Endüstriyel Ağ Altyapısı</span>
+            <span>Cat6 / Cat7</span>
+            <span>Fiber Optik</span>
+            <span>Yapısal Kablolama</span>
+            <span>Saha Operasyonu</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- Gönüllü Deneyim & Liderlik -->
+      <div class="exp-category-title">
+        <span>🤝</span> Gönüllü Deneyim, Topluluk Kuruculuğu &amp; Takım Kaptanlığı
+      </div>
+      <div class="exp-list">
+        <!-- YAZTEK -->
+        <article class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-role">Yönetim Kurulu Üyesi &amp; Proje Yönetim Sorumlusu (Kurucu)</h3>
+              <div class="exp-company">Yazılım Teknolojileri Kulübü (YAZTEK)</div>
+            </div>
+            <span class="entry-badge">Topluluk Kurucusu &amp; Liderlik</span>
+          </div>
+          <div class="exp-meta">
+            <span>📅 Haziran 2025 – Mart 2026 (10 ay)</span>
+            <span>📍 Erciyes Üniversitesi</span>
+          </div>
+          <p class="exp-desc">
+            YAZTEK'in kurucularından biri olarak proje birimi liderliğini üstlendim. 21 öğrenciyi takımlar halinde
+            organize ederek 7 adet TÜBİTAK 2209-A projesi oluşturduk; öğrencilerin danışman hoca bulma, hipotez kurma ve
+            teknik rapor yazım süreçlerine mentorluk ettim. Bu projelerden 4 tanesi TÜBİTAK tarafından kabul edilerek
+            desteklenmeye hak kazandı. Ayrıca 3 farklı kategoride TEKNOFEST takımı kurup süreçlerini koordine ettim.
+          </p>
+          <div class="tags">
+            <span>TÜBİTAK 2209-A</span>
+            <span>Proje Yönetimi</span>
+            <span>Mentorluk</span>
+            <span>Ekip Koordinasyonu</span>
+            <span>TEKNOFEST</span>
+          </div>
+        </article>
+
+        <!-- AI Club -->
+        <article class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-role">Başkan Yardımcısı &amp; Takım Kaptanı</h3>
+              <div class="exp-company">Yapay Zeka Kulübü (AI Club) / EruAI Ada Lovelace</div>
+            </div>
+            <span class="entry-badge">Yarışma &amp; Topluluk</span>
+          </div>
+          <div class="exp-meta">
+            <span>📅 Ekim 2024 – Haziran 2025 (9 ay)</span>
+            <span>📍 Erciyes Üniversitesi</span>
+          </div>
+          <p class="exp-desc">
+            Kulüp bünyesinde yapay zeka eğitimleri ve bootcampler organize ettim. Kaptanlığını yaptığım 7 kişilik EruAI
+            - Ada Lovelace takımıyla TEKNOFEST 2025 Engelsiz Yaşam kategorisinde 'Engelsiz Gözlük' projemizle Ön
+            Değerlendirme Raporunda 100 üzerinden 96 puan alarak Türkiye 1.si olduk. Kulüp bünyesinde ayrıca HMM ile ses
+            işleme projesiyle TÜBİTAK 2209-A kabulü aldık.
+          </p>
+          <div class="tags">
+            <span>Deep Learning</span>
+            <span>Edge AI</span>
+            <span>Computer Vision</span>
+            <span>NLP</span>
+            <span>Liderlik</span>
+            <span>TEKNOFEST</span>
+          </div>
+        </article>
+
+        <!-- MEA Frontend -->
+        <article class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-role">Frontend Developer (Gönüllü)</h3>
+              <div class="exp-company">MEA Yazılım</div>
+            </div>
+            <span class="entry-badge">Gönüllü Mühendislik</span>
+          </div>
+          <div class="exp-meta">
+            <span>📅 Ekim 2024 – Şubat 2025 (5 ay)</span>
+            <span>📍 Kayseri, Türkiye</span>
+          </div>
+          <p class="exp-desc">
+            Üniversite akademisyenlerinin yürüttüğü bilim ve teknoloji projesinde frontend geliştirici olarak görev
+            aldım. Metronic UI kütüphanesi üzerine kurulu canlı sistemde kod refactoring, performans optimizasyonu ve
+            yeni arayüz geliştirmeleri yaptım. Backend ekibiyle koordinasyon içinde kalarak yeni REST API tasarımlarına
+            entegrasyonu tamamladım; daha hafif, hızlı ve yüksek UX sunan bir arayüz ortaya koydum.
+          </p>
+          <div class="tags">
+            <span>Frontend</span>
             <span>JavaScript</span>
             <span>HTML5 / CSS3</span>
             <span>Metronic UI</span>
+            <span>REST API Entegrasyonu</span>
+            <span>UX Optimization</span>
           </div>
-        </div>
+        </article>
+      </div>
+    </section>
 
-        <div class="skills-group">
-          <div class="skills-group-title">Veritabanları &amp; Önbellekleme</div>
+    <!-- 03 / Projeler & Ar-Ge Section (Staggered Blueprint Grid & Pop-up Modal) -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <span>03 / PROJELER &amp; AR-GE</span>
+        <span>6 MÜHENDİSLİK PROJESİ</span>
+      </div>
+      <p class="section-lead">
+        // Kartlara tıklayarak sistem mimarisi, problem tanımı ve teknik detayları derinlemesine inceleyebilirsiniz.
+      </p>
+
+      <div class="projects-staggered">
+        <!-- Proje 1 -->
+        <article class="project" data-project-id="kampus-giris-sayim" tabindex="0" role="button" aria-haspopup="dialog">
+          <div class="project-top">
+            <span class="project-no">PRJ-01</span>
+            <span class="project-badge">Canlıda Aktif · Erciyes Üniv.</span>
+          </div>
+          <div class="project-category">Canlı Sistem / Görüntü İşleme</div>
+          <h2>Kampüs Giriş Sayım &amp; Canlı İzleme</h2>
+          <p>
+            Kampüs nizamiyelerindeki kamera akışlarından araç ve kişi girişlerini sayan, web panelinde istatistiklerini
+            sunan ve WebSocket ile anlık yayınlayan uçtan uca görüntü işleme sistemi.
+          </p>
           <div class="tags">
-            <span>PostgreSQL</span>
-            <span>MSSQL</span>
-            <span>SQLite</span>
-            <span>Redis</span>
+            <span>Python</span>
+            <span>YOLO (v8/v11)</span>
+            <span>Django</span>
+            <span>WebSocket</span>
+            <span>ByteTrack</span>
+            <span>Nginx</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 02 / Deneyimler Section (Profesyonel İş & Gönüllü Deneyim Ayrılmış) -->
-  <section id="experience" class="section">
-    <div class="section-head">
-      <span>02 / DENEYİMLER</span>
-      <span>02 // 05</span>
-    </div>
-    
-    <!-- Profesyonel İş Deneyimi -->
-    <div class="exp-category-title">
-      <span>🏢</span> Profesyonel İş Deneyimi &amp; Mühendislik Rolleri
-    </div>
-    <div class="exp-list">
-      <!-- BİDB -->
-      <article class="exp-card">
-        <div class="exp-header">
-          <div>
-            <h3 class="exp-role">Full-stack AI Engineer</h3>
-            <div class="exp-company">Erciyes Üniversitesi Bilgi İşlem Daire Başkanlığı</div>
-          </div>
-          <span class="entry-badge">Canlı Kurumsal Sistem &amp; Ar-Ge</span>
-        </div>
-        <div class="exp-meta">
-          <span>📅 Ocak 2025 – Temmuz 2026 (1 yıl 7 ay)</span>
-          <span>📍 Kayseri, Türkiye</span>
-          <span>⏱️ Kısmi Zamanlı (Part-Time)</span>
-        </div>
-        <p class="exp-desc">
-          Kampüs nizamiyelerindeki güvenlik kameralarından araç ve kişi girişlerini sayan, web panelinde analitik istatistiklerini sunan ve seçilen kameranın yapay zeka tarafından işlenmiş görüntüsünü WebSocket üzerinden anlık yayınlayan sistemin tüm mimarisini sıfırdan kurdum. Veri seti hazırlama, YOLOv8/v11 eğitimi ve kıyaslaması, ByteTrack nesne takibi, Django ile backend/frontend kodlanması, sanal sunucu ve Nginx yapılandırmalarını yürüttüm. Sistem şu anda canlıda aktiftir. Ayrıca kurum içi SSS chatbotu için RAG ve LoRA teknikleriyle LLM özelleştirme araştırması gerçekleştirdim.
-        </p>
-        <div class="tags">
-          <span>Python</span>
-          <span>YOLO (v8/v11)</span>
-          <span>Django</span>
-          <span>WebSocket</span>
-          <span>OpenCV</span>
-          <span>ByteTrack</span>
-          <span>Nginx</span>
-          <span>Linux VM</span>
-          <span>RAG</span>
-          <span>LoRA</span>
-        </div>
-      </article>
-
-      <!-- MEA Staj -->
-      <article class="exp-card">
-        <div class="exp-header">
-          <div>
-            <h3 class="exp-role">Ağ Stajyeri</h3>
-            <div class="exp-company">MEA Yazılım</div>
-          </div>
-          <span class="entry-badge">Ağ Mühendisliği</span>
-        </div>
-        <div class="exp-meta">
-          <span>📅 Temmuz 2025 – Ağustos 2025 (2 ay)</span>
-          <span>📍 Kayseri, Türkiye</span>
-          <span>🎓 Zorunlu Donanım Stajı</span>
-        </div>
-        <p class="exp-desc">
-          Zorunlu donanım stajı kapsamında kurumsal bir firmanın 3 farklı şehre büyümesi senaryosunu ele aldım. Cisco Packet Tracer üzerinde 3 şubeli kurumsal ağ mimarisi (VLAN, inter-VLAN routing, OSPF, DHCP/DNS, subnetting) tasarladım. Ağ servislerini VMware ve VirtualBox sanal makineleri üzerinde canlı simüle ederek stajımı başarıyla tamamladım.
-        </p>
-        <div class="tags">
-          <span>Cisco Packet Tracer</span>
-          <span>Ağ Mühendisliği</span>
-          <span>VLAN</span>
-          <span>OSPF</span>
-          <span>Sanal Makineler</span>
-          <span>Subnetting</span>
-        </div>
-      </article>
-
-      <!-- Tosyalı IT -->
-      <article class="exp-card">
-        <div class="exp-header">
-          <div>
-            <h3 class="exp-role">Information Technology Technician</h3>
-            <div class="exp-company">İskenderun Net Enerji @ Tosyalı Holding</div>
-          </div>
-          <span class="entry-badge">Altyapı &amp; Saha</span>
-        </div>
-        <div class="exp-meta">
-          <span>📅 Mayıs 2023 – Temmuz 2023 (3 ay)</span>
-          <span>📍 Hatay / İskenderun, Türkiye</span>
-          <span>🛠️ Saha Operasyonu</span>
-        </div>
-        <p class="exp-desc">
-          Hatay/İskenderun bölgesinde yeni inşa edilen Tosyalı Holding fabrikasının endüstriyel ağ altyapısının kurulmasında teknisyen olarak görev aldım. Cat6, Cat7 ve Fiber Optik kablolama, kanal döşeme ve yapısal kablolama sonlandırma işlemlerini sahada başarıyla yürüttüm.
-        </p>
-        <div class="tags">
-          <span>Endüstriyel Ağ Altyapısı</span>
-          <span>Cat6 / Cat7</span>
-          <span>Fiber Optik</span>
-          <span>Yapısal Kablolama</span>
-          <span>Saha Operasyonu</span>
-        </div>
-      </article>
-    </div>
-
-    <!-- Gönüllü Deneyim & Liderlik -->
-    <div class="exp-category-title">
-      <span>🤝</span> Gönüllü Deneyim, Topluluk Kuruculuğu &amp; Takım Kaptanlığı
-    </div>
-    <div class="exp-list">
-      <!-- YAZTEK -->
-      <article class="exp-card">
-        <div class="exp-header">
-          <div>
-            <h3 class="exp-role">Yönetim Kurulu Üyesi &amp; Proje Yönetim Sorumlusu (Kurucu)</h3>
-            <div class="exp-company">Yazılım Teknolojileri Kulübü (YAZTEK)</div>
-          </div>
-          <span class="entry-badge">Topluluk Kurucusu &amp; Liderlik</span>
-        </div>
-        <div class="exp-meta">
-          <span>📅 Haziran 2025 – Mart 2026 (10 ay)</span>
-          <span>📍 Erciyes Üniversitesi</span>
-        </div>
-        <p class="exp-desc">
-          YAZTEK'in kurucularından biri olarak proje birimi liderliğini üstlendim. 21 öğrenciyi takımlar halinde organize ederek 7 adet TÜBİTAK 2209-A projesi oluşturduk; öğrencilerin danışman hoca bulma, hipotez kurma ve teknik rapor yazım süreçlerine mentorluk ettim. Bu projelerden 4 tanesi TÜBİTAK tarafından kabul edilerek desteklenmeye hak kazandı. Ayrıca 3 farklı kategoride TEKNOFEST takımı kurup süreçlerini koordine ettim.
-        </p>
-        <div class="tags">
-          <span>TÜBİTAK 2209-A</span>
-          <span>Proje Yönetimi</span>
-          <span>Mentorluk</span>
-          <span>Ekip Koordinasyonu</span>
-          <span>TEKNOFEST</span>
-        </div>
-      </article>
-
-      <!-- AI Club -->
-      <article class="exp-card">
-        <div class="exp-header">
-          <div>
-            <h3 class="exp-role">Başkan Yardımcısı &amp; Takım Kaptanı</h3>
-            <div class="exp-company">Yapay Zeka Kulübü (AI Club) / EruAI Ada Lovelace</div>
-          </div>
-          <span class="entry-badge">Yarışma &amp; Topluluk</span>
-        </div>
-        <div class="exp-meta">
-          <span>📅 Ekim 2024 – Haziran 2025 (9 ay)</span>
-          <span>📍 Erciyes Üniversitesi</span>
-        </div>
-        <p class="exp-desc">
-          Kulüp bünyesinde yapay zeka eğitimleri ve bootcampler organize ettim. Kaptanlığını yaptığım 7 kişilik EruAI - Ada Lovelace takımıyla TEKNOFEST 2025 Engelsiz Yaşam kategorisinde 'Engelsiz Gözlük' projemizle Ön Değerlendirme Raporunda 100 üzerinden 96 puan alarak Türkiye 1.si olduk. Kulüp bünyesinde ayrıca HMM ile ses işleme projesiyle TÜBİTAK 2209-A kabulü aldık.
-        </p>
-        <div class="tags">
-          <span>Deep Learning</span>
-          <span>Edge AI</span>
-          <span>Computer Vision</span>
-          <span>NLP</span>
-          <span>Liderlik</span>
-          <span>TEKNOFEST</span>
-        </div>
-      </article>
-
-      <!-- MEA Frontend -->
-      <article class="exp-card">
-        <div class="exp-header">
-          <div>
-            <h3 class="exp-role">Frontend Developer (Gönüllü)</h3>
-            <div class="exp-company">MEA Yazılım</div>
-          </div>
-          <span class="entry-badge">Gönüllü Mühendislik</span>
-        </div>
-        <div class="exp-meta">
-          <span>📅 Ekim 2024 – Şubat 2025 (5 ay)</span>
-          <span>📍 Kayseri, Türkiye</span>
-        </div>
-        <p class="exp-desc">
-          Üniversite akademisyenlerinin yürüttüğü bilim ve teknoloji projesinde frontend geliştirici olarak görev aldım. Metronic UI kütüphanesi üzerine kurulu canlı sistemde kod refactoring, performans optimizasyonu ve yeni arayüz geliştirmeleri yaptım. Backend ekibiyle koordinasyon içinde kalarak yeni REST API tasarımlarına entegrasyonu tamamladım; daha hafif, hızlı ve yüksek UX sunan bir arayüz ortaya koydum.
-        </p>
-        <div class="tags">
-          <span>Frontend</span>
-          <span>JavaScript</span>
-          <span>HTML5 / CSS3</span>
-          <span>Metronic UI</span>
-          <span>REST API Entegrasyonu</span>
-          <span>UX Optimization</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- 03 / Projeler & Ar-Ge Section (Staggered Blueprint Grid & Pop-up Modal) -->
-  <section id="projects" class="section">
-    <div class="section-head">
-      <span>03 / PROJELER &amp; AR-GE</span>
-      <span>6 MÜHENDİSLİK PROJESİ</span>
-    </div>
-    <p class="section-lead">
-      // Kartlara tıklayarak sistem mimarisi, problem tanımı ve teknik detayları derinlemesine inceleyebilirsiniz.
-    </p>
-
-    <div class="projects-staggered">
-      <!-- Proje 1 -->
-      <article class="project" data-project-id="kampus-giris-sayim" tabindex="0" role="button" aria-haspopup="dialog">
-        <div class="project-top">
-          <span class="project-no">PRJ-01</span>
-          <span class="project-badge">Canlıda Aktif · Erciyes Üniv.</span>
-        </div>
-        <div class="project-category">Canlı Sistem / Görüntü İşleme</div>
-        <h2>Kampüs Giriş Sayım &amp; Canlı İzleme</h2>
-        <p>
-          Kampüs nizamiyelerindeki kamera akışlarından araç ve kişi girişlerini sayan, web panelinde istatistiklerini sunan ve WebSocket ile anlık yayınlayan uçtan uca görüntü işleme sistemi.
-        </p>
-        <div class="tags">
-          <span>Python</span>
-          <span>YOLO (v8/v11)</span>
-          <span>Django</span>
-          <span>WebSocket</span>
-          <span>ByteTrack</span>
-          <span>Nginx</span>
-        </div>
-        <span class="project-arrow">↗</span>
-      </article>
-
-      <!-- Proje 2 -->
-      <article class="project" data-project-id="turkce-konusma-tanima-tubitak" tabindex="0" role="button" aria-haspopup="dialog">
-        <div class="project-top">
-          <span class="project-no">PRJ-02</span>
-          <span class="project-badge">TÜBİTAK Onaylı · Proje Yürütücüsü</span>
-        </div>
-        <div class="project-category">TÜBİTAK Ar-Ge / Akustik Modelleme</div>
-        <h2>Düşük Güç Tüketimli Türkçe Konuşma Tanıma</h2>
-        <p>
-          Gömülü ve kısıtlı kaynaklı sınır sistemlerde çalışabilen, Kaldi ASR Toolkit ve hibrit akustik modellerle Türkçe ses tanıma mimarisi (TÜBİTAK 2209-A).
-        </p>
-        <div class="tags">
-          <span>Kaldi ASR</span>
-          <span>Python</span>
-          <span>C++</span>
-          <span>GMM-HMM</span>
-          <span>MFCC</span>
-          <span>Linux</span>
-        </div>
-        <span class="project-arrow">↗</span>
-      </article>
-
-      <!-- Proje 3 -->
-      <article class="project" data-project-id="engelsiz-gozluk-teknofest" tabindex="0" role="button" aria-haspopup="dialog">
-        <div class="project-top">
-          <span class="project-no">PRJ-03</span>
-          <span class="project-badge">Türkiye 1.si (96/100 Puan)</span>
-        </div>
-        <div class="project-category">TEKNOFEST 2025 / Giyilebilir Yapay Zeka</div>
-        <h2>Engelsiz Gözlük — EruAI Ada Lovelace</h2>
-        <p>
-          İşaret dilini yazıya, yazıyı sese ve sesi yazıya çevirerek işitme ve konuşma engelli bireyler için dil bariyerini kaldıran akıllı giyilebilir gözlük sistemi.
-        </p>
-        <div class="tags">
-          <span>Python</span>
-          <span>MediaPipe</span>
-          <span>Edge AI</span>
-          <span>STT / TTS</span>
-          <span>Deep Learning</span>
-        </div>
-        <span class="project-arrow">↗</span>
-      </article>
-
-      <!-- Proje 4 -->
-      <article class="project" data-project-id="kurumsal-sss-chatbot" tabindex="0" role="button" aria-haspopup="dialog">
-        <div class="project-top">
-          <span class="project-no">PRJ-04</span>
-          <span class="project-badge">Kurumsal Ar-Ge Prototipi</span>
-        </div>
-        <div class="project-category">Kurumsal Ar-Ge / NLP &amp; LLM</div>
-        <h2>Kurumsal SSS Akıllı Asistanı (RAG &amp; LoRA)</h2>
-        <p>
-          Kurum içi bilgi tabanından semantik doğrulukla yanıt üreten, RAG mimarisi ve LoRA ince ayar teknikleriyle özelleştirilmiş kurumsal chatbot prototipi.
-        </p>
-        <div class="tags">
-          <span>RAG</span>
-          <span>LoRA</span>
-          <span>Open Source LLMs</span>
-          <span>Vector DB</span>
-          <span>Django</span>
-        </div>
-        <span class="project-arrow">↗</span>
-      </article>
-
-      <!-- Proje 5 -->
-      <article class="project" data-project-id="3-subeli-ag-mimarisi" tabindex="0" role="button" aria-haspopup="dialog">
-        <div class="project-top">
-          <span class="project-no">PRJ-05</span>
-          <span class="project-badge">Zorunlu Donanım Stajı</span>
-        </div>
-        <div class="project-category">Ağ Mühendisliği &amp; Sanallaştırma</div>
-        <h2>3 Şubeli Kurumsal Ağ Mimarisi Simülasyonu</h2>
-        <p>
-          Farklı şehirlerde 3 şubeye genişleyen kurumsal firmanın Cisco Packet Tracer ve sanal makinelerle simüle edilen güvenli ve yedekli ağ topolojisi.
-        </p>
-        <div class="tags">
-          <span>Cisco Packet Tracer</span>
-          <span>VLAN</span>
-          <span>OSPF Routing</span>
-          <span>ACL Security</span>
-          <span>VMware</span>
-        </div>
-        <span class="project-arrow">↗</span>
-      </article>
-
-      <!-- Proje 6 -->
-      <article class="project" data-project-id="c-sistem-programlama" tabindex="0" role="button" aria-haspopup="dialog">
-        <div class="project-top">
-          <span class="project-no">PRJ-06</span>
-          <span class="project-badge">Düşük Seviye Ar-Ge</span>
-        </div>
-        <div class="project-category">Sistem Programlama &amp; Ar-Ge</div>
-        <h2>C ile Düşük Seviye Sistem Programlama</h2>
-        <p>
-          İşletim sistemi katmanlarını, bellek yöneticilerini (Arena/Pool Allocator) ve POSIX çekirdek çağrılarını anlamak için C ile yürütülen sistem yazılımı pratikleri.
-        </p>
-        <div class="tags">
-          <span>C (C99/C11)</span>
-          <span>Linux / POSIX</span>
-          <span>Memory Allocation</span>
-          <span>Valgrind</span>
-          <span>IPC</span>
-        </div>
-        <span class="project-arrow">↗</span>
-      </article>
-    </div>
-  </section>
-
-  <!-- 04 / Başarılar, Sertifikalar & Sınavlar Section -->
-  <section id="honors" class="section">
-    <div class="section-head">
-      <span>04 / BAŞARILAR, SERTİFİKALAR &amp; SINAVLAR</span>
-      <span>04 // 05</span>
-    </div>
-    <div class="honors-grid">
-      <!-- Sol: Yarışmalar & Resmi Başarılar -->
-      <div>
-        <div class="exp-category-title" style="margin-top:0;">
-          <span>🏆</span> Resmi Başarılar &amp; Ödüller
-        </div>
-
-        <article class="honor-card">
-          <div class="honor-card-header">
-            <h3 class="honor-title">TEKNOFEST 2025 Türkiye 1.liği (Ön Rapor)</h3>
-            <span class="entry-badge">96 / 100 Puan · 1.lik</span>
-          </div>
-          <div class="honor-org">TEKNOFEST · Engelsiz Yaşam Teknolojileri</div>
-          <div class="honor-meta">📅 Mayıs 2025 · EruAI - Ada Lovelace Takım Kaptanı</div>
-          <p class="honor-desc">
-            Kaptanı olduğum 7 kişilik EruAI - Ada Lovelace takımıyla geliştirdiğimiz 'Engelsiz Gözlük' (işaret dilini yazıya, yazıyı sese ve sesi yazıya çeviren giyilebilir yapay zeka sistemi) projemizle Ön Değerlendirme Raporunda 100 üzerinden 96 puan alarak Türkiye 1.si seçildik.
-          </p>
+          <span class="project-arrow">↗</span>
         </article>
 
-        <article class="honor-card">
-          <div class="honor-card-header">
-            <h3 class="honor-title">TeknoJam24 Şampiyonluğu (1.lik Ödülü)</h3>
-            <span class="entry-badge">GameJam 1.lik Ödülü</span>
+        <!-- Proje 2 -->
+        <article class="project" data-project-id="turkce-konusma-tanima-tubitak" tabindex="0" role="button"
+          aria-haspopup="dialog">
+          <div class="project-top">
+            <span class="project-no">PRJ-02</span>
+            <span class="project-badge">TÜBİTAK Onaylı · Proje Yürütücüsü</span>
           </div>
-          <div class="honor-org">Erciyes Teknopark</div>
-          <div class="honor-meta">📅 Mayıs 2024 · 48 Saatlik Geliştirme Maratonu</div>
-          <p class="honor-desc">
-            Erciyes Teknopark tarafından düzenlenen 48 saatlik oyun geliştirme maratonunda 26 yarışmacı grup arasından geliştirilen oyunumuzla 1.lik ödülüne layık görüldük.
+          <div class="project-category">TÜBİTAK Ar-Ge / Akustik Modelleme</div>
+          <h2>Düşük Güç Tüketimli Türkçe Konuşma Tanıma</h2>
+          <p>
+            Gömülü ve kısıtlı kaynaklı sınır sistemlerde çalışabilen, Kaldi ASR Toolkit ve hibrit akustik modellerle
+            Türkçe ses tanıma mimarisi (TÜBİTAK 2209-A).
           </p>
+          <div class="tags">
+            <span>Kaldi ASR</span>
+            <span>Python</span>
+            <span>C++</span>
+            <span>GMM-HMM</span>
+            <span>MFCC</span>
+            <span>Linux</span>
+          </div>
+          <span class="project-arrow">↗</span>
         </article>
 
-        <article class="honor-card">
-          <div class="honor-card-header">
-            <h3 class="honor-title">TÜBİTAK 2209-A Araştırma Desteği &amp; Başarı Onayı</h3>
-            <span class="entry-badge">Proje Yürütücüsü</span>
+        <!-- Proje 3 -->
+        <article class="project" data-project-id="engelsiz-gozluk-teknofest" tabindex="0" role="button"
+          aria-haspopup="dialog">
+          <div class="project-top">
+            <span class="project-no">PRJ-03</span>
+            <span class="project-badge">Türkiye 1.si (96/100 Puan)</span>
           </div>
-          <div class="honor-org">TÜBİTAK BİDEB</div>
-          <div class="honor-meta">📅 2024 – 2025 · 1 Yıllık Akademik Ar-Ge</div>
-          <p class="honor-desc">
-            2024/1 döneminde 'Düşük Güç Tüketimli Sistemlerde Türkçe Konuşma Tanıma' konulu araştırmamın yürütücülüğünü üstlendim. Kaldi ve GMM-HMM hibrit modelleriyle 1 yıllık Ar-Ge sürecinin ardından sonuç raporum TÜBİTAK tarafından başarıyla onaylandı.
+          <div class="project-category">TEKNOFEST 2025 / Giyilebilir Yapay Zeka</div>
+          <h2>Engelsiz Gözlük — EruAI Ada Lovelace</h2>
+          <p>
+            İşaret dilini yazıya, yazıyı sese ve sesi yazıya çevirerek işitme ve konuşma engelli bireyler için dil
+            bariyerini kaldıran akıllı giyilebilir gözlük sistemi.
           </p>
+          <div class="tags">
+            <span>Python</span>
+            <span>MediaPipe</span>
+            <span>Edge AI</span>
+            <span>STT / TTS</span>
+            <span>Deep Learning</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </article>
+
+        <!-- Proje 4 -->
+        <article class="project" data-project-id="kurumsal-sss-chatbot" tabindex="0" role="button"
+          aria-haspopup="dialog">
+          <div class="project-top">
+            <span class="project-no">PRJ-04</span>
+            <span class="project-badge">Kurumsal Ar-Ge Prototipi</span>
+          </div>
+          <div class="project-category">Kurumsal Ar-Ge / NLP &amp; LLM</div>
+          <h2>Kurumsal SSS Akıllı Asistanı (RAG &amp; LoRA)</h2>
+          <p>
+            Kurum içi bilgi tabanından semantik doğrulukla yanıt üreten, RAG mimarisi ve LoRA ince ayar teknikleriyle
+            özelleştirilmiş kurumsal chatbot prototipi.
+          </p>
+          <div class="tags">
+            <span>RAG</span>
+            <span>LoRA</span>
+            <span>Open Source LLMs</span>
+            <span>Vector DB</span>
+            <span>Django</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </article>
+
+        <!-- Proje 5 -->
+        <article class="project" data-project-id="3-subeli-ag-mimarisi" tabindex="0" role="button"
+          aria-haspopup="dialog">
+          <div class="project-top">
+            <span class="project-no">PRJ-05</span>
+            <span class="project-badge">Zorunlu Donanım Stajı</span>
+          </div>
+          <div class="project-category">Ağ Mühendisliği &amp; Sanallaştırma</div>
+          <h2>3 Şubeli Kurumsal Ağ Mimarisi Simülasyonu</h2>
+          <p>
+            Farklı şehirlerde 3 şubeye genişleyen kurumsal firmanın Cisco Packet Tracer ve sanal makinelerle simüle
+            edilen güvenli ve yedekli ağ topolojisi.
+          </p>
+          <div class="tags">
+            <span>Cisco Packet Tracer</span>
+            <span>VLAN</span>
+            <span>OSPF Routing</span>
+            <span>ACL Security</span>
+            <span>VMware</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </article>
+
+        <!-- Proje 6 -->
+        <article class="project" data-project-id="c-sistem-programlama" tabindex="0" role="button"
+          aria-haspopup="dialog">
+          <div class="project-top">
+            <span class="project-no">PRJ-06</span>
+            <span class="project-badge">Düşük Seviye Ar-Ge</span>
+          </div>
+          <div class="project-category">Sistem Programlama &amp; Ar-Ge</div>
+          <h2>C ile Düşük Seviye Sistem Programlama</h2>
+          <p>
+            İşletim sistemi katmanlarını, bellek yöneticilerini (Arena/Pool Allocator) ve POSIX çekirdek çağrılarını
+            anlamak için C ile yürütülen sistem yazılımı pratikleri.
+          </p>
+          <div class="tags">
+            <span>C (C99/C11)</span>
+            <span>Linux / POSIX</span>
+            <span>Memory Allocation</span>
+            <span>Valgrind</span>
+            <span>IPC</span>
+          </div>
+          <span class="project-arrow">↗</span>
         </article>
       </div>
+    </section>
 
-      <!-- Sağ: Resmi Dil Sınavları & Doğrulanabilir Belgeler -->
-      <div>
-        <div class="exp-category-title" style="margin-top:0;">
-          <span>📜</span> Resmi Dil Sınavları &amp; Doğrulanabilir Belgeler
+    <!-- 04 / Başarılar, Sertifikalar & Sınavlar Section -->
+    <section id="honors" class="section">
+      <div class="section-head">
+        <span>04 / BAŞARILAR, SERTİFİKALAR &amp; SINAVLAR</span>
+        <span>04 // 05</span>
+      </div>
+      <div class="honors-grid">
+        <!-- Sol: Yarışmalar & Resmi Başarılar -->
+        <div>
+          <div class="exp-category-title" style="margin-top:0;">
+            <span>🏆</span> Resmi Başarılar &amp; Ödüller
+          </div>
+
+          <article class="honor-card">
+            <div class="honor-card-header">
+              <h3 class="honor-title">TEKNOFEST 2025 Türkiye 1.liği (Ön Rapor)</h3>
+              <span class="entry-badge">96 / 100 Puan · 1.lik</span>
+            </div>
+            <div class="honor-org">TEKNOFEST · Engelsiz Yaşam Teknolojileri</div>
+            <div class="honor-meta">📅 Mayıs 2025 · EruAI - Ada Lovelace Takım Kaptanı</div>
+            <p class="honor-desc">
+              Kaptanı olduğum 7 kişilik EruAI - Ada Lovelace takımıyla geliştirdiğimiz 'Engelsiz Gözlük' (işaret dilini
+              yazıya, yazıyı sese ve sesi yazıya çeviren giyilebilir yapay zeka sistemi) projemizle Ön Değerlendirme
+              Raporunda 100 üzerinden 96 puan alarak Türkiye 1.si seçildik.
+            </p>
+          </article>
+
+          <article class="honor-card">
+            <div class="honor-card-header">
+              <h3 class="honor-title">TeknoJam24 Şampiyonluğu (1.lik Ödülü)</h3>
+              <span class="entry-badge">GameJam 1.lik Ödülü</span>
+            </div>
+            <div class="honor-org">Erciyes Teknopark</div>
+            <div class="honor-meta">📅 Mayıs 2024 · 48 Saatlik Geliştirme Maratonu</div>
+            <p class="honor-desc">
+              Erciyes Teknopark tarafından düzenlenen 48 saatlik oyun geliştirme maratonunda 26 yarışmacı grup arasından
+              geliştirilen oyunumuzla 1.lik ödülüne layık görüldük.
+            </p>
+          </article>
+
+          <article class="honor-card">
+            <div class="honor-card-header">
+              <h3 class="honor-title">TÜBİTAK 2209-A Araştırma Desteği &amp; Başarı Onayı</h3>
+              <span class="entry-badge">Proje Yürütücüsü</span>
+            </div>
+            <div class="honor-org">TÜBİTAK BİDEB</div>
+            <div class="honor-meta">📅 2024 – 2025 · 1 Yıllık Akademik Ar-Ge</div>
+            <p class="honor-desc">
+              2024/1 döneminde 'Düşük Güç Tüketimli Sistemlerde Türkçe Konuşma Tanıma' konulu araştırmamın
+              yürütücülüğünü üstlendim. Kaldi ve GMM-HMM hibrit modelleriyle 1 yıllık Ar-Ge sürecinin ardından sonuç
+              raporum TÜBİTAK tarafından başarıyla onaylandı.
+            </p>
+          </article>
         </div>
 
-        <article class="honor-card">
-          <div class="honor-card-header">
-            <h3 class="honor-title">Erasmus Yabancı Dil Yeterlilik Sınavı</h3>
-            <span class="entry-badge" style="background:#eaf7ee;color:#1d6f42;border-color:#65b382;">92 / 100 (C1 İleri Düzey)</span>
+        <!-- Sağ: Resmi Dil Sınavları & Doğrulanabilir Belgeler -->
+        <div>
+          <div class="exp-category-title" style="margin-top:0;">
+            <span>📜</span> Resmi Dil Sınavları &amp; Doğrulanabilir Belgeler
           </div>
-          <div class="honor-org">Erciyes Üniversitesi Yabancı Diller Yüksekokulu</div>
-          <div class="honor-meta">📅 Eylül 2026</div>
-          <p class="honor-desc">
-            Erciyes Üniversitesi resmi yabancı dil seviye tespit sınavı. Aşağıdaki resmi doğrulama sistemi üzerinden sorgulanabilir:
-          </p>
-          <div class="verify-block">
-            <div>🔗 <strong>Doğrulama Sistemi:</strong> <a href="https://bd.erciyes.edu.tr/?e=1" target="_blank" rel="noreferrer">bd.erciyes.edu.tr/?e=1 ↗</a></div>
-            <div>🔑 <strong>Belge Doğrulama Kodu:</strong> <code>SLJ3HD8NQG</code></div>
-            <div>📌 <strong>PIN Kodu:</strong> <code>1570068322</code></div>
-          </div>
-        </article>
 
-        <article class="honor-card">
-          <div class="honor-card-header">
-            <h3 class="honor-title">Erasmus Yabancı Dil Yeterlilik Sınavı</h3>
-            <span class="entry-badge">83.75 / 100 (B2+ Düzey)</span>
-          </div>
-          <div class="honor-org">Erciyes Üniversitesi Yabancı Diller Yüksekokulu</div>
-          <div class="honor-meta">📅 Aralık 2024</div>
-          <p class="honor-desc">
-            Erciyes Üniversitesi resmi yabancı dil seviye tespit sınavı.
-          </p>
-          <div class="verify-block">
-            <div>🔗 <strong>Doğrulama Sistemi:</strong> <a href="https://bd.erciyes.edu.tr/?e=1" target="_blank" rel="noreferrer">bd.erciyes.edu.tr/?e=1 ↗</a></div>
-            <div>🔑 <strong>Belge Doğrulama Kodu:</strong> <code>6SFSNKUI5B</code></div>
-            <div>📌 <strong>PIN Kodu:</strong> <code>878913900</code></div>
-          </div>
-        </article>
+          <article class="honor-card">
+            <div class="honor-card-header">
+              <h3 class="honor-title">Erasmus Yabancı Dil Yeterlilik Sınavı</h3>
+              <span class="entry-badge" style="background:#eaf7ee;color:#1d6f42;border-color:#65b382;">92 / 100 (C1
+                İleri Düzey)</span>
+            </div>
+            <div class="honor-org">Erciyes Üniversitesi Yabancı Diller Yüksekokulu</div>
+            <div class="honor-meta">📅 Eylül 2026</div>
+            <p class="honor-desc">
+              Erciyes Üniversitesi resmi yabancı dil seviye tespit sınavı. Aşağıdaki resmi doğrulama sistemi üzerinden
+              sorgulanabilir:
+            </p>
+            <div class="verify-block">
+              <div>🔗 <strong>Doğrulama Sistemi:</strong> <a href="https://bd.erciyes.edu.tr/?e=1" target="_blank"
+                  rel="noreferrer">bd.erciyes.edu.tr/?e=1 ↗</a></div>
+              <div>🔑 <strong>Belge Doğrulama Kodu:</strong> <code>SLJ3HD8NQG</code></div>
+              <div>📌 <strong>PIN Kodu:</strong> <code>1570068322</code></div>
+            </div>
+          </article>
 
-        <article class="honor-card">
-          <div class="honor-card-header">
-            <h3 class="honor-title">YDS İngilizce (Yabancı Dil Bilgisi Seviye Tespit)</h3>
-            <span class="entry-badge">76.25 / 100</span>
-          </div>
-          <div class="honor-org">ÖSYM (Ölçme, Seçme ve Yerleştirme Merkezi)</div>
-          <div class="honor-meta">📅 2023 · Türkiye Geneli Resmi Sınav</div>
-          <p class="honor-desc">
-            ÖSYM tarafından ülke genelinde uygulanan merkezi Yabancı Dil Bilgisi Seviye Tespit Sınavı.
-          </p>
-          <div class="verify-block">
-            <div>🔗 <strong>Sonuç Sistemi:</strong> <a href="https://sonuc.osym.gov.tr" target="_blank" rel="noreferrer">sonuc.osym.gov.tr ↗</a></div>
-          </div>
-        </article>
+          <article class="honor-card">
+            <div class="honor-card-header">
+              <h3 class="honor-title">Erasmus Yabancı Dil Yeterlilik Sınavı</h3>
+              <span class="entry-badge">83.75 / 100 (B2+ Düzey)</span>
+            </div>
+            <div class="honor-org">Erciyes Üniversitesi Yabancı Diller Yüksekokulu</div>
+            <div class="honor-meta">📅 Aralık 2024</div>
+            <p class="honor-desc">
+              Erciyes Üniversitesi resmi yabancı dil seviye tespit sınavı.
+            </p>
+            <div class="verify-block">
+              <div>🔗 <strong>Doğrulama Sistemi:</strong> <a href="https://bd.erciyes.edu.tr/?e=1" target="_blank"
+                  rel="noreferrer">bd.erciyes.edu.tr/?e=1 ↗</a></div>
+              <div>🔑 <strong>Belge Doğrulama Kodu:</strong> <code>6SFSNKUI5B</code></div>
+              <div>📌 <strong>PIN Kodu:</strong> <code>878913900</code></div>
+            </div>
+          </article>
+
+          <article class="honor-card">
+            <div class="honor-card-header">
+              <h3 class="honor-title">YDS İngilizce (Yabancı Dil Bilgisi Seviye Tespit)</h3>
+              <span class="entry-badge">76.25 / 100</span>
+            </div>
+            <div class="honor-org">ÖSYM (Ölçme, Seçme ve Yerleştirme Merkezi)</div>
+            <div class="honor-meta">📅 2023 · Türkiye Geneli Resmi Sınav</div>
+            <p class="honor-desc">
+              ÖSYM tarafından ülke genelinde uygulanan merkezi Yabancı Dil Bilgisi Seviye Tespit Sınavı.
+            </p>
+            <div class="verify-block">
+              <div>🔗 <strong>Sonuç Sistemi:</strong> <a href="https://sonuc.osym.gov.tr" target="_blank"
+                  rel="noreferrer">sonuc.osym.gov.tr ↗</a></div>
+            </div>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 05 / İletişim & Açık Pozisyonlar Section -->
-  <section id="contact" class="section">
-    <div class="section-head">
-      <span>05 / İLETİŞİM &amp; ÇALIŞMA DURUMU</span>
-      <span>05 // 05</span>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-card-label">E-Posta</div>
-        <a href="mailto:kivturker@gmail.com" class="contact-card-val">kivturker@gmail.com</a>
-        <div class="contact-card-desc">Doğrudan teknik iletişim ve iş teklifleri için.</div>
+    <!-- 05 / İletişim & Açık Pozisyonlar Section -->
+    <section id="contact" class="section">
+      <div class="section-head">
+        <span>05 / İLETİŞİM &amp; ÇALIŞMA DURUMU</span>
+        <span>05 // 05</span>
       </div>
-      <div class="contact-card">
-        <div class="contact-card-label">Telefon</div>
-        <a href="tel:+905317965425" class="contact-card-val">+90 531 796 54 25</a>
-        <div class="contact-card-desc">Mesai saatlerinde ulaşılabilir.</div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-card-label">E-Posta</div>
+          <a href="mailto:kivturker@gmail.com" class="contact-card-val">kivturker@gmail.com</a>
+          <div class="contact-card-desc">Doğrudan teknik iletişim ve iş teklifleri için.</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-label">Telefon</div>
+          <a href="tel:+905317965425" class="contact-card-val">+90 531 796 54 25</a>
+          <div class="contact-card-desc">Mesai saatlerinde ulaşılabilir.</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-label">Konum</div>
+          <div class="contact-card-val" style="font-size:16px;">Kayseri, Türkiye</div>
+          <div class="contact-card-desc">Hibrit ve Remote çalışma modellerine uygun.</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-label">Çalışma Durumu</div>
+          <div class="contact-card-val" style="font-size:14px;color:var(--blue);">Pozisyonlara Açık</div>
+          <div class="contact-card-desc">Part-time, staj ve mezuniyet sonrası tam zamanlı backend / AI pozisyonlarına
+            açıktır.</div>
+        </div>
       </div>
-      <div class="contact-card">
-        <div class="contact-card-label">Konum</div>
-        <div class="contact-card-val" style="font-size:16px;">Kayseri, Türkiye</div>
-        <div class="contact-card-desc">Hibrit ve Remote çalışma modellerine uygun.</div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-card-label">Çalışma Durumu</div>
-        <div class="contact-card-val" style="font-size:14px;color:var(--blue);">Pozisyonlara Açık</div>
-        <div class="contact-card-desc">Part-time, staj ve mezuniyet sonrası tam zamanlı backend / AI pozisyonlarına açıktır.</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <span>© 2026 Türker Kıvılcım — Blueprint Portfolio</span>
-    <span>39°00'N · 35°00'E · Kayseri</span>
-    <span><a href="#" style="color:var(--blue);text-decoration:none;">↑ Başa Dön</a></span>
-  </footer>
-</div>
-
-<!-- Project Detail Pop-up Modal -->
-<div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="modal-box" id="modalBox">
-    <button class="modal-close-btn" id="modalCloseBtn" aria-label="Kapat">×</button>
-    <div class="modal-header">
-      <div class="modal-meta">
-        <span id="modalCat" class="modal-cat"></span>
-        <span id="modalBadge" class="entry-badge"></span>
-      </div>
-      <h2 id="modalTitle" class="modal-title"></h2>
-    </div>
-    
-    <div class="modal-section">
-      <div class="modal-section-title">📌 Problem Tanımı &amp; İhtiyaç</div>
-      <p id="modalProblem" class="modal-p"></p>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-section-title">🏗️ Sistem Mimarisi &amp; Katmanlar</div>
-      <p id="modalArchitecture" class="modal-p"></p>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-section-title">⚙️ Temel Mühendislik Katkıları</div>
-      <ul id="modalContributions" class="modal-bullets"></ul>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-section-title">⚡ Teknik Zorluklar &amp; Çözümler</div>
-      <p id="modalChallenges" class="modal-p"></p>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-section-title">📊 Sonuçlar &amp; Canlı Durum</div>
-      <p id="modalResults" class="modal-p"></p>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-section-title">🛠️ Teknoloji Yığını</div>
-      <div id="modalStack" class="tags"></div>
-    </div>
-
-    <div id="modalLinks" class="modal-links"></div>
+    <!-- Footer -->
+    <footer>
+      <span>© 2026 Türker Kıvılcım — Blueprint Portfolio</span>
+      <span>39°00'N · 35°00'E · Kayseri</span>
+      <span><a href="#" style="color:var(--blue);text-decoration:none;">↑ Başa Dön</a></span>
+    </footer>
   </div>
-</div>
 
-<!-- Embedded Projects Database for Instant Popup -->
-<script id="projectsData" type="application/json">
+  <!-- Project Detail Pop-up Modal -->
+  <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Kapat">×</button>
+      <div class="modal-header">
+        <div class="modal-meta">
+          <span id="modalCat" class="modal-cat"></span>
+          <span id="modalBadge" class="entry-badge"></span>
+        </div>
+        <h2 id="modalTitle" class="modal-title"></h2>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">📌 Problem Tanımı &amp; İhtiyaç</div>
+        <p id="modalProblem" class="modal-p"></p>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">🏗️ Sistem Mimarisi &amp; Katmanlar</div>
+        <p id="modalArchitecture" class="modal-p"></p>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">⚙️ Temel Mühendislik Katkıları</div>
+        <ul id="modalContributions" class="modal-bullets"></ul>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">⚡ Teknik Zorluklar &amp; Çözümler</div>
+        <p id="modalChallenges" class="modal-p"></p>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">📊 Sonuçlar &amp; Canlı Durum</div>
+        <p id="modalResults" class="modal-p"></p>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">🛠️ Teknoloji Yığını</div>
+        <div id="modalStack" class="tags"></div>
+      </div>
+
+      <div id="modalLinks" class="modal-links"></div>
+    </div>
+  </div>
+
+  <!-- Embedded Projects Database for Instant Popup -->
+  <script id="projectsData" type="application/json">
 [
   {
     "id": "kampus-giris-sayim",
@@ -886,126 +947,137 @@
 ]
 </script>
 
-<script src="js/blueprint.js"></script>
+  <script src="js/blueprint.js"></script>
 
-<script>
-// Project Modal Interaction Engine
-(function() {
-  const modal = document.getElementById("projectModal");
-  const closeBtn = document.getElementById("modalCloseBtn");
-  const modalCat = document.getElementById("modalCat");
-  const modalBadge = document.getElementById("modalBadge");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalProblem = document.getElementById("modalProblem");
-  const modalArchitecture = document.getElementById("modalArchitecture");
-  const modalContributions = document.getElementById("modalContributions");
-  const modalChallenges = document.getElementById("modalChallenges");
-  const modalResults = document.getElementById("modalResults");
-  const modalStack = document.getElementById("modalStack");
-  const modalLinks = document.getElementById("modalLinks");
+  <script>
+    // Project Modal Interaction Engine
+    (function () {
+      const modal = document.getElementById("projectModal");
+      const closeBtn = document.getElementById("modalCloseBtn");
+      const modalCat = document.getElementById("modalCat");
+      const modalBadge = document.getElementById("modalBadge");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalProblem = document.getElementById("modalProblem");
+      const modalArchitecture = document.getElementById("modalArchitecture");
+      const modalContributions = document.getElementById("modalContributions");
+      const modalChallenges = document.getElementById("modalChallenges");
+      const modalResults = document.getElementById("modalResults");
+      const modalStack = document.getElementById("modalStack");
+      const modalLinks = document.getElementById("modalLinks");
+      let drawingWasEnabled = false;
 
-  let projectsData = [];
-  try {
-    const rawData = document.getElementById("projectsData").textContent;
-    projectsData = JSON.parse(rawData);
-  } catch(e) {
-    console.error("Projeler yüklenemedi:", e);
-  }
-
-  function openProjectModal(projectId) {
-    const project = projectsData.find(p => p.id === projectId);
-    if (!project) return;
-
-    modalCat.textContent = project.category || "MÜHENDİSLİK PROJESİ";
-    modalBadge.textContent = project.badge || "Ar-Ge";
-    modalTitle.textContent = project.title || "";
-    modalProblem.textContent = project.problem_statement || "";
-    modalArchitecture.textContent = project.architecture_overview || "";
-
-    // Bullets
-    modalContributions.innerHTML = "";
-    if (Array.isArray(project.key_contributions)) {
-      project.key_contributions.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        modalContributions.appendChild(li);
-      });
-    }
-
-    modalChallenges.textContent = project.challenges_and_solutions || "";
-    modalResults.textContent = project.results_impact || "";
-
-    // Stack tags
-    modalStack.innerHTML = "";
-    if (Array.isArray(project.stack)) {
-      project.stack.forEach(tech => {
-        const span = document.createElement("span");
-        span.textContent = tech;
-        modalStack.appendChild(span);
-      });
-    }
-
-    // Links
-    modalLinks.innerHTML = "";
-    if (project.github) {
-      const a = document.createElement("a");
-      a.href = project.github;
-      a.target = "_blank";
-      a.rel = "noreferrer";
-      a.className = "btn btn-outline";
-      a.innerHTML = "GITHUB KODLARI ↗";
-      modalLinks.appendChild(a);
-    }
-    if (project.demo) {
-      const a = document.createElement("a");
-      a.href = project.demo;
-      a.target = "_blank";
-      a.rel = "noreferrer";
-      a.className = "btn btn-primary";
-      a.innerHTML = "CANLI DEMO ↗";
-      modalLinks.appendChild(a);
-    }
-
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
-  }
-
-  function closeModal() {
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-  }
-
-  // Bind Cards
-  document.querySelectorAll(".project").forEach(card => {
-    card.addEventListener("click", () => {
-      const pId = card.getAttribute("data-project-id");
-      if (pId) openProjectModal(pId);
-    });
-
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        const pId = card.getAttribute("data-project-id");
-        if (pId) openProjectModal(pId);
+      let projectsData = [];
+      try {
+        const rawData = document.getElementById("projectsData").textContent;
+        projectsData = JSON.parse(rawData);
+      } catch (e) {
+        console.error("Projeler yüklenemedi:", e);
       }
-    });
-  });
 
-  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+      function openProjectModal(projectId) {
+        const project = projectsData.find(p => p.id === projectId);
+        if (!project) return;
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
+        if (!modal.classList.contains("open") && window.blueprintDrawing) {
+          drawingWasEnabled = window.blueprintDrawing.isEnabled();
+          window.blueprintDrawing.setEnabled(false);
+        }
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("open")) {
-      closeModal();
-    }
-  });
-})();
-</script>
+        modalCat.textContent = project.category || "MÜHENDİSLİK PROJESİ";
+        modalBadge.textContent = project.badge || "Ar-Ge";
+        modalTitle.textContent = project.title || "";
+        modalProblem.textContent = project.problem_statement || "";
+        modalArchitecture.textContent = project.architecture_overview || "";
+
+        // Bullets
+        modalContributions.innerHTML = "";
+        if (Array.isArray(project.key_contributions)) {
+          project.key_contributions.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            modalContributions.appendChild(li);
+          });
+        }
+
+        modalChallenges.textContent = project.challenges_and_solutions || "";
+        modalResults.textContent = project.results_impact || "";
+
+        // Stack tags
+        modalStack.innerHTML = "";
+        if (Array.isArray(project.stack)) {
+          project.stack.forEach(tech => {
+            const span = document.createElement("span");
+            span.textContent = tech;
+            modalStack.appendChild(span);
+          });
+        }
+
+        // Links
+        modalLinks.innerHTML = "";
+        if (project.github) {
+          const a = document.createElement("a");
+          a.href = project.github;
+          a.target = "_blank";
+          a.rel = "noreferrer";
+          a.className = "btn btn-outline";
+          a.innerHTML = "GITHUB KODLARI ↗";
+          modalLinks.appendChild(a);
+        }
+        if (project.demo) {
+          const a = document.createElement("a");
+          a.href = project.demo;
+          a.target = "_blank";
+          a.rel = "noreferrer";
+          a.className = "btn btn-primary";
+          a.innerHTML = "CANLI DEMO ↗";
+          modalLinks.appendChild(a);
+        }
+
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+      }
+
+      function closeModal() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        if (drawingWasEnabled && window.blueprintDrawing) {
+          window.blueprintDrawing.setEnabled(true);
+          drawingWasEnabled = false;
+        }
+      }
+
+      // Bind Cards
+      document.querySelectorAll(".project").forEach(card => {
+        card.addEventListener("click", () => {
+          const pId = card.getAttribute("data-project-id");
+          if (pId) openProjectModal(pId);
+        });
+
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            const pId = card.getAttribute("data-project-id");
+            if (pId) openProjectModal(pId);
+          }
+        });
+      });
+
+      if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("open")) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
 
 </body>
+
 </html>

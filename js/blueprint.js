@@ -57,8 +57,8 @@
 
   function isTouchOrMobile() {
     return window.matchMedia("(max-width: 860px)").matches ||
-           window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
-           ("ontouchstart" in window && window.innerWidth <= 860);
+      window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
+      ("ontouchstart" in window && window.innerWidth <= 860);
   }
 
   function setDrawingEnabled(enabled) {
@@ -111,6 +111,11 @@
     setDrawingEnabled(!isDrawingEnabled);
   }
 
+  window.blueprintDrawing = {
+    isEnabled: () => isDrawingEnabled,
+    setEnabled: setDrawingEnabled
+  };
+
   function updateFloatingNav() {
     const floatingNav = document.getElementById("floatingNav");
     if (!floatingNav) return;
@@ -154,7 +159,7 @@
     currentStroke = null;
     try {
       localStorage.removeItem(STORAGE_KEY);
-    } catch (err) {}
+    } catch (err) { }
     redraw();
   }
 
@@ -250,7 +255,7 @@
     const elements = document.elementsFromPoint(clientX, clientY);
     for (const el of elements) {
       if (el === canvas || el === pencilCursor || el.closest("#pencilCursor")) continue;
-      const clickable = el.closest("a, button, .project-card, .btn, .nav-btn, .close");
+      const clickable = el.closest("a, button, .project, .project-card, .btn, .nav-btn, .close");
       if (clickable) return clickable;
     }
     return null;
@@ -296,7 +301,7 @@
   }
 
   function animateSketchAround(element, onComplete) {
-    const targetToCircle = element.classList.contains("project-card")
+    const targetToCircle = element.classList.contains("project") || element.classList.contains("project-card")
       ? (element.querySelector("h3") || element)
       : element;
 
@@ -374,11 +379,13 @@
       return;
     }
 
-    const projectCard = el.closest(".project-card");
+    const projectCard = el.closest(".project, .project-card");
     if (projectCard) {
       const href = projectCard.getAttribute("href") || projectCard.dataset.href;
       if (href) {
         window.location.href = href;
+      } else {
+        projectCard.click();
       }
       return;
     }
